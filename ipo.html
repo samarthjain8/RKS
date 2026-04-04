@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPO Advisory — RKS Investments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ══════════════════════════════════════
+       IPO PAGE — SPECIFIC STYLES
+    ══════════════════════════════════════ */
+
+        /* ── Hero ── */
+        .ipo-hero {
+            min-height: 72vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 140px 60px 72px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ipo-hero-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 55% 70% at 80% 30%, rgba(201, 168, 76, 0.07) 0%, transparent 65%),
+                radial-gradient(ellipse 35% 50% at 10% 80%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
+                linear-gradient(160deg, #0d0d0d 0%, #141414 60%, #0d0d0d 100%);
+        }
+
+        .ipo-hero-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.035) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black, transparent);
+        }
+
+        .ipo-hero-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 64px;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .ipo-hero-left .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb-sep {
+            color: var(--border);
+        }
+
+        .breadcrumb-current {
+            color: var(--gold);
+        }
+
+        .ipo-hero-left h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6.5vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.05;
+            color: var(--text);
+            margin-bottom: 28px;
+        }
+
+        .ipo-hero-left h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .ipo-hero-left p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 540px;
+            margin-bottom: 40px;
+        }
+
+        .ipo-hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 200px;
+        }
+
+        .ipo-stat-card {
+            padding: 28px 32px;
+            border: 1px solid var(--border);
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(8px);
+        }
+
+        .ipo-stat-card__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .ipo-stat-card__label {
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        /* ── What is IPO ── */
+        .ipo-explainer {
+            padding: 100px 60px;
+        }
+
+        .ipo-explainer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .ipo-explainer-left p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .ipo-explainer-left p:first-of-type {
+            font-size: 1.12rem;
+            color: var(--text);
+        }
+
+        .ipo-explainer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .ipo-highlight-item {
+            display: flex;
+            gap: 20px;
+            padding: 24px 28px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            transition: border-color 0.3s;
+        }
+
+        .ipo-highlight-item:hover {
+            border-color: var(--gold);
+        }
+
+        .ipo-highlight-item__icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: var(--gold);
+            width: 28px;
+            text-align: center;
+        }
+
+        .ipo-highlight-item__body h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .ipo-highlight-item__body p {
+            font-size: 0.83rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ── Types of IPO ── */
+        .ipo-types {
+            padding: 0 60px 100px;
+        }
+
+        .ipo-types-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 48px;
+        }
+
+        .ipo-type-card {
+            padding: 44px 36px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .ipo-type-card:hover {
+            background: var(--dark3);
+        }
+
+        .ipo-type-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+
+        .ipo-type-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .ipo-type-card__tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .ipo-type-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+
+        .ipo-type-card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 20px;
+        }
+
+        .ipo-type-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .ipo-type-card li {
+            font-size: 0.8rem;
+            color: var(--text);
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .ipo-type-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.75rem;
+        }
+
+        /* ── Process Timeline ── */
+        .ipo-process {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .ipo-process-intro {
+            max-width: 600px;
+            margin-bottom: 64px;
+        }
+
+        .ipo-process-intro p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-top: 12px;
+        }
+
+        .process-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 32px;
+            padding: 36px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .process-step:last-child {
+            border-bottom: none;
+        }
+
+        .process-step__num {
+            width: 56px;
+            height: 56px;
+            border: 1px solid var(--gold);
+            background: var(--dark2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--gold);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step__body {
+            padding-top: 8px;
+        }
+
+        .process-step__body h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .process-step__body p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.75;
+            max-width: 640px;
+        }
+
+        .process-step__body .step-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .step-tag {
+            padding: 4px 12px;
+            border: 1px solid var(--border);
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+        }
+
+        .process-step__duration {
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.7;
+            margin-top: 8px;
+        }
+
+        /* ── Services Detail ── */
+        .ipo-services {
+            padding: 100px 60px;
+        }
+
+        .ipo-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .ipo-service-card {
+            padding: 40px 36px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .ipo-service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .ipo-service-card:hover {
+            background: var(--dark3);
+            transform: translateY(-4px);
+        }
+
+        .ipo-service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ipo-service-card__icon {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 22px;
+            transition: border-color 0.3s;
+        }
+
+        .ipo-service-card:hover .ipo-service-card__icon {
+            border-color: var(--gold);
+        }
+
+        .ipo-service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .ipo-service-card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 20px;
+        }
+
+        .ipo-service-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .ipo-service-card li {
+            font-size: 0.8rem;
+            color: var(--text);
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .ipo-service-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.75rem;
+        }
+
+        /* ── Why RKS ── */
+        .ipo-why {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .ipo-why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 56px;
+        }
+
+        .ipo-why-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .ipo-why-item {
+            display: flex;
+            gap: 24px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+
+        .ipo-why-item:last-child {
+            border-bottom: none;
+        }
+
+        .ipo-why-item__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.25);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 40px;
+            text-align: right;
+        }
+
+        .ipo-why-item__body h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .ipo-why-item__body p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .ipo-why-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .ipo-why-metric {
+            padding: 40px 28px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+        }
+
+        .ipo-why-metric__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .ipo-why-metric__label {
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* ── Eligibility ── */
+        .ipo-eligibility {
+            padding: 100px 60px;
+        }
+
+        .ipo-eligibility-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 56px;
+        }
+
+        .eligibility-panel {
+            padding: 44px 40px;
+            border: 1px solid var(--border);
+        }
+
+        .eligibility-panel--main {
+            background: var(--dark2);
+        }
+
+        .eligibility-panel--sme {
+            background: var(--dark2);
+        }
+
+        .eligibility-panel h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .eligibility-panel__sub {
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .eligibility-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+            gap: 20px;
+        }
+
+        .eligibility-row:last-child {
+            border-bottom: none;
+        }
+
+        .eligibility-row__key {
+            font-size: 0.78rem;
+            color: var(--muted);
+            flex-shrink: 0;
+            max-width: 44%;
+        }
+
+        .eligibility-row__val {
+            font-size: 0.82rem;
+            color: var(--text);
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        /* ── CTA Banner ── */
+        .ipo-cta {
+            padding: 100px 60px;
+            background:
+                radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
+                var(--dark);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .ipo-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .ipo-cta h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .ipo-cta p {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 480px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+        }
+
+        .ipo-cta__actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .ipo-hero {
+                padding: 100px 24px 56px;
+                min-height: auto;
+            }
+
+            .ipo-hero-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .ipo-hero-right {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .ipo-stat-card {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .ipo-explainer,
+            .ipo-types,
+            .ipo-process,
+            .ipo-services,
+            .ipo-why,
+            .ipo-eligibility,
+            .ipo-cta {
+                padding: 60px 24px;
+            }
+
+            .ipo-explainer-grid,
+            .ipo-why-grid,
+            .ipo-eligibility-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .ipo-types-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ipo-why-visual {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .process-timeline::before {
+                display: none;
+            }
+
+            .process-step {
+                grid-template-columns: 48px 1fr;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+    <nav id="main-nav">
+        <a class="logo" href="index.html">
+            <div class="logo-mark"><img src="Logo.png" alt="RKS Investments" width="70" height="70"></div>
+            RKS Investments
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#ib" class="nav-active">Investment Banking</a></li>
+            <li><a href="index.html#compliance">Compliance</a></li>
+            <li><a href="index.html#clients">Clients</a></li>
+            <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+    <div class="ipo-hero">
+        <div class="ipo-hero-bg"></div>
+        <div class="ipo-hero-grid"></div>
+        <div class="ipo-hero-content">
+            <div class="ipo-hero-left">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <a href="index.html">Investment Banking</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <span class="breadcrumb-current">IPO Advisory</span>
+                </div>
+                <h1>Initial Public<br>Offering <em>Advisory</em></h1>
+                <p>We guide companies through every step of going public — from assessing IPO readiness to achieving a
+                    successful listing on India's premier stock exchanges.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="index.html#contact">Start Your IPO Journey</a>
+                    <a class="btn-ghost" href="#ipo-process">See the Process</a>
+                </div>
+            </div>
+            <div class="ipo-hero-right">
+                <div class="ipo-stat-card">
+                    <div class="ipo-stat-card__num">4+</div>
+                    <div class="ipo-stat-card__label">IPOs Advised</div>
+                </div>
+                <div class="ipo-stat-card">
+                    <div class="ipo-stat-card__num">&#8377;500Cr+</div>
+                    <div class="ipo-stat-card__label">Capital Raised via IPO</div>
+                </div>
+                <div class="ipo-stat-card">
+                    <div class="ipo-stat-card__num">BSE & NSE</div>
+                    <div class="ipo-stat-card__label">Exchange Listings</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+     WHAT IS AN IPO
+══════════════════════════════════════ -->
+    <section class="ipo-explainer">
+        <div class="ipo-explainer-grid">
+            <div class="ipo-explainer-left">
+                <div class="section-tag">Understanding IPOs</div>
+                <h2 class="section-title">What Is an <em>IPO</em>?</h2>
+                <p>An Initial Public Offering (IPO) is the process by which a privately held company offers its shares
+                    to the public for the first time, transitioning into a publicly listed entity on a recognized stock
+                    exchange.</p>
+                <p>Going public is one of the most significant milestones in a company's lifecycle. It provides access
+                    to large pools of capital, enhances brand visibility, creates liquidity for existing shareholders,
+                    and establishes a publicly traded currency for future acquisitions and employee compensation.</p>
+                <p>However, the IPO process is complex, highly regulated, and time-intensive. It demands careful
+                    preparation across legal, financial, regulatory, and investor relations dimensions — making the
+                    choice of an experienced advisor critical to success.</p>
+                <p>At RKS Investments, we bring deep transaction expertise and an extensive ecosystem of bankers, legal
+                    counsel, registrars, and investors to ensure your IPO is structured correctly and executed
+                    effectively.</p>
+            </div>
+            <div class="ipo-explainer-right">
+                <div class="ipo-highlight-item">
+                    <div class="ipo-highlight-item__icon">&#9670;</div>
+                    <div class="ipo-highlight-item__body">
+                        <h4>Capital for Growth</h4>
+                        <p>An IPO raises fresh equity capital that can fund expansion, acquisitions, debt repayment, and
+                            working capital needs without diluting control beyond necessity.</p>
+                    </div>
+                </div>
+                <div class="ipo-highlight-item">
+                    <div class="ipo-highlight-item__icon">&#9670;</div>
+                    <div class="ipo-highlight-item__body">
+                        <h4>Enhanced Credibility</h4>
+                        <p>Listed companies enjoy greater trust from customers, suppliers, lenders, and talent — a
+                            publicly traded status signals transparency and governance maturity.</p>
+                    </div>
+                </div>
+                <div class="ipo-highlight-item">
+                    <div class="ipo-highlight-item__icon">&#9670;</div>
+                    <div class="ipo-highlight-item__body">
+                        <h4>Shareholder Liquidity</h4>
+                        <p>Existing promoters, angel investors, and PE/VC funds can partially or fully exit through the
+                            Offer for Sale (OFS) component of the IPO.</p>
+                    </div>
+                </div>
+                <div class="ipo-highlight-item">
+                    <div class="ipo-highlight-item__icon">&#9670;</div>
+                    <div class="ipo-highlight-item__body">
+                        <h4>Ongoing Market Currency</h4>
+                        <p>A listed share becomes a powerful tool for employee ESOPs, future acquisitions via share
+                            swaps, and institutional investor partnerships.</p>
+                    </div>
+                </div>
+                <div class="ipo-highlight-item">
+                    <div class="ipo-highlight-item__icon">&#9670;</div>
+                    <div class="ipo-highlight-item__body">
+                        <h4>Regulatory Oversight &amp; Governance</h4>
+                        <p>SEBI's listing obligations require ongoing disclosures, board governance, and audit standards
+                            — building long-term institutional investor confidence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     TYPES OF IPO
+══════════════════════════════════════ -->
+    <section class="ipo-types">
+        <div class="section-tag">IPO Formats</div>
+        <h2 class="section-title">Types of <em>IPO</em> We Handle</h2>
+        <div class="ipo-types-grid">
+
+            <div class="ipo-type-card">
+                <div class="ipo-type-card__tag">Mainboard</div>
+                <h3>Mainboard IPO</h3>
+                <p>For larger, established companies seeking listing on the main boards of BSE or NSE. Governed by SEBI
+                    (ICDR) Regulations, requiring a SEBI-registered Merchant Banker as Book Running Lead Manager.</p>
+                <ul>
+                    <li>Minimum post-issue paid-up capital of &#8377;10 Cr (BSE) / &#8377;25 Cr (NSE)</li>
+                    <li>Book Building or Fixed Price mechanism</li>
+                    <li>Red Herring Prospectus (RHP) filing with SEBI</li>
+                    <li>Minimum 3-year track record required</li>
+                    <li>Suitable for mid-to-large companies</li>
+                </ul>
+            </div>
+
+            <div class="ipo-type-card">
+                <div class="ipo-type-card__tag">SME</div>
+                <h3>SME IPO</h3>
+                <p>Designed for small and medium enterprises, listed on BSE SME or NSE Emerge platforms with relaxed
+                    eligibility norms, enabling smaller companies to access public capital markets.</p>
+                <ul>
+                    <li>Post-issue paid-up capital &#8377;1 Cr – &#8377;25 Cr</li>
+                    <li>Minimum 2-year profitability track record (relaxed for certain sectors)</li>
+                    <li>Market maker mandatory for BSE SME</li>
+                    <li>Faster and more cost-effective process</li>
+                    <li>Migration to mainboard possible after 2 years</li>
+                </ul>
+            </div>
+
+            <div class="ipo-type-card">
+                <div class="ipo-type-card__tag">OFS / Fresh Issue</div>
+                <h3>Offer Structures</h3>
+                <p>IPOs can be structured as Fresh Issues (raising new capital for the company), Offer for Sale
+                    (existing shareholder exit), or a combination of both — each with distinct regulatory and financial
+                    implications.</p>
+                <ul>
+                    <li>Fresh Issue: Proceeds go to the company</li>
+                    <li>OFS: Proceeds go to selling shareholders</li>
+                    <li>Combined: Optimises both objectives</li>
+                    <li>Pre-IPO placement possible (up to 20% of issue size)</li>
+                    <li>Reserved categories: QIB, NII, Retail</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     PROCESS TIMELINE
+══════════════════════════════════════ -->
+    <section class="ipo-process" id="ipo-process">
+        <div class="ipo-process-intro">
+            <div class="section-tag">End-to-End Execution</div>
+            <h2 class="section-title">The IPO <em>Process</em></h2>
+            <p>A typical IPO takes 9–18 months from initiation to listing. Here's how RKS Investments guides you through
+                each stage.</p>
+        </div>
+
+        <div class="process-timeline">
+
+            <div class="process-step">
+                <div class="process-step__num">01</div>
+                <div class="process-step__body">
+                    <h4>IPO Readiness Assessment</h4>
+                    <p>We conduct a comprehensive evaluation of the company's financial health, governance structures,
+                        regulatory compliance posture, and capital requirements to determine whether an IPO is the right
+                        strategic move — and identify gaps to be addressed before filing.</p>
+                    <div class="step-tags">
+                        <span class="step-tag">Financial Review</span>
+                        <span class="step-tag">Promoter Background</span>
+                        <span class="step-tag">Sector Benchmarking</span>
+                        <span class="step-tag">Gap Analysis</span>
+                    </div>
+                    <div class="process-step__duration">Duration: 4 – 8 Weeks</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-step__num">02</div>
+                <div class="process-step__body">
+                    <h4>Team Assembly &amp; Mandate Structuring</h4>
+                    <p>We help assemble the full IPO team — Lead Manager (BRLM), registrar, legal counsel, statutory
+                        auditors, and PR advisors. The issue structure (size, Fresh Issue vs OFS, pricing band range) is
+                        finalised with all stakeholders.</p>
+                    <div class="step-tags">
+                        <span class="step-tag">BRLM Appointment</span>
+                        <span class="step-tag">Registrar Selection</span>
+                        <span class="step-tag">Legal Counsel</span>
+                        <span class="step-tag">Issue Structuring</span>
+                    </div>
+                    <div class="process-step__duration">Duration: 2 – 4 Weeks</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-step__num">03</div>
+                <div class="process-step__body">
+                    <h4>Due Diligence &amp; Document Preparation</h4>
+                    <p>Comprehensive legal, financial, and business due diligence is conducted. The Draft Red Herring
+                        Prospectus (DRHP) is prepared — a detailed document covering business overview, risk factors,
+                        financial statements, and use of proceeds — and submitted to SEBI for review.</p>
+                    <div class="step-tags">
+                        <span class="step-tag">Legal Due Diligence</span>
+                        <span class="step-tag">Financial Statements</span>
+                        <span class="step-tag">DRHP Drafting</span>
+                        <span class="step-tag">SEBI Filing</span>
+                    </div>
+                    <div class="process-step__duration">Duration: 10 – 16 Weeks</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-step__num">04</div>
+                <div class="process-step__body">
+                    <h4>SEBI Observations &amp; Pre-IPO Placement</h4>
+                    <p>SEBI reviews the DRHP and issues observations (queries) that must be addressed. Simultaneously, a
+                        pre-IPO placement of up to 20% of the issue may be conducted with anchor or institutional
+                        investors to build confidence before the public offering.</p>
+                    <div class="step-tags">
+                        <span class="step-tag">SEBI Query Responses</span>
+                        <span class="step-tag">Pre-IPO Placement</span>
+                        <span class="step-tag">Anchor Book Building</span>
+                    </div>
+                    <div class="process-step__duration">Duration: 4 – 10 Weeks</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-step__num">05</div>
+                <div class="process-step__body">
+                    <h4>Roadshow &amp; Investor Marketing</h4>
+                    <p>The management team conducts investor roadshows — meetings and presentations with institutional
+                        investors, HNIs, and retail brokers to generate interest and build the order book. We coordinate
+                        all marketing materials, analyst briefings, and media communications.</p>
+                    <div class="step-tags">
+                        <span class="step-tag">Investor Presentations</span>
+                        <span class="step-tag">Analyst Briefings</span>
+                        <span class="step-tag">Media PR</span>
+                        <span class="step-tag">Order Book Building</span>
+                    </div>
+                    <div class="process-step__duration">Duration: 2 – 3 Weeks</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-step__num">06</div>
+                <div class="process-step__body">
+                    <h4>Subscription, Allotment &amp; Listing</h4>
+                    <p>The IPO is open for public subscription for 3 working days. Post-closure, allotment is finalised,
+                        refunds processed, and shares credited to applicants' demat accounts. The company lists on the
+                        exchange — marking the beginning of its public market journey.</p>
+                    <div class="step-tags">
+                        <span class="step-tag">3-Day Subscription Window</span>
+                        <span class="step-tag">Allotment Finalisation</span>
+                        <span class="step-tag">Refund Processing</span>
+                        <span class="step-tag">Exchange Listing</span>
+                    </div>
+                    <div class="process-step__duration">Duration: 2 – 3 Weeks post-close</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-step__num">07</div>
+                <div class="process-step__body">
+                    <h4>Post-Listing Compliance &amp; Support</h4>
+                    <p>After listing, companies must comply with SEBI's Listing Obligations and Disclosure Requirements
+                        (LODR). We assist with quarterly result disclosures, corporate actions, investor grievance
+                        management, and ongoing regulatory filings for a smooth transition to listed-company operations.
+                    </p>
+                    <div class="step-tags">
+                        <span class="step-tag">LODR Compliance</span>
+                        <span class="step-tag">Quarterly Disclosures</span>
+                        <span class="step-tag">Corporate Actions</span>
+                        <span class="step-tag">Investor Relations</span>
+                    </div>
+                    <div class="process-step__duration">Ongoing</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     OUR SERVICES IN DETAIL
+══════════════════════════════════════ -->
+    <section class="ipo-services">
+        <div class="section-tag">Our Role</div>
+        <h2 class="section-title">Services We Provide<br>as <em>IPO Advisors</em></h2>
+        <div class="ipo-services-grid">
+
+            <div class="ipo-service-card">
+                <div class="ipo-service-card__icon">&#9670;</div>
+                <h3>Strategic IPO Planning</h3>
+                <p>We work with promoters and management to determine the right timing, structure, and exchange for the
+                    IPO — aligned with business objectives, market conditions, and sector valuations.</p>
+                <ul>
+                    <li>IPO vs. other capital-raise alternatives</li>
+                    <li>Optimal issue size determination</li>
+                    <li>Pre-IPO restructuring advisory</li>
+                    <li>Promoter shareholding optimisation</li>
+                </ul>
+            </div>
+
+            <div class="ipo-service-card">
+                <div class="ipo-service-card__icon">&#9632;</div>
+                <h3>DRHP &amp; RHP Preparation</h3>
+                <p>We coordinate the end-to-end drafting of the DRHP and final RHP — ensuring accuracy, completeness,
+                    and SEBI compliance across all sections of this critical disclosure document.</p>
+                <ul>
+                    <li>Business and industry section drafting</li>
+                    <li>Risk factor identification &amp; articulation</li>
+                    <li>Financial statement review &amp; restating</li>
+                    <li>Objects of the issue detailing</li>
+                </ul>
+            </div>
+
+            <div class="ipo-service-card">
+                <div class="ipo-service-card__icon">&#9651;</div>
+                <h3>Valuation &amp; Pricing Advisory</h3>
+                <p>Determining the right IPO price band is as much an art as a science. We provide independent valuation
+                    analysis using multiple methods and advise on the pricing strategy to maximise success.</p>
+                <ul>
+                    <li>DCF, EV/EBITDA, P/E-based analysis</li>
+                    <li>Peer company benchmarking</li>
+                    <li>Price band recommendation</li>
+                    <li>Grey market premium monitoring</li>
+                </ul>
+            </div>
+
+            <div class="ipo-service-card">
+                <div class="ipo-service-card__icon">&#9711;</div>
+                <h3>Regulatory Liaison &amp; Filing</h3>
+                <p>We manage all filings with SEBI, BSE, and NSE — coordinating with the BRLM and legal counsel to
+                    ensure timely responses to regulatory observations and smooth approval timelines.</p>
+                <ul>
+                    <li>SEBI ICDR filing coordination</li>
+                    <li>Observation letter response management</li>
+                    <li>Exchange listing application support</li>
+                    <li>ROC filings and company law compliance</li>
+                </ul>
+            </div>
+
+            <div class="ipo-service-card">
+                <div class="ipo-service-card__icon">&#9702;</div>
+                <h3>Investor Relations &amp; Roadshow</h3>
+                <p>A successful IPO hinges on effective investor engagement. We create compelling investor
+                    presentations, coordinate roadshow logistics, and manage institutional and retail investor outreach.
+                </p>
+                <ul>
+                    <li>Investor presentation design</li>
+                    <li>One-on-one investor meeting coordination</li>
+                    <li>Analyst coverage facilitation</li>
+                    <li>Media and PR strategy</li>
+                </ul>
+            </div>
+
+            <div class="ipo-service-card">
+                <div class="ipo-service-card__icon">&#9679;</div>
+                <h3>Post-IPO Compliance Support</h3>
+                <p>Our engagement does not end at listing. We support newly listed companies in navigating the ongoing
+                    compliance obligations under SEBI LODR and the Companies Act for a smooth post-listing transition.
+                </p>
+                <ul>
+                    <li>Quarterly and annual disclosure support</li>
+                    <li>Corporate governance advisory</li>
+                    <li>IEPF and investor grievance management</li>
+                    <li>Insider trading compliance framework</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     ELIGIBILITY CRITERIA
+══════════════════════════════════════ -->
+    <section class="ipo-eligibility">
+        <div class="section-tag">Know Before You Apply</div>
+        <h2 class="section-title">IPO Eligibility <em>Criteria</em></h2>
+        <div class="ipo-eligibility-grid">
+
+            <div class="eligibility-panel eligibility-panel--main">
+                <h3>Mainboard IPO</h3>
+                <div class="eligibility-panel__sub">BSE / NSE — SEBI (ICDR) Regulations</div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Net Worth</div>
+                    <div class="eligibility-row__val">Min. &#8377;1 Cr in each of last 3 years</div>
+                </div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Distributable Profits</div>
+                    <div class="eligibility-row__val">3 out of last 5 years (or QIB route)</div>
+                </div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Post-Issue Capital</div>
+                    <div class="eligibility-row__val">Min. &#8377;10 Cr (BSE) / &#8377;25 Cr (NSE)</div>
+                </div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Track Record</div>
+                    <div class="eligibility-row__val">Min. 3 years of operations</div>
+                </div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Promoter Lock-in</div>
+                    <div class="eligibility-row__val">18 months (min. 20%) + 6 months (balance)</div>
+                </div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Min. Public Offer</div>
+                    <div class="eligibility-row__val">25% of post-issue capital (10% if &gt;&#8377;4,000 Cr)</div>
+                </div>
+            </div>
+
+            <div class="eligibility-panel eligibility-panel--sme">
+                <h3>SME IPO</h3>
+                <div class="eligibility-panel__sub">BSE SME / NSE Emerge</div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Post-Issue Capital</div>
+                    <div class="eligibility-row__val">&#8377;1 Cr – &#8377;25 Cr</div>
+                </div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Profitability</div>
+                    <div class="eligibility-row__val">Min. 2 years out of last 3 years (BSE SME)</div>
+                </div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Net Worth</div>
+                    <div class="eligibility-row__val">Positive net worth at time of filing</div>
+                </div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Track Record</div>
+                    <div class="eligibility-row__val">Min. 3 years of operations</div>
+                </div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Market Maker</div>
+                    <div class="eligibility-row__val">Mandatory for BSE SME listing</div>
+                </div>
+                <div class="eligibility-row">
+                    <div class="eligibility-row__key">Min. Application Size</div>
+                    <div class="eligibility-row__val">&#8377;1 Lakh (retail &amp; NII same category)</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     WHY RKS
+══════════════════════════════════════ -->
+    <section class="ipo-why">
+        <div class="section-tag">Our Edge</div>
+        <h2 class="section-title">Why Choose <em>RKS</em> for Your IPO</h2>
+        <div class="ipo-why-grid">
+            <div class="ipo-why-list">
+                <div class="ipo-why-item">
+                    <div class="ipo-why-item__num">01</div>
+                    <div class="ipo-why-item__body">
+                        <h4>Deep Transaction Experience</h4>
+                        <p>With over 40 IPO mandates across sectors, our team brings practical knowledge of how
+                            regulators, investors, and exchanges actually operate — beyond textbook compliance.</p>
+                    </div>
+                </div>
+                <div class="ipo-why-item">
+                    <div class="ipo-why-item__num">02</div>
+                    <div class="ipo-why-item__body">
+                        <h4>Strong Ecosystem Relationships</h4>
+                        <p>We have established relationships with BRLMs, domestic institutional investors, HNIs, retail
+                            broking networks, and media channels — ensuring your IPO reaches the right audiences.</p>
+                    </div>
+                </div>
+                <div class="ipo-why-item">
+                    <div class="ipo-why-item__num">03</div>
+                    <div class="ipo-why-item__body">
+                        <h4>Sector-Agnostic Expertise</h4>
+                        <p>From manufacturing and pharma to technology and consumer brands, we have successfully advised
+                            IPOs across diverse industries — bringing relevant comparables and investor networks for
+                            each sector.</p>
+                    </div>
+                </div>
+                <div class="ipo-why-item">
+                    <div class="ipo-why-item__num">04</div>
+                    <div class="ipo-why-item__body">
+                        <h4>Promoter-Aligned Approach</h4>
+                        <p>We work in your interest — not the BRLM's interest. Our fee structure is aligned with
+                            outcomes, and our advice prioritises long-term listing success over fee maximisation.</p>
+                    </div>
+                </div>
+                <div class="ipo-why-item">
+                    <div class="ipo-why-item__num">05</div>
+                    <div class="ipo-why-item__body">
+                        <h4>End-to-End Hand-Holding</h4>
+                        <p>From initial readiness assessment to post-listing compliance, we remain engaged throughout
+                            the lifecycle — providing continuity and accountability rare in transactional advisory.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ipo-why-visual">
+                <div class="ipo-why-metric">
+                    <div class="ipo-why-metric__num">40+</div>
+                    <div class="ipo-why-metric__label">IPO Mandates<br>Completed</div>
+                </div>
+                <div class="ipo-why-metric">
+                    <div class="ipo-why-metric__num">&#8377;800Cr+</div>
+                    <div class="ipo-why-metric__label">Capital Raised<br>via Listings</div>
+                </div>
+                <div class="ipo-why-metric">
+                    <div class="ipo-why-metric__num">BSE &amp; NSE</div>
+                    <div class="ipo-why-metric__label">Both Exchange<br>Experience</div>
+                </div>
+                <div class="ipo-why-metric">
+                    <div class="ipo-why-metric__num">15+</div>
+                    <div class="ipo-why-metric__label">Sectors<br>Advised</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+    <section class="ipo-cta">
+        <div class="section-tag section-tag--center">Ready to Go Public?</div>
+        <h2>Let's Plan Your <em>IPO</em> Together</h2>
+        <p>Whether you're two years away from listing or actively exploring options, an early conversation with our team
+            will help you prepare the right way.</p>
+        <div class="ipo-cta__actions">
+            <a class="btn-primary" href="index.html#contact">Schedule a Consultation</a>
+            <a class="btn-ghost" href="index.html">Back to Home</a>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo logo--static">
+                    <div class="logo-mark"><a href="index.html"><img src="logo.png" alt="RKS Investments"
+                                style="width: 70px; height: 70px;">
+                        </a>
+                    </div>
+                    RKS Investments
+                </div>
+                <p>Independent investment banking and corporate finance advisory, committed to helping businesses grow
+                    through
+                    strategic capital solutions.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="ipo.html">IPO Advisory</a></li>
+                    <li><a href="M&A.html">M&A Advisory</a></li>
+                    <li><a href="PE.html">Private Equity</a></li>
+                    <li><a href="Debt.html">Debt Syndication</a></li>
+                    <li><a href="Valuation.html">Valuations</a></li>
+                    <li><a href="ESOP.html">ESOP Advisory</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul>
+                    <li><a onclick="showPage('about')">About Us</a></li>
+                    <li><a onclick="showPage('clients')">Our Clients</a></li>
+                    <li><a onclick="showPage('compliance')">Compliance</a></li>
+                    <li><a onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a>info@rksinvestments.in</a></li>
+                    <li><a>+91 98765 43210</a></li>
+                    <li><a>Suite 501, Capital Tower<br>Connaught Place<br>New Delhi – 110001</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RKS Investments. All rights reserved.</p>
+            <p class="disc">RKS Investments is not registered with SEBI. Advisory services are provided in a purely
+                non-regulated capacity. Nothing on this website constitutes investment advice. Past transaction
+                experience does
+                not guarantee future results.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

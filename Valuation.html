@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Valuations — RKS Investments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ══════════════════════════════════════
+       VALUATION PAGE — SPECIFIC STYLES
+    ══════════════════════════════════════ */
+
+        /* ── Shared utilities ── */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb-sep {
+            color: rgba(201, 168, 76, 0.25);
+        }
+
+        .breadcrumb-current {
+            color: var(--gold);
+        }
+
+        /* ── Hero ── */
+        .val-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 140px 60px 72px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .val-hero-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 55% 65% at 90% 35%, rgba(201, 168, 76, 0.065) 0%, transparent 65%),
+                radial-gradient(ellipse 40% 50% at 5% 65%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse 30% 40% at 45% 100%, rgba(201, 168, 76, 0.025) 0%, transparent 55%),
+                linear-gradient(155deg, #0d0d0d 0%, #141414 55%, #0d0d0d 100%);
+        }
+
+        .val-hero-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.028) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.028) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: radial-gradient(ellipse 90% 85% at 50% 50%, black, transparent);
+        }
+
+        /* Diagonal slash accent */
+        .val-hero-slash {
+            position: absolute;
+            top: -100px;
+            right: 120px;
+            width: 1px;
+            height: 140%;
+            background: linear-gradient(to bottom, transparent 5%, rgba(201, 168, 76, 0.09) 35%, rgba(201, 168, 76, 0.06) 70%, transparent 95%);
+            transform: rotate(12deg);
+            pointer-events: none;
+        }
+
+        .val-hero-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .val-hero-left h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6.5vw, 5.8rem);
+            font-weight: 300;
+            line-height: 1.03;
+            color: var(--text);
+            margin-bottom: 28px;
+        }
+
+        .val-hero-left h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .val-hero-left>p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 530px;
+            margin-bottom: 40px;
+        }
+
+        .val-hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-self: flex-end;
+        }
+
+        .val-stat-card {
+            padding: 26px 32px;
+            border: 1px solid var(--border);
+            background: rgba(20, 20, 20, 0.82);
+            backdrop-filter: blur(12px);
+            transition: border-color 0.3s;
+        }
+
+        .val-stat-card:hover {
+            border-color: rgba(201, 168, 76, 0.45);
+        }
+
+        .val-stat-card__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .val-stat-card__label {
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        /* ══════════════════════════════════════
+       WHAT IS VALUATION
+    ══════════════════════════════════════ */
+        .val-explainer {
+            padding: 100px 60px;
+        }
+
+        .val-explainer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .val-explainer-left p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .val-explainer-left p:first-of-type {
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .val-pull-quote {
+            margin: 32px 0;
+            padding: 28px 32px;
+            border-left: 2px solid var(--gold);
+            background: var(--dark2);
+        }
+
+        .val-pull-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem !important;
+            font-style: italic;
+            color: var(--text) !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+        }
+
+        /* Valuation purposes list */
+        .val-purpose-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+
+        .val-purpose-item {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.25s;
+        }
+
+        .val-purpose-item:last-child {
+            border-bottom: none;
+        }
+
+        .val-purpose-item:hover {
+            background: var(--dark3);
+        }
+
+        .val-purpose-item__num {
+            width: 56px;
+            flex-shrink: 0;
+            padding: 20px;
+            background: var(--dark2);
+            border-right: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: var(--gold);
+        }
+
+        .val-purpose-item__body {
+            padding: 18px 22px;
+            flex: 1;
+        }
+
+        .val-purpose-item__body h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .val-purpose-item__body p {
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ══════════════════════════════════════
+       VALUATION METHODOLOGIES
+    ══════════════════════════════════════ */
+        .val-methods {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .val-methods-intro {
+            max-width: 640px;
+            margin-bottom: 64px;
+        }
+
+        .val-methods-intro p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-top: 12px;
+        }
+
+        .val-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .val-method-card {
+            padding: 48px 38px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .val-method-card:hover {
+            background: var(--dark3);
+        }
+
+        .val-method-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+
+        .val-method-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .val-method-card__abbr {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.1);
+            line-height: 1;
+            position: absolute;
+            top: 24px;
+            right: 28px;
+        }
+
+        .val-method-card__tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .val-method-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+
+        .val-method-card>p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 20px;
+        }
+
+        .val-method-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .val-method-step {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .val-method-step__num {
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.64rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .val-method-step__text {
+            font-size: 0.78rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .val-method-card__when {
+            padding: 12px 16px;
+            background: rgba(201, 168, 76, 0.04);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            font-size: 0.72rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .val-method-card__when strong {
+            color: var(--gold);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        /* ══════════════════════════════════════
+       VALUATION FOR DIFFERENT PURPOSES
+    ══════════════════════════════════════ */
+        .val-usecases {
+            padding: 100px 60px;
+        }
+
+        .val-usecases-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .val-usecase-card {
+            padding: 40px 30px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            transition: background 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .val-usecase-card:hover {
+            background: var(--dark3);
+            border-color: rgba(201, 168, 76, 0.4);
+        }
+
+        .val-usecase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+
+        .val-usecase-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .val-usecase-card__icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+            transition: border-color 0.3s;
+        }
+
+        .val-usecase-card:hover .val-usecase-card__icon {
+            border-color: var(--gold);
+        }
+
+        .val-usecase-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .val-usecase-card p {
+            font-size: 0.81rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .val-usecase-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .val-usecase-card li {
+            font-size: 0.75rem;
+            color: var(--text);
+            padding-left: 13px;
+            position: relative;
+        }
+
+        .val-usecase-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.7rem;
+        }
+
+        /* ══════════════════════════════════════
+       REGULATORY VALUATIONS
+    ══════════════════════════════════════ */
+        .val-regulatory {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .val-regulatory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 56px;
+            align-items: start;
+        }
+
+        .val-regulatory-left p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .val-regulatory-left p:first-of-type {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .val-reg-table {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+
+        .val-reg-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .val-reg-row:last-child {
+            border-bottom: none;
+        }
+
+        .val-reg-row:hover {
+            background: var(--dark3);
+        }
+
+        .val-reg-row__reg {
+            padding: 16px 20px;
+            background: var(--dark);
+            border-right: 1px solid var(--border);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+        }
+
+        .val-reg-row__req {
+            padding: 14px 18px;
+            font-size: 0.81rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .val-reg-row__req span {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        /* ══════════════════════════════════════
+       KEY VALUE DRIVERS
+    ══════════════════════════════════════ */
+        .val-drivers {
+            padding: 100px 60px;
+        }
+
+        .val-drivers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-top: 56px;
+        }
+
+        .val-drivers-left p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .val-drivers-left p:first-of-type {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        /* Spider / radar visual — CSS-only approximation */
+        .val-drivers-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .val-driver-tile {
+            padding: 32px 28px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            transition: border-color 0.3s, background 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .val-driver-tile:hover {
+            border-color: var(--gold);
+            background: var(--dark3);
+        }
+
+        .val-driver-tile__bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: var(--gold);
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+
+        .val-driver-tile:hover .val-driver-tile__bar {
+            opacity: 0.7;
+        }
+
+        .val-driver-tile__label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .val-driver-tile h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .val-driver-tile p {
+            font-size: 0.77rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ══════════════════════════════════════
+       VALUATION SERVICES DETAIL
+    ══════════════════════════════════════ */
+        .val-services {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .val-services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .val-service-card {
+            padding: 40px 36px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            position: relative;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .val-service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .val-service-card:hover {
+            background: var(--dark3);
+            transform: translateY(-3px);
+        }
+
+        .val-service-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .val-service-card__icon {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 22px;
+            transition: border-color 0.3s;
+        }
+
+        .val-service-card:hover .val-service-card__icon {
+            border-color: var(--gold);
+        }
+
+        .val-service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .val-service-card p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+
+        .val-service-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .val-service-card li {
+            font-size: 0.79rem;
+            color: var(--text);
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .val-service-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.74rem;
+        }
+
+        /* ══════════════════════════════════════
+       VALUATION PROCESS
+    ══════════════════════════════════════ */
+        .val-process {
+            padding: 100px 60px;
+        }
+
+        .val-process-intro p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 580px;
+            margin-top: 12px;
+        }
+
+        .val-process-track {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 64px;
+            position: relative;
+        }
+
+        .val-process-track::before {
+            content: '';
+            position: absolute;
+            left: 26px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .val-process-step {
+            display: grid;
+            grid-template-columns: 54px 1fr;
+            gap: 32px;
+            padding: 36px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .val-process-step:last-child {
+            border-bottom: none;
+        }
+
+        .val-process-step__num {
+            width: 52px;
+            height: 52px;
+            border: 1px solid var(--gold);
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .val-process-step__body {
+            padding-top: 8px;
+        }
+
+        .val-process-step__body h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .val-process-step__body p {
+            font-size: 0.86rem;
+            color: var(--muted);
+            line-height: 1.75;
+            max-width: 680px;
+        }
+
+        .val-process-step__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 14px;
+        }
+
+        .val-process-tag {
+            padding: 3px 10px;
+            border: 1px solid var(--border);
+            font-size: 0.68rem;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+        }
+
+        .val-process-step__duration {
+            font-size: 0.65rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.7;
+            margin-top: 8px;
+        }
+
+        /* ══════════════════════════════════════
+       VALUATION MULTIPLES REFERENCE
+    ══════════════════════════════════════ */
+        .val-multiples {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .val-multiples-intro p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 620px;
+            margin-top: 12px;
+        }
+
+        .val-table-wrap {
+            margin-top: 56px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .val-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .val-table thead tr {
+            background: var(--dark3);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .val-table th {
+            padding: 16px 22px;
+            font-size: 0.66rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-align: left;
+            white-space: nowrap;
+            border-right: 1px solid var(--border);
+        }
+
+        .val-table th:last-child {
+            border-right: none;
+        }
+
+        .val-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .val-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .val-table tbody tr:hover {
+            background: var(--dark3);
+        }
+
+        .val-table td {
+            padding: 16px 22px;
+            font-size: 0.82rem;
+            color: var(--muted);
+            vertical-align: top;
+            line-height: 1.55;
+            border-right: 1px solid var(--border);
+        }
+
+        .val-table td:last-child {
+            border-right: none;
+        }
+
+        .val-table td:first-child {
+            color: var(--text);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .val-table td:nth-child(2) {
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+        }
+
+        /* ══════════════════════════════════════
+       INTANGIBLE ASSETS
+    ══════════════════════════════════════ */
+        .val-intangibles {
+            padding: 100px 60px;
+        }
+
+        .val-intangibles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-top: 56px;
+        }
+
+        .val-intangibles-left p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .val-intangibles-left p:first-of-type {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .val-intangibles-right {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .val-intangible-item {
+            display: flex;
+            gap: 20px;
+            padding: 22px 26px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .val-intangible-item:hover {
+            border-color: var(--gold);
+            background: var(--dark3);
+        }
+
+        .val-intangible-item__icon {
+            font-size: 1.2rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-top: 2px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .val-intangible-item h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .val-intangible-item p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ══════════════════════════════════════
+       WHY RKS
+    ══════════════════════════════════════ */
+        .val-why {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .val-why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 56px;
+        }
+
+        .val-why-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .val-why-metric {
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+        }
+
+        .val-why-metric__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .val-why-metric__label {
+            font-size: 0.7rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .val-why-reasons {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .val-why-reason {
+            display: flex;
+            gap: 22px;
+            padding: 26px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+
+        .val-why-reason:last-child {
+            border-bottom: none;
+        }
+
+        .val-why-reason__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.2);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 32px;
+        }
+
+        .val-why-reason h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .val-why-reason p {
+            font-size: 0.83rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ══════════════════════════════════════
+       CTA
+    ══════════════════════════════════════ */
+        .val-cta {
+            padding: 100px 60px;
+            background:
+                radial-gradient(ellipse 55% 75% at 50% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 70%),
+                var(--dark);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .val-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .val-cta h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .val-cta p {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+        }
+
+        .val-cta__actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+        @media (max-width: 1100px) {
+            .val-methods-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .val-usecases-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .val-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .val-hero {
+                padding: 100px 24px 56px;
+                min-height: auto;
+            }
+
+            .val-hero-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .val-hero-right {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+
+            .val-stat-card {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .val-hero-slash {
+                display: none;
+            }
+
+            .val-explainer,
+            .val-methods,
+            .val-usecases,
+            .val-regulatory,
+            .val-drivers,
+            .val-services,
+            .val-process,
+            .val-multiples,
+            .val-intangibles,
+            .val-why,
+            .val-cta {
+                padding: 60px 24px;
+            }
+
+            .val-explainer-grid,
+            .val-regulatory-grid,
+            .val-drivers-grid,
+            .val-intangibles-grid,
+            .val-why-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .val-methods-grid,
+            .val-services-grid,
+            .val-usecases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .val-process-step {
+                grid-template-columns: 44px 1fr;
+                gap: 16px;
+            }
+
+            .val-process-track::before {
+                display: none;
+            }
+
+            .val-reg-row {
+                grid-template-columns: 1fr;
+            }
+
+            .val-reg-row__reg {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .val-drivers-visual {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .val-why-metrics {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+    <nav id="main-nav">
+        <a class="logo" href="index.html">
+            <div class="logo-mark"><img src="Logo.png" alt="RKS Investments" width="70" height="70"></div>
+            RKS Investments
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">About</a></li>
+            <li><a href="index.html">Investment Banking</a></li>
+            <li><a href="index.html">Compliance</a></li>
+            <li><a href="index.html">Clients</a></li>
+            <li><a href="index.html" class="nav-cta">Contact Us</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+    <div class="val-hero">
+        <div class="val-hero-bg"></div>
+        <div class="val-hero-grid"></div>
+        <div class="val-hero-slash"></div>
+        <div class="val-hero-content">
+            <div class="val-hero-left">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <a href="index.html">Investment Banking</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <span class="breadcrumb-current">Valuations</span>
+                </div>
+                <h1>Business<br><em>Valuation</em><br>Advisory</h1>
+                <p>Independent, defensible, and purpose-built valuations for transactions, regulatory filings,
+                    litigation, financial reporting, and strategic decision-making — delivered by experienced
+                    professionals.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="index.html">Request a Valuation</a>
+                    <a class="btn-ghost" href="#val-methods">Our Methodologies</a>
+                </div>
+            </div>
+            <div class="val-hero-right">
+                <div class="val-stat-card">
+                    <div class="val-stat-card__num">200+</div>
+                    <div class="val-stat-card__label">Valuation Engagements Completed</div>
+                </div>
+                <div class="val-stat-card">
+                    <div class="val-stat-card__num">15+</div>
+                    <div class="val-stat-card__label">Sectors with Deep Valuation Experience</div>
+                </div>
+                <div class="val-stat-card">
+                    <div class="val-stat-card__num">SEBI / RBI<br>/ NCLT</div>
+                    <div class="val-stat-card__label">Regulatory Valuation Compliance</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+     WHAT IS VALUATION
+══════════════════════════════════════ -->
+    <section class="val-explainer">
+        <div class="val-explainer-grid">
+            <div class="val-explainer-left">
+                <div class="section-tag">Understanding Valuations</div>
+                <h2 class="section-title">What Is a <em>Business</em><br>Valuation?</h2>
+                <p>A business valuation is the process of determining the economic worth of a company or a business
+                    interest — expressed as a range of value, a specific number, or a price per share. It draws on
+                    financial analysis, market data, regulatory requirements, and professional judgment to arrive at a
+                    figure that is supportable, defensible, and fit for purpose.</p>
+                <p>Valuations are not a single number — they are a function of purpose, methodology, and timing. The
+                    fair value of a business for an M&amp;A transaction may differ from its regulatory value under FEMA,
+                    its tax value under the Income Tax Act, or its financial reporting value under Ind AS. Each context
+                    demands a different analytical lens.</p>
+
+                <div class="val-pull-quote">
+                    <p>"A valuation is only as good as the assumptions behind it. Transparency, rigor, and independence
+                        are what make a report defensible when it truly matters."</p>
+                </div>
+
+                <p>RKS Investments delivers valuations that are not merely arithmetically correct but analytically
+                    rigorous and narratively compelling — reports that withstand scrutiny from regulators, tax
+                    authorities, investors, and courts.</p>
+            </div>
+
+            <div>
+                <h4
+                    style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:20px;">
+                    When Is a Valuation Required?</h4>
+                <div class="val-purpose-list">
+                    <div class="val-purpose-item">
+                        <div class="val-purpose-item__num">01</div>
+                        <div class="val-purpose-item__body">
+                            <h5>Mergers &amp; Acquisitions</h5>
+                            <p>Determining fair value for a target, a fairness opinion for the board, or a swap ratio
+                                for a merger scheme.</p>
+                        </div>
+                    </div>
+                    <div class="val-purpose-item">
+                        <div class="val-purpose-item__num">02</div>
+                        <div class="val-purpose-item__body">
+                            <h5>Private Equity &amp; Fundraising</h5>
+                            <p>Pre-money valuation for PE/VC fundraising rounds and ESOP valuations for employee
+                                compensation planning.</p>
+                        </div>
+                    </div>
+                    <div class="val-purpose-item">
+                        <div class="val-purpose-item__num">03</div>
+                        <div class="val-purpose-item__body">
+                            <h5>FEMA &amp; Foreign Investment</h5>
+                            <p>Pricing of shares for FDI/ODI under FEMA 20R — mandatory RBI-compliant valuation by a
+                                SEBI-registered merchant banker or CA.</p>
+                        </div>
+                    </div>
+                    <div class="val-purpose-item">
+                        <div class="val-purpose-item__num">04</div>
+                        <div class="val-purpose-item__body">
+                            <h5>NCLT Schemes of Arrangement</h5>
+                            <p>Independent share swap ratio and fairness opinion for amalgamation, demerger, and
+                                compromise petitions before the NCLT.</p>
+                        </div>
+                    </div>
+                    <div class="val-purpose-item">
+                        <div class="val-purpose-item__num">05</div>
+                        <div class="val-purpose-item__body">
+                            <h5>SEBI Open Offer &amp; Delisting</h5>
+                            <p>Valuation of shares to determine open offer price, delisting floor price, and buyback
+                                price under SEBI regulations.</p>
+                        </div>
+                    </div>
+                    <div class="val-purpose-item">
+                        <div class="val-purpose-item__num">06</div>
+                        <div class="val-purpose-item__body">
+                            <h5>Income Tax &amp; Stamp Duty</h5>
+                            <p>Rule 11UA valuation for preferential allotments, gift of shares, transfer to
+                                non-residents, and stamp duty computations.</p>
+                        </div>
+                    </div>
+                    <div class="val-purpose-item">
+                        <div class="val-purpose-item__num">07</div>
+                        <div class="val-purpose-item__body">
+                            <h5>Financial Reporting (Ind AS)</h5>
+                            <p>Purchase price allocation (PPA), goodwill impairment testing, fair value of financial
+                                instruments, and ESOPs under Ind AS 103, 36, 113, and 102.</p>
+                        </div>
+                    </div>
+                    <div class="val-purpose-item">
+                        <div class="val-purpose-item__num">08</div>
+                        <div class="val-purpose-item__body">
+                            <h5>Dispute &amp; Litigation Support</h5>
+                            <p>Independent expert opinions in shareholder disputes, arbitration, oppression &amp;
+                                mismanagement petitions, and insurance claims.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     VALUATION METHODOLOGIES
+══════════════════════════════════════ -->
+    <section class="val-methods" id="val-methods">
+        <div class="val-methods-intro">
+            <div class="section-tag">Analytical Frameworks</div>
+            <h2 class="section-title">Valuation <em>Methodologies</em><br>We Apply</h2>
+            <p>No single methodology tells the complete story of a business's value. RKS Investments applies the most
+                appropriate primary method for each engagement — cross-checked against secondary approaches — to arrive
+                at a triangulated, defensible conclusion of value.</p>
+        </div>
+        <div class="val-methods-grid">
+
+            <div class="val-method-card">
+                <div class="val-method-card__abbr">DCF</div>
+                <div class="val-method-card__tag">Income Approach</div>
+                <h3>Discounted Cash Flow</h3>
+                <p>Values the business by discounting projected free cash flows to the firm (FCFF) back to their present
+                    value using the Weighted Average Cost of Capital (WACC). The terminal value — representing cash
+                    flows beyond the explicit forecast period — is computed using either the Gordon Growth Model or an
+                    exit multiple.</p>
+                <div class="val-method-steps">
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">1</div>
+                        <div class="val-method-step__text">Forecast revenue, EBITDA, capex, and working capital for 5–10
+                            years</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">2</div>
+                        <div class="val-method-step__text">Compute FCFF and discount at WACC (cost of equity + cost of
+                            debt)</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">3</div>
+                        <div class="val-method-step__text">Add terminal value; subtract net debt to arrive at equity
+                            value</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">4</div>
+                        <div class="val-method-step__text">Sensitivity analysis across WACC and terminal growth rate
+                            assumptions</div>
+                    </div>
+                </div>
+                <div class="val-method-card__when">
+                    <strong>Best Suited For</strong>
+                    Businesses with predictable, long-term cash flows — manufacturing, infrastructure, SaaS, financials,
+                    and regulated sectors.
+                </div>
+            </div>
+
+            <div class="val-method-card">
+                <div class="val-method-card__abbr">CCA</div>
+                <div class="val-method-card__tag">Market Approach</div>
+                <h3>Comparable Company Analysis</h3>
+                <p>Benchmarks the subject company against a set of publicly listed peers using trading multiples —
+                    EV/EBITDA, EV/Revenue, P/E, and P/BV — adjusted for size, growth, and profitability differentials.
+                    Provides a market-grounded reality check on intrinsic value.</p>
+                <div class="val-method-steps">
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">1</div>
+                        <div class="val-method-step__text">Identify the most relevant publicly listed peer set</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">2</div>
+                        <div class="val-method-step__text">Compute LTM and forward multiples for each peer</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">3</div>
+                        <div class="val-method-step__text">Apply median / selected multiple to subject company metrics
+                        </div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">4</div>
+                        <div class="val-method-step__text">Apply size, liquidity, and control premiums / discounts</div>
+                    </div>
+                </div>
+                <div class="val-method-card__when">
+                    <strong>Best Suited For</strong>
+                    Most transaction types — used as a primary or cross-check method. Essential for regulatory
+                    valuations under SEBI and FEMA.
+                </div>
+            </div>
+
+            <div class="val-method-card">
+                <div class="val-method-card__abbr">CTA</div>
+                <div class="val-method-card__tag">Market Approach</div>
+                <h3>Comparable Transaction Analysis</h3>
+                <p>References acquisition multiples paid in recent M&amp;A transactions involving comparable businesses
+                    — capturing the control premium typically embedded in deal prices. Useful for M&amp;A advisory where
+                    deal pricing precedent is the most relevant benchmark.</p>
+                <div class="val-method-steps">
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">1</div>
+                        <div class="val-method-step__text">Identify recent comparable M&amp;A transactions in same or
+                            adjacent sectors</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">2</div>
+                        <div class="val-method-step__text">Extract deal multiples — EV/EBITDA, EV/Revenue, P/BV at
+                            announcement</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">3</div>
+                        <div class="val-method-step__text">Adjust for deal structure, strategic rationale, and market
+                            conditions</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">4</div>
+                        <div class="val-method-step__text">Apply to subject company to derive implied enterprise /
+                            equity value</div>
+                    </div>
+                </div>
+                <div class="val-method-card__when">
+                    <strong>Best Suited For</strong>
+                    M&amp;A transactions, fairness opinions, and PE exit pricing — particularly in sectors with active
+                    deal activity.
+                </div>
+            </div>
+
+            <div class="val-method-card">
+                <div class="val-method-card__abbr">NAV</div>
+                <div class="val-method-card__tag">Asset Approach</div>
+                <h3>Net Asset Value</h3>
+                <p>Values the business on the fair value of its underlying assets minus its total liabilities. Adjusts
+                    historical book values to their current fair market values — particularly for land, property,
+                    investments, and intangibles that may be significantly under- or over-stated on the balance sheet.
+                </p>
+                <div class="val-method-steps">
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">1</div>
+                        <div class="val-method-step__text">Restate each balance sheet asset to fair market value</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">2</div>
+                        <div class="val-method-step__text">Identify and value off-balance-sheet assets and contingent
+                            liabilities</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">3</div>
+                        <div class="val-method-step__text">Deduct fair value of liabilities from adjusted asset value
+                        </div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">4</div>
+                        <div class="val-method-step__text">Apply control premium or minority discount as appropriate
+                        </div>
+                    </div>
+                </div>
+                <div class="val-method-card__when">
+                    <strong>Best Suited For</strong>
+                    Asset-heavy businesses — real estate, manufacturing, holding companies — and situations where
+                    going-concern assumptions are unreliable.
+                </div>
+            </div>
+
+            <div class="val-method-card">
+                <div class="val-method-card__abbr">EBO</div>
+                <div class="val-method-card__tag">Income Approach</div>
+                <h3>Excess Earnings / EBO Method</h3>
+                <p>Separates the return attributable to tangible assets from the return attributable to intangible
+                    assets — particularly useful when valuing businesses where goodwill, brand, or relationships
+                    constitute a significant portion of total value. Commonly applied in partnership disputes and
+                    professional practice valuations.</p>
+                <div class="val-method-steps">
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">1</div>
+                        <div class="val-method-step__text">Determine normalised earnings of the business</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">2</div>
+                        <div class="val-method-step__text">Calculate fair return on tangible assets at appropriate rate
+                        </div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">3</div>
+                        <div class="val-method-step__text">Remaining "excess" earnings = return from intangibles
+                            (goodwill)</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">4</div>
+                        <div class="val-method-step__text">Capitalise excess earnings at risk-adjusted intangible asset
+                            rate</div>
+                    </div>
+                </div>
+                <div class="val-method-card__when">
+                    <strong>Best Suited For</strong>
+                    Professional services firms, franchise businesses, goodwill impairment testing, and partnership
+                    dispute valuations.
+                </div>
+            </div>
+
+            <div class="val-method-card">
+                <div class="val-method-card__abbr">OPM</div>
+                <div class="val-method-card__tag">Options Approach</div>
+                <h3>Option Pricing Models</h3>
+                <p>Applies financial option theory — Black-Scholes or the Binomial model — to value equity in complex
+                    capital structures, early-stage companies, convertible securities, and situations where equity
+                    behaves like a call option on the firm's assets. Also used for ESOP fair value determination under
+                    Ind AS 102.</p>
+                <div class="val-method-steps">
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">1</div>
+                        <div class="val-method-step__text">Model firm value, volatility, and time to liquidity event
+                        </div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">2</div>
+                        <div class="val-method-step__text">Allocate enterprise value across share classes using
+                            waterfall</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">3</div>
+                        <div class="val-method-step__text">Apply DLOM (discount for lack of marketability) if
+                            appropriate</div>
+                    </div>
+                    <div class="val-method-step">
+                        <div class="val-method-step__num">4</div>
+                        <div class="val-method-step__text">Derive per-share fair value for each class of security</div>
+                    </div>
+                </div>
+                <div class="val-method-card__when">
+                    <strong>Best Suited For</strong>
+                    ESOP valuations, complex PE-backed capital structures (CCPS, warrants), and early-stage startups
+                    with uncertain outcomes.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     USE CASES
+══════════════════════════════════════ -->
+    <section class="val-usecases">
+        <div class="section-tag">Valuation Contexts</div>
+        <h2 class="section-title">Valuations for Every <em>Purpose</em></h2>
+        <div class="val-usecases-grid">
+
+            <div class="val-usecase-card">
+                <div class="val-usecase-card__icon">&#9670;</div>
+                <h3>M&amp;A &amp; Transaction Valuations</h3>
+                <p>Supporting buy-side and sell-side transactions with rigorous fair value analysis, swap ratio
+                    determination, and fairness opinions that withstand scrutiny from boards, shareholders, and
+                    regulators.</p>
+                <ul>
+                    <li>Target and acquirer valuation</li>
+                    <li>Share swap ratio for mergers</li>
+                    <li>Fairness opinion letters</li>
+                    <li>Purchase price allocation (PPA)</li>
+                </ul>
+            </div>
+
+            <div class="val-usecase-card">
+                <div class="val-usecase-card__icon">&#9632;</div>
+                <h3>Private Equity &amp; ESOP Valuations</h3>
+                <p>Determining the pre-money valuation for fundraising rounds, and providing periodic ESOP valuations
+                    under Ind AS 102 and the Companies Act for employee stock option plans.</p>
+                <ul>
+                    <li>Pre-money / post-money valuation</li>
+                    <li>Annual ESOP fair value (409A equivalent)</li>
+                    <li>Sweat equity valuation</li>
+                    <li>Warrant and convertible instrument valuation</li>
+                </ul>
+            </div>
+
+            <div class="val-usecase-card">
+                <div class="val-usecase-card__icon">&#9651;</div>
+                <h3>Regulatory Valuations</h3>
+                <p>Mandatory valuations required under SEBI, RBI/FEMA, Income Tax Act, Companies Act, and NCLT — each
+                    with specific methodology prescriptions that our reports comply with precisely.</p>
+                <ul>
+                    <li>FEMA 20R — FDI/ODI pricing compliance</li>
+                    <li>Rule 11UA — IT Act preferential allotment</li>
+                    <li>SEBI SAST — open offer pricing</li>
+                    <li>NCLT merger / demerger swap ratio</li>
+                </ul>
+            </div>
+
+            <div class="val-usecase-card">
+                <div class="val-usecase-card__icon">&#9711;</div>
+                <h3>Financial Reporting (Ind AS)</h3>
+                <p>Fair value measurements for financial instruments, intangible assets, and business combinations under
+                    Ind AS — prepared to audit-quality standards that satisfy Big Four scrutiny.</p>
+                <ul>
+                    <li>Goodwill impairment testing (Ind AS 36)</li>
+                    <li>Business combination PPA (Ind AS 103)</li>
+                    <li>ESOP fair value (Ind AS 102)</li>
+                    <li>Financial instrument fair value (Ind AS 113)</li>
+                </ul>
+            </div>
+
+            <div class="val-usecase-card">
+                <div class="val-usecase-card__icon">&#9702;</div>
+                <h3>Dispute &amp; Litigation Support</h3>
+                <p>Independent expert valuation opinions for oppression &amp; mismanagement proceedings, arbitration,
+                    shareholder disputes, and insurance claims — where the report must withstand cross-examination.</p>
+                <ul>
+                    <li>Shareholder dispute valuations</li>
+                    <li>NCLT oppression &amp; mismanagement</li>
+                    <li>Arbitration expert witness support</li>
+                    <li>Insurance and damage quantification</li>
+                </ul>
+            </div>
+
+            <div class="val-usecase-card">
+                <div class="val-usecase-card__icon">&#9679;</div>
+                <h3>Strategic &amp; Planning Valuations</h3>
+                <p>Internal valuations for strategic planning — understanding the current intrinsic value of the
+                    business, identifying value creation levers, and benchmarking performance against sector peers.</p>
+                <ul>
+                    <li>Annual intrinsic value tracking</li>
+                    <li>Value driver identification</li>
+                    <li>Scenario and sensitivity modelling</li>
+                    <li>Succession planning valuations</li>
+                </ul>
+            </div>
+
+            <div class="val-usecase-card">
+                <div class="val-usecase-card__icon">&#9675;</div>
+                <h3>Intangible Asset Valuations</h3>
+                <p>Determining the fair value of intangible assets — brands, customer relationships, technology,
+                    patents, and non-competes — for acquisition accounting, licensing, tax, and reporting purposes.</p>
+                <ul>
+                    <li>Brand and trademark valuation</li>
+                    <li>Customer relationship and list value</li>
+                    <li>Technology, IP and patent valuation</li>
+                    <li>Non-compete and non-solicit agreements</li>
+                </ul>
+            </div>
+
+            <div class="val-usecase-card">
+                <div class="val-usecase-card__icon">&#9673;</div>
+                <h3>Real Estate &amp; Asset Valuations</h3>
+                <p>Fair value determination of real property, plant and machinery, and other tangible assets — for
+                    financial reporting, insurance, collateral, and transaction purposes.</p>
+                <ul>
+                    <li>Immovable property fair value</li>
+                    <li>Plant, machinery &amp; equipment</li>
+                    <li>Investment property (Ind AS 40)</li>
+                    <li>Agriculture and biological assets</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     REGULATORY VALUATIONS
+══════════════════════════════════════ -->
+    <section class="val-regulatory">
+        <div class="section-tag">Compliance &amp; Regulation</div>
+        <h2 class="section-title">Regulatory Valuation<br><em>Requirements</em></h2>
+        <div class="val-regulatory-grid">
+            <div class="val-regulatory-left">
+                <p>Indian companies face an extensive — and often overlapping — web of regulatory valuation
+                    requirements. A valuation prepared for one purpose (say, a PE fundraise) may not satisfy the
+                    requirements of another (a FEMA filing), even if the underlying business is the same.</p>
+                <p>Each regulatory framework prescribes specific methodology rules, eligibility of the valuer, required
+                    disclosures, and the form of the opinion. Non-compliance can result in transactions being voided,
+                    penalties levied, or tax liabilities crystallised.</p>
+                <p>RKS Investments ensures that every valuation report is structured, certified, and disclosed in
+                    precise compliance with the applicable regulatory framework — giving our clients the certainty they
+                    need.</p>
+            </div>
+            <div class="val-reg-table">
+                <div class="val-reg-row">
+                    <div class="val-reg-row__reg">FEMA 20R</div>
+                    <div class="val-reg-row__req">
+                        FDI pricing — internationally accepted pricing methodology
+                        <span>Required for issue / transfer of shares to / from non-residents. SEBI-registered MB or CA
+                            mandatory as valuer.</span>
+                    </div>
+                </div>
+                <div class="val-reg-row">
+                    <div class="val-reg-row__reg">IT Act Rule 11UA</div>
+                    <div class="val-reg-row__req">
+                        Preferential allotment price — DCF or NAV (Option B / A)
+                        <span>Applicable to issue of shares to residents / non-residents; Section 56(2)(viib) anti-abuse
+                            provisions.</span>
+                    </div>
+                </div>
+                <div class="val-reg-row">
+                    <div class="val-reg-row__reg">SEBI ICDR</div>
+                    <div class="val-reg-row__req">
+                        Preferential issue pricing — floor price under SEBI formula
+                        <span>Based on 26/52-week VWAP for listed companies; merchant banker valuation for unlisted
+                            entities.</span>
+                    </div>
+                </div>
+                <div class="val-reg-row">
+                    <div class="val-reg-row__reg">SEBI SAST</div>
+                    <div class="val-reg-row__req">
+                        Open offer price — highest of negotiated, 26W VWAP, or book value
+                        <span>Manager to the open offer must certify compliance; independent valuation for book value
+                            floor.</span>
+                    </div>
+                </div>
+                <div class="val-reg-row">
+                    <div class="val-reg-row__reg">NCLT / Companies Act</div>
+                    <div class="val-reg-row__req">
+                        Merger swap ratio — registered valuer mandatory
+                        <span>Registered Valuer (IBBI) required for scheme of arrangement; fairness opinion from
+                            independent advisor expected.</span>
+                    </div>
+                </div>
+                <div class="val-reg-row">
+                    <div class="val-reg-row__reg">Ind AS 103</div>
+                    <div class="val-reg-row__req">
+                        Purchase price allocation — fair value of assets and liabilities
+                        <span>Required on acquisition of a business; triggers intangible asset identification and
+                            goodwill computation.</span>
+                    </div>
+                </div>
+                <div class="val-reg-row">
+                    <div class="val-reg-row__reg">Ind AS 102</div>
+                    <div class="val-reg-row__req">
+                        ESOP fair value — Black-Scholes or Binomial model
+                        <span>Annual ESOP expense requires independent fair value of options at grant date; volatility
+                            and risk-free rate assumptions critical.</span>
+                    </div>
+                </div>
+                <div class="val-reg-row">
+                    <div class="val-reg-row__reg">Insolvency (IBC)</div>
+                    <div class="val-reg-row__req">
+                        Liquidation value and fair value — IBBI Registered Valuer
+                        <span>Two registered valuers required for IBC proceedings; valuation forms the basis of
+                            resolution plan evaluation.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     KEY VALUE DRIVERS
+══════════════════════════════════════ -->
+    <section class="val-drivers">
+        <div class="section-tag">What Moves Value</div>
+        <h2 class="section-title">Key <em>Value Drivers</em><br>We Analyse</h2>
+        <div class="val-drivers-grid">
+            <div class="val-drivers-left">
+                <p>A valuation is not merely a mathematical exercise. It is an analytical investigation into what makes
+                    a specific business worth more or less than its peers — and why value may differ from what the
+                    financial statements alone suggest.</p>
+                <p>Understanding value drivers allows management to take targeted action to increase enterprise value
+                    before a transaction or fundraise — making the timing, preparation, and framing of a valuation
+                    engagement strategically important, not just technically necessary.</p>
+                <p>RKS Investments's valuation team explicitly identifies and quantifies each material value driver and
+                    discount, giving clients a clear understanding of what is driving their current valuation — and what
+                    can be done to improve it.</p>
+            </div>
+            <div class="val-drivers-visual">
+                <div class="val-driver-tile">
+                    <div class="val-driver-tile__bar" style="width:88%"></div>
+                    <div class="val-driver-tile__label">Revenue</div>
+                    <h5>Scale &amp; Growth Rate</h5>
+                    <p>Revenue trajectory, CAGR, and market share trajectory are the primary determinants of enterprise
+                        value multiples in most sectors.</p>
+                </div>
+                <div class="val-driver-tile">
+                    <div class="val-driver-tile__bar" style="width:82%"></div>
+                    <div class="val-driver-tile__label">Profitability</div>
+                    <h5>EBITDA Margin &amp; Quality</h5>
+                    <p>Margin level, stability, and trend — adjusted for one-offs — determine the earnings base against
+                        which multiples are applied.</p>
+                </div>
+                <div class="val-driver-tile">
+                    <div class="val-driver-tile__bar" style="width:75%"></div>
+                    <div class="val-driver-tile__label">Capital Efficiency</div>
+                    <h5>ROCE &amp; Asset Turns</h5>
+                    <p>Businesses with high return on capital and low reinvestment needs command premium valuations in
+                        DCF and exit multiple frameworks.</p>
+                </div>
+                <div class="val-driver-tile">
+                    <div class="val-driver-tile__bar" style="width:70%"></div>
+                    <div class="val-driver-tile__label">Competitive Moat</div>
+                    <h5>Defensibility &amp; IP</h5>
+                    <p>Sustainable competitive advantages — IP, switching costs, network effects, regulatory licences —
+                        reduce earnings volatility and justify higher multiples.</p>
+                </div>
+                <div class="val-driver-tile">
+                    <div class="val-driver-tile__bar" style="width:65%"></div>
+                    <div class="val-driver-tile__label">Customer Base</div>
+                    <h5>Concentration &amp; Retention</h5>
+                    <p>High customer concentration is a discount factor; high retention, recurring revenue, and
+                        diversification are premium drivers.</p>
+                </div>
+                <div class="val-driver-tile">
+                    <div class="val-driver-tile__bar" style="width:60%"></div>
+                    <div class="val-driver-tile__label">Management</div>
+                    <h5>Team Depth &amp; Succession</h5>
+                    <p>Promoter-dependent businesses attract key-person risk discounts; institutionalised,
+                        depth-management teams are valued at a premium.</p>
+                </div>
+                <div class="val-driver-tile">
+                    <div class="val-driver-tile__bar" style="width:55%"></div>
+                    <div class="val-driver-tile__label">Balance Sheet</div>
+                    <h5>Net Debt &amp; Working Capital</h5>
+                    <p>Excess cash and low net debt add directly to equity value; over-leveraged or
+                        working-capital-heavy businesses face valuation discounts.</p>
+                </div>
+                <div class="val-driver-tile">
+                    <div class="val-driver-tile__bar" style="width:50%"></div>
+                    <div class="val-driver-tile__label">Governance</div>
+                    <h5>Transparency &amp; Compliance</h5>
+                    <p>Clean audits, no contingent liabilities, strong board governance, and compliant books attract
+                        premium valuations from institutional buyers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     OUR SERVICES
+══════════════════════════════════════ -->
+    <section class="val-services">
+        <div class="section-tag">Our Capabilities</div>
+        <h2 class="section-title">Valuation <em>Services</em><br>We Offer</h2>
+        <div class="val-services-grid">
+
+            <div class="val-service-card">
+                <div class="val-service-card__icon">&#9670;</div>
+                <h3>Business Enterprise Valuation</h3>
+                <p>Comprehensive valuation of the total enterprise — applying DCF, CCA, and CTA methodologies and
+                    triangulating to a defensible value range supported by full analytical workings.</p>
+                <ul>
+                    <li>Full analytical report with methodology disclosure</li>
+                    <li>Three-statement financial model</li>
+                    <li>Peer benchmarking and multiple analysis</li>
+                    <li>Sensitivity and scenario tables</li>
+                </ul>
+            </div>
+
+            <div class="val-service-card">
+                <div class="val-service-card__icon">&#9632;</div>
+                <h3>ESOP &amp; Sweat Equity Valuation</h3>
+                <p>Annual fair value determination of employee stock options using Black-Scholes or Binomial models —
+                    compliant with Ind AS 102 and the Companies Act, 2013 for grant-date expensing and disclosures.</p>
+                <ul>
+                    <li>Per-option fair value computation</li>
+                    <li>Volatility, risk-free rate, and dividend yield assumptions</li>
+                    <li>Expense amortisation schedule</li>
+                    <li>Disclosure note preparation for financial statements</li>
+                </ul>
+            </div>
+
+            <div class="val-service-card">
+                <div class="val-service-card__icon">&#9651;</div>
+                <h3>Merger Swap Ratio &amp; Fairness Opinion</h3>
+                <p>Independent determination of the share exchange ratio for amalgamations and demergers — accompanied
+                    by a formal fairness opinion opining on whether the consideration is fair to the shareholders of
+                    each company.</p>
+                <ul>
+                    <li>Independent valuation of transferor and transferee</li>
+                    <li>Swap ratio computation and sensitivity</li>
+                    <li>Fairness opinion letter for board and NCLT</li>
+                    <li>Compliance with Companies Act Section 232</li>
+                </ul>
+            </div>
+
+            <div class="val-service-card">
+                <div class="val-service-card__icon">&#9711;</div>
+                <h3>FEMA &amp; Income Tax Valuations</h3>
+                <p>Valuations for FDI, ODI, and cross-border share transfers under FEMA 20R — and for domestic
+                    preferential allotments under Rule 11UA of the Income Tax Rules — with full regulatory compliance.
+                </p>
+                <ul>
+                    <li>FEMA 20R — internationally accepted pricing methodology</li>
+                    <li>Rule 11UA — DCF Option B for preferential allotment</li>
+                    <li>CA / MB certification as required</li>
+                    <li>Form FC-GPR / FC-TRS support</li>
+                </ul>
+            </div>
+
+            <div class="val-service-card">
+                <div class="val-service-card__icon">&#9702;</div>
+                <h3>Purchase Price Allocation (Ind AS 103)</h3>
+                <p>Post-acquisition allocation of the purchase consideration to identifiable assets and liabilities at
+                    fair value — including the identification and valuation of intangible assets not previously
+                    recognised on the target's balance sheet.</p>
+                <ul>
+                    <li>Identification of acquired intangibles (brands, CRAs, tech)</li>
+                    <li>Fair value of tangible and financial assets</li>
+                    <li>Contingent consideration fair value</li>
+                    <li>Goodwill computation and disclosure</li>
+                </ul>
+            </div>
+
+            <div class="val-service-card">
+                <div class="val-service-card__icon">&#9679;</div>
+                <h3>Intangible Asset Valuation</h3>
+                <p>Standalone valuation of intangible assets — brands, technology, customer relationships, and IP —
+                    using the Relief from Royalty, Multi-Period Excess Earnings, or Cost to Recreate methods.</p>
+                <ul>
+                    <li>Brand and trademark (Relief from Royalty)</li>
+                    <li>Customer relationships (MEEM method)</li>
+                    <li>Technology and patents</li>
+                    <li>Non-compete agreements</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     VALUATION PROCESS
+══════════════════════════════════════ -->
+    <section class="val-process">
+        <div class="val-process-intro">
+            <div class="section-tag">How We Work</div>
+            <h2 class="section-title">Our Valuation <em>Process</em></h2>
+            <p>Every valuation engagement follows a rigorous, structured process designed to produce a defensible,
+                high-quality report — on time and calibrated precisely to its intended purpose.</p>
+        </div>
+
+        <div class="val-process-track">
+
+            <div class="val-process-step">
+                <div class="val-process-step__num">01</div>
+                <div class="val-process-step__body">
+                    <h4>Engagement Scoping &amp; Purpose Confirmation</h4>
+                    <p>We begin by understanding the specific purpose of the valuation — regulatory, transactional,
+                        financial reporting, or strategic — and confirming the appropriate standard of value (fair
+                        value, fair market value, investment value), the effective date, and the interest being valued
+                        (minority, majority, or 100%).</p>
+                    <div class="val-process-step__tags">
+                        <span class="val-process-tag">Purpose clarification</span>
+                        <span class="val-process-tag">Standard of value</span>
+                        <span class="val-process-tag">Effective date</span>
+                        <span class="val-process-tag">Engagement letter</span>
+                    </div>
+                    <div class="val-process-step__duration">Duration: 1 – 2 Days</div>
+                </div>
+            </div>
+
+            <div class="val-process-step">
+                <div class="val-process-step__num">02</div>
+                <div class="val-process-step__body">
+                    <h4>Information Gathering &amp; Management Discussion</h4>
+                    <p>We collect audited financial statements (3–5 years), management accounts, business plans,
+                        customer and supplier data, legal documents, cap table, and any prior valuation reports. A
+                        detailed management discussion is held to understand industry dynamics, competitive positioning,
+                        and future plans — information not visible in financial statements alone.</p>
+                    <div class="val-process-step__tags">
+                        <span class="val-process-tag">Audited financials</span>
+                        <span class="val-process-tag">Business plan</span>
+                        <span class="val-process-tag">Management interview</span>
+                        <span class="val-process-tag">Market data</span>
+                    </div>
+                    <div class="val-process-step__duration">Duration: 3 – 5 Days</div>
+                </div>
+            </div>
+
+            <div class="val-process-step">
+                <div class="val-process-step__num">03</div>
+                <div class="val-process-step__body">
+                    <h4>Financial Analysis &amp; Normalisation</h4>
+                    <p>We analyse and normalise the historical financials — adjusting for one-off items, related-party
+                        transactions at non-arm's-length, owner perks, and accounting policy differences — to arrive at
+                        a clean, representative earnings base. This normalised base forms the foundation for all forward
+                        projections and multiple applications.</p>
+                    <div class="val-process-step__tags">
+                        <span class="val-process-tag">One-off adjustments</span>
+                        <span class="val-process-tag">Related-party normalisation</span>
+                        <span class="val-process-tag">Working capital analysis</span>
+                        <span class="val-process-tag">EBITDA bridge</span>
+                    </div>
+                    <div class="val-process-step__duration">Duration: 2 – 4 Days</div>
+                </div>
+            </div>
+
+            <div class="val-process-step">
+                <div class="val-process-step__num">04</div>
+                <div class="val-process-step__body">
+                    <h4>Methodology Selection &amp; Model Building</h4>
+                    <p>We select the most appropriate primary and secondary methodologies based on the business type,
+                        purpose, and data availability. Financial models are built in full — including the 5-year DCF
+                        model with WACC derivation, peer multiple analysis with LTM and forward metrics, and NAV
+                        computation where relevant.</p>
+                    <div class="val-process-step__tags">
+                        <span class="val-process-tag">DCF model</span>
+                        <span class="val-process-tag">WACC derivation</span>
+                        <span class="val-process-tag">Peer multiple table</span>
+                        <span class="val-process-tag">NAV computation</span>
+                    </div>
+                    <div class="val-process-step__duration">Duration: 3 – 6 Days</div>
+                </div>
+            </div>
+
+            <div class="val-process-step">
+                <div class="val-process-step__num">05</div>
+                <div class="val-process-step__body">
+                    <h4>Triangulation &amp; Concluded Value</h4>
+                    <p>Results from each methodology are synthesised — applying appropriate weightings based on the
+                        reliability of inputs and the purpose of the valuation — to arrive at a triangulated concluded
+                        value or value range. A sensitivity matrix is constructed to show how the conclusion responds to
+                        key assumption changes.</p>
+                    <div class="val-process-step__tags">
+                        <span class="val-process-tag">Method weighting</span>
+                        <span class="val-process-tag">Value range determination</span>
+                        <span class="val-process-tag">Sensitivity matrix</span>
+                        <span class="val-process-tag">Concluded value</span>
+                    </div>
+                    <div class="val-process-step__duration">Duration: 1 – 2 Days</div>
+                </div>
+            </div>
+
+            <div class="val-process-step">
+                <div class="val-process-step__num">06</div>
+                <div class="val-process-step__body">
+                    <h4>Report Drafting, Review &amp; Delivery</h4>
+                    <p>A full valuation report is drafted — covering the scope of engagement, company background,
+                        industry overview, financial analysis, methodology description, analytical outputs, limitations,
+                        and the concluded opinion of value. The report is reviewed internally and discussed with the
+                        client before finalisation and formal issuance.</p>
+                    <div class="val-process-step__tags">
+                        <span class="val-process-tag">Full report drafting</span>
+                        <span class="val-process-tag">Internal QA review</span>
+                        <span class="val-process-tag">Client discussion</span>
+                        <span class="val-process-tag">Formal issuance</span>
+                    </div>
+                    <div class="val-process-step__duration">Duration: 2 – 3 Days</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     SECTOR MULTIPLES REFERENCE
+══════════════════════════════════════ -->
+    <section class="val-multiples">
+        <div class="val-multiples-intro">
+            <div class="section-tag">Market Reference</div>
+            <h2 class="section-title">Illustrative Sector <em>Valuation Multiples</em></h2>
+            <p>Valuation multiples vary significantly by sector, growth rate, and market conditions. The figures below
+                are illustrative ranges based on public market trading data and recent transaction precedents in India —
+                actual multiples applied in any engagement will reflect current data at the effective date.</p>
+        </div>
+        <div class="val-table-wrap">
+            <table class="val-table">
+                <thead>
+                    <tr>
+                        <th>Sector</th>
+                        <th>EV / EBITDA Range</th>
+                        <th>EV / Revenue Range</th>
+                        <th>P / E Range</th>
+                        <th>Primary Valuation Basis</th>
+                        <th>Key Value Drivers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Technology &amp; SaaS</td>
+                        <td>20x – 50x+</td>
+                        <td>5x – 15x+</td>
+                        <td>40x – 100x+</td>
+                        <td>DCF + Revenue multiple</td>
+                        <td>ARR growth, NRR, gross margin</td>
+                    </tr>
+                    <tr>
+                        <td>Consumer &amp; FMCG</td>
+                        <td>18x – 45x</td>
+                        <td>3x – 8x</td>
+                        <td>35x – 80x</td>
+                        <td>CCA + DCF</td>
+                        <td>Brand strength, distribution, volume growth</td>
+                    </tr>
+                    <tr>
+                        <td>Healthcare &amp; Pharma</td>
+                        <td>12x – 30x</td>
+                        <td>2x – 6x</td>
+                        <td>20x – 50x</td>
+                        <td>DCF + CCA</td>
+                        <td>ANDA pipeline, regulatory approvals, API integration</td>
+                    </tr>
+                    <tr>
+                        <td>Manufacturing</td>
+                        <td>8x – 18x</td>
+                        <td>1x – 3x</td>
+                        <td>15x – 35x</td>
+                        <td>CCA + NAV</td>
+                        <td>Capacity utilisation, ROCE, client concentration</td>
+                    </tr>
+                    <tr>
+                        <td>Financial Services / NBFC</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>10x – 25x</td>
+                        <td>P/BV + P/E</td>
+                        <td>NIM, asset quality (GNPA), AUM growth, CAR</td>
+                    </tr>
+                    <tr>
+                        <td>Infrastructure / Real Estate</td>
+                        <td>10x – 20x</td>
+                        <td>2x – 5x</td>
+                        <td>15x – 30x</td>
+                        <td>NAV + DCF</td>
+                        <td>Land bank, annuity contracts, DSCR, project pipeline</td>
+                    </tr>
+                    <tr>
+                        <td>Logistics &amp; Supply Chain</td>
+                        <td>10x – 22x</td>
+                        <td>1x – 3x</td>
+                        <td>18x – 40x</td>
+                        <td>EV/EBITDA + DCF</td>
+                        <td>Asset density, route coverage, tech-enabled efficiency</td>
+                    </tr>
+                    <tr>
+                        <td>Renewable Energy</td>
+                        <td>10x – 18x</td>
+                        <td>4x – 10x</td>
+                        <td>20x – 40x</td>
+                        <td>DCF (PPA-backed)</td>
+                        <td>Tariff visibility, PLF, debt coverage, PPA tenor</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     INTANGIBLE ASSETS
+══════════════════════════════════════ -->
+    <section class="val-intangibles">
+        <div class="section-tag">Beyond Tangible Assets</div>
+        <h2 class="section-title">Intangible Asset<br><em>Valuation</em></h2>
+        <div class="val-intangibles-grid">
+            <div class="val-intangibles-left">
+                <p>For most modern businesses, the majority of enterprise value resides in intangible assets — brands,
+                    customer relationships, proprietary technology, and intellectual property — that do not appear on
+                    the balance sheet at fair value under historical cost accounting standards.</p>
+                <p>When a business is acquired, Ind AS 103 requires the acquirer to identify and value these intangibles
+                    separately from goodwill in a Purchase Price Allocation exercise. This process has direct
+                    implications for post-acquisition depreciation charges and goodwill impairment risk.</p>
+                <p>RKS Investments has deep experience identifying, classifying, and valuing intangible assets using the
+                    most appropriate methodology for each type — delivering reports that satisfy auditor and regulatory
+                    scrutiny.</p>
+            </div>
+            <div class="val-intangibles-right">
+                <div class="val-intangible-item">
+                    <div class="val-intangible-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Brand &amp; Trademark</h5>
+                        <p>Valued using the Relief from Royalty method — estimating the royalty the business would pay
+                            to license the brand if it did not own it, and capitalising those royalty savings.</p>
+                    </div>
+                </div>
+                <div class="val-intangible-item">
+                    <div class="val-intangible-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Customer Relationships &amp; Lists</h5>
+                        <p>Valued using the Multi-Period Excess Earnings Method (MEEM) — projecting revenues
+                            attributable to the existing customer base and discounting at a risk-adjusted rate
+                            reflecting customer attrition.</p>
+                    </div>
+                </div>
+                <div class="val-intangible-item">
+                    <div class="val-intangible-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Technology &amp; IP</h5>
+                        <p>Valued using Relief from Royalty (for licensable technology) or the Cost to Recreate method —
+                            estimating the cost, time, and risk of developing equivalent technology from scratch.</p>
+                    </div>
+                </div>
+                <div class="val-intangible-item">
+                    <div class="val-intangible-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Non-Compete &amp; Non-Solicit Agreements</h5>
+                        <p>Valued using the With-and-Without method — comparing the enterprise value with the
+                            non-compete in place versus the value that would be lost if the seller were free to compete.
+                        </p>
+                    </div>
+                </div>
+                <div class="val-intangible-item">
+                    <div class="val-intangible-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Favourable Contracts &amp; Licences</h5>
+                        <p>Valued based on the present value of above-market cash flows attributable to favourable
+                            supply, distribution, or regulatory licence agreements relative to current market rates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     WHY RKS
+══════════════════════════════════════ -->
+    <section class="val-why">
+        <div class="section-tag">Our Edge</div>
+        <h2 class="section-title">Why <em>RKS Investments</em><br>for Valuations</h2>
+        <div class="val-why-grid">
+            <div class="val-why-metrics">
+                <div class="val-why-metric">
+                    <div class="val-why-metric__num">200+</div>
+                    <div class="val-why-metric__label">Valuation<br>Engagements</div>
+                </div>
+                <div class="val-why-metric">
+                    <div class="val-why-metric__num">15+</div>
+                    <div class="val-why-metric__label">Sectors with Active<br>Valuation Experience</div>
+                </div>
+                <div class="val-why-metric">
+                    <div class="val-why-metric__num">6+</div>
+                    <div class="val-why-metric__label">Regulatory Frameworks<br>Covered</div>
+                </div>
+                <div class="val-why-metric">
+                    <div class="val-why-metric__num">IBBI /<br>ICAI</div>
+                    <div class="val-why-metric__label">Registered &amp; Qualified<br>Valuation Professionals</div>
+                </div>
+            </div>
+            <div class="val-why-reasons">
+                <div class="val-why-reason">
+                    <div class="val-why-reason__num">01</div>
+                    <div>
+                        <h4>Transaction &amp; Regulatory Dual Expertise</h4>
+                        <p>Unlike pure valuation firms, we combine valuation expertise with live transaction experience
+                            — meaning our reports reflect real market dynamics, not theoretical constructs.</p>
+                    </div>
+                </div>
+                <div class="val-why-reason">
+                    <div class="val-why-reason__num">02</div>
+                    <div>
+                        <h4>Purpose-Built, Not Template-Driven</h4>
+                        <p>Every report is crafted for its specific purpose — a FEMA valuation is structured differently
+                            from an M&amp;A fairness opinion or an Ind AS PPA. We never apply a generic template.</p>
+                    </div>
+                </div>
+                <div class="val-why-reason">
+                    <div class="val-why-reason__num">03</div>
+                    <div>
+                        <h4>Analytically Rigorous, Narratively Clear</h4>
+                        <p>Our reports are built on full analytical models — not black-box outputs — and written in
+                            plain language that a board, regulator, or judge can understand and rely upon.</p>
+                    </div>
+                </div>
+                <div class="val-why-reason">
+                    <div class="val-why-reason__num">04</div>
+                    <div>
+                        <h4>Defensible Under Scrutiny</h4>
+                        <p>Our assumptions are documented, cross-referenced, and sensitivity-tested — so that our
+                            concluded values hold up when challenged by tax authorities, regulators, or opposing counsel
+                            in litigation.</p>
+                    </div>
+                </div>
+                <div class="val-why-reason">
+                    <div class="val-why-reason__num">05</div>
+                    <div>
+                        <h4>Delivered on Time, Every Time</h4>
+                        <p>Valuations are often time-critical — driven by transaction timelines, regulatory deadlines,
+                            or board meeting dates. We commit to turnaround times and honour them, without compromising
+                            quality.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+    <section class="val-cta">
+        <div class="section-tag section-tag--center">Commission a Valuation</div>
+        <h2>Get a <em>Defensible</em> Valuation<br>You Can Rely On</h2>
+        <p>Whether you need a quick regulatory valuation or a comprehensive fairness opinion for a complex transaction,
+            RKS Investments delivers with rigour, independence, and speed.</p>
+        <div class="val-cta__actions">
+            <a class="btn-primary" href="index.html">Request a Valuation</a>
+            <a class="btn-ghost" href="debt-syndication.html">View Debt Syndication</a>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo logo--static">
+                    <div class="logo-mark"><img src="logo.png" alt="RKS Investments" style="width: 70px; height: 70px;">
+                    </div>
+                    RKS Investments
+                </div>
+                <p>Independent investment banking and corporate finance advisory, committed to helping businesses grow
+                    through
+                    strategic capital solutions.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="ipo.html">IPO Advisory</a></li>
+                    <li><a href="M&A.html">M&A Advisory</a></li>
+                    <li><a href="PE.html">Private Equity</a></li>
+                    <li><a href="Debt.html">Debt Syndication</a></li>
+                    <li><a href="Valuation.html">Valuations</a></li>
+                    <li><a href="ESOP.html">ESOP Advisory</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul>
+                    <li><a onclick="showPage('about')">About Us</a></li>
+                    <li><a onclick="showPage('clients')">Our Clients</a></li>
+                    <li><a onclick="showPage('compliance')">Compliance</a></li>
+                    <li><a onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a>info@rksinvestments.in</a></li>
+                    <li><a>+91 98765 43210</a></li>
+                    <li><a>Suite 501, Capital Tower<br>Connaught Place<br>New Delhi – 110001</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RKS Investments. All rights reserved.</p>
+            <p class="disc">RKS Investments is not registered with SEBI. Advisory services are provided in a purely
+                non-regulated capacity. Nothing on this website constitutes investment advice. Past transaction
+                experience does
+                not guarantee future results.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

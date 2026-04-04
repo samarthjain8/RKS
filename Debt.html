@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debt Syndication Advisory — RKS Investments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /*  
+       DEBT SYNDICATION PAGE — SPECIFIC STYLES
+      */
+
+        /* ── Shared page utilities ── */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb-sep {
+            color: rgba(201, 168, 76, 0.25);
+        }
+
+        .breadcrumb-current {
+            color: var(--gold);
+        }
+
+        /* ── Hero ── */
+        .ds-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 140px 60px 72px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ds-hero-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 45% 70% at 95% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 40% at 0% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse 35% 45% at 50% 100%, rgba(201, 168, 76, 0.025) 0%, transparent 55%),
+                linear-gradient(160deg, #0d0d0d 0%, #141414 50%, #0d0d0d 100%);
+        }
+
+        .ds-hero-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.032) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.032) 1px, transparent 1px);
+            background-size: 68px 68px;
+            mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, black, transparent);
+        }
+
+        /* Decorative horizontal rule accent */
+        .ds-hero-rule {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 160px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.1) 30%, rgba(201, 168, 76, 0.1) 70%, transparent);
+            pointer-events: none;
+        }
+
+        .ds-hero-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 80px;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .ds-hero-left h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6.5vw, 5.8rem);
+            font-weight: 300;
+            line-height: 1.03;
+            color: var(--text);
+            margin-bottom: 28px;
+        }
+
+        .ds-hero-left h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .ds-hero-left>p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 530px;
+            margin-bottom: 40px;
+        }
+
+        .ds-hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-self: flex-end;
+        }
+
+        .ds-stat-card {
+            padding: 26px 32px;
+            border: 1px solid var(--border);
+            background: rgba(20, 20, 20, 0.82);
+            backdrop-filter: blur(12px);
+            transition: border-color 0.3s;
+        }
+
+        .ds-stat-card:hover {
+            border-color: rgba(201, 168, 76, 0.45);
+        }
+
+        .ds-stat-card__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .ds-stat-card__label {
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        /*  
+       WHAT IS DEBT SYNDICATION
+      */
+        .ds-explainer {
+            padding: 100px 60px;
+        }
+
+        .ds-explainer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .ds-explainer-left p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .ds-explainer-left p:first-of-type {
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .ds-pull-quote {
+            margin: 32px 0;
+            padding: 28px 32px;
+            border-left: 2px solid var(--gold);
+            background: var(--dark2);
+        }
+
+        .ds-pull-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem !important;
+            font-style: italic;
+            color: var(--text) !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+        }
+
+        /* Debt vs Equity comparison table */
+        .ds-compare {
+            border: 1px solid var(--border);
+        }
+
+        .ds-compare-header {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            background: var(--dark3);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ds-compare-header div {
+            padding: 14px 20px;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .ds-compare-header div:not(:last-child) {
+            border-right: 1px solid var(--border);
+        }
+
+        .ds-compare-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .ds-compare-row:last-child {
+            border-bottom: none;
+        }
+
+        .ds-compare-row:hover {
+            background: var(--dark3);
+        }
+
+        .ds-compare-row div {
+            padding: 15px 20px;
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        .ds-compare-row div:not(:last-child) {
+            border-right: 1px solid var(--border);
+        }
+
+        .ds-compare-row div:first-child {
+            color: var(--muted);
+            font-size: 0.76rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .ds-compare-row div:nth-child(2) {
+            color: var(--text);
+        }
+
+        .ds-compare-row div:nth-child(3) {
+            color: var(--muted);
+        }
+
+        /*  
+       DEBT INSTRUMENTS
+      */
+        .ds-instruments {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .ds-instruments-intro {
+            max-width: 620px;
+            margin-bottom: 56px;
+        }
+
+        .ds-instruments-intro p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-top: 12px;
+        }
+
+        .ds-instruments-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .ds-instrument-card {
+            padding: 44px 36px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .ds-instrument-card:hover {
+            background: var(--dark3);
+        }
+
+        .ds-instrument-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+
+        .ds-instrument-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ds-instrument-card__abbr {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.25);
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .ds-instrument-card__tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .ds-instrument-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .ds-instrument-card p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            line-height: 1.72;
+            margin-bottom: 18px;
+        }
+
+        .ds-instrument-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .ds-instrument-card li {
+            font-size: 0.78rem;
+            color: var(--text);
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .ds-instrument-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.74rem;
+        }
+
+        /*  
+       LENDER UNIVERSE
+      */
+        .ds-lenders {
+            padding: 100px 60px;
+        }
+
+        .ds-lenders-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .ds-lender-card {
+            padding: 40px 30px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            transition: border-color 0.3s, background 0.3s;
+            position: relative;
+        }
+
+        .ds-lender-card:hover {
+            border-color: rgba(201, 168, 76, 0.45);
+            background: var(--dark3);
+        }
+
+        .ds-lender-card__icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            transition: border-color 0.3s;
+        }
+
+        .ds-lender-card:hover .ds-lender-card__icon {
+            border-color: var(--gold);
+        }
+
+        .ds-lender-card__num {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.06);
+            line-height: 1;
+        }
+
+        .ds-lender-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .ds-lender-card p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .ds-lender-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .ds-lender-card li {
+            font-size: 0.75rem;
+            color: var(--muted);
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .ds-lender-card li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: rgba(201, 168, 76, 0.4);
+        }
+
+        /*  
+       PROCESS TIMELINE
+      */
+        .ds-process {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .ds-process-intro p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 580px;
+            margin-top: 12px;
+        }
+
+        /* Horizontal scroll timeline */
+        .ds-timeline-wrap {
+            margin-top: 64px;
+            position: relative;
+        }
+
+        .ds-timeline-track {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        /* Connecting line */
+        .ds-timeline-track::before {
+            content: '';
+            position: absolute;
+            top: 26px;
+            left: 26px;
+            right: 26px;
+            height: 1px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .ds-step {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-right: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ds-step__dot {
+            width: 52px;
+            height: 52px;
+            border: 1px solid var(--gold);
+            background: var(--dark2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-bottom: 20px;
+        }
+
+        .ds-step__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .ds-step__duration {
+            font-size: 0.62rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.65;
+            margin-bottom: 10px;
+        }
+
+        .ds-step__body {
+            font-size: 0.77rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /*  
+       OUR SERVICES
+      */
+        .ds-services {
+            padding: 100px 60px;
+        }
+
+        .ds-services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .ds-service-card {
+            padding: 40px 36px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            position: relative;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .ds-service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .ds-service-card:hover {
+            background: var(--dark3);
+            transform: translateY(-3px);
+        }
+
+        .ds-service-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .ds-service-card__icon {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 22px;
+            transition: border-color 0.3s;
+        }
+
+        .ds-service-card:hover .ds-service-card__icon {
+            border-color: var(--gold);
+        }
+
+        .ds-service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .ds-service-card p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+
+        .ds-service-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .ds-service-card li {
+            font-size: 0.79rem;
+            color: var(--text);
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .ds-service-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.74rem;
+        }
+
+        /*  
+       KEY PARAMETERS
+      */
+        .ds-parameters {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .ds-parameters-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 56px;
+            align-items: start;
+        }
+
+        .ds-parameters-left p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .ds-parameters-left p:first-of-type {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .ds-param-table {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+
+        .ds-param-row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .ds-param-row:last-child {
+            border-bottom: none;
+        }
+
+        .ds-param-row:hover {
+            background: var(--dark3);
+        }
+
+        .ds-param-row__key {
+            padding: 18px 20px;
+            background: var(--dark);
+            border-right: 1px solid var(--border);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+        }
+
+        .ds-param-row__val {
+            padding: 16px 20px;
+            font-size: 0.83rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .ds-param-row__val span {
+            display: block;
+            font-size: 0.74rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        /*  
+       INSTRUMENT COMPARISON TABLE
+      */
+        .ds-comparison {
+            padding: 100px 60px;
+        }
+
+        .ds-big-table-wrap {
+            margin-top: 56px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .ds-big-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .ds-big-table thead tr {
+            background: var(--dark3);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ds-big-table th {
+            padding: 16px 22px;
+            font-size: 0.66rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-align: left;
+            white-space: nowrap;
+            border-right: 1px solid var(--border);
+        }
+
+        .ds-big-table th:last-child {
+            border-right: none;
+        }
+
+        .ds-big-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .ds-big-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .ds-big-table tbody tr:hover {
+            background: var(--dark3);
+        }
+
+        .ds-big-table td {
+            padding: 16px 22px;
+            font-size: 0.82rem;
+            color: var(--muted);
+            vertical-align: top;
+            line-height: 1.55;
+            border-right: 1px solid var(--border);
+        }
+
+        .ds-big-table td:last-child {
+            border-right: none;
+        }
+
+        .ds-big-table td:first-child {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.86rem;
+            white-space: nowrap;
+        }
+
+        .ds-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            font-size: 0.64rem;
+            letter-spacing: 0.08em;
+            color: rgba(201, 168, 76, 0.65);
+            text-transform: uppercase;
+            margin: 2px 2px 0 0;
+        }
+
+        /*  
+       CREDIT FACTORS
+      */
+        .ds-credit {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .ds-credit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .ds-credit-card {
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .ds-credit-card:hover {
+            border-color: rgba(201, 168, 76, 0.4);
+            background: var(--dark3);
+        }
+
+        .ds-credit-card__label {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .ds-credit-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .ds-credit-card p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.72;
+        }
+
+        /*  
+       STRUCTURED FINANCE
+      */
+        .ds-structured {
+            padding: 100px 60px;
+        }
+
+        .ds-structured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-top: 56px;
+        }
+
+        .ds-structured-left p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .ds-structured-left p:first-of-type {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .ds-structured-items {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .ds-structured-item {
+            display: flex;
+            gap: 18px;
+            padding: 22px 26px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .ds-structured-item:hover {
+            border-color: var(--gold);
+            background: var(--dark3);
+        }
+
+        .ds-structured-item__icon {
+            font-size: 1.2rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-top: 2px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .ds-structured-item h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .ds-structured-item p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /*  
+       WHY RKS
+      */
+        .ds-why {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .ds-why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 56px;
+        }
+
+        .ds-why-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .ds-why-metric {
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+        }
+
+        .ds-why-metric__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .ds-why-metric__label {
+            font-size: 0.7rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .ds-why-reasons {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .ds-why-reason {
+            display: flex;
+            gap: 22px;
+            padding: 26px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+
+        .ds-why-reason:last-child {
+            border-bottom: none;
+        }
+
+        .ds-why-reason__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.2);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 32px;
+        }
+
+        .ds-why-reason h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .ds-why-reason p {
+            font-size: 0.83rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /*  
+       CTA
+      */
+        .ds-cta {
+            padding: 100px 60px;
+            background:
+                radial-gradient(ellipse 55% 75% at 50% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 70%),
+                var(--dark);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .ds-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .ds-cta h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .ds-cta p {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+        }
+
+        .ds-cta__actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /*  
+       RESPONSIVE
+      */
+        @media (max-width: 1100px) {
+            .ds-instruments-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ds-lenders-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ds-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ds-credit-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ds-timeline-track {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .ds-hero {
+                padding: 100px 24px 56px;
+                min-height: auto;
+            }
+
+            .ds-hero-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .ds-hero-right {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+
+            .ds-stat-card {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .ds-hero-rule {
+                display: none;
+            }
+
+            .ds-explainer,
+            .ds-instruments,
+            .ds-lenders,
+            .ds-process,
+            .ds-services,
+            .ds-parameters,
+            .ds-comparison,
+            .ds-credit,
+            .ds-structured,
+            .ds-why,
+            .ds-cta {
+                padding: 60px 24px;
+            }
+
+            .ds-explainer-grid,
+            .ds-parameters-grid,
+            .ds-structured-grid,
+            .ds-why-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .ds-instruments-grid,
+            .ds-services-grid,
+            .ds-credit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ds-lenders-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ds-timeline-track {
+                grid-template-columns: 1fr;
+            }
+
+            .ds-timeline-track::before {
+                display: none;
+            }
+
+            .ds-param-row {
+                grid-template-columns: 1fr;
+            }
+
+            .ds-param-row__key {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .ds-compare-header,
+            .ds-compare-row {
+                grid-template-columns: 1fr;
+            }
+
+            .ds-compare-header div:not(:last-child),
+            .ds-compare-row div:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .ds-why-metrics {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--  
+     NAV
+  -->
+    <nav id="main-nav">
+        <a class="logo" href="index.html">
+            <div class="logo-mark">RKS</div>
+            RKS Investments
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">About</a></li>
+            <li><a href="index.html">Investment Banking</a></li>
+            <li><a href="index.html">Compliance</a></li>
+            <li><a href="index.html">Clients</a></li>
+            <li><a href="index.html" class="nav-cta">Contact Us</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!--  
+     HERO
+  -->
+    <div class="ds-hero">
+        <div class="ds-hero-bg"></div>
+        <div class="ds-hero-grid"></div>
+        <div class="ds-hero-rule"></div>
+        <div class="ds-hero-content">
+            <div class="ds-hero-left">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <a href="index.html">Investment Banking</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <span class="breadcrumb-current">Debt Syndication</span>
+                </div>
+                <h1>Debt <em>Syndication</em><br>&amp; Credit<br>Advisory</h1>
+                <p>We structure and arrange optimal debt financing for businesses across banks, NBFCs, bond markets, and
+                    alternative lenders — sourcing capital at the right cost, tenor, and structure for your specific
+                    needs.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="index.html">Discuss a Debt Mandate</a>
+                    <a class="btn-ghost" href="#ds-process">Our Process</a>
+                </div>
+            </div>
+            <div class="ds-hero-right">
+                <div class="ds-stat-card">
+                    <div class="ds-stat-card__num">&#8377;1,500Cr+</div>
+                    <div class="ds-stat-card__label">Debt Arranged &amp; Syndicated</div>
+                </div>
+                <div class="ds-stat-card">
+                    <div class="ds-stat-card__num">50+</div>
+                    <div class="ds-stat-card__label">Debt Mandates Executed</div>
+                </div>
+                <div class="ds-stat-card">
+                    <div class="ds-stat-card__num">80+</div>
+                    <div class="ds-stat-card__label">Lender Relationships</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  
+     WHAT IS DEBT SYNDICATION
+  -->
+    <section class="ds-explainer">
+        <div class="ds-explainer-grid">
+            <div class="ds-explainer-left">
+                <div class="section-tag">Understanding Debt Advisory</div>
+                <h2 class="section-title">What Is <em>Debt Syndication</em>?</h2>
+                <p>Debt syndication is the process of arranging debt financing for a business by identifying,
+                    approaching, structuring, and negotiating with multiple lenders — banks, NBFCs, bond market
+                    investors, and alternative credit providers — to secure the most appropriate credit facility at
+                    optimal terms.</p>
+                <p>Unlike a bilateral bank relationship where a single lender provides the full facility, syndication
+                    spreads the loan across multiple lenders — reducing concentration risk, increasing the quantum of
+                    capital available, and introducing market-based competition that improves pricing and terms for the
+                    borrower.</p>
+
+                <div class="ds-pull-quote">
+                    <p>"The cost of debt is the most visible number in a financing. But tenor, security, covenant
+                        flexibility, and drawdown structure often matter far more to a growing business."</p>
+                </div>
+
+                <p>A skilled debt advisor does far more than find a lender. We help structure the facility to align with
+                    your cash flows, negotiate covenants to preserve operational flexibility, optimise the security
+                    package to protect promoter assets, and ensure the financing supports — rather than constrains —
+                    your business strategy.</p>
+            </div>
+
+            <!-- Debt vs Equity comparison -->
+            <div>
+                <h4
+                    style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:20px;">
+                    Debt vs. Equity Financing</h4>
+                <div class="ds-compare">
+                    <div class="ds-compare-header">
+                        <div>Parameter</div>
+                        <div>Debt</div>
+                        <div>Equity</div>
+                    </div>
+                    <div class="ds-compare-row">
+                        <div>Ownership Dilution</div>
+                        <div>None — promoter retains full equity</div>
+                        <div>Yes — new shareholder introduced</div>
+                    </div>
+                    <div class="ds-compare-row">
+                        <div>Cost</div>
+                        <div>Fixed interest — tax deductible</div>
+                        <div>Higher — IRR expectations 20–30%</div>
+                    </div>
+                    <div class="ds-compare-row">
+                        <div>Repayment</div>
+                        <div>Principal + interest on schedule</div>
+                        <div>No fixed repayment — exit at investor discretion</div>
+                    </div>
+                    <div class="ds-compare-row">
+                        <div>Governance</div>
+                        <div>Lender covenants only</div>
+                        <div>Board seat, veto rights, information rights</div>
+                    </div>
+                    <div class="ds-compare-row">
+                        <div>Speed</div>
+                        <div>4–12 weeks for term loans</div>
+                        <div>3–9 months for PE rounds</div>
+                    </div>
+                    <div class="ds-compare-row">
+                        <div>Best For</div>
+                        <div>Asset purchase, capex, working capital</div>
+                        <div>Growth, acquisitions, long-gestation projects</div>
+                    </div>
+                    <div class="ds-compare-row">
+                        <div>Risk</div>
+                        <div>Obligation regardless of profitability</div>
+                        <div>Dilution, control loss at exit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  
+     DEBT INSTRUMENTS
+  -->
+    <section class="ds-instruments">
+        <div class="ds-instruments-intro">
+            <div class="section-tag">Capital Instruments</div>
+            <h2 class="section-title">Debt Instruments<br>We <em>Arrange</em></h2>
+            <p>Different business needs call for different debt instruments. RKS Investments advises on and arranges the
+                full spectrum of credit facilities — from vanilla term loans to structured bonds and mezzanine capital.
+            </p>
+        </div>
+        <div class="ds-instruments-grid">
+
+            <div class="ds-instrument-card">
+                <div class="ds-instrument-card__abbr">TL</div>
+                <div class="ds-instrument-card__tag">Bank Debt</div>
+                <h3>Term Loans</h3>
+                <p>The most common debt instrument — a lump-sum credit disbursed upfront and repaid over a fixed
+                    schedule. Suitable for capital expenditure, project finance, and business acquisition funding.</p>
+                <ul>
+                    <li>Tenor: 3–15 years</li>
+                    <li>Rate: Linked to MCLR / Repo rate</li>
+                    <li>Security: Primary asset + collateral charge</li>
+                    <li>Sources: PSU banks, private banks, NBFCs</li>
+                    <li>Use: Capex, acquisition, refinancing</li>
+                </ul>
+            </div>
+
+            <div class="ds-instrument-card">
+                <div class="ds-instrument-card__abbr">WC</div>
+                <div class="ds-instrument-card__tag">Bank Debt</div>
+                <h3>Working Capital Facilities</h3>
+                <p>Revolving credit lines that fund day-to-day operations — inventory, receivables, and trade payables —
+                    structured as cash credit, overdraft, or bill discounting facilities.</p>
+                <ul>
+                    <li>CC / OD: Revolving, secured against current assets</li>
+                    <li>Bill Discounting: Receivables-backed short-term</li>
+                    <li>WCDL: Working Capital Demand Loan</li>
+                    <li>LC / BG: Trade finance instruments</li>
+                    <li>Renewal: Annual review basis</li>
+                </ul>
+            </div>
+
+            <div class="ds-instrument-card">
+                <div class="ds-instrument-card__abbr">NCD</div>
+                <div class="ds-instrument-card__tag">Capital Market</div>
+                <h3>Non-Convertible Debentures</h3>
+                <p>Debt securities issued to institutional investors through private placement or public issue. NCDs
+                    offer flexible tenor and coupon structures — and can be listed on BSE/NSE for liquidity.</p>
+                <ul>
+                    <li>Tenor: 1–10 years (structured as needed)</li>
+                    <li>Coupon: Fixed or floating rate</li>
+                    <li>Investors: Mutual funds, insurance, HNIs</li>
+                    <li>Security: Secured (first/second charge) or unsecured</li>
+                    <li>Listing: BSE/NSE debt segment optional</li>
+                </ul>
+            </div>
+
+            <div class="ds-instrument-card">
+                <div class="ds-instrument-card__abbr">ECB</div>
+                <div class="ds-instrument-card__tag">Cross-Border</div>
+                <h3>External Commercial Borrowings</h3>
+                <p>Foreign currency loans borrowed from overseas lenders — offering lower interest rates versus domestic
+                    debt, subject to RBI ECB framework guidelines on end-use, maturity, and all-in-cost ceilings.</p>
+                <ul>
+                    <li>Tenor: Minimum 3 years (track I); 10 years (track II)</li>
+                    <li>Currency: USD, EUR, JPY, GBP</li>
+                    <li>Hedging: Currency risk management mandatory</li>
+                    <li>End-use: Capex, refinancing, working capital (track III)</li>
+                    <li>Regulatory: RBI ECB framework compliance</li>
+                </ul>
+            </div>
+
+            <div class="ds-instrument-card">
+                <div class="ds-instrument-card__abbr">FCCB</div>
+                <div class="ds-instrument-card__tag">Hybrid</div>
+                <h3>Foreign Currency Convertible Bonds</h3>
+                <p>Hybrid instruments that start as foreign currency bonds but carry an option to convert into equity at
+                    a pre-determined price. Popular with listed companies seeking overseas capital with potential equity
+                    upside.</p>
+                <ul>
+                    <li>Listed on overseas exchange (Singapore, Luxembourg)</li>
+                    <li>Coupon: Lower than straight debt — equity upside offset</li>
+                    <li>Conversion: At premium to prevailing market price</li>
+                    <li>Suitable for: Listed cos with growth equity story</li>
+                    <li>Regulatory: RBI/SEBI/FEMA compliance</li>
+                </ul>
+            </div>
+
+            <div class="ds-instrument-card">
+                <div class="ds-instrument-card__abbr">Mezz</div>
+                <div class="ds-instrument-card__tag">Structured</div>
+                <h3>Mezzanine &amp; Structured Credit</h3>
+                <p>Subordinated debt instruments that sit between senior debt and equity in the capital structure —
+                    offering higher yields to lenders and more flexibility to borrowers who have maxed senior credit
+                    capacity.</p>
+                <ul>
+                    <li>Form: OCD, OCPS, structured NCDs, sub-debt</li>
+                    <li>Returns: Structured as IRR including PIK / equity kicker</li>
+                    <li>Sources: AIFs, credit funds, NBFCs, family offices</li>
+                    <li>Use: Bridge, LBO, promoter buyout, acquisition</li>
+                    <li>Tenor: 2–5 years with bullet / PIK repayment</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LENDER UNIVERSE -->
+    <section class="ds-lenders">
+        <div class="section-tag">Lender Landscape</div>
+        <h2 class="section-title">The Lending <em>Universe</em> We Access</h2>
+        <div class="ds-lenders-grid">
+
+            <div class="ds-lender-card">
+                <div class="ds-lender-card__num">01</div>
+                <div class="ds-lender-card__icon">&#9632;</div>
+                <h3>Public Sector Banks</h3>
+                <p>SBI, Bank of Baroda, Punjab National Bank, and other PSU banks offer the largest credit limits at
+                    competitive rates — but require strong credit profiles, extensive documentation, and longer
+                    processing timelines.</p>
+                <ul>
+                    <li>Lowest interest rates (MCLR-linked)</li>
+                    <li>High documentation requirements</li>
+                    <li>Longer approval timelines (8–16 weeks)</li>
+                    <li>Strong for large capex and project finance</li>
+                </ul>
+            </div>
+
+            <div class="ds-lender-card">
+                <div class="ds-lender-card__num">02</div>
+                <div class="ds-lender-card__icon">&#9632;</div>
+                <h3>Private Sector Banks</h3>
+                <p>HDFC Bank, ICICI Bank, Axis Bank, Kotak Mahindra, and IndusInd Bank offer faster processing,
+                    relationship-based banking, and more flexible structuring — at marginally higher rates than PSU
+                    banks.</p>
+                <ul>
+                    <li>Faster credit decisions (4–10 weeks)</li>
+                    <li>Strong relationship management</li>
+                    <li>Flexible collateral and covenant structures</li>
+                    <li>Trade finance and forex services bundled</li>
+                </ul>
+            </div>
+
+            <div class="ds-lender-card">
+                <div class="ds-lender-card__num">03</div>
+                <div class="ds-lender-card__icon">&#9632;</div>
+                <h3>Non-Banking Financial Companies</h3>
+                <p>NBFCs like Bajaj Finance, Piramal Capital, Edelweiss, and Aditya Birla Finance offer the most
+                    flexible structuring options — particularly for businesses with complex cash flows, promoter-led
+                    credits, or sector-specific needs.</p>
+                <ul>
+                    <li>Fastest approvals (2–6 weeks)</li>
+                    <li>Creative structuring — LAP, NCD, structured debt</li>
+                    <li>Higher rates — compensated by flexibility</li>
+                    <li>Access to promoter-backed facilities</li>
+                </ul>
+            </div>
+
+            <div class="ds-lender-card">
+                <div class="ds-lender-card__num">04</div>
+                <div class="ds-lender-card__icon">&#9632;</div>
+                <h3>Mutual Funds &amp; Insurance Cos</h3>
+                <p>Debt mutual funds and insurance companies are key institutional buyers of NCDs, commercial papers,
+                    and bonds — providing capital market-based debt at competitive rates for investment-grade borrowers.
+                </p>
+                <ul>
+                    <li>NCD / bond issuances via private placement</li>
+                    <li>Rate driven by credit rating</li>
+                    <li>Large ticket sizes — &#8377;50 Cr and above</li>
+                    <li>SEBI LODR compliance required for listed NCDs</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!--  PROCESS -->
+    <section class="ds-process" id="ds-process">
+        <div class="ds-process-intro">
+            <div class="section-tag">Execution Framework</div>
+            <h2 class="section-title">The Debt Syndication <em>Process</em></h2>
+            <p>A disciplined, lender-competitive debt process consistently delivers better pricing, covenants, and terms
+                than a bilateral bank approach. Here is how RKS Investments runs every mandate.</p>
+        </div>
+
+        <div class="ds-timeline-wrap">
+            <div class="ds-timeline-track">
+
+                <div class="ds-step">
+                    <div class="ds-step__dot">01</div>
+                    <div class="ds-step__title">Mandate &amp; Credit Assessment</div>
+                    <div class="ds-step__duration">1 – 2 Weeks</div>
+                    <div class="ds-step__body">Understand the business, financing need, purpose, repayment capacity, and
+                        existing credit facilities. Conduct preliminary credit assessment.</div>
+                </div>
+
+                <div class="ds-step">
+                    <div class="ds-step__dot">02</div>
+                    <div class="ds-step__title">Financial Packaging</div>
+                    <div class="ds-step__duration">2 – 3 Weeks</div>
+                    <div class="ds-step__body">Prepare lender-grade CIM — audited financials, projections, DSCR
+                        analysis, security matrix, and management background — in a compelling credit narrative.</div>
+                </div>
+
+                <div class="ds-step">
+                    <div class="ds-step__dot">03</div>
+                    <div class="ds-step__title">Lender Identification &amp; Outreach</div>
+                    <div class="ds-step__duration">1 – 2 Weeks</div>
+                    <div class="ds-step__body">Curate and approach a shortlist of lenders best matched to the
+                        instrument, tenor, size, and sector — simultaneously creating competitive pressure.</div>
+                </div>
+
+                <div class="ds-step">
+                    <div class="ds-step__dot">04</div>
+                    <div class="ds-step__title">Lender Meetings &amp; Q&amp;A</div>
+                    <div class="ds-step__duration">2 – 4 Weeks</div>
+                    <div class="ds-step__body">Management meetings with lenders, site visits if required, and detailed
+                        financial Q&amp;A. We prepare management and handle technical credit queries.</div>
+                </div>
+
+                <div class="ds-step">
+                    <div class="ds-step__dot">05</div>
+                    <div class="ds-step__title">Term Sheet &amp; Sanction</div>
+                    <div class="ds-step__duration">2 – 4 Weeks</div>
+                    <div class="ds-step__body">Receive and compare term sheets across lenders. Negotiate interest rate,
+                        security, covenants, drawdown, and prepayment terms. Finalise sanction letter.</div>
+                </div>
+
+                <div class="ds-step">
+                    <div class="ds-step__dot">06</div>
+                    <div class="ds-step__title">Documentation &amp; Legal</div>
+                    <div class="ds-step__duration">2 – 4 Weeks</div>
+                    <div class="ds-step__body">Coordinate loan agreement, hypothecation deed, mortgage registration,
+                        board resolutions, and condition precedent fulfillment with legal counsel.</div>
+                </div>
+
+                <div class="ds-step">
+                    <div class="ds-step__dot">07</div>
+                    <div class="ds-step__title">Disbursement &amp; Compliance</div>
+                    <div class="ds-step__duration">Ongoing</div>
+                    <div class="ds-step__body">First drawdown, end-use certification, covenant tracking, and ongoing
+                        lender communication. Annual review support and refinancing advisory as needed.</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--  OUR SERVICES -->
+    <section class="ds-services">
+        <div class="section-tag">What We Do</div>
+        <h2 class="section-title">Our Debt Advisory<br><em>Services</em></h2>
+        <div class="ds-services-grid">
+
+            <div class="ds-service-card">
+                <div class="ds-service-card__icon">&#9670;</div>
+                <h3>Credit Strategy &amp; Structuring</h3>
+                <p>We assess your financing need, business profile, and risk appetite to design the optimal debt
+                    structure — instrument type, tenor, rate, security package, and drawdown schedule aligned to your
+                    cash flows.</p>
+                <ul>
+                    <li>Optimal debt quantum determination</li>
+                    <li>Instrument mix — TL, WC, NCD, ECB, Mezz</li>
+                    <li>DSCR and repayment capacity modelling</li>
+                    <li>Security package optimisation</li>
+                </ul>
+            </div>
+
+            <div class="ds-service-card">
+                <div class="ds-service-card__icon">&#9632;</div>
+                <h3>Lender Identification &amp; Approach</h3>
+                <p>We leverage our 80+ active lender relationships to identify and approach the most appropriate
+                    financiers — simultaneously, creating genuine competition that improves pricing and covenant terms.
+                </p>
+                <ul>
+                    <li>Curated lender shortlist by instrument &amp; sector</li>
+                    <li>Simultaneous multi-lender outreach</li>
+                    <li>Relationship-based warm introductions</li>
+                    <li>NDA and confidentiality management</li>
+                </ul>
+            </div>
+
+            <div class="ds-service-card">
+                <div class="ds-service-card__icon">&#9651;</div>
+                <h3>Credit Information Memorandum</h3>
+                <p>We prepare a comprehensive, lender-grade CIM — presenting the business in the most creditworthy light
+                    with robust financial projections, DSCR analysis, security details, and a clear repayment case.</p>
+                <ul>
+                    <li>Executive summary &amp; business overview</li>
+                    <li>Audited financial analysis &amp; restating</li>
+                    <li>3-year financial model with projections</li>
+                    <li>DSCR, leverage, and debt serviceability analysis</li>
+                </ul>
+            </div>
+
+            <div class="ds-service-card">
+                <div class="ds-service-card__icon">&#9711;</div>
+                <h3>Term Sheet Negotiation</h3>
+                <p>We compare term sheets across lenders and negotiate on every parameter — interest rate, processing
+                    fees, prepayment penalty, covenant thresholds, and security scope — to secure the most favourable
+                    terms.</p>
+                <ul>
+                    <li>Rate benchmarking across lenders</li>
+                    <li>Financial covenant negotiation</li>
+                    <li>Prepayment &amp; step-down provisions</li>
+                    <li>Sanction letter review &amp; red-lining</li>
+                </ul>
+            </div>
+
+            <div class="ds-service-card">
+                <div class="ds-service-card__icon">&#9702;</div>
+                <h3>NCD / Bond Issuance</h3>
+                <p>For companies seeking capital market-based debt, we manage the end-to-end NCD issuance process —
+                    credit rating engagement, investor roadshow, term sheet, debenture trustee, and BSE/NSE listing if
+                    required.</p>
+                <ul>
+                    <li>Credit rating engagement (CRISIL / ICRA / CARE)</li>
+                    <li>Investor identification — MFs, insurers, HNIs</li>
+                    <li>Debenture trustee appointment</li>
+                    <li>BSE / NSE debt segment listing</li>
+                </ul>
+            </div>
+
+            <div class="ds-service-card">
+                <div class="ds-service-card__icon">&#9679;</div>
+                <h3>Refinancing &amp; Debt Restructuring</h3>
+                <p>We help businesses reduce their cost of debt, extend tenors, and improve covenant flexibility by
+                    refinancing existing facilities — or assist distressed borrowers in restructuring debt with lenders
+                    outside formal insolvency processes.</p>
+                <ul>
+                    <li>Existing debt audit &amp; refinancing opportunity</li>
+                    <li>Rate reduction &amp; tenor extension</li>
+                    <li>Inter-creditor agreement coordination</li>
+                    <li>One-time settlement (OTS) advisory</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!--  
+     KEY PARAMETERS
+  -->
+    <section class="ds-parameters">
+        <div class="section-tag">Lender Evaluation</div>
+        <h2 class="section-title">What Lenders<br><em>Evaluate</em></h2>
+        <div class="ds-parameters-grid">
+            <div class="ds-parameters-left">
+                <p>Every lending decision comes down to a lender's confidence in two things: the borrower's ability to
+                    repay and the quality of security backing the facility. Understanding how lenders think is essential
+                    to structuring a successful debt raise.</p>
+                <p>RKS Investments prepares clients across every dimension lenders evaluate — from financial modelling
+                    and DSCR optimisation to promoter background checks and security structuring — so that your credit
+                    proposal is watertight before it reaches a lender's credit committee.</p>
+                <p>We also advise on which parameters to prioritise, negotiate, or compensate for — helping businesses
+                    secure debt even when certain metrics fall short of idealised thresholds.</p>
+            </div>
+            <div class="ds-param-table">
+                <div class="ds-param-row">
+                    <div class="ds-param-row__key">DSCR</div>
+                    <div class="ds-param-row__val">
+                        Min. 1.25x–1.50x (project finance); 1.10x+ (WC)
+                        <span>Debt Service Coverage Ratio — primary repayment test</span>
+                    </div>
+                </div>
+                <div class="ds-param-row">
+                    <div class="ds-param-row__key">Leverage</div>
+                    <div class="ds-param-row__val">
+                        Debt / EBITDA typically below 4x–5x for term debt
+                        <span>Higher leverage acceptable with strong asset coverage</span>
+                    </div>
+                </div>
+                <div class="ds-param-row">
+                    <div class="ds-param-row__key">Promoter Track Record</div>
+                    <div class="ds-param-row__val">
+                        Clean CIBIL, no wilful default, no pending litigation
+                        <span>Critical — promoter credibility often overrides financials</span>
+                    </div>
+                </div>
+                <div class="ds-param-row">
+                    <div class="ds-param-row__key">Security Cover</div>
+                    <div class="ds-param-row__val">
+                        1.25x–1.5x security cover on primary + collateral assets
+                        <span>Immovable property preferred; equitable mortgage standard</span>
+                    </div>
+                </div>
+                <div class="ds-param-row">
+                    <div class="ds-param-row__key">Revenue Stability</div>
+                    <div class="ds-param-row__val">
+                        3 years of audited financials with consistent revenue
+                        <span>Government / PSU customers or long-term contracts add strength</span>
+                    </div>
+                </div>
+                <div class="ds-param-row">
+                    <div class="ds-param-row__key">Net Worth</div>
+                    <div class="ds-param-row__val">
+                        Positive and growing — minimum varies by lender &amp; instrument
+                        <span>Debt-to-equity ratio below 3:1 typically preferred</span>
+                    </div>
+                </div>
+                <div class="ds-param-row">
+                    <div class="ds-param-row__key">End Use</div>
+                    <div class="ds-param-row__val">
+                        Clearly defined, specific, and lender-approved use of proceeds
+                        <span>Diversion of funds is the most common reason for NPA classification</span>
+                    </div>
+                </div>
+                <div class="ds-param-row">
+                    <div class="ds-param-row__key">Existing Obligations</div>
+                    <div class="ds-param-row__val">
+                        All existing loans must be regular and disclosed fully
+                        <span>Undisclosed liabilities are a dealbreaker in lender due diligence</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  
+     INSTRUMENT COMPARISON TABLE
+  -->
+    <section class="ds-comparison">
+        <div class="section-tag">Quick Reference</div>
+        <h2 class="section-title">Debt Instrument <em>Comparison</em></h2>
+        <div class="ds-big-table-wrap">
+            <table class="ds-big-table">
+                <thead>
+                    <tr>
+                        <th>Instrument</th>
+                        <th>Typical Tenor</th>
+                        <th>Typical Rate</th>
+                        <th>Security</th>
+                        <th>Best For</th>
+                        <th>Sources</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Term Loan</td>
+                        <td>3–15 years</td>
+                        <td>9–13% p.a.</td>
+                        <td>First charge on primary asset + collateral</td>
+                        <td><span class="ds-tag">Capex</span><span class="ds-tag">Project finance</span><span
+                                class="ds-tag">Acquisition</span></td>
+                        <td>PSU banks, private banks, NBFCs</td>
+                    </tr>
+                    <tr>
+                        <td>Working Capital CC / OD</td>
+                        <td>Annual renewal</td>
+                        <td>10–13.5% p.a.</td>
+                        <td>Hypothecation of current assets</td>
+                        <td><span class="ds-tag">Inventory</span><span class="ds-tag">Receivables</span><span
+                                class="ds-tag">Operations</span></td>
+                        <td>Banks (primary relationship lender)</td>
+                    </tr>
+                    <tr>
+                        <td>Non-Convertible Debenture</td>
+                        <td>1–7 years</td>
+                        <td>Rating-driven — 9–16% p.a.</td>
+                        <td>Secured (first/pari passu) or unsecured</td>
+                        <td><span class="ds-tag">Mid-market</span><span class="ds-tag">NBFCs</span><span
+                                class="ds-tag">Real estate</span></td>
+                        <td>Mutual funds, insurance cos, HNIs, AIFs</td>
+                    </tr>
+                    <tr>
+                        <td>External Commercial Borrowing</td>
+                        <td>3–10+ years</td>
+                        <td>SOFR/EURIBOR + 200–350 bps</td>
+                        <td>As per domestic equivalent; FEMA compliant</td>
+                        <td><span class="ds-tag">Large capex</span><span class="ds-tag">Refinancing</span><span
+                                class="ds-tag">Infrastructure</span></td>
+                        <td>Foreign banks, multilaterals, overseas NBFCs</td>
+                    </tr>
+                    <tr>
+                        <td>FCCB</td>
+                        <td>3–5 years</td>
+                        <td>0–5% coupon + equity conversion</td>
+                        <td>Typically unsecured; overseas listing</td>
+                        <td><span class="ds-tag">Listed cos</span><span class="ds-tag">International raise</span></td>
+                        <td>Overseas institutional investors</td>
+                    </tr>
+                    <tr>
+                        <td>Mezzanine / Structured Credit</td>
+                        <td>2–5 years</td>
+                        <td>15–22% IRR (cash + PIK)</td>
+                        <td>Second charge or unsecured; equity kicker</td>
+                        <td><span class="ds-tag">Bridge</span><span class="ds-tag">Acquisition</span><span
+                                class="ds-tag">Promoter buyout</span></td>
+                        <td>Credit AIFs, NBFCs, family offices</td>
+                    </tr>
+                    <tr>
+                        <td>Lease Rental Discounting</td>
+                        <td>5–10 years</td>
+                        <td>9–12% p.a.</td>
+                        <td>Assignment of lease rentals</td>
+                        <td><span class="ds-tag">Commercial real estate</span><span class="ds-tag">Retail</span></td>
+                        <td>Banks, HFCs, NBFCs</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!--  
+     CREDIT FACTORS
+  -->
+    <section class="ds-credit">
+        <div class="section-tag">Improving Creditworthiness</div>
+        <h2 class="section-title">Factors That <em>Strengthen</em><br>Your Credit Profile</h2>
+        <div class="ds-credit-grid">
+
+            <div class="ds-credit-card">
+                <div class="ds-credit-card__label">Financial</div>
+                <h4>Revenue Consistency &amp; Growth</h4>
+                <p>Three years of audited revenue growth — even modest, consistent growth — signals business stability
+                    far more to a lender than a single year of exceptional performance.</p>
+            </div>
+
+            <div class="ds-credit-card">
+                <div class="ds-credit-card__label">Financial</div>
+                <h4>EBITDA Margin Expansion</h4>
+                <p>Improving operating margins demonstrate management efficiency and pricing power — both critical
+                    signals in lender credit committees assessing long-term debt serviceability.</p>
+            </div>
+
+            <div class="ds-credit-card">
+                <div class="ds-credit-card__label">Structural</div>
+                <h4>Clean, Disclosed Balance Sheet</h4>
+                <p>All liabilities — including off-balance sheet obligations, promoter guarantees, and contingent items
+                    — must be fully disclosed. Hidden obligations discovered during due diligence are deal-breakers.</p>
+            </div>
+
+            <div class="ds-credit-card">
+                <div class="ds-credit-card__label">Collateral</div>
+                <h4>Quality Security Assets</h4>
+                <p>Unencumbered immovable property in prime locations, high-quality plant and machinery, or assigned
+                    lease rentals significantly improve both the quantum and rate of debt available.</p>
+            </div>
+
+            <div class="ds-credit-card">
+                <div class="ds-credit-card__label">Promoter</div>
+                <h4>Promoter Credibility &amp; Net Worth</h4>
+                <p>Lenders in India lend as much to the promoter as to the business. A clean CIBIL record, strong
+                    personal net worth, and demonstrated integrity in past credit relationships are non-negotiable
+                    prerequisites.</p>
+            </div>
+
+            <div class="ds-credit-card">
+                <div class="ds-credit-card__label">Customer</div>
+                <h4>Long-Term Contracts &amp; Quality Clients</h4>
+                <p>Government, PSU, or blue-chip corporate customers on long-term contracts provide lenders with revenue
+                    visibility and counterparty comfort — directly improving debt availability and pricing.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!--  
+     STRUCTURED FINANCE
+  -->
+    <section class="ds-structured">
+        <div class="section-tag">Complex Transactions</div>
+        <h2 class="section-title">Structured Finance<br>&amp; <em>Specialty Debt</em></h2>
+        <div class="ds-structured-grid">
+            <div class="ds-structured-left">
+                <p>Beyond vanilla term loans and working capital facilities, many growth situations call for creative,
+                    structured debt solutions — transactions where the financing is engineered around the specific cash
+                    flow profile, asset base, or strategic objective of the borrower.</p>
+                <p>RKS Investments has deep experience advising on and arranging structured debt transactions —
+                    including acquisition financing, promoter buyouts, real estate-backed credit, and cross-border
+                    structured facilities — where standard bank products fall short.</p>
+                <p>Our structured finance advisory brings together debt capital markets expertise, relationship-driven
+                    lender access, and financial modelling capability to design solutions that balance cost,
+                    flexibility, and risk appropriately.</p>
+            </div>
+            <div class="ds-structured-items">
+
+                <div class="ds-structured-item">
+                    <div class="ds-structured-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Acquisition Finance</h5>
+                        <p>Structuring senior and junior debt tranches to fund M&amp;A transactions — leveraged buyouts,
+                            management buyouts, and strategic acquisitions — where cash flows of the combined entity
+                            service the debt.</p>
+                    </div>
+                </div>
+
+                <div class="ds-structured-item">
+                    <div class="ds-structured-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Promoter Liquidity &amp; Buyout Funding</h5>
+                        <p>Structured facilities to enable promoters to partially monetise their shareholding or buy out
+                            PE investors — using a blend of personal and corporate assets as security.</p>
+                    </div>
+                </div>
+
+                <div class="ds-structured-item">
+                    <div class="ds-structured-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Real Estate Structured Credit</h5>
+                        <p>Construction finance, LRD, and structured developer credit — backed by assigned lease
+                            rentals, pre-sales, or project cash flows — arranged from banks, HFCs, and real estate
+                            credit funds.</p>
+                    </div>
+                </div>
+
+                <div class="ds-structured-item">
+                    <div class="ds-structured-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Bridge &amp; Short-Term Structured Debt</h5>
+                        <p>Bullet-repayment bridge facilities with a clearly defined take-out source — IPO proceeds, PE
+                            round, asset sale, or refinance — structured to bridge a timing gap efficiently.</p>
+                    </div>
+                </div>
+
+                <div class="ds-structured-item">
+                    <div class="ds-structured-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Supply Chain &amp; Receivables Finance</h5>
+                        <p>Factoring, invoice discounting, and supply chain finance programs — unlocking liquidity
+                            trapped in receivables and extending working capital without creating additional bank
+                            exposure.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+     WHY RKS
+ -->
+    <section class="ds-why">
+        <div class="section-tag">Our Differentiators</div>
+        <h2 class="section-title">Why <em>RKS Investments</em><br>for Debt Syndication</h2>
+        <div class="ds-why-grid">
+            <div class="ds-why-metrics">
+                <div class="ds-why-metric">
+                    <div class="ds-why-metric__num">&#8377;1,500Cr+</div>
+                    <div class="ds-why-metric__label">Debt Arranged<br>Across Mandates</div>
+                </div>
+                <div class="ds-why-metric">
+                    <div class="ds-why-metric__num">50+</div>
+                    <div class="ds-why-metric__label">Debt Mandates<br>Completed</div>
+                </div>
+                <div class="ds-why-metric">
+                    <div class="ds-why-metric__num">80+</div>
+                    <div class="ds-why-metric__label">Active Lender<br>Relationships</div>
+                </div>
+                <div class="ds-why-metric">
+                    <div class="ds-why-metric__num">15+</div>
+                    <div class="ds-why-metric__label">Sectors with<br>Debt Experience</div>
+                </div>
+            </div>
+            <div class="ds-why-reasons">
+                <div class="ds-why-reason">
+                    <div class="ds-why-reason__num">01</div>
+                    <div>
+                        <h4>Lender-Side Insight</h4>
+                        <p>Our team includes professionals with prior experience at banks and credit institutions —
+                            meaning we understand exactly how credit committees think and what makes them approve or
+                            decline a proposal.</p>
+                    </div>
+                </div>
+                <div class="ds-why-reason">
+                    <div class="ds-why-reason__num">02</div>
+                    <div>
+                        <h4>Competitive Multi-Lender Process</h4>
+                        <p>We approach multiple lenders simultaneously rather than sequentially — creating genuine
+                            pricing competition that consistently delivers better rates and terms than a borrower
+                            approaching a single bank.</p>
+                    </div>
+                </div>
+                <div class="ds-why-reason">
+                    <div class="ds-why-reason__num">03</div>
+                    <div>
+                        <h4>Structuring Expertise Beyond Vanilla</h4>
+                        <p>From mezzanine to ECB to NCD issuances, we have genuine expertise across the full debt
+                            capital structure — recommending the right instrument for each situation rather than
+                            defaulting to a term loan.</p>
+                    </div>
+                </div>
+                <div class="ds-why-reason">
+                    <div class="ds-why-reason__num">04</div>
+                    <div>
+                        <h4>Borrower-Side Advocacy at All Times</h4>
+                        <p>Unlike relationship managers at a bank, we work exclusively for the borrower — negotiating
+                            aggressively on your behalf and declining arrangements that do not serve your long-term
+                            interest.</p>
+                    </div>
+                </div>
+                <div class="ds-why-reason">
+                    <div class="ds-why-reason__num">05</div>
+                    <div>
+                        <h4>End-to-End Execution, Not Just Introduction</h4>
+                        <p>We stay involved through documentation, legal coordination, condition precedent fulfillment,
+                            and first drawdown — ensuring nothing falls apart after the sanction letter is issued.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="ds-cta">
+        <div class="section-tag section-tag--center">Start a Conversation</div>
+        <h2>Get the <em>Right Debt</em><br>at the Right Terms</h2>
+        <p>Whether you need a straightforward term loan or a complex structured credit facility, RKS Investments will
+            run a disciplined, competitive process that puts you in the strongest possible position with lenders.</p>
+        <div class="ds-cta__actions">
+            <a class="btn-primary" href="index.html">Discuss a Debt Mandate</a>
+            <a class="btn-ghost" href="private-equity.html">View PE Advisory</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo logo--static">
+                    <div class="logo-mark">RKS</div>
+                    RKS Investments
+                </div>
+                <p>Independent investment banking and corporate finance advisory, committed to helping businesses grow
+                    through strategic capital solutions.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="ipo.html">IPO Advisory</a></li>
+                    <li><a href="M&A.html">M&A Advisory</a></li>
+                    <li><a href="PE.html">Private Equity</a></li>
+                    <li><a href="Debt.html">Debt Syndication</a></li>
+                    <li><a href="Valuation.html">Valuations</a></li>
+                    <li><a href="ESOP.html">ESOP Advisory</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="index.html">About Us</a></li>
+                    <li><a href="index.html">Our Clients</a></li>
+                    <li><a href="index.html">Compliance</a></li>
+                    <li><a href="index.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a>info@rksinvestments.in</a></li>
+                    <li><a>+91 98765 43210</a></li>
+                    <li><a>Suite 501, Capital Tower<br>Connaught Place<br>New Delhi – 110001</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RKS Investments. All rights reserved.</p>
+            <p class="disc">RKS Investments is not registered with SEBI. Advisory services are provided in a purely
+                non-regulated capacity. Nothing on this website constitutes investment advice. Past transaction
+                experience does not guarantee future results.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+        });
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('open');
+        }
+        document.addEventListener('click', e => {
+            if (!e.target.closest('nav')) document.getElementById('nav-links').classList.remove('open');
+        });
+    </script>
+
+</body>
+
+</html>

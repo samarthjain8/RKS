@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Equity Advisory — RKS Investments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ══════════════════════════════════════
+       PE PAGE — SPECIFIC STYLES
+    ══════════════════════════════════════ */
+
+        /* ── Hero ── */
+        .pe-hero {
+            min-height: 78vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 140px 60px 72px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pe-hero-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 60% 60% at 100% 20%, rgba(201, 168, 76, 0.07) 0%, transparent 65%),
+                radial-gradient(ellipse 40% 55% at 0% 80%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse 30% 40% at 55% 100%, rgba(201, 168, 76, 0.03) 0%, transparent 55%),
+                linear-gradient(155deg, #0d0d0d 0%, #141414 50%, #0f0f0f 100%);
+        }
+
+        .pe-hero-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.028) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.028) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: radial-gradient(ellipse 100% 80% at 50% 50%, black, transparent);
+        }
+
+        /* Floating corner accent */
+        .pe-hero-corner {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            border-left: 1px solid rgba(201, 168, 76, 0.1);
+            pointer-events: none;
+        }
+
+        .pe-hero-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 80px;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb-sep {
+            color: rgba(201, 168, 76, 0.25);
+        }
+
+        .breadcrumb-current {
+            color: var(--gold);
+        }
+
+        .pe-hero-left h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6.5vw, 5.8rem);
+            font-weight: 300;
+            line-height: 1.03;
+            color: var(--text);
+            margin-bottom: 28px;
+        }
+
+        .pe-hero-left h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .pe-hero-left>p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 520px;
+            margin-bottom: 40px;
+        }
+
+        .pe-hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-self: flex-end;
+        }
+
+        .pe-stat-card {
+            padding: 28px 32px;
+            border: 1px solid var(--border);
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(12px);
+            transition: border-color 0.3s;
+        }
+
+        .pe-stat-card:hover {
+            border-color: rgba(201, 168, 76, 0.45);
+        }
+
+        .pe-stat-card__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .pe-stat-card__label {
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        /* ══════════════════════════════════════
+       WHAT IS PE
+    ══════════════════════════════════════ */
+        .pe-explainer {
+            padding: 100px 60px;
+        }
+
+        .pe-explainer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .pe-explainer-left p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .pe-explainer-left p:first-of-type {
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .pe-pull-quote {
+            margin: 32px 0;
+            padding: 28px 32px;
+            border-left: 2px solid var(--gold);
+            background: var(--dark2);
+        }
+
+        .pe-pull-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem !important;
+            font-style: italic;
+            color: var(--text) !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+        }
+
+        /* PE Lifecycle visual */
+        .pe-lifecycle {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+
+        .pe-lifecycle-stage {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.25s;
+        }
+
+        .pe-lifecycle-stage:last-child {
+            border-bottom: none;
+        }
+
+        .pe-lifecycle-stage:hover {
+            background: var(--dark3);
+        }
+
+        .pe-lifecycle-stage__label {
+            width: 140px;
+            flex-shrink: 0;
+            padding: 20px 20px;
+            background: var(--dark2);
+            border-right: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .pe-lifecycle-stage__label span {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            writing-mode: horizontal-tb;
+        }
+
+        .pe-lifecycle-stage__body {
+            padding: 20px 24px;
+            flex: 1;
+        }
+
+        .pe-lifecycle-stage__body h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .pe-lifecycle-stage__body p {
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ══════════════════════════════════════
+       INVESTOR TYPES
+    ══════════════════════════════════════ */
+        .pe-investors {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .pe-investors-intro {
+            max-width: 620px;
+            margin-bottom: 56px;
+        }
+
+        .pe-investors-intro p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-top: 12px;
+        }
+
+        .pe-investors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .pe-investor-card {
+            padding: 44px 36px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .pe-investor-card:hover {
+            background: var(--dark3);
+        }
+
+        .pe-investor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+
+        .pe-investor-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pe-investor-card__tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .pe-investor-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .pe-investor-card p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            line-height: 1.72;
+            margin-bottom: 18px;
+        }
+
+        .pe-investor-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .pe-investor-card li {
+            font-size: 0.78rem;
+            color: var(--text);
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .pe-investor-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.74rem;
+        }
+
+        /* ══════════════════════════════════════
+       STAGES OF PE
+    ══════════════════════════════════════ */
+        .pe-stages {
+            padding: 100px 60px;
+        }
+
+        .pe-stages-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .pe-stage-card {
+            padding: 36px 28px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            position: relative;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .pe-stage-card:hover {
+            background: var(--dark3);
+            border-color: rgba(201, 168, 76, 0.4);
+        }
+
+        .pe-stage-card__badge {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .pe-stage-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .pe-stage-card__range {
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+
+        .pe-stage-card p {
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ══════════════════════════════════════
+       FUNDRAISING PROCESS
+    ══════════════════════════════════════ */
+        .pe-process {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .pe-process-intro p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 580px;
+            margin-top: 12px;
+        }
+
+        .pe-process-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .pe-process-step {
+            padding: 44px 40px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            display: flex;
+            gap: 28px;
+            align-items: flex-start;
+            transition: background 0.3s;
+        }
+
+        .pe-process-step:hover {
+            background: var(--dark3);
+        }
+
+        .pe-process-step__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.12);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 44px;
+        }
+
+        .pe-process-step__body h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .pe-process-step__body p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 14px;
+        }
+
+        .pe-process-step__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .pe-step-tag {
+            padding: 3px 10px;
+            border: 1px solid var(--border);
+            font-size: 0.68rem;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+        }
+
+        /* ══════════════════════════════════════
+       OUR SERVICES
+    ══════════════════════════════════════ */
+        .pe-services {
+            padding: 100px 60px;
+        }
+
+        .pe-services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .pe-service-card {
+            padding: 40px 36px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            position: relative;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .pe-service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .pe-service-card:hover {
+            background: var(--dark3);
+            transform: translateY(-3px);
+        }
+
+        .pe-service-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .pe-service-card__icon {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 22px;
+            transition: border-color 0.3s;
+        }
+
+        .pe-service-card:hover .pe-service-card__icon {
+            border-color: var(--gold);
+        }
+
+        .pe-service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .pe-service-card p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+
+        .pe-service-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .pe-service-card li {
+            font-size: 0.79rem;
+            color: var(--text);
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .pe-service-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.74rem;
+        }
+
+        /* ══════════════════════════════════════
+       INVESTMENT CRITERIA
+    ══════════════════════════════════════ */
+        .pe-criteria {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .pe-criteria-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 56px;
+            align-items: start;
+        }
+
+        .pe-criteria-left p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .pe-criteria-left p:first-of-type {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .pe-criteria-table {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+
+        .pe-criteria-row {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .pe-criteria-row:last-child {
+            border-bottom: none;
+        }
+
+        .pe-criteria-row:hover {
+            background: var(--dark3);
+        }
+
+        .pe-criteria-row__key {
+            width: 180px;
+            flex-shrink: 0;
+            padding: 18px 20px;
+            background: var(--dark);
+            border-right: 1px solid var(--border);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+        }
+
+        .pe-criteria-row__val {
+            padding: 18px 20px;
+            font-size: 0.84rem;
+            color: var(--text);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .pe-criteria-row__val span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        /* ══════════════════════════════════════
+       SECTOR FOCUS
+    ══════════════════════════════════════ */
+        .pe-sectors {
+            padding: 100px 60px;
+        }
+
+        .pe-sectors-mosaic {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .pe-sector-tile {
+            padding: 32px 20px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            text-align: center;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .pe-sector-tile:hover {
+            border-color: var(--gold);
+            background: var(--dark3);
+        }
+
+        .pe-sector-tile__icon {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .pe-sector-tile__name {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            transition: color 0.3s;
+        }
+
+        .pe-sector-tile:hover .pe-sector-tile__name {
+            color: var(--gold);
+        }
+
+        /* ══════════════════════════════════════
+       EXIT STRATEGIES
+    ══════════════════════════════════════ */
+        .pe-exit {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .pe-exit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .pe-exit-card {
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            transition: background 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .pe-exit-card:hover {
+            background: var(--dark3);
+            border-color: rgba(201, 168, 76, 0.4);
+        }
+
+        .pe-exit-card__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.07);
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            line-height: 1;
+        }
+
+        .pe-exit-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .pe-exit-card p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.72;
+            margin-bottom: 14px;
+        }
+
+        .pe-exit-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .pe-exit-tag {
+            padding: 3px 9px;
+            border: 1px solid var(--border);
+            font-size: 0.67rem;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+        }
+
+        /* ══════════════════════════════════════
+       DEAL TERMS EXPLAINED
+    ══════════════════════════════════════ */
+        .pe-terms {
+            padding: 100px 60px;
+        }
+
+        .pe-terms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .pe-term-card {
+            padding: 32px 28px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            transition: border-color 0.3s;
+        }
+
+        .pe-term-card:hover {
+            border-color: rgba(201, 168, 76, 0.4);
+        }
+
+        .pe-term-card__abbr {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--gold);
+            opacity: 0.55;
+            margin-bottom: 8px;
+        }
+
+        .pe-term-card h4 {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .pe-term-card p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* ══════════════════════════════════════
+       WHY RKS
+    ══════════════════════════════════════ */
+        .pe-why {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .pe-why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 56px;
+        }
+
+        .pe-why-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .pe-why-metric {
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+        }
+
+        .pe-why-metric__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .pe-why-metric__label {
+            font-size: 0.7rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .pe-why-reasons {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .pe-why-reason {
+            display: flex;
+            gap: 22px;
+            padding: 26px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+
+        .pe-why-reason:last-child {
+            border-bottom: none;
+        }
+
+        .pe-why-reason__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.2);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 32px;
+        }
+
+        .pe-why-reason h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .pe-why-reason p {
+            font-size: 0.83rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ══════════════════════════════════════
+       CTA
+    ══════════════════════════════════════ */
+        .pe-cta {
+            padding: 100px 60px;
+            background:
+                radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201, 168, 76, 0.055) 0%, transparent 70%),
+                var(--dark);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .pe-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .pe-cta h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .pe-cta p {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+        }
+
+        .pe-cta__actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+        @media (max-width: 1100px) {
+
+            .pe-investors-grid,
+            .pe-services-grid,
+            .pe-terms-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pe-stages-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .pe-sectors-mosaic {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .pe-exit-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .pe-hero {
+                padding: 100px 24px 56px;
+                min-height: auto;
+            }
+
+            .pe-hero-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .pe-hero-right {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+
+            .pe-stat-card {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .pe-hero-corner {
+                display: none;
+            }
+
+            .pe-explainer,
+            .pe-investors,
+            .pe-stages,
+            .pe-process,
+            .pe-services,
+            .pe-criteria,
+            .pe-sectors,
+            .pe-exit,
+            .pe-terms,
+            .pe-why,
+            .pe-cta {
+                padding: 60px 24px;
+            }
+
+            .pe-explainer-grid,
+            .pe-criteria-grid,
+            .pe-why-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .pe-investors-grid,
+            .pe-services-grid,
+            .pe-terms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pe-stages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pe-process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pe-exit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pe-sectors-mosaic {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .pe-why-metrics {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pe-criteria-row {
+                flex-direction: column;
+            }
+
+            .pe-criteria-row__key {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+    <nav id="main-nav">
+        <a class="logo" href="index.html">
+            <div class="logo-mark">RKS</div>
+            RKS Investments
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">About</a></li>
+            <li><a href="index.html">Investment Banking</a></li>
+            <li><a href="index.html">Compliance</a></li>
+            <li><a href="index.html">Clients</a></li>
+            <li><a href="index.html" class="nav-cta">Contact Us</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+    <div class="pe-hero">
+        <div class="pe-hero-bg"></div>
+        <div class="pe-hero-grid"></div>
+        <div class="pe-hero-corner"></div>
+        <div class="pe-hero-content">
+            <div class="pe-hero-left">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <a href="index.html">Investment Banking</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <span class="breadcrumb-current">Private Equity</span>
+                </div>
+                <h1>Private <em>Equity</em><br>&amp; Venture<br>Capital Advisory</h1>
+                <p>We connect growth-stage and mature businesses with the right institutional investors, family offices,
+                    and strategic capital partners — structuring mandates that maximise value for founders and
+                    shareholders.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="index.html">Start a Fundraise</a>
+                    <a class="btn-ghost" href="#pe-process">Our Process</a>
+                </div>
+            </div>
+            <div class="pe-hero-right">
+                <div class="pe-stat-card">
+                    <div class="pe-stat-card__num">25+</div>
+                    <div class="pe-stat-card__label">PE / VC Mandates Completed</div>
+                </div>
+                <div class="pe-stat-card">
+                    <div class="pe-stat-card__num">&#8377;600Cr+</div>
+                    <div class="pe-stat-card__label">Private Capital Raised</div>
+                </div>
+                <div class="pe-stat-card">
+                    <div class="pe-stat-card__num">100+</div>
+                    <div class="pe-stat-card__label">Active Investor Relationships</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+     WHAT IS PE
+══════════════════════════════════════ -->
+    <section class="pe-explainer">
+        <div class="pe-explainer-grid">
+            <div class="pe-explainer-left">
+                <div class="section-tag">Understanding Private Equity</div>
+                <h2 class="section-title">What Is <em>Private Equity</em>?</h2>
+                <p>Private Equity (PE) refers to equity capital invested directly into private companies — businesses
+                    not listed on any public stock exchange. PE investors provide growth capital, buyout financing, or
+                    turnaround funding in exchange for an ownership stake and, typically, board representation and
+                    governance influence.</p>
+                <p>Unlike public market investing, PE is a long-duration, hands-on asset class. Investors commit capital
+                    for 4–7 years, actively working with portfolio company management to drive operational improvement,
+                    strategic expansion, and ultimately a profitable exit — through an IPO, strategic sale, or secondary
+                    transaction.</p>
+
+                <div class="pe-pull-quote">
+                    <p>"The best PE partnerships are built on shared ambition — an investor who believes in your
+                        business as much as you do, and has the capital and network to prove it."</p>
+                </div>
+
+                <p>For businesses, attracting the right PE partner is transformative — not just for the capital, but for
+                    the strategic expertise, industry networks, and operational rigour they bring. RKS Investments helps
+                    companies identify, attract, and negotiate with the investors best aligned to their growth vision.
+                </p>
+            </div>
+            <div>
+                <h4
+                    style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:400; color:var(--text); margin-bottom:20px; letter-spacing:0.05em;">
+                    The PE Investment Lifecycle</h4>
+                <div class="pe-lifecycle">
+                    <div class="pe-lifecycle-stage">
+                        <div class="pe-lifecycle-stage__label"><span>Fundraise</span></div>
+                        <div class="pe-lifecycle-stage__body">
+                            <h5>Capital Raise &amp; Mandate</h5>
+                            <p>Company engages RKS to prepare materials and run structured investor outreach process.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pe-lifecycle-stage">
+                        <div class="pe-lifecycle-stage__label"><span>Screening</span></div>
+                        <div class="pe-lifecycle-stage__body">
+                            <h5>Investor Interest &amp; NDA</h5>
+                            <p>Qualified investors receive the teaser and CIM; NDAs executed before data room access.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pe-lifecycle-stage">
+                        <div class="pe-lifecycle-stage__label"><span>Due Diligence</span></div>
+                        <div class="pe-lifecycle-stage__body">
+                            <h5>Financial, Legal &amp; Commercial DD</h5>
+                            <p>Investor conducts full diligence; management presentations and Q&amp;A sessions held.</p>
+                        </div>
+                    </div>
+                    <div class="pe-lifecycle-stage">
+                        <div class="pe-lifecycle-stage__label"><span>Term Sheet</span></div>
+                        <div class="pe-lifecycle-stage__body">
+                            <h5>Valuation &amp; Term Negotiation</h5>
+                            <p>Pre-money valuation, deal structure, board rights, and anti-dilution terms negotiated.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pe-lifecycle-stage">
+                        <div class="pe-lifecycle-stage__label"><span>Closing</span></div>
+                        <div class="pe-lifecycle-stage__body">
+                            <h5>SHA / SSA Execution &amp; Funds In</h5>
+                            <p>Shareholders&rsquo; agreement executed, regulatory filings made, capital deployed.</p>
+                        </div>
+                    </div>
+                    <div class="pe-lifecycle-stage">
+                        <div class="pe-lifecycle-stage__label"><span>Value Build</span></div>
+                        <div class="pe-lifecycle-stage__body">
+                            <h5>Portfolio Monitoring &amp; Growth</h5>
+                            <p>Board engagement, KPI tracking, add-on acquisitions, and strategic initiatives executed.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pe-lifecycle-stage">
+                        <div class="pe-lifecycle-stage__label"><span>Exit</span></div>
+                        <div class="pe-lifecycle-stage__body">
+                            <h5>IPO, Strategic Sale or Secondary</h5>
+                            <p>Investor realises returns through an exit event; founders may continue with new
+                                investors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     INVESTOR TYPES
+══════════════════════════════════════ -->
+    <section class="pe-investors">
+        <div class="pe-investors-intro">
+            <div class="section-tag">Who Invests</div>
+            <h2 class="section-title">Types of <em>Private Capital</em> Investors</h2>
+            <p>Not all private capital is the same. Understanding the investor universe — their mandates, ticket sizes,
+                return expectations, and involvement styles — is essential to running a successful fundraise. RKS
+                Investments navigates this landscape on your behalf.</p>
+        </div>
+        <div class="pe-investors-grid">
+
+            <div class="pe-investor-card">
+                <div class="pe-investor-card__tag">PE Funds</div>
+                <h3>Private Equity Funds</h3>
+                <p>Institutional funds that manage pools of capital from LPs (pension funds, sovereign funds, HNIs) and
+                    invest for returns over a 4–7 year horizon. Active board involvement and governance improvement are
+                    hallmarks of PE funds.</p>
+                <ul>
+                    <li>Ticket size: &#8377;25 Cr – &#8377;500 Cr+</li>
+                    <li>Stage: Growth, buyout, turnaround</li>
+                    <li>Horizon: 4–7 years</li>
+                    <li>Involvement: High — board seat typical</li>
+                    <li>Return target: 20–30% IRR</li>
+                </ul>
+            </div>
+
+            <div class="pe-investor-card">
+                <div class="pe-investor-card__tag">Venture Capital</div>
+                <h3>Venture Capital Funds</h3>
+                <p>VC funds invest in early-to-growth stage startups with high-growth potential, accepting higher risk
+                    for potentially exponential returns. VC investors bring ecosystem access, mentorship, and follow-on
+                    capital capabilities.</p>
+                <ul>
+                    <li>Ticket size: &#8377;2 Cr – &#8377;100 Cr</li>
+                    <li>Stage: Seed, Series A/B/C</li>
+                    <li>Horizon: 5–10 years</li>
+                    <li>Involvement: Medium — mentorship &amp; advisory</li>
+                    <li>Return target: 3–10x on portfolio</li>
+                </ul>
+            </div>
+
+            <div class="pe-investor-card">
+                <div class="pe-investor-card__tag">Family Offices</div>
+                <h3>Family Offices &amp; HNIs</h3>
+                <p>Ultra-high-net-worth families and their dedicated investment offices who invest directly into private
+                    companies — often with longer time horizons, more flexible terms, and a preference for sectors
+                    aligned with their operating expertise.</p>
+                <ul>
+                    <li>Ticket size: &#8377;5 Cr – &#8377;150 Cr</li>
+                    <li>Stage: Growth, pre-IPO, buyout</li>
+                    <li>Horizon: Flexible — 3–10 years</li>
+                    <li>Involvement: Low-to-medium</li>
+                    <li>Return target: 15–25% IRR</li>
+                </ul>
+            </div>
+
+            <div class="pe-investor-card">
+                <div class="pe-investor-card__tag">Strategic Investors</div>
+                <h3>Strategic Corporate Investors</h3>
+                <p>Large corporates or conglomerates that invest for strategic benefits — market access, technology
+                    acquisition, or competitive positioning — in addition to financial returns. They often become
+                    eventual acquirers.</p>
+                <ul>
+                    <li>Ticket size: Flexible</li>
+                    <li>Stage: Growth, buyout, JV</li>
+                    <li>Horizon: Strategic, not fixed</li>
+                    <li>Involvement: High — often leads to M&amp;A</li>
+                    <li>Return target: Strategic + financial</li>
+                </ul>
+            </div>
+
+            <div class="pe-investor-card">
+                <div class="pe-investor-card__tag">AIFs</div>
+                <h3>Alternative Investment Funds</h3>
+                <p>SEBI-registered Category I &amp; II AIFs pool capital from accredited investors to deploy into
+                    unlisted companies, real assets, and structured credit. Growing rapidly as India's primary vehicle
+                    for domestic PE investing.</p>
+                <ul>
+                    <li>Ticket size: &#8377;10 Cr – &#8377;300 Cr</li>
+                    <li>Stage: Growth, infrastructure, distressed</li>
+                    <li>Horizon: 5–7 years (fund life)</li>
+                    <li>Involvement: Medium — board observer typical</li>
+                    <li>Return target: 18–28% IRR</li>
+                </ul>
+            </div>
+
+            <div class="pe-investor-card">
+                <div class="pe-investor-card__tag">Sovereign / DFI</div>
+                <h3>Sovereign Funds &amp; DFIs</h3>
+                <p>Government-backed sovereign wealth funds (GIC, ADIA, Temasek) and Development Finance Institutions
+                    (IFC, ADB, DEG) deploy large-scale patient capital into growth markets like India, often with ESG
+                    and impact mandates.</p>
+                <ul>
+                    <li>Ticket size: &#8377;200 Cr – &#8377;5,000 Cr+</li>
+                    <li>Stage: Late-stage growth, infrastructure</li>
+                    <li>Horizon: 7–12 years</li>
+                    <li>Involvement: Low — minority, passive</li>
+                    <li>Return target: 12–20% IRR</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     STAGES OF PE
+══════════════════════════════════════ -->
+    <section class="pe-stages">
+        <div class="section-tag">Investment Stage</div>
+        <h2 class="section-title">Stages of <em>Private Capital</em> Investment</h2>
+        <div class="pe-stages-grid">
+
+            <div class="pe-stage-card">
+                <div class="pe-stage-card__badge">A</div>
+                <h4>Angel / Pre-Seed</h4>
+                <div class="pe-stage-card__range">&#8377;25L – &#8377;3 Cr</div>
+                <p>Earliest stage — typically friends, family, and angel investors funding the initial product build and
+                    market validation. High risk, high reward, minimal governance.</p>
+            </div>
+
+            <div class="pe-stage-card">
+                <div class="pe-stage-card__badge">S</div>
+                <h4>Seed Stage</h4>
+                <div class="pe-stage-card__range">&#8377;1 Cr – &#8377;15 Cr</div>
+                <p>Post-concept, pre-revenue or early-revenue stage. Seed funds and micro-VCs fund team building,
+                    product development, and initial go-to-market execution.</p>
+            </div>
+
+            <div class="pe-stage-card">
+                <div class="pe-stage-card__badge">A</div>
+                <h4>Series A</h4>
+                <div class="pe-stage-card__range">&#8377;10 Cr – &#8377;100 Cr</div>
+                <p>First institutional round. Company has demonstrated product-market fit and early revenue. Capital
+                    deployed toward scaling the team, product, and customer acquisition.</p>
+            </div>
+
+            <div class="pe-stage-card">
+                <div class="pe-stage-card__badge">G</div>
+                <h4>Growth Equity</h4>
+                <div class="pe-stage-card__range">&#8377;50 Cr – &#8377;500 Cr</div>
+                <p>Established, profitable or near-profitable businesses raising capital to scale operations, expand
+                    geographically, or fund acquisitions without relinquishing control.</p>
+            </div>
+
+            <div class="pe-stage-card">
+                <div class="pe-stage-card__badge">P</div>
+                <h4>Pre-IPO Round</h4>
+                <div class="pe-stage-card__range">&#8377;50 Cr – &#8377;500 Cr</div>
+                <p>Capital raised 12–24 months before a planned IPO — from institutional investors seeking to enter at a
+                    discount to the anticipated listing price with full liquidity post-listing.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     FUNDRAISING PROCESS
+══════════════════════════════════════ -->
+    <section class="pe-process" id="pe-process">
+        <div class="pe-process-intro">
+            <div class="section-tag">How We Run Your Raise</div>
+            <h2 class="section-title">The PE Fundraising <em>Process</em></h2>
+            <p>A well-run PE fundraise is structured, competitive, and strictly confidential. Here is the step-by-step
+                process RKS Investments runs for every mandate.</p>
+        </div>
+
+        <div class="pe-process-grid">
+
+            <div class="pe-process-step">
+                <div class="pe-process-step__num">01</div>
+                <div class="pe-process-step__body">
+                    <h4>Mandate &amp; Strategy</h4>
+                    <p>We begin by understanding your business, growth objectives, capital requirement, and preferred
+                        investor profile. Together we define the mandate — amount, instrument (equity, CCPS, NCD),
+                        valuation expectations, and investor type criteria.</p>
+                    <div class="pe-process-step__tags">
+                        <span class="pe-step-tag">Capital need assessment</span>
+                        <span class="pe-step-tag">Instrument selection</span>
+                        <span class="pe-step-tag">Investor criteria</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pe-process-step">
+                <div class="pe-process-step__num">02</div>
+                <div class="pe-process-step__body">
+                    <h4>Materials Preparation</h4>
+                    <p>We develop the full suite of investor marketing materials — a compelling teaser, detailed
+                        Confidential Information Memorandum (CIM), financial model, and investor presentation — designed
+                        to communicate the investment thesis persuasively.</p>
+                    <div class="pe-process-step__tags">
+                        <span class="pe-step-tag">Teaser &amp; CIM</span>
+                        <span class="pe-step-tag">Financial model</span>
+                        <span class="pe-step-tag">Investor deck</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pe-process-step">
+                <div class="pe-process-step__num">03</div>
+                <div class="pe-process-step__body">
+                    <h4>Investor Outreach</h4>
+                    <p>We run a targeted, confidential outreach to a curated universe of investors — PE funds, VCs,
+                        family offices, AIFs, and strategic investors — ranked by fit, stage focus, sector expertise,
+                        and ticket size alignment.</p>
+                    <div class="pe-process-step__tags">
+                        <span class="pe-step-tag">Curated long-list</span>
+                        <span class="pe-step-tag">Confidential approach</span>
+                        <span class="pe-step-tag">NDA management</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pe-process-step">
+                <div class="pe-process-step__num">04</div>
+                <div class="pe-process-step__body">
+                    <h4>Management Presentations</h4>
+                    <p>Interested investors are invited to detailed management presentations where the founding team
+                        showcases the business, strategy, and financials. We prepare, coach, and accompany management
+                        through every investor meeting.</p>
+                    <div class="pe-process-step__tags">
+                        <span class="pe-step-tag">Presentation coaching</span>
+                        <span class="pe-step-tag">Q&amp;A preparation</span>
+                        <span class="pe-step-tag">Data room access</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pe-process-step">
+                <div class="pe-process-step__num">05</div>
+                <div class="pe-process-step__body">
+                    <h4>Term Sheet &amp; Negotiation</h4>
+                    <p>We manage the receipt, comparison, and negotiation of term sheets — advising on valuation,
+                        governance rights, anti-dilution, liquidation preference, and other economic and control terms
+                        that will govern the investor relationship.</p>
+                    <div class="pe-process-step__tags">
+                        <span class="pe-step-tag">Term sheet evaluation</span>
+                        <span class="pe-step-tag">Valuation advice</span>
+                        <span class="pe-step-tag">Rights negotiation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pe-process-step">
+                <div class="pe-process-step__num">06</div>
+                <div class="pe-process-step__body">
+                    <h4>Due Diligence &amp; Closing</h4>
+                    <p>We coordinate the due diligence process — managing the data room, fielding investor queries, and
+                        working with legal counsel on the SHA and SSA. We remain engaged through to capital closing and
+                        post-investment compliance filings.</p>
+                    <div class="pe-process-step__tags">
+                        <span class="pe-step-tag">Data room management</span>
+                        <span class="pe-step-tag">SHA / SSA support</span>
+                        <span class="pe-step-tag">ROC &amp; FEMA filings</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     OUR SERVICES
+══════════════════════════════════════ -->
+    <section class="pe-services">
+        <div class="section-tag">What We Do</div>
+        <h2 class="section-title">Our <em>PE Advisory</em> Services</h2>
+        <div class="pe-services-grid">
+
+            <div class="pe-service-card">
+                <div class="pe-service-card__icon">&#9670;</div>
+                <h3>Fundraise Strategy &amp; Positioning</h3>
+                <p>We define the optimal fundraising strategy — the right amount, instrument, valuation anchor, investor
+                    type, and deal structure — to maximise proceeds while protecting founder interests.</p>
+                <ul>
+                    <li>Capital need sizing &amp; use of funds</li>
+                    <li>Instrument selection — equity, CCPS, NCD</li>
+                    <li>Pre-money valuation strategy</li>
+                    <li>Investor profile matching</li>
+                </ul>
+            </div>
+
+            <div class="pe-service-card">
+                <div class="pe-service-card__icon">&#9632;</div>
+                <h3>CIM &amp; Investor Materials</h3>
+                <p>We craft institutional-quality investor documents — teaser, CIM, financial model, and board-ready
+                    presentation — that communicate the investment thesis with clarity, credibility, and conviction.</p>
+                <ul>
+                    <li>Executive teaser (2–4 pages)</li>
+                    <li>Confidential Information Memorandum</li>
+                    <li>Integrated 3-statement financial model</li>
+                    <li>Investor pitch deck preparation</li>
+                </ul>
+            </div>
+
+            <div class="pe-service-card">
+                <div class="pe-service-card__icon">&#9651;</div>
+                <h3>Investor Mapping &amp; Outreach</h3>
+                <p>We maintain active relationships with 100+ institutional investors across India and internationally —
+                    enabling targeted, relationship-driven outreach rather than cold canvassing.</p>
+                <ul>
+                    <li>Investor universe mapping by stage &amp; sector</li>
+                    <li>Warm introductions via existing relationships</li>
+                    <li>Confidential NDA-gated process management</li>
+                    <li>International investor outreach</li>
+                </ul>
+            </div>
+
+            <div class="pe-service-card">
+                <div class="pe-service-card__icon">&#9711;</div>
+                <h3>Valuation &amp; Deal Structuring</h3>
+                <p>Independent valuation benchmarking and deal structure advice — ensuring founders enter negotiations
+                    with full knowledge of their position and the full range of structuring options available.</p>
+                <ul>
+                    <li>Pre-money valuation benchmarking</li>
+                    <li>Comparable transaction analysis</li>
+                    <li>ESOPs, warrant, and option pool advice</li>
+                    <li>Anti-dilution and liquidation preference advice</li>
+                </ul>
+            </div>
+
+            <div class="pe-service-card">
+                <div class="pe-service-card__icon">&#9702;</div>
+                <h3>Term Sheet Negotiation</h3>
+                <p>We sit across the table with investors on your behalf — negotiating every economic and governance
+                    term with a thorough understanding of market standards and founder-protective best practices.</p>
+                <ul>
+                    <li>Valuation and dilution negotiation</li>
+                    <li>Board composition and veto rights</li>
+                    <li>Drag-along, tag-along, ROFO / ROFR</li>
+                    <li>Liquidation preferences and waterfalls</li>
+                </ul>
+            </div>
+
+            <div class="pe-service-card">
+                <div class="pe-service-card__icon">&#9679;</div>
+                <h3>Closing &amp; Post-Investment</h3>
+                <p>We coordinate the legal, regulatory, and administrative work required to close the round — and
+                    provide ongoing support on investor relations, reporting, and future fundraising planning.</p>
+                <ul>
+                    <li>SHA &amp; SSA coordination with counsel</li>
+                    <li>ROC, FEMA &amp; RBI filings</li>
+                    <li>Investor reporting frameworks</li>
+                    <li>Future round readiness planning</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     INVESTMENT CRITERIA
+══════════════════════════════════════ -->
+    <section class="pe-criteria">
+        <div class="section-tag">What Investors Look For</div>
+        <h2 class="section-title">PE Investment <em>Criteria</em></h2>
+        <div class="pe-criteria-grid">
+            <div class="pe-criteria-left">
+                <p>Understanding what institutional investors look for is the foundation of a successful fundraise.
+                    Before approaching any investor, RKS Investments conducts a thorough investment readiness assessment
+                    — identifying strengths to amplify and gaps to address.</p>
+                <p>PE investors evaluate businesses across multiple dimensions — financial performance, management
+                    quality, market opportunity, competitive positioning, and exit visibility. The stronger a company
+                    scores across these parameters, the more competitive its raise will be in terms of both valuation
+                    and investor quality.</p>
+                <p>We prepare our clients to present compellingly across all these dimensions — through financial model
+                    refinement, narrative development, and governance preparation — before the first investor meeting is
+                    held.</p>
+            </div>
+            <div class="pe-criteria-table">
+                <div class="pe-criteria-row">
+                    <div class="pe-criteria-row__key">Revenue Scale</div>
+                    <div class="pe-criteria-row__val">
+                        Typically &#8377;10 Cr+ for growth equity; &#8377;1 Cr+ for early-stage VC
+                        <span>Demonstrated traction preferred over projections alone</span>
+                    </div>
+                </div>
+                <div class="pe-criteria-row">
+                    <div class="pe-criteria-row__key">Growth Rate</div>
+                    <div class="pe-criteria-row__val">
+                        20–40%+ YoY revenue growth for PE; higher for VC
+                        <span>Consistent growth trajectory more valuable than single spike</span>
+                    </div>
+                </div>
+                <div class="pe-criteria-row">
+                    <div class="pe-criteria-row__key">Profitability</div>
+                    <div class="pe-criteria-row__val">
+                        EBITDA positive preferred for PE; path to profitability for VC
+                        <span>Unit economics and margin trajectory critical</span>
+                    </div>
+                </div>
+                <div class="pe-criteria-row">
+                    <div class="pe-criteria-row__key">Market Size</div>
+                    <div class="pe-criteria-row__val">
+                        TAM of &#8377;1,000 Cr+ minimum; larger for institutional PE
+                        <span>Demonstrated ability to capture meaningful market share</span>
+                    </div>
+                </div>
+                <div class="pe-criteria-row">
+                    <div class="pe-criteria-row__key">Management Team</div>
+                    <div class="pe-criteria-row__val">
+                        Experienced, coachable, and capital-allocation savvy leadership
+                        <span>Team quality often cited as #1 investment criterion by PE funds</span>
+                    </div>
+                </div>
+                <div class="pe-criteria-row">
+                    <div class="pe-criteria-row__key">Exit Visibility</div>
+                    <div class="pe-criteria-row__val">
+                        Realistic IPO, strategic sale, or secondary exit within 5–7 years
+                        <span>M&amp;A comparable transactions in sector strengthen this case</span>
+                    </div>
+                </div>
+                <div class="pe-criteria-row">
+                    <div class="pe-criteria-row__key">Governance</div>
+                    <div class="pe-criteria-row__val">
+                        Clean cap table, audited financials, and no legacy compliance issues
+                        <span>Institutional investors require board-ready governance standards</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     SECTOR FOCUS
+══════════════════════════════════════ -->
+    <section class="pe-sectors">
+        <div class="section-tag">Industry Coverage</div>
+        <h2 class="section-title">Sectors We <em>Actively</em> Cover</h2>
+        <div class="pe-sectors-mosaic">
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">Technology &amp; SaaS</div>
+            </div>
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">Consumer &amp; Retail</div>
+            </div>
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">Healthcare &amp; Pharma</div>
+            </div>
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">Financial Services</div>
+            </div>
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">Manufacturing</div>
+            </div>
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">Infrastructure</div>
+            </div>
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">Logistics &amp; Supply Chain</div>
+            </div>
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">Agri &amp; Food Tech</div>
+            </div>
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">EdTech &amp; Skilling</div>
+            </div>
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">Real Estate</div>
+            </div>
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">Renewable Energy</div>
+            </div>
+            <div class="pe-sector-tile">
+                <span class="pe-sector-tile__icon">&#9679;</span>
+                <div class="pe-sector-tile__name">Media &amp; Entertainment</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     EXIT STRATEGIES
+══════════════════════════════════════ -->
+    <section class="pe-exit">
+        <div class="section-tag">Investor Returns</div>
+        <h2 class="section-title">PE Exit <em>Strategies</em></h2>
+        <div class="pe-exit-grid">
+
+            <div class="pe-exit-card">
+                <div class="pe-exit-card__num">01</div>
+                <h4>Initial Public Offering</h4>
+                <p>Listing the company on BSE or NSE allows PE investors to exit through the public markets — typically
+                    the highest-value exit route due to public market liquidity premium and broad investor base.</p>
+                <div class="pe-exit-card__tags">
+                    <span class="pe-exit-tag">BSE / NSE listing</span>
+                    <span class="pe-exit-tag">OFS in IPO</span>
+                    <span class="pe-exit-tag">Lock-in post-listing</span>
+                </div>
+            </div>
+
+            <div class="pe-exit-card">
+                <div class="pe-exit-card__num">02</div>
+                <h4>Strategic Sale</h4>
+                <p>Selling the company or a majority stake to a strategic acquirer — a larger corporate, global player,
+                    or industry consolidator — who values the business for strategic fit beyond pure financial returns.
+                </p>
+                <div class="pe-exit-card__tags">
+                    <span class="pe-exit-tag">Full or partial exit</span>
+                    <span class="pe-exit-tag">Control premium</span>
+                    <span class="pe-exit-tag">M&amp;A process</span>
+                </div>
+            </div>
+
+            <div class="pe-exit-card">
+                <div class="pe-exit-card__num">03</div>
+                <h4>Secondary Transaction</h4>
+                <p>The PE investor sells its stake to another financial investor — a larger PE fund, a secondary fund,
+                    or a new strategic investor — without involving the operating company in the transaction.</p>
+                <div class="pe-exit-card__tags">
+                    <span class="pe-exit-tag">GP-led secondaries</span>
+                    <span class="pe-exit-tag">LP stake sale</span>
+                    <span class="pe-exit-tag">Continuation funds</span>
+                </div>
+            </div>
+
+            <div class="pe-exit-card">
+                <div class="pe-exit-card__num">04</div>
+                <h4>Promoter Buyback</h4>
+                <p>The founding promoters repurchase the PE investor's stake — typically after the company has generated
+                    sufficient cash flows or obtained debt financing to fund the buyout of the investor.</p>
+                <div class="pe-exit-card__tags">
+                    <span class="pe-exit-tag">Management buyout</span>
+                    <span class="pe-exit-tag">Put option exercise</span>
+                    <span class="pe-exit-tag">Debt-funded</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     KEY DEAL TERMS
+══════════════════════════════════════ -->
+    <section class="pe-terms">
+        <div class="section-tag">Founder Education</div>
+        <h2 class="section-title">Key PE Deal <em>Terms</em> Explained</h2>
+        <div class="pe-terms-grid">
+
+            <div class="pe-term-card">
+                <div class="pe-term-card__abbr">CCPS</div>
+                <h4>Compulsorily Convertible Preference Shares</h4>
+                <p>The most common PE investment instrument in India. CCPS gives investors preference in dividends and
+                    liquidation while converting to equity at a pre-agreed ratio — balancing downside protection with
+                    upside participation.</p>
+            </div>
+
+            <div class="pe-term-card">
+                <div class="pe-term-card__abbr">Anti-D</div>
+                <h4>Anti-Dilution Protection</h4>
+                <p>A provision protecting investors from dilution in a down-round. Broad-based weighted average
+                    anti-dilution is founder-friendly; full-ratchet anti-dilution is investor-friendly and should be
+                    resisted.</p>
+            </div>
+
+            <div class="pe-term-card">
+                <div class="pe-term-card__abbr">LiqPref</div>
+                <h4>Liquidation Preference</h4>
+                <p>Determines the order and amount investors receive upon a liquidation or sale event. 1x
+                    non-participating is standard; participating preferred and multiple liquidation preferences are red
+                    flags for founders.</p>
+            </div>
+
+            <div class="pe-term-card">
+                <div class="pe-term-card__abbr">ROFO</div>
+                <h4>Right of First Offer</h4>
+                <p>Requires a shareholder to offer their shares to existing investors before selling to a third party.
+                    The investor has the right to make the first bid — preventing unexpected third-party entry.</p>
+            </div>
+
+            <div class="pe-term-card">
+                <div class="pe-term-card__abbr">Drag</div>
+                <h4>Drag-Along Rights</h4>
+                <p>Allows a majority shareholder (often the PE investor) to force minority shareholders to participate
+                    in a sale on the same terms — ensuring a clean exit when a majority decides to sell.</p>
+            </div>
+
+            <div class="pe-term-card">
+                <div class="pe-term-card__abbr">Tag</div>
+                <h4>Tag-Along Rights</h4>
+                <p>Protects minority shareholders (often the promoters or early investors) by allowing them to sell
+                    their shares at the same price and terms when a majority shareholder triggers a sale.</p>
+            </div>
+
+            <div class="pe-term-card">
+                <div class="pe-term-card__abbr">IRR</div>
+                <h4>Internal Rate of Return</h4>
+                <p>The annualised rate of return a PE investor expects to earn on their investment — typically 20–30%
+                    for Indian PE. IRR is the primary performance metric against which fund managers are evaluated.</p>
+            </div>
+
+            <div class="pe-term-card">
+                <div class="pe-term-card__abbr">ESOP</div>
+                <h4>Employee Stock Option Pool</h4>
+                <p>A portion of equity reserved for employee compensation. PE investors typically require a 10–15% ESOP
+                    pool to be created (diluting founders) before investment — incentivising key talent retention.</p>
+            </div>
+
+            <div class="pe-term-card">
+                <div class="pe-term-card__abbr">WC</div>
+                <h4>Weighted Average Cost of Capital</h4>
+                <p>The blended cost of a company's capital (debt + equity), used as the discount rate in DCF valuations.
+                    A lower WACC implies a higher company value — making capital structure optimisation important
+                    pre-raise.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     WHY RKS
+══════════════════════════════════════ -->
+    <section class="pe-why">
+        <div class="section-tag">Our Edge</div>
+        <h2 class="section-title">Why <em>RKS Investments</em><br>for PE Fundraising</h2>
+        <div class="pe-why-grid">
+            <div class="pe-why-metrics">
+                <div class="pe-why-metric">
+                    <div class="pe-why-metric__num">25+</div>
+                    <div class="pe-why-metric__label">PE / VC Mandates<br>Completed</div>
+                </div>
+                <div class="pe-why-metric">
+                    <div class="pe-why-metric__num">&#8377;600Cr+</div>
+                    <div class="pe-why-metric__label">Private Capital<br>Raised</div>
+                </div>
+                <div class="pe-why-metric">
+                    <div class="pe-why-metric__num">100+</div>
+                    <div class="pe-why-metric__label">Active Investor<br>Relationships</div>
+                </div>
+                <div class="pe-why-metric">
+                    <div class="pe-why-metric__num">12+</div>
+                    <div class="pe-why-metric__label">Sectors with<br>Active Coverage</div>
+                </div>
+            </div>
+            <div class="pe-why-reasons">
+                <div class="pe-why-reason">
+                    <div class="pe-why-reason__num">01</div>
+                    <div>
+                        <h4>Investor Relationships, Not Cold Calls</h4>
+                        <p>Our introductions to investors are warm, relationship-driven, and curated — dramatically
+                            improving response rates and the quality of investor engagement versus generic canvassing.
+                        </p>
+                    </div>
+                </div>
+                <div class="pe-why-reason">
+                    <div class="pe-why-reason__num">02</div>
+                    <div>
+                        <h4>Founder-First Deal Terms</h4>
+                        <p>We understand which deal terms matter and which can be conceded. Our negotiation experience
+                            ensures founders don't unknowingly give away governance or economic rights that will haunt
+                            them at exit.</p>
+                    </div>
+                </div>
+                <div class="pe-why-reason">
+                    <div class="pe-why-reason__num">03</div>
+                    <div>
+                        <h4>Competitive Process — Higher Valuations</h4>
+                        <p>By running a structured, multi-investor process, we create genuine competition for your round
+                            — consistently resulting in better valuations and terms than bilateral, one-investor
+                            negotiations.</p>
+                    </div>
+                </div>
+                <div class="pe-why-reason">
+                    <div class="pe-why-reason__num">04</div>
+                    <div>
+                        <h4>Full Lifecycle Support</h4>
+                        <p>From first investor meeting through to closing, compliance filings, and post-investment
+                            reporting frameworks — we remain engaged and accountable throughout the entire fundraising
+                            lifecycle.</p>
+                    </div>
+                </div>
+                <div class="pe-why-reason">
+                    <div class="pe-why-reason__num">05</div>
+                    <div>
+                        <h4>Beyond Capital — Strategic Value</h4>
+                        <p>We help clients identify not just the highest bid, but the investor whose sector expertise,
+                            portfolio network, and operational capabilities will create the most value for the business
+                            long-term.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+    <section class="pe-cta">
+        <div class="section-tag section-tag--center">Ready to Raise?</div>
+        <h2>Find the <em>Right Investor</em><br>for Your Business</h2>
+        <p>Whether you're raising your first institutional round or a pre-IPO growth round, RKS Investments will run a
+            disciplined, competitive process that maximises your outcome.</p>
+        <div class="pe-cta__actions">
+            <a class="btn-primary" href="index.html">Start Your Fundraise</a>
+            <a class="btn-ghost" href="mergers-acquisitions.html">View M&amp;A Advisory</a>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo logo--static">
+                    <div class="logo-mark">RKS</div>
+                    RKS Investments
+                </div>
+                <p>Independent investment banking and corporate finance advisory, committed to helping businesses grow
+                    through strategic capital solutions.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="ipo.html">IPO Advisory</a></li>
+                    <li><a href="M&A.html">M&A Advisory</a></li>
+                    <li><a href="PE.html">Private Equity</a></li>
+                    <li><a href="Debt.html">Debt Syndication</a></li>
+                    <li><a href="Valuation.html">Valuations</a></li>
+                    <li><a href="ESOP.html">ESOP Advisory</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="index.html">About Us</a></li>
+                    <li><a href="index.html">Our Clients</a></li>
+                    <li><a href="index.html">Compliance</a></li>
+                    <li><a href="index.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a>info@rksinvestments.in</a></li>
+                    <li><a>+91 98765 43210</a></li>
+                    <li><a>Suite 501, Capital Tower<br>Connaught Place<br>New Delhi – 110001</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RKS Investments. All rights reserved.</p>
+            <p class="disc">RKS Investments is not registered with SEBI. Advisory services are provided in a purely
+                non-regulated capacity. Nothing on this website constitutes investment advice. Past transaction
+                experience does not guarantee future results.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+        });
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('open');
+        }
+        document.addEventListener('click', e => {
+            if (!e.target.closest('nav')) document.getElementById('nav-links').classList.remove('open');
+        });
+    </script>
+
+</body>
+
+</html>

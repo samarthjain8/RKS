@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mergers &amp; Acquisitions Advisory — RKS Investments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ══════════════════════════════════════
+       M&A PAGE — SPECIFIC STYLES
+    ══════════════════════════════════════ */
+
+        /* ── Hero ── */
+        .ma-hero {
+            min-height: 76vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 140px 60px 72px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ma-hero-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 50% 65% at 15% 40%, rgba(201, 168, 76, 0.06) 0%, transparent 65%),
+                radial-gradient(ellipse 40% 55% at 85% 70%, rgba(201, 168, 76, 0.045) 0%, transparent 60%),
+                linear-gradient(150deg, #0d0d0d 0%, #141414 55%, #0d0d0d 100%);
+        }
+
+        .ma-hero-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.03) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black, transparent);
+        }
+
+        /* Diagonal accent line */
+        .ma-hero-accent {
+            position: absolute;
+            top: 0;
+            right: 160px;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.15) 40%, rgba(201, 168, 76, 0.08) 70%, transparent);
+            pointer-events: none;
+        }
+
+        .ma-hero-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb-sep {
+            color: rgba(201, 168, 76, 0.25);
+        }
+
+        .breadcrumb-current {
+            color: var(--gold);
+        }
+
+        .ma-hero-left h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6.5vw, 5.8rem);
+            font-weight: 300;
+            line-height: 1.03;
+            color: var(--text);
+            margin-bottom: 28px;
+        }
+
+        .ma-hero-left h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .ma-hero-left>p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 520px;
+            margin-bottom: 40px;
+        }
+
+        /* Floating stat stack */
+        .ma-hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-self: flex-end;
+        }
+
+        .ma-stat-card {
+            padding: 26px 32px;
+            border: 1px solid var(--border);
+            background: rgba(20, 20, 20, 0.75);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .ma-stat-card__icon {
+            font-size: 1.4rem;
+            color: var(--gold);
+            opacity: 0.7;
+            flex-shrink: 0;
+        }
+
+        .ma-stat-card__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .ma-stat-card__label {
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        /* ══════════════════════════════════════
+       WHAT IS M&A
+    ══════════════════════════════════════ */
+        .ma-explainer {
+            padding: 100px 60px;
+        }
+
+        .ma-explainer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .ma-explainer-left p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .ma-explainer-left p:first-of-type {
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .ma-pull-quote {
+            margin: 36px 0;
+            padding: 28px 32px;
+            border-left: 2px solid var(--gold);
+            background: var(--dark2);
+        }
+
+        .ma-pull-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem !important;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text) !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+        }
+
+        .ma-explainer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .ma-benefit-card {
+            display: flex;
+            gap: 18px;
+            padding: 22px 26px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .ma-benefit-card:hover {
+            border-color: var(--gold);
+            background: var(--dark3);
+        }
+
+        .ma-benefit-card__icon {
+            font-size: 1.2rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-top: 3px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .ma-benefit-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .ma-benefit-card p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ══════════════════════════════════════
+       TYPES OF M&A
+    ══════════════════════════════════════ */
+        .ma-types {
+            padding: 0 60px 100px;
+        }
+
+        .ma-types-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 48px;
+        }
+
+        .ma-type-card {
+            padding: 40px 30px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .ma-type-card:hover {
+            background: var(--dark3);
+        }
+
+        .ma-type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+
+        .ma-type-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ma-type-card__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.07);
+            line-height: 1;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .ma-type-card__tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .ma-type-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .ma-type-card p {
+            font-size: 0.83rem;
+            color: var(--muted);
+            line-height: 1.72;
+        }
+
+        /* ══════════════════════════════════════
+       MANDATE TYPES (BUY / SELL / MERGER)
+    ══════════════════════════════════════ */
+        .ma-mandates {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .ma-mandates-tabs {
+            display: flex;
+            gap: 2px;
+            margin-top: 48px;
+            margin-bottom: 0;
+        }
+
+        .ma-tab-btn {
+            flex: 1;
+            padding: 16px 20px;
+            background: var(--dark3);
+            border: 1px solid var(--border);
+            border-bottom: none;
+            color: var(--muted);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .ma-tab-btn.active,
+        .ma-tab-btn:hover {
+            background: var(--dark);
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .ma-tab-panels {
+            border: 1px solid var(--border);
+        }
+
+        .ma-tab-panel {
+            display: none;
+            padding: 48px;
+        }
+
+        .ma-tab-panel.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+        }
+
+        .ma-panel-desc p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+
+        .ma-panel-desc p:first-of-type {
+            font-size: 1.06rem;
+            color: var(--text);
+        }
+
+        .ma-panel-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .ma-panel-list h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .ma-panel-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ma-panel-item:last-child {
+            border-bottom: none;
+        }
+
+        .ma-panel-item__dot {
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 7px;
+        }
+
+        .ma-panel-item__text {
+            font-size: 0.87rem;
+            color: var(--text);
+            line-height: 1.55;
+        }
+
+        .ma-panel-item__sub {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        /* ══════════════════════════════════════
+       PROCESS TIMELINE
+    ══════════════════════════════════════ */
+        .ma-process {
+            padding: 100px 60px;
+        }
+
+        .ma-process-intro p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 580px;
+            margin-top: 12px;
+        }
+
+        .ma-timeline {
+            margin-top: 64px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            position: relative;
+        }
+
+        /* Connecting line across phases */
+        .ma-timeline::before {
+            content: '';
+            position: absolute;
+            top: 52px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .ma-phase {
+            padding: 0 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ma-phase__header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ma-phase__num {
+            width: 52px;
+            height: 52px;
+            border: 1px solid var(--gold);
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 20px;
+            flex-shrink: 0;
+        }
+
+        .ma-phase__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .ma-phase__duration {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.7;
+        }
+
+        .ma-phase__steps {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 16px;
+        }
+
+        .ma-phase__step {
+            font-size: 0.8rem;
+            color: var(--muted);
+            padding-left: 14px;
+            position: relative;
+            line-height: 1.55;
+        }
+
+        .ma-phase__step::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.72rem;
+        }
+
+        /* ══════════════════════════════════════
+       SERVICES DETAIL GRID
+    ══════════════════════════════════════ */
+        .ma-services {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .ma-services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .ma-service-card {
+            padding: 44px 36px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            position: relative;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .ma-service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .ma-service-card:hover {
+            background: var(--dark3);
+            transform: translateY(-3px);
+        }
+
+        .ma-service-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .ma-service-card__icon {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 22px;
+            transition: border-color 0.3s;
+        }
+
+        .ma-service-card:hover .ma-service-card__icon {
+            border-color: var(--gold);
+        }
+
+        .ma-service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .ma-service-card p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 20px;
+        }
+
+        .ma-service-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .ma-service-card li {
+            font-size: 0.79rem;
+            color: var(--text);
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .ma-service-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.74rem;
+        }
+
+        /* ══════════════════════════════════════
+       DUE DILIGENCE SECTION
+    ══════════════════════════════════════ */
+        .ma-dd {
+            padding: 100px 60px;
+        }
+
+        .ma-dd-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 56px;
+            align-items: start;
+        }
+
+        .ma-dd-left p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .ma-dd-left p:first-of-type {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .ma-dd-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .ma-dd-category {
+            display: flex;
+            gap: 0;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .ma-dd-category:hover {
+            border-color: var(--gold);
+        }
+
+        .ma-dd-category__label {
+            width: 160px;
+            flex-shrink: 0;
+            padding: 18px 20px;
+            background: var(--dark2);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            border-right: 1px solid var(--border);
+        }
+
+        .ma-dd-category__items {
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .ma-dd-tag {
+            padding: 3px 10px;
+            border: 1px solid var(--border);
+            font-size: 0.72rem;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        /* ══════════════════════════════════════
+       VALUATION METHODS
+    ══════════════════════════════════════ */
+        .ma-valuation {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .ma-valuation-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .ma-val-card {
+            padding: 36px 28px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .ma-val-card:hover {
+            border-color: var(--gold);
+            background: var(--dark3);
+        }
+
+        .ma-val-card__abbr {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--gold);
+            opacity: 0.5;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .ma-val-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .ma-val-card p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .ma-val-card__when {
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.7;
+        }
+
+        /* ══════════════════════════════════════
+       WHY RKS
+    ══════════════════════════════════════ */
+        .ma-why {
+            padding: 100px 60px;
+        }
+
+        .ma-why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 56px;
+        }
+
+        .ma-why-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .ma-why-metric {
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+        }
+
+        .ma-why-metric__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .ma-why-metric__label {
+            font-size: 0.7rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .ma-why-reasons {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .ma-why-reason {
+            display: flex;
+            gap: 22px;
+            padding: 26px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+
+        .ma-why-reason:last-child {
+            border-bottom: none;
+        }
+
+        .ma-why-reason__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.2);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 32px;
+        }
+
+        .ma-why-reason h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .ma-why-reason p {
+            font-size: 0.83rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ══════════════════════════════════════
+       TRANSACTION TYPES TABLE
+    ══════════════════════════════════════ */
+        .ma-structures {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .ma-table-wrap {
+            margin-top: 56px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .ma-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .ma-table thead tr {
+            background: var(--dark3);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ma-table th {
+            padding: 16px 24px;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .ma-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .ma-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .ma-table tbody tr:hover {
+            background: var(--dark3);
+        }
+
+        .ma-table td {
+            padding: 18px 24px;
+            font-size: 0.83rem;
+            color: var(--muted);
+            vertical-align: top;
+            line-height: 1.55;
+        }
+
+        .ma-table td:first-child {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.87rem;
+            white-space: nowrap;
+        }
+
+        .ma-table td .tag {
+            display: inline-block;
+            padding: 2px 9px;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            font-size: 0.66rem;
+            letter-spacing: 0.1em;
+            color: rgba(201, 168, 76, 0.7);
+            text-transform: uppercase;
+            margin-right: 4px;
+            margin-top: 4px;
+        }
+
+        /* ══════════════════════════════════════
+       CTA BANNER
+    ══════════════════════════════════════ */
+        .ma-cta {
+            padding: 100px 60px;
+            background:
+                radial-gradient(ellipse 55% 80% at 50% 50%, rgba(201, 168, 76, 0.055) 0%, transparent 70%),
+                var(--dark);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .ma-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .ma-cta h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .ma-cta p {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+        }
+
+        .ma-cta__actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+        @media (max-width: 1100px) {
+
+            .ma-types-grid,
+            .ma-valuation-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ma-timeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ma-timeline::before {
+                display: none;
+            }
+
+            .ma-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .ma-hero {
+                padding: 100px 24px 56px;
+                min-height: auto;
+            }
+
+            .ma-hero-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .ma-hero-accent {
+                display: none;
+            }
+
+            .ma-hero-right {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+
+            .ma-stat-card {
+                flex: 1;
+                min-width: 130px;
+            }
+
+            .ma-explainer,
+            .ma-types,
+            .ma-mandates,
+            .ma-process,
+            .ma-services,
+            .ma-dd,
+            .ma-valuation,
+            .ma-why,
+            .ma-structures,
+            .ma-cta {
+                padding: 60px 24px;
+            }
+
+            .ma-explainer-grid,
+            .ma-dd-grid,
+            .ma-why-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .ma-types-grid,
+            .ma-services-grid,
+            .ma-valuation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ma-timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .ma-tab-panel.active {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .ma-dd-category {
+                flex-direction: column;
+            }
+
+            .ma-dd-category__label {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .ma-why-metrics {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .ma-mandates-tabs {
+                flex-wrap: wrap;
+            }
+
+            .ma-tab-btn {
+                flex: none;
+                width: calc(50% - 1px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+    <nav id="main-nav">
+        <a class="logo" href="index.html">
+            <div class="logo-mark"><img src="Logo.png" alt="RKS Investments" width="70" height="70"></div>
+            RKS Investments
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">About</a></li>
+            <li><a href="index.html" class="nav-active">Investment Banking</a></li>
+            <li><a href="index.html">Compliance</a></li>
+            <li><a href="index.html">Clients</a></li>
+            <li><a href="index.html" class="nav-cta">Contact Us</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+    <div class="ma-hero">
+        <div class="ma-hero-bg"></div>
+        <div class="ma-hero-grid"></div>
+        <div class="ma-hero-accent"></div>
+        <div class="ma-hero-content">
+            <div class="ma-hero-left">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <a href="index.html">Investment Banking</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <span class="breadcrumb-current">Mergers &amp; Acquisitions</span>
+                </div>
+                <h1>Mergers &amp;<br><em>Acquisitions</em><br>Advisory</h1>
+                <p>Strategic transaction advisory for buy-side, sell-side, and merger mandates — helping businesses
+                    create value through the right partnerships, at the right price, at the right time.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="index.html">Discuss a Mandate</a>
+                    <a class="btn-ghost" href="#ma-process">Our Process</a>
+                </div>
+            </div>
+            <div class="ma-hero-right">
+                <div class="ma-stat-card">
+                    <div>
+                        <div class="ma-stat-card__num">35+</div>
+                        <div class="ma-stat-card__label">M&amp;A Transactions</div>
+                    </div>
+                </div>
+                <div class="ma-stat-card">
+                    <div>
+                        <div class="ma-stat-card__num">&#8377;1,200Cr+</div>
+                        <div class="ma-stat-card__label">Deal Value Advised</div>
+                    </div>
+                </div>
+                <div class="ma-stat-card">
+                    <div>
+                        <div class="ma-stat-card__num">Cross-Border</div>
+                        <div class="ma-stat-card__label">India Inbound &amp; Outbound</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+     WHAT IS M&A
+══════════════════════════════════════ -->
+    <section class="ma-explainer">
+        <div class="ma-explainer-grid">
+            <div class="ma-explainer-left">
+                <div class="section-tag">Understanding M&amp;A</div>
+                <h2 class="section-title">What Are Mergers<br>&amp; <em>Acquisitions</em>?</h2>
+                <p>Mergers and Acquisitions (M&amp;A) refer to transactions where two companies combine their
+                    operations, assets, and ownership — either through an acquisition (one company buying another) or a
+                    merger (two companies joining to form a single entity).</p>
+                <p>M&amp;A is one of the most powerful strategic tools available to a business. When executed well, it
+                    accelerates growth, eliminates competition, unlocks new markets, acquires critical technology or
+                    talent, and creates significant shareholder value far beyond what organic growth alone could
+                    achieve.</p>
+
+                <div class="ma-pull-quote">
+                    <p>"The right acquisition at the right price can compress years of organic growth into a single
+                        transaction. The wrong one can undo decades of value creation."</p>
+                </div>
+
+                <p>Conversely, poorly structured or mispriced M&amp;A transactions are among the leading destroyers of
+                    corporate value. The difference lies in the quality of deal origination, due diligence, valuation,
+                    negotiation, and post-merger integration — all areas where RKS Investments brings deep, hands-on
+                    expertise.</p>
+            </div>
+            <div class="ma-explainer-right">
+                <div class="ma-benefit-card">
+                    <div class="ma-benefit-card__icon">&#9670;</div>
+                    <div>
+                        <h4>Accelerated Growth</h4>
+                        <p>Acquiring a competitor, supplier, or complementary business compresses years of organic
+                            growth into months — adding revenue, capacity, and capability simultaneously.</p>
+                    </div>
+                </div>
+                <div class="ma-benefit-card">
+                    <div class="ma-benefit-card__icon">&#9670;</div>
+                    <div>
+                        <h4>Market Entry &amp; Expansion</h4>
+                        <p>M&amp;A provides instant access to new geographies, customer bases, and distribution networks
+                            that would take years to build independently.</p>
+                    </div>
+                </div>
+                <div class="ma-benefit-card">
+                    <div class="ma-benefit-card__icon">&#9670;</div>
+                    <div>
+                        <h4>Technology &amp; IP Acquisition</h4>
+                        <p>Acquiring businesses for their intellectual property, proprietary technology, or R&amp;D
+                            pipeline is often faster and cheaper than building in-house.</p>
+                    </div>
+                </div>
+                <div class="ma-benefit-card">
+                    <div class="ma-benefit-card__icon">&#9670;</div>
+                    <div>
+                        <h4>Promoter Exit &amp; Liquidity</h4>
+                        <p>For founders seeking a partial or complete exit, a strategic acquisition offers the highest
+                            valuations and fastest liquidity compared to other exit routes.</p>
+                    </div>
+                </div>
+                <div class="ma-benefit-card">
+                    <div class="ma-benefit-card__icon">&#9670;</div>
+                    <div>
+                        <h4>Synergy &amp; Cost Efficiency</h4>
+                        <p>Merging operations eliminates duplication, achieves economies of scale, strengthens
+                            procurement power, and improves combined profitability.</p>
+                    </div>
+                </div>
+                <div class="ma-benefit-card">
+                    <div class="ma-benefit-card__icon">&#9670;</div>
+                    <div>
+                        <h4>Talent &amp; Management Acquisition</h4>
+                        <p>Acqui-hires — acquiring companies primarily for their leadership team or specialist workforce
+                            — are increasingly common in competitive sectors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     TYPES OF M&A
+══════════════════════════════════════ -->
+    <section class="ma-types">
+        <div class="section-tag">Deal Classifications</div>
+        <h2 class="section-title">Types of <em>M&amp;A</em> Transactions</h2>
+        <div class="ma-types-grid">
+
+            <div class="ma-type-card">
+                <div class="ma-type-card__num">01</div>
+                <div class="ma-type-card__tag">Horizontal</div>
+                <h3>Horizontal M&amp;A</h3>
+                <p>A merger or acquisition between two companies operating in the same industry and often at the same
+                    stage of production. The primary driver is market consolidation, competitive elimination, or
+                    achieving scale.</p>
+            </div>
+
+            <div class="ma-type-card">
+                <div class="ma-type-card__num">02</div>
+                <div class="ma-type-card__tag">Vertical</div>
+                <h3>Vertical M&amp;A</h3>
+                <p>Combining companies at different stages of the same supply chain — a manufacturer acquiring a
+                    supplier (backward integration) or a distributor (forward integration) — to control costs and
+                    margin.</p>
+            </div>
+
+            <div class="ma-type-card">
+                <div class="ma-type-card__num">03</div>
+                <div class="ma-type-card__tag">Conglomerate</div>
+                <h3>Conglomerate M&amp;A</h3>
+                <p>A transaction between companies in entirely unrelated businesses — typically driven by portfolio
+                    diversification, capital deployment, or group synergies. Common in Indian business groups.</p>
+            </div>
+
+            <div class="ma-type-card">
+                <div class="ma-type-card__num">04</div>
+                <div class="ma-type-card__tag">Cross-Border</div>
+                <h3>Cross-Border M&amp;A</h3>
+                <p>Transactions involving an Indian company acquiring a foreign business, or a foreign company acquiring
+                    an Indian target — subject to FEMA, SEBI, and sector-specific FDI regulations.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     MANDATE TYPES — TABBED
+══════════════════════════════════════ -->
+    <section class="ma-mandates">
+        <div class="section-tag">How We Engage</div>
+        <h2 class="section-title">Buy-Side, Sell-Side<br>&amp; <em>Merger</em> Mandates</h2>
+
+        <div class="ma-mandates-tabs">
+            <button class="ma-tab-btn active" onclick="showTab('buy')">Buy-Side Advisory</button>
+            <button class="ma-tab-btn" onclick="showTab('sell')">Sell-Side Advisory</button>
+            <button class="ma-tab-btn" onclick="showTab('merger')">Mergers &amp; Demergers</button>
+            <button class="ma-tab-btn" onclick="showTab('open')">Open Offer &amp; Takeover</button>
+        </div>
+
+        <div class="ma-tab-panels">
+
+            <div class="ma-tab-panel active" id="tab-buy">
+                <div class="ma-panel-desc">
+                    <p>On buy-side mandates, RKS Investments acts as the strategic advisor to the acquirer — helping
+                        identify the right targets, conduct rigorous due diligence, structure the transaction, and
+                        negotiate terms that create lasting value.</p>
+                    <p>We work closely with acquirers to define their strategic criteria, run a structured target
+                        screening process, and manage the entire transaction lifecycle from first contact through to
+                        closing and integration planning.</p>
+                    <p>Our objective is not merely to close a deal — but to ensure the acquisition delivers the
+                        anticipated returns and synergies over the medium and long term.</p>
+                </div>
+                <div class="ma-panel-list">
+                    <h4>Our Buy-Side Services</h4>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Acquisition strategy &amp; target criteria definition
+                            <span class="ma-panel-item__sub">Sector mapping, size criteria, synergy hypothesis,
+                                exclusion criteria</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Target identification &amp; long-listing
+                            <span class="ma-panel-item__sub">Proprietary research, database screening, network-sourced
+                                opportunities</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Approach &amp; initial engagement
+                            <span class="ma-panel-item__sub">Discreet outreach, NDA management, preliminary information
+                                exchange</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Indicative offer &amp; term sheet structuring
+                            <span class="ma-panel-item__sub">Valuation anchoring, deal structure (asset vs share),
+                                payment terms</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Due diligence coordination
+                            <span class="ma-panel-item__sub">Legal, financial, tax, operational, and commercial DD
+                                oversight</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Final negotiation &amp; closing support
+                            <span class="ma-panel-item__sub">SPA / SHA negotiation, condition precedents, regulatory
+                                approvals</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ma-tab-panel" id="tab-sell">
+                <div class="ma-panel-desc">
+                    <p>On sell-side mandates, we represent the seller — whether a promoter seeking full exit, a PE fund
+                        monetising its investment, or a strategic shareholder divesting a non-core business — with the
+                        goal of maximising value and ensuring deal certainty.</p>
+                    <p>We run a structured, competitive sale process that generates multiple bidders, creates price
+                        tension, and positions the business compellingly to the right universe of buyers — financial
+                        investors, strategic acquirers, and international players.</p>
+                    <p>Our sell-side advisory ensures that the business is prepared, positioned, and packaged to achieve
+                        maximum valuation in the shortest possible timeline.</p>
+                </div>
+                <div class="ma-panel-list">
+                    <h4>Our Sell-Side Services</h4>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Pre-sale readiness &amp; value enhancement
+                            <span class="ma-panel-item__sub">Financial normalisation, governance cleanup, narrative
+                                preparation</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Confidential Information Memorandum (CIM)
+                            <span class="ma-panel-item__sub">Comprehensive business teaser and detailed CIM
+                                preparation</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Buyer universe identification &amp; outreach
+                            <span class="ma-panel-item__sub">Strategic buyers, financial sponsors, family offices,
+                                global acquirers</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Bid management &amp; process governance
+                            <span class="ma-panel-item__sub">LOI evaluation, data room management, management
+                                presentations</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Negotiation &amp; deal structuring
+                            <span class="ma-panel-item__sub">Price, representations, warranties, earnout, escrow
+                                structuring</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Regulatory clearances &amp; closing
+                            <span class="ma-panel-item__sub">CCI, SEBI (for listed entities), FEMA compliance
+                                coordination</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ma-tab-panel" id="tab-merger">
+                <div class="ma-panel-desc">
+                    <p>Mergers and demergers under the Companies Act are structured through NCLT-approved schemes of
+                        arrangement — complex, multi-stakeholder processes requiring precise legal, financial, and
+                        regulatory coordination.</p>
+                    <p>We advise on the strategic rationale, scheme structuring, swap ratios, and shareholder
+                        communication — working alongside legal counsel through the NCLT petition, creditor meetings,
+                        and exchange approvals process.</p>
+                    <p>Demergers — carving out a business division into a separate listed or unlisted entity — require
+                        equal rigour and often serve goals such as unlocking hidden value, attracting strategic
+                        investors, or simplifying group structures.</p>
+                </div>
+                <div class="ma-panel-list">
+                    <h4>Merger &amp; Demerger Services</h4>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Merger/demerger rationale &amp; structure design
+                            <span class="ma-panel-item__sub">Amalgamation, absorption, demerger into subsidiary or
+                                listed entity</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Share swap ratio determination
+                            <span class="ma-panel-item__sub">Independent valuation &amp; fairness opinion for
+                                scheme</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            NCLT scheme preparation support
+                            <span class="ma-panel-item__sub">Coordination with legal counsel, CA certifications, board
+                                approvals</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Shareholder &amp; creditor communication
+                            <span class="ma-panel-item__sub">Explanatory statement, meeting management, proxy advisory
+                                coordination</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Exchange &amp; SEBI approvals
+                            <span class="ma-panel-item__sub">BSE/NSE objection letters, SEBI no-objection
+                                coordination</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ma-tab-panel" id="tab-open">
+                <div class="ma-panel-desc">
+                    <p>An Open Offer is triggered when an acquirer crosses the 25% shareholding threshold (or makes a
+                        creeping acquisition beyond permitted limits) in a listed company under SEBI's Takeover Code
+                        (SAST Regulations, 2011).</p>
+                    <p>Open offers are complex, time-critical, and highly regulated — requiring a registered merchant
+                        banker as manager to the open offer. RKS Investments coordinates and supports the full open
+                        offer process in conjunction with the BRLM.</p>
+                    <p>We also advise on voluntary open offers, competing offers, and delisting triggers that arise
+                        post-acquisition — ensuring compliance and optimal outcome for the acquirer client.</p>
+                </div>
+                <div class="ma-panel-list">
+                    <h4>Open Offer &amp; Takeover Services</h4>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Takeover trigger analysis &amp; structuring
+                            <span class="ma-panel-item__sub">SAST threshold calculation, creeping acquisition
+                                monitoring</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Public announcement &amp; DPS preparation
+                            <span class="ma-panel-item__sub">Detailed Public Statement coordination with manager to
+                                offer</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Open offer price determination
+                            <span class="ma-panel-item__sub">SEBI formula compliance — volume weighted average, highest
+                                negotiated price</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Escrow &amp; consideration management
+                            <span class="ma-panel-item__sub">Bank escrow setup, fund certification, SEBI filing
+                                support</span>
+                        </div>
+                    </div>
+                    <div class="ma-panel-item">
+                        <div class="ma-panel-item__dot"></div>
+                        <div class="ma-panel-item__text">
+                            Post-offer compliance
+                            <span class="ma-panel-item__sub">Shareholding restructuring, delisting consideration if
+                                warranted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     PROCESS TIMELINE
+══════════════════════════════════════ -->
+    <section class="ma-process" id="ma-process">
+        <div class="ma-process-intro">
+            <div class="section-tag">Execution Framework</div>
+            <h2 class="section-title">The M&amp;A <em>Process</em></h2>
+            <p>A well-run M&amp;A process is disciplined, confidential, and outcome-oriented. Here is how RKS
+                Investments structures every transaction mandate.</p>
+        </div>
+
+        <div class="ma-timeline">
+
+            <div class="ma-phase">
+                <div class="ma-phase__header">
+                    <div class="ma-phase__num">01</div>
+                    <div class="ma-phase__title">Strategy &amp; Mandate Scoping</div>
+                    <div class="ma-phase__duration">2 – 4 Weeks</div>
+                </div>
+                <div class="ma-phase__steps">
+                    <div class="ma-phase__step">Define deal rationale and strategic objectives</div>
+                    <div class="ma-phase__step">Agree mandate scope — buy-side, sell-side, or merger</div>
+                    <div class="ma-phase__step">Establish key criteria: size, sector, geography, structure</div>
+                    <div class="ma-phase__step">Sign engagement letter and NDA protocols</div>
+                    <div class="ma-phase__step">Assemble transaction team</div>
+                </div>
+            </div>
+
+            <div class="ma-phase">
+                <div class="ma-phase__header">
+                    <div class="ma-phase__num">02</div>
+                    <div class="ma-phase__title">Target / Buyer Identification</div>
+                    <div class="ma-phase__duration">3 – 6 Weeks</div>
+                </div>
+                <div class="ma-phase__steps">
+                    <div class="ma-phase__step">Proprietary research and sector mapping</div>
+                    <div class="ma-phase__step">Long-list generation and screening</div>
+                    <div class="ma-phase__step">Short-list based on strategic fit and accessibility</div>
+                    <div class="ma-phase__step">Confidential outreach and teaser distribution</div>
+                    <div class="ma-phase__step">Initial interest assessment and NDA execution</div>
+                </div>
+            </div>
+
+            <div class="ma-phase">
+                <div class="ma-phase__header">
+                    <div class="ma-phase__num">03</div>
+                    <div class="ma-phase__title">Due Diligence &amp; Valuation</div>
+                    <div class="ma-phase__duration">4 – 10 Weeks</div>
+                </div>
+                <div class="ma-phase__steps">
+                    <div class="ma-phase__step">Data room preparation and management</div>
+                    <div class="ma-phase__step">Legal, financial, tax, and commercial DD</div>
+                    <div class="ma-phase__step">Management presentations and Q&amp;A sessions</div>
+                    <div class="ma-phase__step">Independent valuation analysis</div>
+                    <div class="ma-phase__step">DD findings summary and risk flagging</div>
+                </div>
+            </div>
+
+            <div class="ma-phase">
+                <div class="ma-phase__header">
+                    <div class="ma-phase__num">04</div>
+                    <div class="ma-phase__title">Negotiation &amp; Closing</div>
+                    <div class="ma-phase__duration">3 – 8 Weeks</div>
+                </div>
+                <div class="ma-phase__steps">
+                    <div class="ma-phase__step">LOI / term sheet negotiation and sign-off</div>
+                    <div class="ma-phase__step">SPA / SHA drafting and red-line negotiation</div>
+                    <div class="ma-phase__step">Regulatory approvals — CCI, SEBI, FEMA</div>
+                    <div class="ma-phase__step">Condition precedent fulfillment</div>
+                    <div class="ma-phase__step">Transaction closing and consideration transfer</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     OUR SERVICES IN DETAIL
+══════════════════════════════════════ -->
+    <section class="ma-services">
+        <div class="section-tag">What We Deliver</div>
+        <h2 class="section-title">Our M&amp;A <em>Services</em> in Detail</h2>
+        <div class="ma-services-grid">
+
+            <div class="ma-service-card">
+                <div class="ma-service-card__icon">&#9670;</div>
+                <h3>Deal Origination</h3>
+                <p>We proactively source acquisition targets and divestiture opportunities through our proprietary
+                    network, sector research, and relationship-based outreach — before they reach the open market.</p>
+                <ul>
+                    <li>Proprietary off-market deal sourcing</li>
+                    <li>Sector-specific target mapping</li>
+                    <li>Relationship-driven introductions</li>
+                    <li>Continuous opportunity monitoring</li>
+                </ul>
+            </div>
+
+            <div class="ma-service-card">
+                <div class="ma-service-card__icon">&#9632;</div>
+                <h3>Valuation &amp; Fairness Opinion</h3>
+                <p>Independent, defensible valuations using multiple methodologies — giving buyers confidence they are
+                    not overpaying, and sellers assurance they are maximising value.</p>
+                <ul>
+                    <li>DCF and earnings-based valuation</li>
+                    <li>Comparable transaction analysis</li>
+                    <li>EV/EBITDA and revenue multiples</li>
+                    <li>Fairness opinion letters</li>
+                </ul>
+            </div>
+
+            <div class="ma-service-card">
+                <div class="ma-service-card__icon">&#9651;</div>
+                <h3>Transaction Structuring</h3>
+                <p>Designing the optimal deal structure — share purchase, asset purchase, slump sale, or merger — to
+                    achieve the client's tax, legal, and operational objectives efficiently.</p>
+                <ul>
+                    <li>Share vs. asset deal analysis</li>
+                    <li>Earnout and deferred consideration</li>
+                    <li>Escrow and indemnity structuring</li>
+                    <li>Cross-border structure optimisation</li>
+                </ul>
+            </div>
+
+            <div class="ma-service-card">
+                <div class="ma-service-card__icon">&#9711;</div>
+                <h3>Due Diligence Coordination</h3>
+                <p>Coordinating financial, legal, tax, and commercial due diligence — managing the data room, tracking
+                    findings, and summarising red flags for informed decision-making.</p>
+                <ul>
+                    <li>Financial DD coordination</li>
+                    <li>Legal and title due diligence</li>
+                    <li>Commercial and market DD</li>
+                    <li>DD findings report</li>
+                </ul>
+            </div>
+
+            <div class="ma-service-card">
+                <div class="ma-service-card__icon">&#9702;</div>
+                <h3>Negotiation &amp; Documentation</h3>
+                <p>Leading or supporting price and term negotiations, and coordinating with legal counsel on transaction
+                    documents to protect client interests at every stage.</p>
+                <ul>
+                    <li>LOI and term sheet negotiation</li>
+                    <li>SPA / SHA review and red-lining</li>
+                    <li>Representation and warranty advice</li>
+                    <li>Closing condition management</li>
+                </ul>
+            </div>
+
+            <div class="ma-service-card">
+                <div class="ma-service-card__icon">&#9679;</div>
+                <h3>Regulatory &amp; Post-Deal Support</h3>
+                <p>Navigating CCI, SEBI, FEMA, and NCLT approvals, and providing post-closing integration support to
+                    ensure the transaction delivers its intended strategic value.</p>
+                <ul>
+                    <li>CCI filing and clearance support</li>
+                    <li>FEMA / RBI compliance advisory</li>
+                    <li>SEBI SAST and insider trading compliance</li>
+                    <li>Post-merger integration advisory</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     DUE DILIGENCE
+══════════════════════════════════════ -->
+    <section class="ma-dd">
+        <div class="section-tag">Risk Management</div>
+        <h2 class="section-title">Due Diligence<br><em>Framework</em></h2>
+        <div class="ma-dd-grid">
+            <div class="ma-dd-left">
+                <p>Due diligence is the backbone of any successful M&amp;A transaction. It is the systematic process of
+                    verifying every material claim made about a business before committing capital — uncovering hidden
+                    risks, confirming value drivers, and providing the factual basis for negotiations.</p>
+                <p>RKS Investments coordinates a comprehensive due diligence exercise across all critical dimensions of
+                    the target business. We work with the client's legal, tax, and operational advisors — managing the
+                    data room, tracking open items, and producing a consolidated findings report that forms the basis
+                    for price adjustment, warranty carve-outs, and condition precedents.</p>
+                <p>Our approach is proportionate — calibrated to deal size, sector risk, and transaction timeline. We
+                    focus on the material issues that move valuation and deal terms, not box-ticking exercises.</p>
+            </div>
+            <div class="ma-dd-categories">
+                <div class="ma-dd-category">
+                    <div class="ma-dd-category__label">Financial</div>
+                    <div class="ma-dd-category__items">
+                        <span class="ma-dd-tag">Revenue quality</span>
+                        <span class="ma-dd-tag">EBITDA normalisation</span>
+                        <span class="ma-dd-tag">Working capital</span>
+                        <span class="ma-dd-tag">Net debt position</span>
+                        <span class="ma-dd-tag">Cash flow analysis</span>
+                        <span class="ma-dd-tag">Contingent liabilities</span>
+                    </div>
+                </div>
+                <div class="ma-dd-category">
+                    <div class="ma-dd-category__label">Legal</div>
+                    <div class="ma-dd-category__items">
+                        <span class="ma-dd-tag">Title to assets</span>
+                        <span class="ma-dd-tag">Litigation review</span>
+                        <span class="ma-dd-tag">Contract analysis</span>
+                        <span class="ma-dd-tag">IP ownership</span>
+                        <span class="ma-dd-tag">Regulatory licences</span>
+                        <span class="ma-dd-tag">Promoter encumbrances</span>
+                    </div>
+                </div>
+                <div class="ma-dd-category">
+                    <div class="ma-dd-category__label">Tax</div>
+                    <div class="ma-dd-category__items">
+                        <span class="ma-dd-tag">Direct tax compliance</span>
+                        <span class="ma-dd-tag">GST / indirect tax</span>
+                        <span class="ma-dd-tag">Transfer pricing</span>
+                        <span class="ma-dd-tag">Tax structuring</span>
+                        <span class="ma-dd-tag">Deferred tax assets</span>
+                    </div>
+                </div>
+                <div class="ma-dd-category">
+                    <div class="ma-dd-category__label">Commercial</div>
+                    <div class="ma-dd-category__items">
+                        <span class="ma-dd-tag">Market size &amp; growth</span>
+                        <span class="ma-dd-tag">Customer concentration</span>
+                        <span class="ma-dd-tag">Competitive position</span>
+                        <span class="ma-dd-tag">Revenue sustainability</span>
+                        <span class="ma-dd-tag">Key person risk</span>
+                    </div>
+                </div>
+                <div class="ma-dd-category">
+                    <div class="ma-dd-category__label">Operational</div>
+                    <div class="ma-dd-category__items">
+                        <span class="ma-dd-tag">Technology stack</span>
+                        <span class="ma-dd-tag">Supply chain</span>
+                        <span class="ma-dd-tag">HR &amp; headcount</span>
+                        <span class="ma-dd-tag">Systems &amp; ERP</span>
+                        <span class="ma-dd-tag">Facility &amp; capex</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     VALUATION METHODS
+══════════════════════════════════════ -->
+    <section class="ma-valuation">
+        <div class="section-tag">Pricing a Business</div>
+        <h2 class="section-title">Valuation <em>Methodologies</em> We Use</h2>
+        <div class="ma-valuation-grid">
+
+            <div class="ma-val-card">
+                <div class="ma-val-card__abbr">DCF</div>
+                <h4>Discounted Cash Flow</h4>
+                <p>Values the business on the present value of projected future free cash flows, discounted at the
+                    weighted average cost of capital (WACC). Best for businesses with predictable, long-term cash flows.
+                </p>
+                <div class="ma-val-card__when">Ideal for: Stable businesses, infrastructure, annuity models</div>
+            </div>
+
+            <div class="ma-val-card">
+                <div class="ma-val-card__abbr">CCA</div>
+                <h4>Comparable Company Analysis</h4>
+                <p>Benchmarks the target against publicly listed peers using trading multiples such as EV/EBITDA,
+                    EV/Revenue, and P/E — grounding valuation in live market data.</p>
+                <div class="ma-val-card__when">Ideal for: Most transaction types as a sanity check</div>
+            </div>
+
+            <div class="ma-val-card">
+                <div class="ma-val-card__abbr">CTA</div>
+                <h4>Comparable Transaction Analysis</h4>
+                <p>References valuation multiples paid in recent M&amp;A deals involving similar companies — capturing
+                    the control premium typically paid in acquisitions over public market trading values.</p>
+                <div class="ma-val-card__when">Ideal for: Acquisition pricing, fairness opinions</div>
+            </div>
+
+            <div class="ma-val-card">
+                <div class="ma-val-card__abbr">NAV</div>
+                <h4>Net Asset Value</h4>
+                <p>Values the business based on the fair value of its underlying assets minus liabilities. Particularly
+                    relevant for asset-heavy businesses, holding companies, and real estate firms.</p>
+                <div class="ma-val-card__when">Ideal for: Asset-heavy companies, holding entities</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     TRANSACTION STRUCTURES TABLE
+══════════════════════════════════════ -->
+    <section class="ma-structures">
+        <div class="section-tag">Structure Selection</div>
+        <h2 class="section-title">Common Transaction <em>Structures</em></h2>
+        <div class="ma-table-wrap">
+            <table class="ma-table">
+                <thead>
+                    <tr>
+                        <th>Structure</th>
+                        <th>Description</th>
+                        <th>Key Advantage</th>
+                        <th>Key Consideration</th>
+                        <th>Typical Use Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Share Purchase</td>
+                        <td>Buyer acquires shares of the target company, taking ownership of all assets and liabilities
+                        </td>
+                        <td>Clean transfer of business as a going concern; continuity of contracts</td>
+                        <td>Buyer assumes all historical liabilities including contingent ones</td>
+                        <td><span class="tag">PE exits</span><span class="tag">Promoter exit</span><span
+                                class="tag">Full acquisition</span></td>
+                    </tr>
+                    <tr>
+                        <td>Asset Purchase</td>
+                        <td>Buyer acquires specific assets and assumes only selected liabilities</td>
+                        <td>Buyer can cherry-pick assets; avoids inherited liabilities</td>
+                        <td>Contracts and licences may need novation; GST implications</td>
+                        <td><span class="tag">Distressed assets</span><span class="tag">Division sale</span></td>
+                    </tr>
+                    <tr>
+                        <td>Slump Sale</td>
+                        <td>Transfer of an entire business undertaking as a going concern for a lump sum, without
+                            assigning values to individual assets</td>
+                        <td>Treated as capital gains (not asset-by-asset); operationally efficient</td>
+                        <td>Specific tax treatment; must meet Companies Act &amp; IT Act conditions</td>
+                        <td><span class="tag">Business unit sale</span><span class="tag">Demerger</span></td>
+                    </tr>
+                    <tr>
+                        <td>NCLT Merger / Scheme</td>
+                        <td>Amalgamation or demerger via NCLT-approved scheme of arrangement</td>
+                        <td>Tax-neutral if structured correctly; enables complex group reorganisation</td>
+                        <td>Long timeline (6–18 months); requires NCLT, SEBI, exchange approvals</td>
+                        <td><span class="tag">Group restructuring</span><span class="tag">Listed company merger</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Joint Venture</td>
+                        <td>Formation of a new entity with shared ownership between two or more parties</td>
+                        <td>Risk sharing; access to partner's market, technology, or capital</td>
+                        <td>Governance complexity; exit mechanism must be carefully defined upfront</td>
+                        <td><span class="tag">New market entry</span><span class="tag">Technology partnership</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     WHY RKS
+══════════════════════════════════════ -->
+    <section class="ma-why">
+        <div class="section-tag">Our Differentiators</div>
+        <h2 class="section-title">Why <em>RKS Investments</em><br>for M&amp;A</h2>
+        <div class="ma-why-grid">
+            <div class="ma-why-metrics">
+                <div class="ma-why-metric">
+                    <div class="ma-why-metric__num">35+</div>
+                    <div class="ma-why-metric__label">M&amp;A Transactions<br>Completed</div>
+                </div>
+                <div class="ma-why-metric">
+                    <div class="ma-why-metric__num">&#8377;1,200Cr+</div>
+                    <div class="ma-why-metric__label">Aggregate Deal<br>Value Advised</div>
+                </div>
+                <div class="ma-why-metric">
+                    <div class="ma-why-metric__num">12+</div>
+                    <div class="ma-why-metric__label">Sectors with<br>M&amp;A Transactions</div>
+                </div>
+                <div class="ma-why-metric">
+                    <div class="ma-why-metric__num">India &amp; Global</div>
+                    <div class="ma-why-metric__label">Cross-Border<br>M&amp;A Experience</div>
+                </div>
+            </div>
+            <div class="ma-why-reasons">
+                <div class="ma-why-reason">
+                    <div class="ma-why-reason__num">01</div>
+                    <div>
+                        <h4>Founder-Centric Mindset</h4>
+                        <p>We understand that M&amp;A is deeply personal for founders. Our advisory combines financial
+                            rigour with genuine empathy for the human dimensions of selling or transforming a business.
+                        </p>
+                    </div>
+                </div>
+                <div class="ma-why-reason">
+                    <div class="ma-why-reason__num">02</div>
+                    <div>
+                        <h4>Proprietary Buyer &amp; Seller Network</h4>
+                        <p>Years of transaction experience have built us a deep network of strategic acquirers, PE
+                            funds, family offices, and HNIs across India and internationally — ensuring we match the
+                            right parties.</p>
+                    </div>
+                </div>
+                <div class="ma-why-reason">
+                    <div class="ma-why-reason__num">03</div>
+                    <div>
+                        <h4>Independent Advice — No Conflicts</h4>
+                        <p>Unlike banks that represent both buyers and sellers, RKS Investments is strictly one-sided in
+                            any transaction — meaning our advice is always aligned with your objectives alone.</p>
+                    </div>
+                </div>
+                <div class="ma-why-reason">
+                    <div class="ma-why-reason__num">04</div>
+                    <div>
+                        <h4>End-to-End Accountability</h4>
+                        <p>From origination through to post-closing integration support, we remain your single point of
+                            accountability — not a team that hands off to juniors at execution stage.</p>
+                    </div>
+                </div>
+                <div class="ma-why-reason">
+                    <div class="ma-why-reason__num">05</div>
+                    <div>
+                        <h4>Multi-Disciplinary Transaction Capability</h4>
+                        <p>We combine M&amp;A advisory with in-house valuation, regulatory, and ESOP expertise —
+                            bringing a seamless, multi-disciplinary transaction team rather than fragmented point
+                            advisors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+    <section class="ma-cta">
+        <div class="section-tag section-tag--center">Start the Conversation</div>
+        <h2>Ready to Explore an<br><em>Acquisition or Exit</em>?</h2>
+        <p>Whether you're considering a strategic acquisition, exploring a full or partial exit, or planning a complex
+            merger — our team is ready to engage in a strictly confidential discussion.</p>
+        <div class="ma-cta__actions">
+            <a class="btn-primary" href="index.html">Arrange a Confidential Meeting</a>
+            <a class="btn-ghost" href="ipo-advisory.html">View IPO Advisory</a>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo logo--static">
+                    <div class="logo-mark"><img src="logo.png" alt="RKS Investments" style="width: 70px; height: 70px;">
+                    </div>
+                    RKS Investments
+                </div>
+                <p>Independent investment banking and corporate finance advisory, committed to helping businesses grow
+                    through
+                    strategic capital solutions.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="ipo.html">IPO Advisory</a></li>
+                    <li><a href="M&A.html">M&A Advisory</a></li>
+                    <li><a href="PE.html">Private Equity</a></li>
+                    <li><a href="Debt.html">Debt Syndication</a></li>
+                    <li><a href="Valuation.html">Valuations</a></li>
+                    <li><a href="ESOP.html">ESOP Advisory</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul>
+                    <li><a onclick="showPage('about')">About Us</a></li>
+                    <li><a onclick="showPage('clients')">Our Clients</a></li>
+                    <li><a onclick="showPage('compliance')">Compliance</a></li>
+                    <li><a onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a>info@rksinvestments.in</a></li>
+                    <li><a>+91 98765 43210</a></li>
+                    <li><a>Suite 501, Capital Tower<br>Connaught Place<br>New Delhi – 110001</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RKS Investments. All rights reserved.</p>
+            <p class="disc">RKS Investments is not registered with SEBI. Advisory services are provided in a purely
+                non-regulated capacity. Nothing on this website constitutes investment advice. Past transaction
+                experience does
+                not guarantee future results.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
