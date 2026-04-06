@@ -1178,25 +1178,40 @@
 
 <body>
 
-    <!--  
+    <!-- ══════════════════════════════════════
      NAV
-  -->
+══════════════════════════════════════ -->
     <nav id="main-nav">
         <a class="logo" href="index.html">
-            <div class="logo-mark">RKS</div>
+            <div class="logo-mark"><img src="Logo.png" alt="RKS" height="70" width="70"></div>
             RKS Investments
         </a>
+
         <ul class="nav-links" id="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html">About</a></li>
-            <li><a href="index.html">Investment Banking</a></li>
-            <li><a href="index.html">Compliance</a></li>
-            <li><a href="index.html">Clients</a></li>
-            <li><a href="index.html" class="nav-cta">Contact Us</a></li>
+            <li><a href="about.html">About</a></li>
+
+            <li class="nav-has-dropdown">
+                <a href="#" class="nav-dropdown-trigger">Investment Banking &#8964;</a>
+
+                <div class="nav-dropdown">
+                    <a href="ipo.html">→ IPO Advisory</a><br>
+                    <a href="M&A.html">→ Mergers & Acquisitions</a><br>
+                    <a href="PE.html">→ Private Equity</a><br>
+                    <a href="Debt.html">→ Debt Syndication</a><br>
+                    <a href="Valuation.html">→ Valuations</a><br>
+                    <a href="ESOP.html">→ ESOP Advisory</a><br>
+                    <a href="right.html">→ Rights Issue</a><br>
+                    <a href="buy.html">→ Buyback & Delisting</a><br>
+                </div>
+            </li>
+
+            <li><a href="compliance.html">Compliance</a></li>
+            <li><a href="client.html">Clients</a></li>
+            <li><a href="form.html" class="nav-cta">Contact</a></li>
         </ul>
-        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-        </div>
+
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
 
     <!--  
@@ -1631,7 +1646,7 @@
             </div>
 
             <div class="ds-service-card">
-                <div class="ds-service-card__icon">&#9702;</div>
+                <div class="ds-service-card__icon">&#9672;</div>
                 <h3>NCD / Bond Issuance</h3>
                 <p>For companies seeking capital market-based debt, we manage the end-to-end NCD issuance process —
                     credit rating engagement, investor roadshow, term sheet, debenture trustee, and BSE/NSE listing if
@@ -2041,11 +2056,13 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div class="logo logo--static">
-                    <div class="logo-mark">RKS</div>
+                    <div class="logo-mark"><img src="logo.png" alt="RKS Investments" style="width: 70px; height: 70px;">
+                    </div>
                     RKS Investments
                 </div>
                 <p>Independent investment banking and corporate finance advisory, committed to helping businesses grow
-                    through strategic capital solutions.</p>
+                    through
+                    strategic capital solutions.</p>
             </div>
             <div class="footer-col">
                 <h5>Services</h5>
@@ -2056,15 +2073,17 @@
                     <li><a href="Debt.html">Debt Syndication</a></li>
                     <li><a href="Valuation.html">Valuations</a></li>
                     <li><a href="ESOP.html">ESOP Advisory</a></li>
+                    <li><a href="right.html">Rights Issue Advisory</a></li>
+                    <li><a href="buy.html">Buyback & Delisting</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h5>Company</h5>
                 <ul>
-                    <li><a href="index.html">About Us</a></li>
-                    <li><a href="index.html">Our Clients</a></li>
-                    <li><a href="index.html">Compliance</a></li>
-                    <li><a href="index.html">Contact</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <!-- <li><a href="client.html">Our Clients</a></li> -->
+                    <li><a href="compliance.html">Compliance</a></li>
+                    <li><a href="form.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -2080,19 +2099,56 @@
             <p>&copy; 2026 RKS Investments. All rights reserved.</p>
             <p class="disc">RKS Investments is not registered with SEBI. Advisory services are provided in a purely
                 non-regulated capacity. Nothing on this website constitutes investment advice. Past transaction
-                experience does not guarantee future results.</p>
+                experience does
+                not guarantee future results.</p>
         </div>
     </footer>
 
+
     <script>
+        /* Scroll shrink */
         window.addEventListener('scroll', () => {
             document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
         });
+
+        /* Hamburger */
         function toggleMenu() {
             document.getElementById('nav-links').classList.toggle('open');
         }
+
+        /* Close menu when clicking outside */
         document.addEventListener('click', e => {
-            if (!e.target.closest('nav')) document.getElementById('nav-links').classList.remove('open');
+            if (!e.target.closest('nav')) {
+                document.getElementById('nav-links').classList.remove('open');
+                closeAllDropdowns();
+            }
+        });
+
+        /* Dropdown — click to open/close */
+        document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+            trigger.addEventListener('click', function (e) {
+                e.preventDefault();
+                const li = this.closest('.nav-has-dropdown');
+                const isOpen = li.classList.contains('dropdown-open');
+                closeAllDropdowns();
+                if (!isOpen) {
+                    li.classList.add('dropdown-open');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        function closeAllDropdowns() {
+            document.querySelectorAll('.nav-has-dropdown').forEach(li => {
+                li.classList.remove('dropdown-open');
+                const trigger = li.querySelector('.nav-dropdown-trigger');
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        /* Close dropdown on Escape */
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeAllDropdowns();
         });
     </script>
 

@@ -1,0 +1,2370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rights Issue Advisory — RKS Investments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ══════════════════════════════════════
+       RIGHTS ISSUE PAGE — SPECIFIC STYLES
+    ══════════════════════════════════════ */
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .breadcrumb a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--gold);
+    }
+
+    .breadcrumb-sep {
+      color: rgba(201, 168, 76, 0.25);
+    }
+
+    .breadcrumb-current {
+      color: var(--gold);
+    }
+
+    /* ── Hero ── */
+    .ri-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 140px 60px 72px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ri-hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 52% 68% at 92% 25%, rgba(201, 168, 76, 0.065) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 52% at 5% 72%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 38% at 48% 100%, rgba(201, 168, 76, 0.025) 0%, transparent 55%),
+        linear-gradient(158deg, #0d0d0d 0%, #141414 52%, #0d0d0d 100%);
+    }
+
+    .ri-hero-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(201, 168, 76, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 168, 76, 0.028) 1px, transparent 1px);
+      background-size: 66px 66px;
+      mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, black, transparent);
+    }
+
+    /* Concentric square accent — "rights" concept */
+    .ri-hero-rings {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      pointer-events: none;
+    }
+
+    .ri-hero-rings span {
+      display: block;
+      position: absolute;
+      border: 1px solid rgba(201, 168, 76, 0.08);
+      border-radius: 0;
+    }
+
+    .ri-hero-content {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 80px;
+      align-items: flex-end;
+      width: 100%;
+    }
+
+    .ri-hero-left h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6.5vw, 5.8rem);
+      font-weight: 300;
+      line-height: 1.03;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .ri-hero-left h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .ri-hero-left>p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 530px;
+      margin-bottom: 40px;
+    }
+
+    .ri-hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      align-self: flex-end;
+    }
+
+    .ri-stat-card {
+      padding: 26px 32px;
+      border: 1px solid var(--border);
+      background: rgba(20, 20, 20, 0.82);
+      backdrop-filter: blur(12px);
+      transition: border-color 0.3s;
+    }
+
+    .ri-stat-card:hover {
+      border-color: rgba(201, 168, 76, 0.45);
+    }
+
+    .ri-stat-card__num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .ri-stat-card__label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* ══════════════════════════════════════
+       WHAT IS A RIGHTS ISSUE
+    ══════════════════════════════════════ */
+    .ri-explainer {
+      padding: 100px 60px;
+    }
+
+    .ri-explainer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .ri-explainer-left p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .ri-explainer-left p:first-of-type {
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .ri-pull-quote {
+      margin: 32px 0;
+      padding: 28px 32px;
+      border-left: 2px solid var(--gold);
+      background: var(--dark2);
+    }
+
+    .ri-pull-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem !important;
+      font-style: italic;
+      color: var(--text) !important;
+      line-height: 1.6 !important;
+      margin: 0 !important;
+    }
+
+    /* How it works — simple visual */
+    .ri-how {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    .ri-how-step {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.25s;
+    }
+
+    .ri-how-step:last-child {
+      border-bottom: none;
+    }
+
+    .ri-how-step:hover {
+      background: var(--dark3);
+    }
+
+    .ri-how-step__num {
+      width: 60px;
+      flex-shrink: 0;
+      background: var(--dark2);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--gold);
+      padding: 20px 0;
+    }
+
+    .ri-how-step__body {
+      padding: 18px 22px;
+      flex: 1;
+    }
+
+    .ri-how-step__body h5 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .ri-how-step__body p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.58;
+    }
+
+    /* ══════════════════════════════════════
+       RIGHTS ISSUE vs ALTERNATIVES
+    ══════════════════════════════════════ */
+    .ri-compare {
+      padding: 100px 60px;
+      background: var(--dark2);
+    }
+
+    .ri-compare-table-wrap {
+      margin-top: 56px;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .ri-compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 750px;
+    }
+
+    .ri-compare-table thead tr {
+      background: var(--dark3);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ri-compare-table th {
+      padding: 16px 22px;
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: left;
+      white-space: nowrap;
+      border-right: 1px solid var(--border);
+    }
+
+    .ri-compare-table th:last-child {
+      border-right: none;
+    }
+
+    .ri-compare-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .ri-compare-table tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .ri-compare-table tbody tr:hover {
+      background: var(--dark3);
+    }
+
+    .ri-compare-table td {
+      padding: 15px 22px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      vertical-align: top;
+      line-height: 1.55;
+      border-right: 1px solid var(--border);
+    }
+
+    .ri-compare-table td:last-child {
+      border-right: none;
+    }
+
+    .ri-compare-table td:first-child {
+      color: var(--text);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .ri-good {
+      color: #7fc97f;
+      font-size: 0.78rem;
+    }
+
+    .ri-caution {
+      color: #e8c97a;
+      font-size: 0.78rem;
+    }
+
+    .ri-bad {
+      color: #e07070;
+      font-size: 0.78rem;
+    }
+
+    /* ══════════════════════════════════════
+       TYPES OF RIGHTS ISSUE
+    ══════════════════════════════════════ */
+    .ri-types {
+      padding: 100px 60px;
+    }
+
+    .ri-types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .ri-type-card {
+      padding: 44px 36px;
+      border: 1px solid var(--border);
+      background: var(--dark2);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .ri-type-card:hover {
+      background: var(--dark3);
+    }
+
+    .ri-type-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.35s;
+    }
+
+    .ri-type-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .ri-type-card__tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .ri-type-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .ri-type-card p {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .ri-type-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .ri-type-card li {
+      font-size: 0.78rem;
+      color: var(--text);
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .ri-type-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.72rem;
+    }
+
+    /* ══════════════════════════════════════
+       ELIGIBILITY CRITERIA
+    ══════════════════════════════════════ */
+    .ri-eligibility {
+      padding: 100px 60px;
+      background: var(--dark2);
+    }
+
+    .ri-eligibility-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    .ri-eligibility-left p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+
+    .ri-eligibility-left p:first-of-type {
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .ri-elig-table {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    .ri-elig-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .ri-elig-row:last-child {
+      border-bottom: none;
+    }
+
+    .ri-elig-row:hover {
+      background: var(--dark3);
+    }
+
+    .ri-elig-row__key {
+      padding: 16px 18px;
+      background: var(--dark);
+      border-right: 1px solid var(--border);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+    }
+
+    .ri-elig-row__val {
+      padding: 14px 18px;
+      font-size: 0.82rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .ri-elig-row__val span {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* ══════════════════════════════════════
+       PROCESS TIMELINE
+    ══════════════════════════════════════ */
+    .ri-process {
+      padding: 100px 60px;
+    }
+
+    .ri-process-intro p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 580px;
+      margin-top: 12px;
+    }
+
+    .ri-process-track {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 64px;
+      position: relative;
+    }
+
+    .ri-process-track::before {
+      content: '';
+      position: absolute;
+      left: 26px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .ri-process-step {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 32px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .ri-process-step:last-child {
+      border-bottom: none;
+    }
+
+    .ri-process-step__num {
+      width: 52px;
+      height: 52px;
+      border: 1px solid var(--gold);
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ri-process-step__body {
+      padding-top: 8px;
+    }
+
+    .ri-process-step__body h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .ri-process-step__body p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 680px;
+    }
+
+    .ri-process-step__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .ri-process-tag {
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .ri-process-step__duration {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-top: 8px;
+    }
+
+    /* ══════════════════════════════════════
+       PRICING & ENTITLEMENT
+    ══════════════════════════════════════ */
+    .ri-pricing {
+      padding: 100px 60px;
+      background: var(--dark2);
+    }
+
+    .ri-pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    .ri-pricing-left p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+
+    .ri-pricing-left p:first-of-type {
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    /* Example calculation box */
+    .ri-calc-box {
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .ri-calc-box__header {
+      padding: 16px 24px;
+      background: var(--dark3);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .ri-calc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.84rem;
+      transition: background 0.2s;
+    }
+
+    .ri-calc-row:last-child {
+      border-bottom: none;
+    }
+
+    .ri-calc-row:hover {
+      background: var(--dark3);
+    }
+
+    .ri-calc-row__label {
+      color: var(--muted);
+    }
+
+    .ri-calc-row__value {
+      color: var(--text);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .ri-calc-row__value.gold {
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+    }
+
+    .ri-calc-divider {
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.2;
+      margin: 0 24px;
+    }
+
+    .ri-calc-note {
+      padding: 12px 24px;
+      font-size: 0.74rem;
+      color: var(--muted);
+      background: rgba(201, 168, 76, 0.03);
+      line-height: 1.6;
+    }
+
+    /* Rights entitlement visual */
+    .ri-entitlement-visual {
+      margin-top: 32px;
+    }
+
+    .ri-entitlement-visual h5 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .ri-entitlement-bar {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 12px;
+    }
+
+    .ri-bar-seg {
+      flex: 1;
+      height: 32px;
+      border: 1px solid var(--border);
+      background: var(--dark3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .ri-bar-seg.existing {
+      background: rgba(201, 168, 76, 0.12);
+      border-color: rgba(201, 168, 76, 0.3);
+      color: var(--gold);
+    }
+
+    .ri-bar-seg.new {
+      background: rgba(201, 168, 76, 0.25);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .ri-bar-seg.renounced {
+      background: rgba(136, 136, 128, 0.08);
+    }
+
+    /* ══════════════════════════════════════
+       OUR SERVICES
+    ══════════════════════════════════════ */
+    .ri-services {
+      padding: 100px 60px;
+    }
+
+    .ri-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .ri-service-card {
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      background: var(--dark2);
+      position: relative;
+      transition: all 0.3s;
+      overflow: hidden;
+    }
+
+    .ri-service-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .ri-service-card:hover {
+      background: var(--dark3);
+      transform: translateY(-3px);
+    }
+
+    .ri-service-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .ri-service-card__icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 22px;
+      transition: border-color 0.3s;
+    }
+
+    .ri-service-card:hover .ri-service-card__icon {
+      border-color: var(--gold);
+    }
+
+    .ri-service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .ri-service-card p {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .ri-service-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .ri-service-card li {
+      font-size: 0.79rem;
+      color: var(--text);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .ri-service-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.74rem;
+    }
+
+    /* ══════════════════════════════════════
+       REGULATORY REQUIREMENTS
+    ══════════════════════════════════════ */
+    .ri-regulatory {
+      padding: 100px 60px;
+      background: var(--dark2);
+    }
+
+    .ri-regulatory-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    .ri-regulatory-left p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+
+    .ri-regulatory-left p:first-of-type {
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .ri-reg-table {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    .ri-reg-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .ri-reg-row:last-child {
+      border-bottom: none;
+    }
+
+    .ri-reg-row:hover {
+      background: var(--dark3);
+    }
+
+    .ri-reg-row__law {
+      padding: 16px 18px;
+      background: var(--dark);
+      border-right: 1px solid var(--border);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+    }
+
+    .ri-reg-row__req {
+      padding: 14px 18px;
+      font-size: 0.81rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .ri-reg-row__req span {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* ══════════════════════════════════════
+       KEY CONSIDERATIONS FOR SHAREHOLDERS
+    ══════════════════════════════════════ */
+    .ri-shareholders {
+      padding: 100px 60px;
+    }
+
+    .ri-sh-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .ri-sh-card {
+      padding: 36px 28px;
+      border: 1px solid var(--border);
+      background: var(--dark2);
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .ri-sh-card:hover {
+      border-color: rgba(201, 168, 76, 0.4);
+      background: var(--dark3);
+    }
+
+    .ri-sh-card__option {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .ri-sh-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .ri-sh-card p {
+      font-size: 0.81rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .ri-sh-card__outcome {
+      padding: 10px 14px;
+      background: rgba(201, 168, 76, 0.04);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      font-size: 0.73rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .ri-sh-card__outcome strong {
+      color: var(--gold);
+      font-weight: 500;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ══════════════════════════════════════
+       RIGHTS ISSUE QUICK FACTS
+    ══════════════════════════════════════ */
+    .ri-facts {
+      padding: 100px 60px;
+      background: var(--dark2);
+    }
+
+    .ri-facts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .ri-fact-card {
+      padding: 40px 32px;
+      border: 1px solid var(--border);
+      background: var(--dark);
+      transition: border-color 0.3s;
+    }
+
+    .ri-fact-card:hover {
+      border-color: rgba(201, 168, 76, 0.4);
+    }
+
+    .ri-fact-card__label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .ri-fact-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .ri-fact-card p {
+      font-size: 0.81rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════
+       WHY RKS
+    ══════════════════════════════════════ */
+    .ri-why {
+      padding: 100px 60px;
+    }
+
+    .ri-why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 56px;
+    }
+
+    .ri-why-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .ri-why-metric {
+      padding: 40px 32px;
+      border: 1px solid var(--border);
+      background: var(--dark2);
+    }
+
+    .ri-why-metric__num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .ri-why-metric__label {
+      font-size: 0.7rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    .ri-why-reasons {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .ri-why-reason {
+      display: flex;
+      gap: 22px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .ri-why-reason:last-child {
+      border-bottom: none;
+    }
+
+    .ri-why-reason__num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: rgba(201, 168, 76, 0.2);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 32px;
+    }
+
+    .ri-why-reason h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .ri-why-reason p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ══════════════════════════════════════
+       CTA
+    ══════════════════════════════════════ */
+    .ri-cta {
+      padding: 100px 60px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse 55% 75% at 50% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 70%),
+        var(--dark);
+      border-top: 1px solid var(--border);
+    }
+
+    .ri-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .ri-cta h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .ri-cta p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+
+    .ri-cta__actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 1100px) {
+      .ri-types-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .ri-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .ri-sh-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .ri-facts-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .ri-hero {
+        padding: 100px 24px 56px;
+        min-height: auto;
+      }
+
+      .ri-hero-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .ri-hero-right {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2px;
+      }
+
+      .ri-stat-card {
+        flex: 1;
+        min-width: 140px;
+      }
+
+      .ri-hero-rings {
+        display: none;
+      }
+
+      .ri-explainer,
+      .ri-compare,
+      .ri-types,
+      .ri-eligibility,
+      .ri-process,
+      .ri-pricing,
+      .ri-services,
+      .ri-regulatory,
+      .ri-shareholders,
+      .ri-facts,
+      .ri-why,
+      .ri-cta {
+        padding: 60px 24px;
+      }
+
+      .ri-explainer-grid,
+      .ri-eligibility-grid,
+      .ri-pricing-grid,
+      .ri-regulatory-grid,
+      .ri-why-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .ri-types-grid,
+      .ri-services-grid,
+      .ri-facts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ri-sh-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ri-process-step {
+        grid-template-columns: 44px 1fr;
+        gap: 16px;
+      }
+
+      .ri-process-track::before {
+        display: none;
+      }
+
+      .ri-elig-row,
+      .ri-reg-row {
+        grid-template-columns: 1fr;
+      }
+
+      .ri-elig-row__key,
+      .ri-reg-row__law {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .ri-why-metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+  <nav id="main-nav">
+    <a class="logo" href="index.html">
+      <div class="logo-mark"><img src="Logo.png" alt="RKS" height="70" width="70"></div>
+      RKS Investments
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-trigger">Investment Banking &#8964;</a>
+
+        <div class="nav-dropdown">
+          <a href="ipo.html">→ IPO Advisory</a><br>
+          <a href="M&A.html">→ Mergers & Acquisitions</a><br>
+          <a href="PE.html">→ Private Equity</a><br>
+          <a href="Debt.html">→ Debt Syndication</a><br>
+          <a href="Valuation.html">→ Valuations</a><br>
+          <a href="ESOP.html">→ ESOP Advisory</a><br>
+          <a href="right.html">→ Rights Issue</a><br>
+          <a href="buy.html">→ Buyback & Delisting</a><br>
+        </div>
+      </li>
+
+      <li><a href="compliance.html">Compliance</a></li>
+      <li><a href="client.html">Clients</a></li>
+      <li><a href="form.html" class="nav-cta">Contact</a></li>
+    </ul>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+  <div class="ri-hero">
+    <div class="ri-hero-bg"></div>
+    <div class="ri-hero-grid"></div>
+    <div class="ri-hero-rings">
+      <span style="width:180px;height:180px;top:-90px;right:-90px;"></span>
+      <span style="width:120px;height:120px;top:-60px;right:-60px;"></span>
+      <span style="width:60px;height:60px;top:-30px;right:-30px;"></span>
+    </div>
+    <div class="ri-hero-content">
+      <div class="ri-hero-left">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="index.html">Investment Banking</a>
+          <span class="breadcrumb-sep">/</span>
+          <span class="breadcrumb-current">Rights Issue</span>
+        </div>
+        <h1>Rights Issue<br><em>Advisory</em></h1>
+        <p>End-to-end advisory for rights issue transactions — helping listed companies raise capital from existing
+          shareholders through a structured, regulatory-compliant process that is fast, cost-effective, and preserves
+          shareholder trust.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="index.html">Discuss a Rights Issue</a>
+          <a class="btn-ghost" href="#ri-process">Our Process</a>
+        </div>
+      </div>
+      <div class="ri-hero-right">
+        <div class="ri-stat-card">
+          <div class="ri-stat-card__num">30+</div>
+          <div class="ri-stat-card__label">Rights Issues Managed</div>
+        </div>
+        <div class="ri-stat-card">
+          <div class="ri-stat-card__num">&#8377;900Cr+</div>
+          <div class="ri-stat-card__label">Capital Raised via Rights</div>
+        </div>
+        <div class="ri-stat-card">
+          <div class="ri-stat-card__num">BSE &amp; NSE</div>
+          <div class="ri-stat-card__label">Both Exchange Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+     WHAT IS A RIGHTS ISSUE
+══════════════════════════════════════ -->
+  <section class="ri-explainer">
+    <div class="ri-explainer-grid">
+      <div class="ri-explainer-left">
+        <div class="section-tag">Understanding Rights Issues</div>
+        <h2 class="section-title">What Is a <em>Rights Issue</em>?</h2>
+        <p>A rights issue is a mechanism by which a listed company raises additional capital by offering new shares to
+          its existing shareholders — in proportion to their current holdings — at a price that is typically at a
+          discount to the prevailing market price. Shareholders have the right, but not the obligation, to subscribe to
+          these new shares.</p>
+        <p>The term "rights" refers precisely to this preferential entitlement — existing shareholders are given the
+          first right to participate in any new equity issuance before shares are offered to outside investors. This
+          protects them from dilution if they choose to exercise, and gives them optionality if they choose to renounce.
+        </p>
+
+        <div class="ri-pull-quote">
+          <p>"A rights issue is the most shareholder-democratic way for a listed company to raise capital — offering
+            existing investors the choice to maintain their stake or monetise their rights."</p>
+        </div>
+
+        <p>Compared to other equity raising mechanisms available to listed companies — QIPs, preferential allotments, or
+          FPOs — rights issues are unique in that they offer shares exclusively to current shareholders first, making
+          them the most equitable capital raising tool and one that regulators and institutional investors view most
+          favourably from a governance standpoint.</p>
+      </div>
+
+      <div>
+        <h4
+          style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:20px;">
+          How a Rights Issue Works</h4>
+        <div class="ri-how">
+          <div class="ri-how-step">
+            <div class="ri-how-step__num">1</div>
+            <div class="ri-how-step__body">
+              <h5>Board &amp; Shareholder Approval</h5>
+              <p>Board approves the rights issue and convenes an EGM or passes a resolution by postal ballot for
+                shareholder approval under Companies Act and SEBI ICDR regulations.</p>
+            </div>
+          </div>
+          <div class="ri-how-step">
+            <div class="ri-how-step__num">2</div>
+            <div class="ri-how-step__body">
+              <h5>Record Date &amp; Entitlement</h5>
+              <p>A record date is fixed. Shareholders holding shares on this date are entitled to receive rights in
+                proportion to their existing holdings — e.g., 1 new share for every 3 shares held.</p>
+            </div>
+          </div>
+          <div class="ri-how-step">
+            <div class="ri-how-step__num">3</div>
+            <div class="ri-how-step__body">
+              <h5>Letter of Offer (LOO) Filing</h5>
+              <p>The Letter of Offer — a detailed disclosure document similar to a prospectus — is filed with SEBI and
+                the stock exchanges. SEBI reviews and issues observations.</p>
+            </div>
+          </div>
+          <div class="ri-how-step">
+            <div class="ri-how-step__num">4</div>
+            <div class="ri-how-step__body">
+              <h5>Rights Entitlement Credits (RECs)</h5>
+              <p>Rights Entitlements are credited to eligible shareholders' demat accounts as tradeable instruments —
+                allowing shareholders to subscribe, renounce partially, or sell their REs on the exchange.</p>
+            </div>
+          </div>
+          <div class="ri-how-step">
+            <div class="ri-how-step__num">5</div>
+            <div class="ri-how-step__body">
+              <h5>Subscription Window</h5>
+              <p>The issue opens for a minimum of 15 days. Shareholders and renounced RE buyers apply through ASBA/RRNB
+                mechanism during this window.</p>
+            </div>
+          </div>
+          <div class="ri-how-step">
+            <div class="ri-how-step__num">6</div>
+            <div class="ri-how-step__body">
+              <h5>Allotment &amp; Listing</h5>
+              <p>Post-closure, allotment is made to subscribers. Unsubscribed shares may be offered to promoters (if
+                authorised). New shares listed on exchanges within prescribed timelines.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     RIGHTS ISSUE VS ALTERNATIVES
+══════════════════════════════════════ -->
+  <section class="ri-compare">
+    <div class="section-tag">Capital Raising Options</div>
+    <h2 class="section-title">Rights Issue vs. Other<br><em>Capital Raising</em> Routes</h2>
+    <div class="ri-compare-table-wrap">
+      <table class="ri-compare-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Rights Issue</th>
+            <th>QIP</th>
+            <th>Preferential Allotment</th>
+            <th>FPO</th>
+            <th>NCD / Debt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Eligible Subscribers</td>
+            <td><span class="ri-good">Existing shareholders only</span></td>
+            <td>Qualified Institutional Buyers</td>
+            <td>Identified investors (SEBI-approved)</td>
+            <td>General public + all investors</td>
+            <td>Debt investors — MFs, insurers, HNIs</td>
+          </tr>
+          <tr>
+            <td>Shareholder Dilution</td>
+            <td><span class="ri-good">None for subscribing shareholders</span></td>
+            <td><span class="ri-bad">Dilutive to all existing holders</span></td>
+            <td><span class="ri-bad">Dilutive to non-participating</span></td>
+            <td><span class="ri-bad">Dilutive to all existing holders</span></td>
+            <td><span class="ri-good">No equity dilution</span></td>
+          </tr>
+          <tr>
+            <td>Pricing</td>
+            <td>Discount to CMP — SEBI formula</td>
+            <td>Floor price at 26W average or 2W — whichever is higher</td>
+            <td>SEBI ICDR floor price formula</td>
+            <td>Book-built or fixed price</td>
+            <td>Coupon rate — market-driven</td>
+          </tr>
+          <tr>
+            <td>Timeline</td>
+            <td><span class="ri-caution">3–5 months (SEBI + exchange)</span></td>
+            <td><span class="ri-good">2–4 weeks (fastest)</span></td>
+            <td>4–6 weeks</td>
+            <td>3–5 months</td>
+            <td>4–8 weeks</td>
+          </tr>
+          <tr>
+            <td>Governance Signal</td>
+            <td><span class="ri-good">Very positive — shareholder-first</span></td>
+            <td>Neutral — institutional confidence signal</td>
+            <td><span class="ri-caution">Can be negative if at discount to known buyers</span></td>
+            <td>Neutral — public confidence signal</td>
+            <td>Neutral — debt obligation undertaken</td>
+          </tr>
+          <tr>
+            <td>Promoter Participation</td>
+            <td><span class="ri-good">Promoters can subscribe &amp; increase stake</span></td>
+            <td>Not directly available to promoters</td>
+            <td>Can be structured to benefit promoters</td>
+            <td>Promoters cannot directly subscribe</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Best Suited For</td>
+            <td>Companies with strong retail / promoter base wanting equitable raise</td>
+            <td>Companies needing fast institutional capital</td>
+            <td>Strategic investor onboarding</td>
+            <td>Large capital raise with broad public offering</td>
+            <td>Capital without dilution; cash-flow-positive businesses</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     TYPES OF RIGHTS ISSUE
+══════════════════════════════════════ -->
+  <section class="ri-types">
+    <div class="section-tag">Issue Formats</div>
+    <h2 class="section-title">Types of <em>Rights Issue</em></h2>
+    <div class="ri-types-grid">
+
+      <div class="ri-type-card">
+        <div class="ri-type-card__tag">Standard</div>
+        <h3>Fully Subscribed Rights Issue</h3>
+        <p>A standard rights issue where the company aims to raise the full issue amount from existing shareholders —
+          with a standby underwriting arrangement to cover any unsubscribed portions, ensuring the company receives its
+          targeted capital even if some shareholders do not participate.</p>
+        <ul>
+          <li>Full issue amount targeted from shareholders</li>
+          <li>Underwriting / standby arrangement recommended</li>
+          <li>Unsubscribed shares offered to promoter (if approved)</li>
+          <li>Most common structure for listed companies</li>
+        </ul>
+      </div>
+
+      <div class="ri-type-card">
+        <div class="ri-type-card__tag">Fast-Track</div>
+        <h3>Fast-Track Rights Issue (FTRI)</h3>
+        <p>An expedited rights issue available to listed companies meeting specific track record criteria — allowing
+          SEBI review and issue completion in a compressed timeline, bypassing the standard observation letter process.
+          Introduced by SEBI in 2010 and enhanced further in 2020 for greater efficiency.</p>
+        <ul>
+          <li>Available to companies listed for 3+ years</li>
+          <li>No SEBI observation letter required</li>
+          <li>Total timeline reduced to ~25 days from filing</li>
+          <li>Must file draft LOO with SEBI and exchanges simultaneously</li>
+        </ul>
+      </div>
+
+      <div class="ri-type-card">
+        <div class="ri-type-card__tag">Composite</div>
+        <h3>Composite Rights Issue</h3>
+        <p>A rights issue that includes both equity shares and other securities — such as warrants, preference shares,
+          or NCDs — offered as a composite package. Allows companies to raise equity and debt simultaneously, or to
+          offer upside optionality through attached warrants while issuing shares at current prices.</p>
+        <ul>
+          <li>Equity + warrant package structure common</li>
+          <li>NCD + equity composite for debt-laden companies</li>
+          <li>Each component priced and disclosed separately</li>
+          <li>Requires separate regulatory approvals for each instrument</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     ELIGIBILITY CRITERIA
+══════════════════════════════════════ -->
+  <section class="ri-eligibility">
+    <div class="section-tag">Regulatory Qualification</div>
+    <h2 class="section-title">Eligibility &amp; <em>Conditions</em><br>for a Rights Issue</h2>
+    <div class="ri-eligibility-grid">
+      <div class="ri-eligibility-left">
+        <p>Under SEBI (Issue of Capital and Disclosure Requirements) Regulations, 2018, a listed company must satisfy
+          certain conditions before it can make a rights issue. These conditions are designed to ensure that only
+          companies with adequate compliance track records and governance standards are permitted to raise capital from
+          public shareholders.</p>
+        <p>For companies that do not satisfy all standard eligibility conditions, SEBI provides limited relief
+          provisions — though these come with additional disclosure and regulatory scrutiny. RKS Investments assesses
+          eligibility as the first step of every engagement and advises on the most appropriate issue structure
+          accordingly.</p>
+        <p>Notably, a rights issue does not require the company to be currently profitable — making it a viable capital
+          raising option for companies in growth or recovery phases that may not qualify for an FPO or QIP.</p>
+      </div>
+      <div class="ri-elig-table">
+        <div class="ri-elig-row">
+          <div class="ri-elig-row__key">Listing Status</div>
+          <div class="ri-elig-row__val">
+            Company must be listed on a recognised stock exchange
+            <span>Both BSE and NSE eligible; SME-listed companies may also do rights issues on their respective
+              platforms.</span>
+          </div>
+        </div>
+        <div class="ri-elig-row">
+          <div class="ri-elig-row__key">Demat Shares</div>
+          <div class="ri-elig-row__val">
+            Shares must be dematerialised — no physical share issuance
+            <span>Post-October 2020 SEBI mandate, all rights issue shares are in demat form only.</span>
+          </div>
+        </div>
+        <div class="ri-elig-row">
+          <div class="ri-elig-row__key">Compliance History</div>
+          <div class="ri-elig-row__val">
+            No regulatory action or show-cause proceedings pending with SEBI
+            <span>Exchange filings, LODR compliance, and past disclosure track record reviewed.</span>
+          </div>
+        </div>
+        <div class="ri-elig-row">
+          <div class="ri-elig-row__key">Promoter Status</div>
+          <div class="ri-elig-row__val">
+            Promoters must not be wilful defaulters with any bank or FI
+            <span>CIBIL check, NPA verification, and CBI/court proceedings disclosure required.</span>
+          </div>
+        </div>
+        <div class="ri-elig-row">
+          <div class="ri-elig-row__key">Min. Subscription</div>
+          <div class="ri-elig-row__val">
+            90% of issue size must be subscribed, or the issue fails
+            <span>If subscription falls below 90% of the proposed issue amount, the company must refund all application
+              monies with interest.</span>
+          </div>
+        </div>
+        <div class="ri-elig-row">
+          <div class="ri-elig-row__key">FTRI Criteria</div>
+          <div class="ri-elig-row__val">
+            Listed for 3 years; audited financials for 3 years; no prosecution proceedings
+            <span>Annualised EPS may be negative — profitability is not a prerequisite for rights issuance.</span>
+          </div>
+        </div>
+        <div class="ri-elig-row">
+          <div class="ri-elig-row__key">Issue Size</div>
+          <div class="ri-elig-row__val">
+            No minimum issue size specified under SEBI ICDR for rights issues
+            <span>Maximum issue size constrained by authorised share capital and shareholder approval limits.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     PROCESS TIMELINE
+══════════════════════════════════════ -->
+  <section class="ri-process" id="ri-process">
+    <div class="ri-process-intro">
+      <div class="section-tag">Execution Framework</div>
+      <h2 class="section-title">The Rights Issue <em>Process</em></h2>
+      <p>A standard rights issue takes 3–5 months from mandate to listing. Fast-Track Rights Issues can be completed in
+        under 30 days from SEBI filing. Here is how RKS Investments manages every stage.</p>
+    </div>
+
+    <div class="ri-process-track">
+
+      <div class="ri-process-step">
+        <div class="ri-process-step__num">01</div>
+        <div class="ri-process-step__body">
+          <h4>Mandate &amp; Issue Structuring</h4>
+          <p>We engage with the company's management and board to understand the capital need, intended use of proceeds,
+            and timeline preferences. Together we determine the issue size, issue price (and discount to CMP),
+            entitlement ratio, and whether a standard or fast-track process is appropriate. Eligibility is confirmed at
+            this stage.</p>
+          <div class="ri-process-step__tags">
+            <span class="ri-process-tag">Issue sizing</span>
+            <span class="ri-process-tag">Pricing strategy</span>
+            <span class="ri-process-tag">Eligibility check</span>
+            <span class="ri-process-tag">Engagement letter</span>
+          </div>
+          <div class="ri-process-step__duration">Duration: 1 – 2 Weeks</div>
+        </div>
+      </div>
+
+      <div class="ri-process-step">
+        <div class="ri-process-step__num">02</div>
+        <div class="ri-process-step__body">
+          <h4>Team Assembly &amp; Due Diligence</h4>
+          <p>We coordinate the appointment of the Rights Issue Lead Manager (SEBI-registered Merchant Banker), Registrar
+            to the Issue, Legal Counsel, and Banker to the Issue. A thorough due diligence of the company's financials,
+            disclosures, and regulatory status is conducted to form the basis of the Letter of Offer.</p>
+          <div class="ri-process-step__tags">
+            <span class="ri-process-tag">Lead Manager appointment</span>
+            <span class="ri-process-tag">Registrar selection</span>
+            <span class="ri-process-tag">Legal due diligence</span>
+            <span class="ri-process-tag">Financial verification</span>
+          </div>
+          <div class="ri-process-step__duration">Duration: 3 – 5 Weeks</div>
+        </div>
+      </div>
+
+      <div class="ri-process-step">
+        <div class="ri-process-step__num">03</div>
+        <div class="ri-process-step__body">
+          <h4>Draft Letter of Offer (DLOF) Preparation</h4>
+          <p>The Draft Letter of Offer — the primary disclosure document for the rights issue — is prepared. The LOO
+            covers company background, risk factors, use of proceeds, entitlement ratio, issue price determination,
+            financial statements, and all required SEBI disclosures. It is drafted by the Lead Manager and reviewed
+            exhaustively before filing.</p>
+          <div class="ri-process-step__tags">
+            <span class="ri-process-tag">Business overview</span>
+            <span class="ri-process-tag">Risk factors</span>
+            <span class="ri-process-tag">Use of proceeds</span>
+            <span class="ri-process-tag">Pricing justification</span>
+          </div>
+          <div class="ri-process-step__duration">Duration: 4 – 6 Weeks</div>
+        </div>
+      </div>
+
+      <div class="ri-process-step">
+        <div class="ri-process-step__num">04</div>
+        <div class="ri-process-step__body">
+          <h4>SEBI &amp; Exchange Filing</h4>
+          <p>The DLOF is filed simultaneously with SEBI and the stock exchanges. SEBI reviews the document and issues
+            observations (queries) that must be addressed before the issue can open. For Fast-Track Rights Issues, SEBI
+            observations are not required — filing with the exchanges is sufficient before opening the issue.</p>
+          <div class="ri-process-step__tags">
+            <span class="ri-process-tag">SEBI DLOF submission</span>
+            <span class="ri-process-tag">Exchange filing</span>
+            <span class="ri-process-tag">SEBI observation response</span>
+            <span class="ri-process-tag">FTRI: no observation required</span>
+          </div>
+          <div class="ri-process-step__duration">Duration: 4 – 8 Weeks (Standard); 0 Weeks (FTRI)</div>
+        </div>
+      </div>
+
+      <div class="ri-process-step">
+        <div class="ri-process-step__num">05</div>
+        <div class="ri-process-step__body">
+          <h4>Record Date &amp; Rights Entitlements (REs)</h4>
+          <p>A record date is fixed and announced to the exchanges. On and after the record date, Rights Entitlements
+            (REs) are credited to eligible shareholders' demat accounts as separate tradeable securities. Shareholders
+            can choose to subscribe, renounce (sell on the exchange), or apply for additional shares (if permitted by
+            the scheme).</p>
+          <div class="ri-process-step__tags">
+            <span class="ri-process-tag">Record date announcement</span>
+            <span class="ri-process-tag">RE credit to demat</span>
+            <span class="ri-process-tag">RE trading window</span>
+            <span class="ri-process-tag">ASBA / RRNB mechanism</span>
+          </div>
+          <div class="ri-process-step__duration">Duration: 1 – 2 Weeks</div>
+        </div>
+      </div>
+
+      <div class="ri-process-step">
+        <div class="ri-process-step__num">06</div>
+        <div class="ri-process-step__body">
+          <h4>Issue Open — Subscription Window</h4>
+          <p>The issue opens for a minimum of 15 days and a maximum of 30 days. Shareholders apply through the ASBA or
+            RRNB mechanism — their funds are blocked in bank accounts rather than transferred upfront, reducing capital
+            risk. We manage investor communications, ASBA coordination, and subscription tracking throughout the window.
+          </p>
+          <div class="ri-process-step__tags">
+            <span class="ri-process-tag">Minimum 15 days open</span>
+            <span class="ri-process-tag">ASBA / RRNB applications</span>
+            <span class="ri-process-tag">Investor communication</span>
+            <span class="ri-process-tag">Subscription monitoring</span>
+          </div>
+          <div class="ri-process-step__duration">Duration: 15 – 30 Days</div>
+        </div>
+      </div>
+
+      <div class="ri-process-step">
+        <div class="ri-process-step__num">07</div>
+        <div class="ri-process-step__body">
+          <h4>Allotment, Refund &amp; Listing</h4>
+          <p>Post-closure, the Registrar finalises allotment. Subscribed shares are allotted within prescribed
+            timelines; unsubscribed shares may be offered to promoters if shareholder approval was obtained. Allotted
+            shares are credited to subscribers' demat accounts and listed on the exchanges — completing the rights issue
+            cycle.</p>
+          <div class="ri-process-step__tags">
+            <span class="ri-process-tag">Allotment finalisation</span>
+            <span class="ri-process-tag">Unsubscribed shares to promoter</span>
+            <span class="ri-process-tag">Demat credit</span>
+            <span class="ri-process-tag">Exchange listing</span>
+          </div>
+          <div class="ri-process-step__duration">Duration: 2 – 3 Weeks post-close</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     PRICING & ENTITLEMENT
+══════════════════════════════════════ -->
+  <section class="ri-pricing">
+    <div class="section-tag">Pricing Mechanics</div>
+    <h2 class="section-title">Issue Pricing &amp;<br><em>Entitlement Ratio</em></h2>
+    <div class="ri-pricing-grid">
+      <div class="ri-pricing-left">
+        <p>The two critical design decisions in a rights issue are the issue price and the entitlement ratio. These
+          parameters are deeply interconnected — and their combined effect determines the theoretical ex-rights price
+          (TERP), the implied value of each rights entitlement, and how attractive the offer is to shareholders.</p>
+        <p>SEBI specifies a floor price for rights issues — based on the higher of the 26-week or 2-week volume-weighted
+          average price (VWAP) of the shares on the exchange. Companies typically set the issue price at a 20–40%
+          discount to the prevailing market price, striking a balance between capital raising certainty and limiting
+          dilution to existing shareholders who subscribe.</p>
+        <p>The entitlement ratio determines how many new shares are offered per share currently held. A 1:2 ratio means
+          one new share for every two existing shares — equivalent to a 33.3% dilution for non-subscribing holders. The
+          ratio is calibrated to raise the required capital at the chosen issue price.</p>
+      </div>
+      <div>
+        <div class="ri-calc-box">
+          <div class="ri-calc-box__header">Illustrative Pricing Example</div>
+          <div class="ri-calc-row">
+            <div class="ri-calc-row__label">Current Market Price (CMP)</div>
+            <div class="ri-calc-row__value">&#8377; 200</div>
+          </div>
+          <div class="ri-calc-row">
+            <div class="ri-calc-row__label">Issue Price (25% discount to CMP)</div>
+            <div class="ri-calc-row__value">&#8377; 150</div>
+          </div>
+          <div class="ri-calc-row">
+            <div class="ri-calc-row__label">Entitlement Ratio</div>
+            <div class="ri-calc-row__value">1 new share : 2 existing shares</div>
+          </div>
+          <div class="ri-calc-divider"></div>
+          <div class="ri-calc-row">
+            <div class="ri-calc-row__label">Theoretical Ex-Rights Price (TERP)</div>
+            <div class="ri-calc-row__value gold">&#8377; 183.33</div>
+          </div>
+          <div class="ri-calc-row">
+            <div class="ri-calc-row__label">Theoretical Value of Rights Entitlement (RE)</div>
+            <div class="ri-calc-row__value gold">&#8377; 33.33 per RE</div>
+          </div>
+          <div class="ri-calc-row">
+            <div class="ri-calc-row__label">Shareholder who subscribes — P&amp;L</div>
+            <div class="ri-calc-row__value">No dilution, but cash outflow of &#8377;150 per new share</div>
+          </div>
+          <div class="ri-calc-row">
+            <div class="ri-calc-row__label">Shareholder who renounces REs</div>
+            <div class="ri-calc-row__value">Receives &#8377;33.33 per RE sold — compensates for dilution</div>
+          </div>
+          <div class="ri-calc-note">
+            TERP = (2 × &#8377;200 + 1 × &#8377;150) ÷ 3 = &#8377;183.33<br>
+            RE Value = TERP − Issue Price = &#8377;183.33 − &#8377;150 = &#8377;33.33
+          </div>
+        </div>
+
+        <div class="ri-entitlement-visual" style="margin-top:28px;">
+          <h5>Post-Issue Share Count (Illustrative)</h5>
+          <div class="ri-entitlement-bar">
+            <div class="ri-bar-seg existing" style="flex:2">Existing (2)</div>
+            <div class="ri-bar-seg new" style="flex:1">New (1)</div>
+          </div>
+          <div style="font-size:0.75rem;color:var(--muted);line-height:1.6;">
+            For every 2 existing shares held, 1 new share is offered at &#8377;150. Post-rights, shares outstanding
+            increase by 33.3%. Shareholders who subscribe maintain their proportionate stake.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     OUR SERVICES
+══════════════════════════════════════ -->
+  <section class="ri-services">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Our Rights Issue<br><em>Advisory Services</em></h2>
+    <div class="ri-services-grid">
+
+      <div class="ri-service-card">
+        <div class="ri-service-card__icon">&#9670;</div>
+        <h3>Issue Strategy &amp; Structuring</h3>
+        <p>We advise on the optimal issue structure — size, price, entitlement ratio, and issue type — modelling the
+          dilution, TERP, and RE value implications of each pricing scenario, and recommending the structure most likely
+          to achieve full subscription.</p>
+        <ul>
+          <li>Issue size &amp; use of proceeds planning</li>
+          <li>TERP and dilution modelling</li>
+          <li>Standard vs. fast-track analysis</li>
+          <li>Promoter subscription strategy</li>
+        </ul>
+      </div>
+
+      <div class="ri-service-card">
+        <div class="ri-service-card__icon">&#9632;</div>
+        <h3>Letter of Offer (LOO) Preparation</h3>
+        <p>We coordinate the preparation of the Draft and Final Letter of Offer — managing the full documentation
+          process with the Lead Manager, legal counsel, and auditors to produce a comprehensive, SEBI-compliant
+          disclosure document.</p>
+        <ul>
+          <li>Business and industry section</li>
+          <li>Risk factors and material developments</li>
+          <li>Use of proceeds section</li>
+          <li>Financial statements integration</li>
+        </ul>
+      </div>
+
+      <div class="ri-service-card">
+        <div class="ri-service-card__icon">&#9651;</div>
+        <h3>SEBI &amp; Exchange Filings</h3>
+        <p>We manage all regulatory submissions — SEBI filing, exchange listing applications, observation responses, and
+          all required prior and post-issue disclosures under SEBI LODR and ICDR regulations.</p>
+        <ul>
+          <li>SEBI DLOF filing and response management</li>
+          <li>Exchange application coordination</li>
+          <li>Board resolution and postal ballot support</li>
+          <li>Post-issue compliance filings</li>
+        </ul>
+      </div>
+
+      <div class="ri-service-card">
+        <div class="ri-service-card__icon">&#9711;</div>
+        <h3>Investor Communication &amp; PR</h3>
+        <p>We develop and manage all shareholder communication — press releases, investor FAQs, application instruction
+          guides, and broker / analyst briefings — to maximise subscription rates and shareholder engagement.</p>
+        <ul>
+          <li>Shareholder communication materials</li>
+          <li>ASBA / RRNB application guides</li>
+          <li>Broker and analyst briefings</li>
+          <li>Press release and media management</li>
+        </ul>
+      </div>
+
+      <div class="ri-service-card">
+        <div class="ri-service-card__icon">&#9672;d</div>
+        <h3>Underwriting Advisory</h3>
+        <p>For companies seeking certainty of capital receipt, we advise on and arrange underwriting commitments —
+          standby underwriting or firm underwriting — from banks, NBFCs, or institutional investors willing to backstop
+          unsubscribed portions.</p>
+        <ul>
+          <li>Underwriter identification and approach</li>
+          <li>Underwriting commission negotiation</li>
+          <li>Standby vs. firm underwriting advice</li>
+          <li>Promoter subscription as backstop</li>
+        </ul>
+      </div>
+
+      <div class="ri-service-card">
+        <div class="ri-service-card__icon">&#9679;</div>
+        <h3>Subscription Monitoring &amp; Closing</h3>
+        <p>We actively monitor subscription status throughout the issue window — providing daily updates, managing ASBA
+          collections, and coordinating allotment with the Registrar to ensure a smooth, on-time closing and listing
+          process.</p>
+        <ul>
+          <li>Daily subscription tracking and reporting</li>
+          <li>ASBA / RRNB coordination with banks</li>
+          <li>Allotment finalisation with Registrar</li>
+          <li>Listing coordination with exchanges</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     REGULATORY REQUIREMENTS
+══════════════════════════════════════ -->
+  <section class="ri-regulatory">
+    <div class="section-tag">Compliance Landscape</div>
+    <h2 class="section-title">Regulatory <em>Requirements</em><br>for a Rights Issue</h2>
+    <div class="ri-regulatory-grid">
+      <div class="ri-regulatory-left">
+        <p>A rights issue involves compliance with multiple overlapping regulatory frameworks — securities law, company
+          law, SEBI regulations, exchange listing requirements, and the Income Tax Act. Navigating these requirements
+          simultaneously, within compressed timelines, demands deep regulatory expertise.</p>
+        <p>SEBI's 2020 circular significantly liberalised the rights issue process for listed companies — introducing
+          tradeable Rights Entitlements (REs), the ASBA mechanism, and enhanced FTRI provisions that have dramatically
+          reduced the time and cost of rights capital raising.</p>
+        <p>RKS Investments tracks regulatory changes in real time and ensures that every rights issue engagement is
+          structured in full compliance with the latest SEBI, Companies Act, and exchange requirements — with no
+          surprises in the regulatory approval process.</p>
+      </div>
+      <div class="ri-reg-table">
+        <div class="ri-reg-row">
+          <div class="ri-reg-row__law">SEBI ICDR</div>
+          <div class="ri-reg-row__req">
+            Chapter IV — Rights Issue; SEBI (ICDR) Regulations, 2018
+            <span>Primary regulation governing eligibility, pricing, disclosure, and process for listed company rights
+              issues.</span>
+          </div>
+        </div>
+        <div class="ri-reg-row">
+          <div class="ri-reg-row__law">Companies Act</div>
+          <div class="ri-reg-row__req">
+            Section 62 — Further Issue of Share Capital
+            <span>Shareholder approval via EGM or postal ballot required. Board authorisation and special resolution for
+              pricing below par or specific use of proceeds.</span>
+          </div>
+        </div>
+        <div class="ri-reg-row">
+          <div class="ri-reg-row__law">SEBI LODR</div>
+          <div class="ri-reg-row__req">
+            Continuous disclosure obligations — prior and post-issue
+            <span>Board meeting disclosure, record date announcement, DLOF filing, subscription status, allotment, and
+              listing disclosures all required.</span>
+          </div>
+        </div>
+        <div class="ri-reg-row">
+          <div class="ri-reg-row__law">Exchange Listing</div>
+          <div class="ri-reg-row__req">
+            BSE and NSE listing agreement and listing application
+            <span>New shares require fresh listing application. Rights Entitlements also listed and traded for the RE
+              trading window period.</span>
+          </div>
+        </div>
+        <div class="ri-reg-row">
+          <div class="ri-reg-row__law">Income Tax Act</div>
+          <div class="ri-reg-row__req">
+            Section 56(2)(x) — taxation of shares received at discount
+            <span>For NRI shareholders and certain resident investors, spread between FMV and issue price may be taxed
+              under Section 56 as income from other sources.</span>
+          </div>
+        </div>
+        <div class="ri-reg-row">
+          <div class="ri-reg-row__law">FEMA</div>
+          <div class="ri-reg-row__req">
+            NRI and FPI shareholder participation — RBI/FEMA compliance
+            <span>Rights entitlements to NRI shareholders require compliance with FEMA 20R. FPIs can participate subject
+              to sector-level FDI cap headroom.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     SHAREHOLDER OPTIONS
+══════════════════════════════════════ -->
+  <section class="ri-shareholders">
+    <div class="section-tag">Investor Decision Guide</div>
+    <h2 class="section-title">Options Available to<br><em>Shareholders</em> in a Rights Issue</h2>
+    <div class="ri-sh-grid">
+
+      <div class="ri-sh-card">
+        <div class="ri-sh-card__option">Option A</div>
+        <h4>Subscribe in Full</h4>
+        <p>The shareholder exercises all their rights entitlements — subscribing to the full number of new shares they
+          are entitled to at the issue price. Their proportionate ownership stake is maintained post-issue, with no
+          dilution.</p>
+        <div class="ri-sh-card__outcome">
+          <strong>Outcome</strong>
+          No dilution. Cash outflow equal to entitlement × issue price. Beneficial if company performs well post-raise.
+        </div>
+      </div>
+
+      <div class="ri-sh-card">
+        <div class="ri-sh-card__option">Option B</div>
+        <h4>Subscribe in Part</h4>
+        <p>The shareholder exercises only a portion of their rights entitlements and lets the remainder lapse or sells
+          them. Results in partial dilution proportional to the unexercised rights — but reduces capital outflow.</p>
+        <div class="ri-sh-card__outcome">
+          <strong>Outcome</strong>
+          Partial dilution on unexercised REs. Flexibility to participate with limited capital. Unexercised REs lapse at
+          close.
+        </div>
+      </div>
+
+      <div class="ri-sh-card">
+        <div class="ri-sh-card__option">Option C</div>
+        <h4>Renounce (Sell REs)</h4>
+        <p>The shareholder sells their Rights Entitlements (REs) on the exchange during the RE trading window —
+          receiving cash equal to the theoretical value of the rights, which partially compensates for the post-issue
+          dilution they will experience.</p>
+        <div class="ri-sh-card__outcome">
+          <strong>Outcome</strong>
+          Cash received from RE sale compensates for dilution. Net economic position approximately maintained if RE is
+          priced at TERP.
+        </div>
+      </div>
+
+      <div class="ri-sh-card">
+        <div class="ri-sh-card__option">Option D</div>
+        <h4>Apply for Additional Shares</h4>
+        <p>If the issue terms permit, shareholders can apply for shares in excess of their entitlement — seeking to
+          acquire unsubscribed portions at the issue price. This is subject to availability and allotment on a pro-rata
+          or lottery basis.</p>
+        <div class="ri-sh-card__outcome">
+          <strong>Outcome</strong>
+          Opportunity to increase stake at discounted issue price. Additional allotment not guaranteed — depends on
+          overall subscription level.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     QUICK FACTS
+══════════════════════════════════════ -->
+  <section class="ri-facts">
+    <div class="section-tag">At a Glance</div>
+    <h2 class="section-title">Rights Issue — <em>Key Facts</em></h2>
+    <div class="ri-facts-grid">
+
+      <div class="ri-fact-card">
+        <div class="ri-fact-card__label">Subscription Period</div>
+        <h4>Minimum 15 Days, Maximum 30 Days</h4>
+        <p>SEBI mandates the issue remain open for at least 15 working days, giving shareholders adequate time to make
+          an informed decision. The company sets the closing date within the 30-day outer limit.</p>
+      </div>
+
+      <div class="ri-fact-card">
+        <div class="ri-fact-card__label">Minimum Subscription</div>
+        <h4>90% of Issue Size Required</h4>
+        <p>If less than 90% of the issue amount is subscribed by closing, the issue is deemed failed and all application
+          monies must be refunded to applicants with interest at 15% per annum.</p>
+      </div>
+
+      <div class="ri-fact-card">
+        <div class="ri-fact-card__label">RE Trading Window</div>
+        <h4>Rights Entitlements Are Tradeable</h4>
+        <p>Post-SEBI 2020 circular, REs are credited to demat accounts and can be traded on the exchange during a
+          specified window — allowing shareholders who do not wish to subscribe to monetise their rights.</p>
+      </div>
+
+      <div class="ri-fact-card">
+        <div class="ri-fact-card__label">Pricing Floor</div>
+        <h4>SEBI Floor Price Formula</h4>
+        <p>Issue price cannot be lower than the higher of: (a) 26-week VWAP on the stock exchange, or (b) 2-week VWAP on
+          the stock exchange — as of the record date. Typically companies price at 20–40% below CMP.</p>
+      </div>
+
+      <div class="ri-fact-card">
+        <div class="ri-fact-card__label">Application Method</div>
+        <h4>ASBA / RRNB Mechanism</h4>
+        <p>Applications are made through the ASBA (Application Supported by Blocked Amount) system — funds remain
+          blocked in the shareholder's bank account until allotment, reducing risk and processing friction.</p>
+      </div>
+
+      <div class="ri-fact-card">
+        <div class="ri-fact-card__label">Promoter Participation</div>
+        <h4>Promoters Can Subscribe &amp; Top Up</h4>
+        <p>Promoters can subscribe to their full entitlement and, with shareholder approval, additionally subscribe to
+          unsubscribed portions — allowing promoter holding to increase as a result of a rights issue without requiring
+          open offer compliance (within permitted limits).</p>
+      </div>
+
+      <div class="ri-fact-card">
+        <div class="ri-fact-card__label">Fast-Track Timeline</div>
+        <h4>FTRI Can Close in ~25 Days</h4>
+        <p>For eligible companies, Fast-Track Rights Issues (FTRI) can be completed from filing to listing in
+          approximately 25 working days — significantly faster than an FPO or QIP alternative for similar amounts.</p>
+      </div>
+
+      <div class="ri-fact-card">
+        <div class="ri-fact-card__label">NRI / FPI Participation</div>
+        <h4>Foreign Shareholders Can Participate</h4>
+        <p>NRI and FPI shareholders can receive and exercise rights entitlements, subject to FEMA compliance and
+          sector-level FDI caps. REs can be renounced by non-participating foreign shareholders on the exchange.</p>
+      </div>
+
+      <div class="ri-fact-card">
+        <div class="ri-fact-card__label">Post-Issue Compliance</div>
+        <h4>Listing Within 7 Working Days</h4>
+        <p>Post closure of the subscription period, allotted shares must be listed on the stock exchanges within 7
+          working days — one of the fastest post-close timelines among listed company capital market transactions.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     WHY RKS
+══════════════════════════════════════ -->
+  <section class="ri-why">
+    <div class="section-tag">Our Differentiators</div>
+    <h2 class="section-title">Why <em>RKS Investments</em><br>for Your Rights Issue</h2>
+    <div class="ri-why-grid">
+      <div class="ri-why-metrics">
+        <div class="ri-why-metric">
+          <div class="ri-why-metric__num">30+</div>
+          <div class="ri-why-metric__label">Rights Issues<br>Managed</div>
+        </div>
+        <div class="ri-why-metric">
+          <div class="ri-why-metric__num">&#8377;900Cr+</div>
+          <div class="ri-why-metric__label">Capital Raised<br>via Rights</div>
+        </div>
+        <div class="ri-why-metric">
+          <div class="ri-why-metric__num">BSE &amp;<br>NSE</div>
+          <div class="ri-why-metric__label">Both Exchange<br>Experience</div>
+        </div>
+        <div class="ri-why-metric">
+          <div class="ri-why-metric__num">FTRI &amp;<br>Standard</div>
+          <div class="ri-why-metric__label">Both Issue<br>Types Advised</div>
+        </div>
+      </div>
+      <div class="ri-why-reasons">
+        <div class="ri-why-reason">
+          <div class="ri-why-reason__num">01</div>
+          <div>
+            <h4>Subscription Maximisation Focus</h4>
+            <p>Our primary objective in every rights issue is full subscription — we design the pricing, entitlement
+              ratio, and shareholder communication to maximise take-up, reducing reliance on underwriting commitments
+              and promoter backstop.</p>
+          </div>
+        </div>
+        <div class="ri-why-reason">
+          <div class="ri-why-reason__num">02</div>
+          <div>
+            <h4>Deep Exchange &amp; SEBI Relationships</h4>
+            <p>Our experience across 30+ rights issues on both BSE and NSE means we anticipate SEBI queries, resolve
+              exchange observations quickly, and navigate the procedural steps of rights issue compliance efficiently.
+            </p>
+          </div>
+        </div>
+        <div class="ri-why-reason">
+          <div class="ri-why-reason__num">03</div>
+          <div>
+            <h4>Integrated Shareholder Communication</h4>
+            <p>Poor shareholder communication is the leading cause of rights issue under-subscription. We develop
+              plain-language communication materials that explain the issue clearly, drive ASBA applications, and build
+              confidence in the offer.</p>
+          </div>
+        </div>
+        <div class="ri-why-reason">
+          <div class="ri-why-reason__num">04</div>
+          <div>
+            <h4>Promoter Strategy Advisory</h4>
+            <p>We advise promoters on their own subscription strategy — how to participate fully, apply for additional
+              shares, and navigate the regulatory limits on promoter holding increase — to demonstrate commitment and
+              anchor the issue.</p>
+          </div>
+        </div>
+        <div class="ri-why-reason">
+          <div class="ri-why-reason__num">05</div>
+          <div>
+            <h4>Full Transaction Continuity</h4>
+            <p>From first structuring conversation to final listing confirmation, our team remains engaged throughout —
+              providing a single point of accountability across the regulatory, documentation, investor communication,
+              and closing workstreams.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+  <section class="ri-cta">
+    <div class="section-tag section-tag--center">Plan Your Rights Issue</div>
+    <h2>Raise Capital <em>Equitably</em><br>from Your Shareholders</h2>
+    <p>Whether you're planning a standard or fast-track rights issue, RKS Investments will structure, manage, and
+      execute the transaction with regulatory precision and a relentless focus on full subscription.</p>
+    <div class="ri-cta__actions">
+      <a class="btn-primary" href="index.html">Discuss a Rights Issue</a>
+      <a class="btn-ghost" href="ipo-advisory.html">View IPO Advisory</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo logo--static">
+          <div class="logo-mark"><img src="logo.png" alt="RKS Investments" style="width: 70px; height: 70px;"></div>
+          RKS Investments
+        </div>
+        <p>Independent investment banking and corporate finance advisory, committed to helping businesses grow through
+          strategic capital solutions.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="ipo.html">IPO Advisory</a></li>
+          <li><a href="M&A.html">M&A Advisory</a></li>
+          <li><a href="PE.html">Private Equity</a></li>
+          <li><a href="Debt.html">Debt Syndication</a></li>
+          <li><a href="Valuation.html">Valuations</a></li>
+          <li><a href="ESOP.html">ESOP Advisory</a></li>
+          <li><a href="right.html">Rights Issue Advisory</a></li>
+          <li><a href="buy.html">Buyback & Delisting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <!-- <li><a href="client.html">Our Clients</a></li> -->
+          <li><a href="compliance.html">Compliance</a></li>
+          <li><a href="form.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a>info@rksinvestments.in</a></li>
+          <li><a>+91 98765 43210</a></li>
+          <li><a>Suite 501, Capital Tower<br>Connaught Place<br>New Delhi – 110001</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 RKS Investments. All rights reserved.</p>
+      <p class="disc">RKS Investments is not registered with SEBI. Advisory services are provided in a purely
+        non-regulated capacity. Nothing on this website constitutes investment advice. Past transaction experience does
+        not guarantee future results.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Scroll shrink */
+    window.addEventListener('scroll', () => {
+      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* Hamburger */
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('open');
+    }
+
+    /* Close menu when clicking outside */
+    document.addEventListener('click', e => {
+      if (!e.target.closest('nav')) {
+        document.getElementById('nav-links').classList.remove('open');
+        closeAllDropdowns();
+      }
+    });
+
+    /* Dropdown — click to open/close */
+    document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        const li = this.closest('.nav-has-dropdown');
+        const isOpen = li.classList.contains('dropdown-open');
+        closeAllDropdowns();
+        if (!isOpen) {
+          li.classList.add('dropdown-open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    function closeAllDropdowns() {
+      document.querySelectorAll('.nav-has-dropdown').forEach(li => {
+        li.classList.remove('dropdown-open');
+        const trigger = li.querySelector('.nav-dropdown-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    /* Close dropdown on Escape */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeAllDropdowns();
+    });
+  </script>
+
+</body>
+
+</html>

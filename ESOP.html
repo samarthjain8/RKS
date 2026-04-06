@@ -1,0 +1,2616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESOP Advisory — RKS Investments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ══════════════════════════════════════
+       ESOP PAGE — SPECIFIC STYLES
+    ══════════════════════════════════════ */
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb-sep {
+            color: rgba(201, 168, 76, 0.25);
+        }
+
+        .breadcrumb-current {
+            color: var(--gold);
+        }
+
+        /* ── Hero ── */
+        .esop-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 140px 60px 72px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .esop-hero-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 50% 65% at 88% 30%, rgba(201, 168, 76, 0.065) 0%, transparent 65%),
+                radial-gradient(ellipse 38% 50% at 8% 70%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse 28% 40% at 50% 100%, rgba(201, 168, 76, 0.025) 0%, transparent 55%),
+                linear-gradient(155deg, #0d0d0d 0%, #141414 55%, #0d0d0d 100%);
+        }
+
+        .esop-hero-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.028) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.028) 1px, transparent 1px);
+            background-size: 70px 70px;
+            mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, black, transparent);
+        }
+
+        /* Stepped box accent — geometric feel */
+        .esop-hero-steps {
+            position: absolute;
+            bottom: 60px;
+            right: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0;
+            pointer-events: none;
+        }
+
+        .esop-hero-steps span {
+            display: block;
+            height: 1px;
+            background: rgba(201, 168, 76, 0.12);
+        }
+
+        .esop-hero-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 80px;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .esop-hero-left h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6.5vw, 5.8rem);
+            font-weight: 300;
+            line-height: 1.03;
+            color: var(--text);
+            margin-bottom: 28px;
+        }
+
+        .esop-hero-left h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .esop-hero-left>p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 530px;
+            margin-bottom: 40px;
+        }
+
+        .esop-hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-self: flex-end;
+        }
+
+        .esop-stat-card {
+            padding: 26px 32px;
+            border: 1px solid var(--border);
+            background: rgba(20, 20, 20, 0.82);
+            backdrop-filter: blur(12px);
+            transition: border-color 0.3s;
+        }
+
+        .esop-stat-card:hover {
+            border-color: rgba(201, 168, 76, 0.45);
+        }
+
+        .esop-stat-card__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .esop-stat-card__label {
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        /* ══════════════════════════════════════
+       WHAT IS AN ESOP
+    ══════════════════════════════════════ */
+        .esop-explainer {
+            padding: 100px 60px;
+        }
+
+        .esop-explainer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .esop-explainer-left p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .esop-explainer-left p:first-of-type {
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .esop-pull-quote {
+            margin: 32px 0;
+            padding: 28px 32px;
+            border-left: 2px solid var(--gold);
+            background: var(--dark2);
+        }
+
+        .esop-pull-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem !important;
+            font-style: italic;
+            color: var(--text) !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+        }
+
+        /* ESOP lifecycle ladder */
+        .esop-lifecycle {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+
+        .esop-lifecycle-row {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.25s;
+        }
+
+        .esop-lifecycle-row:last-child {
+            border-bottom: none;
+        }
+
+        .esop-lifecycle-row:hover {
+            background: var(--dark3);
+        }
+
+        .esop-lifecycle-row__stage {
+            width: 110px;
+            flex-shrink: 0;
+            padding: 18px 16px;
+            background: var(--dark2);
+            border-right: 1px solid var(--border);
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .esop-lifecycle-row__body {
+            padding: 16px 20px;
+            flex: 1;
+        }
+
+        .esop-lifecycle-row__body h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .esop-lifecycle-row__body p {
+            font-size: 0.77rem;
+            color: var(--muted);
+            line-height: 1.58;
+        }
+
+        /* ══════════════════════════════════════
+       WHY ESOPs MATTER
+    ══════════════════════════════════════ */
+        .esop-why-esop {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .esop-why-esop-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .esop-benefit-card {
+            padding: 44px 36px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .esop-benefit-card:hover {
+            background: var(--dark3);
+        }
+
+        .esop-benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+
+        .esop-benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .esop-benefit-card__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.07);
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            line-height: 1;
+        }
+
+        .esop-benefit-card__icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .esop-benefit-card:hover .esop-benefit-card__icon {
+            border-color: var(--gold);
+        }
+
+        .esop-benefit-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .esop-benefit-card p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        /* ══════════════════════════════════════
+       ESOP TYPES
+    ══════════════════════════════════════ */
+        .esop-types {
+            padding: 100px 60px;
+        }
+
+        .esop-types-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .esop-type-card {
+            padding: 40px 30px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            transition: background 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .esop-type-card:hover {
+            background: var(--dark3);
+            border-color: rgba(201, 168, 76, 0.4);
+        }
+
+        .esop-type-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+
+        .esop-type-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .esop-type-card__tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .esop-type-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .esop-type-card p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.72;
+            margin-bottom: 16px;
+        }
+
+        .esop-type-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .esop-type-card li {
+            font-size: 0.75rem;
+            color: var(--text);
+            padding-left: 13px;
+            position: relative;
+        }
+
+        .esop-type-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.7rem;
+        }
+
+        /* ══════════════════════════════════════
+       KEY TERMS GLOSSARY
+    ══════════════════════════════════════ */
+        .esop-terms {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .esop-terms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .esop-term-card {
+            padding: 32px 28px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .esop-term-card:hover {
+            border-color: rgba(201, 168, 76, 0.4);
+            background: var(--dark3);
+        }
+
+        .esop-term-card__abbr {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.3);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .esop-term-card h4 {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .esop-term-card p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* ══════════════════════════════════════
+       REGULATORY FRAMEWORK
+    ══════════════════════════════════════ */
+        .esop-regulatory {
+            padding: 100px 60px;
+        }
+
+        .esop-regulatory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 56px;
+            align-items: start;
+        }
+
+        .esop-regulatory-left p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .esop-regulatory-left p:first-of-type {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .esop-reg-table {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+
+        .esop-reg-row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .esop-reg-row:last-child {
+            border-bottom: none;
+        }
+
+        .esop-reg-row:hover {
+            background: var(--dark3);
+        }
+
+        .esop-reg-row__law {
+            padding: 16px 18px;
+            background: var(--dark2);
+            border-right: 1px solid var(--border);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+        }
+
+        .esop-reg-row__req {
+            padding: 14px 18px;
+            font-size: 0.81rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .esop-reg-row__req span {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        /* ══════════════════════════════════════
+       PROCESS — SCHEME DESIGN TO EXERCISE
+    ══════════════════════════════════════ */
+        .esop-process {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .esop-process-intro p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 580px;
+            margin-top: 12px;
+        }
+
+        /* Horizontal phase grid */
+        .esop-phases {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 64px;
+            position: relative;
+        }
+
+        .esop-phases::before {
+            content: '';
+            position: absolute;
+            top: 26px;
+            left: 26px;
+            right: 26px;
+            height: 1px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .esop-phase {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0 0 36px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .esop-phase__dot {
+            width: 52px;
+            height: 52px;
+            border: 1px solid var(--gold);
+            background: var(--dark2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-bottom: 20px;
+        }
+
+        .esop-phase__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 6px;
+            line-height: 1.2;
+            padding-right: 16px;
+        }
+
+        .esop-phase__steps {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-right: 16px;
+        }
+
+        .esop-phase__step {
+            font-size: 0.77rem;
+            color: var(--muted);
+            padding-left: 13px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .esop-phase__step::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: rgba(201, 168, 76, 0.4);
+            font-size: 0.72rem;
+        }
+
+        /* ══════════════════════════════════════
+       SCHEME DESIGN PARAMETERS
+    ══════════════════════════════════════ */
+        .esop-design {
+            padding: 100px 60px;
+        }
+
+        .esop-design-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-top: 56px;
+        }
+
+        .esop-design-left p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .esop-design-left p:first-of-type {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .esop-param-table {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+
+        .esop-param-row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .esop-param-row:last-child {
+            border-bottom: none;
+        }
+
+        .esop-param-row:hover {
+            background: var(--dark3);
+        }
+
+        .esop-param-row__key {
+            padding: 16px 18px;
+            background: var(--dark2);
+            border-right: 1px solid var(--border);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+        }
+
+        .esop-param-row__val {
+            padding: 14px 18px;
+            font-size: 0.82rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .esop-param-row__val span {
+            display: block;
+            font-size: 0.73rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        /* ══════════════════════════════════════
+       VESTING SCHEDULES
+    ══════════════════════════════════════ */
+        .esop-vesting {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .esop-vesting-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .esop-vest-card {
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .esop-vest-card:hover {
+            background: var(--dark3);
+            border-color: rgba(201, 168, 76, 0.4);
+        }
+
+        .esop-vest-card__label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .esop-vest-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .esop-vest-card p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.72;
+            margin-bottom: 18px;
+        }
+
+        /* Visual vesting bar */
+        .esop-vest-bar {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 12px;
+        }
+
+        .esop-vest-bar__segment {
+            height: 8px;
+            background: rgba(201, 168, 76, 0.15);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            flex: 1;
+            transition: background 0.2s;
+        }
+
+        .esop-vest-bar__segment.filled {
+            background: rgba(201, 168, 76, 0.55);
+            border-color: var(--gold);
+        }
+
+        .esop-vest-card:hover .esop-vest-bar__segment.filled {
+            background: var(--gold);
+        }
+
+        .esop-vest-card__schedule {
+            font-size: 0.72rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ══════════════════════════════════════
+       ACCOUNTING & TAX
+    ══════════════════════════════════════ */
+        .esop-accounting {
+            padding: 100px 60px;
+        }
+
+        .esop-accounting-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            margin-top: 56px;
+            align-items: start;
+        }
+
+        .esop-accounting-panel {
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .esop-accounting-panel__header {
+            padding: 20px 28px;
+            background: var(--dark2);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .esop-accounting-panel__header h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        .esop-accounting-panel__header .panel-tag {
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            padding: 2px 8px;
+        }
+
+        .esop-accounting-panel__body {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .esop-acc-row {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .esop-acc-row:last-child {
+            border-bottom: none;
+        }
+
+        .esop-acc-row:hover {
+            background: var(--dark3);
+        }
+
+        .esop-acc-row__key {
+            width: 130px;
+            flex-shrink: 0;
+            padding: 14px 16px;
+            border-right: 1px solid var(--border);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            background: rgba(20, 20, 20, 0.4);
+        }
+
+        .esop-acc-row__val {
+            padding: 12px 16px;
+            font-size: 0.81rem;
+            color: var(--text);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .esop-acc-row__val span {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        /* ══════════════════════════════════════
+       ESOP TRUST
+    ══════════════════════════════════════ */
+        .esop-trust {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .esop-trust-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-top: 56px;
+        }
+
+        .esop-trust-left p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .esop-trust-left p:first-of-type {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .esop-trust-right {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .esop-trust-item {
+            display: flex;
+            gap: 18px;
+            padding: 22px 26px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .esop-trust-item:hover {
+            border-color: var(--gold);
+            background: var(--dark3);
+        }
+
+        .esop-trust-item__icon {
+            font-size: 1.2rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-top: 2px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .esop-trust-item h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .esop-trust-item p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ══════════════════════════════════════
+       OUR SERVICES
+    ══════════════════════════════════════ */
+        .esop-services {
+            padding: 100px 60px;
+        }
+
+        .esop-services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .esop-service-card {
+            padding: 40px 36px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            position: relative;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .esop-service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .esop-service-card:hover {
+            background: var(--dark3);
+            transform: translateY(-3px);
+        }
+
+        .esop-service-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .esop-service-card__icon {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 22px;
+            transition: border-color 0.3s;
+        }
+
+        .esop-service-card:hover .esop-service-card__icon {
+            border-color: var(--gold);
+        }
+
+        .esop-service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .esop-service-card p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+
+        .esop-service-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .esop-service-card li {
+            font-size: 0.79rem;
+            color: var(--text);
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .esop-service-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.74rem;
+        }
+
+        /* ══════════════════════════════════════
+       ESOP vs ALTERNATIVES
+    ══════════════════════════════════════ */
+        .esop-compare {
+            padding: 100px 60px;
+            background: var(--dark2);
+        }
+
+        .esop-compare-table-wrap {
+            margin-top: 56px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .esop-compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .esop-compare-table thead tr {
+            background: var(--dark3);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .esop-compare-table th {
+            padding: 16px 22px;
+            font-size: 0.66rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-align: left;
+            white-space: nowrap;
+            border-right: 1px solid var(--border);
+        }
+
+        .esop-compare-table th:last-child {
+            border-right: none;
+        }
+
+        .esop-compare-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .esop-compare-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .esop-compare-table tbody tr:hover {
+            background: var(--dark3);
+        }
+
+        .esop-compare-table td {
+            padding: 15px 22px;
+            font-size: 0.82rem;
+            color: var(--muted);
+            vertical-align: top;
+            line-height: 1.55;
+            border-right: 1px solid var(--border);
+        }
+
+        .esop-compare-table td:last-child {
+            border-right: none;
+        }
+
+        .esop-compare-table td:first-child {
+            color: var(--text);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .ec-good {
+            color: #7fc97f;
+            font-size: 0.75rem;
+        }
+
+        .ec-caution {
+            color: #e8c97a;
+            font-size: 0.75rem;
+        }
+
+        .ec-bad {
+            color: #e07070;
+            font-size: 0.75rem;
+        }
+
+        /* ══════════════════════════════════════
+       WHY RKS
+    ══════════════════════════════════════ */
+        .esop-why {
+            padding: 100px 60px;
+        }
+
+        .esop-why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 56px;
+        }
+
+        .esop-why-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .esop-why-metric {
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+        }
+
+        .esop-why-metric__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .esop-why-metric__label {
+            font-size: 0.7rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .esop-why-reasons {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .esop-why-reason {
+            display: flex;
+            gap: 22px;
+            padding: 26px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+
+        .esop-why-reason:last-child {
+            border-bottom: none;
+        }
+
+        .esop-why-reason__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.2);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 32px;
+        }
+
+        .esop-why-reason h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .esop-why-reason p {
+            font-size: 0.83rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ══════════════════════════════════════
+       CTA
+    ══════════════════════════════════════ */
+        .esop-cta {
+            padding: 100px 60px;
+            background:
+                radial-gradient(ellipse 55% 75% at 50% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 70%),
+                var(--dark);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .esop-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .esop-cta h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .esop-cta p {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+        }
+
+        .esop-cta__actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+        @media (max-width: 1100px) {
+            .esop-why-esop-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .esop-types-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .esop-terms-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .esop-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .esop-phases {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .esop-vesting-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .esop-hero {
+                padding: 100px 24px 56px;
+                min-height: auto;
+            }
+
+            .esop-hero-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .esop-hero-right {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+
+            .esop-stat-card {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .esop-hero-steps {
+                display: none;
+            }
+
+            .esop-explainer,
+            .esop-why-esop,
+            .esop-types,
+            .esop-terms,
+            .esop-regulatory,
+            .esop-process,
+            .esop-design,
+            .esop-vesting,
+            .esop-accounting,
+            .esop-trust,
+            .esop-services,
+            .esop-compare,
+            .esop-why,
+            .esop-cta {
+                padding: 60px 24px;
+            }
+
+            .esop-explainer-grid,
+            .esop-regulatory-grid,
+            .esop-design-grid,
+            .esop-trust-grid,
+            .esop-why-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .esop-why-esop-grid,
+            .esop-types-grid,
+            .esop-terms-grid,
+            .esop-services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .esop-phases {
+                grid-template-columns: 1fr;
+            }
+
+            .esop-phases::before {
+                display: none;
+            }
+
+            .esop-vesting-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .esop-accounting-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .esop-reg-row,
+            .esop-param-row {
+                grid-template-columns: 1fr;
+            }
+
+            .esop-reg-row__law,
+            .esop-param-row__key {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .esop-why-metrics {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+    <nav id="main-nav">
+        <a class="logo" href="index.html">
+            <div class="logo-mark"><img src="Logo.png" alt="RKS" height="70" width="70"></div>
+            RKS Investments
+        </a>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+
+            <li class="nav-has-dropdown">
+                <a href="#" class="nav-dropdown-trigger">Investment Banking &#8964;</a>
+
+                <div class="nav-dropdown">
+                    <a href="ipo.html">→ IPO Advisory</a><br>
+                    <a href="M&A.html">→ Mergers & Acquisitions</a><br>
+                    <a href="PE.html">→ Private Equity</a><br>
+                    <a href="Debt.html">→ Debt Syndication</a><br>
+                    <a href="Valuation.html">→ Valuations</a><br>
+                    <a href="ESOP.html">→ ESOP Advisory</a><br>
+                    <a href="right.html">→ Rights Issue</a><br>
+                    <a href="buy.html">→ Buyback & Delisting</a><br>
+                </div>
+            </li>
+
+            <li><a href="compliance.html">Compliance</a></li>
+            <li><a href="client.html">Clients</a></li>
+            <li><a href="form.html" class="nav-cta">Contact</a></li>
+        </ul>
+
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+    <div class="esop-hero">
+        <div class="esop-hero-bg"></div>
+        <div class="esop-hero-grid"></div>
+        <div class="esop-hero-steps">
+            <span style="width:240px"></span>
+            <span style="width:180px;margin-top:20px"></span>
+            <span style="width:120px;margin-top:20px"></span>
+            <span style="width:60px;margin-top:20px"></span>
+        </div>
+        <div class="esop-hero-content">
+            <div class="esop-hero-left">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <a href="index.html">Investment Banking</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <span class="breadcrumb-current">ESOP Advisory</span>
+                </div>
+                <h1>Employee Stock<br>Option <em>Advisory</em></h1>
+                <p>End-to-end ESOP design, scheme drafting, valuation, trust structuring, and ongoing administration —
+                    helping companies build powerful equity compensation programs that attract, retain, and align their
+                    best talent.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="index.html">Design Your ESOP</a>
+                    <a class="btn-ghost" href="#esop-process">Our Process</a>
+                </div>
+            </div>
+            <div class="esop-hero-right">
+                <div class="esop-stat-card">
+                    <div class="esop-stat-card__num">80+</div>
+                    <div class="esop-stat-card__label">ESOP Schemes Designed &amp; Implemented</div>
+                </div>
+                <div class="esop-stat-card">
+                    <div class="esop-stat-card__num">Listed &amp;<br>Unlisted</div>
+                    <div class="esop-stat-card__label">Companies Advised Across Both Categories</div>
+                </div>
+                <div class="esop-stat-card">
+                    <div class="esop-stat-card__num">Startups<br>to MNCs</div>
+                    <div class="esop-stat-card__label">Full Spectrum of Company Sizes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+     WHAT IS AN ESOP
+══════════════════════════════════════ -->
+    <section class="esop-explainer">
+        <div class="esop-explainer-grid">
+            <div class="esop-explainer-left">
+                <div class="section-tag">Understanding ESOPs</div>
+                <h2 class="section-title">What Is an <em>ESOP</em>?</h2>
+                <p>An Employee Stock Option Plan (ESOP) is a compensation mechanism that gives employees the right — but
+                    not the obligation — to purchase shares of their employer at a predetermined price (the exercise or
+                    grant price) after completing a specified vesting period. It is one of the most powerful tools
+                    available to companies for aligning employee interests with long-term shareholder value creation.
+                </p>
+                <p>For employees, ESOPs offer the potential to share in the wealth they help create — participating in
+                    the company's equity appreciation beyond their salary. For employers, ESOPs provide a non-cash
+                    compensation lever that conserves capital while creating strong retention incentives and a culture
+                    of ownership.</p>
+
+                <div class="esop-pull-quote">
+                    <p>"An ESOP done right turns your best people into co-owners — aligning effort, ambition, and reward
+                        in a way that no salary or bonus ever can."</p>
+                </div>
+
+                <p>However, ESOPs are complex instruments governed by multiple overlapping regulations — the Companies
+                    Act, SEBI (Share Based Employee Benefits) Regulations, Income Tax Act, and Ind AS 102. A poorly
+                    designed or improperly implemented ESOP can create legal exposure, accounting complications, and
+                    employee dissatisfaction rather than motivation. Expert advisory is essential from day one.</p>
+            </div>
+
+            <div>
+                <h4
+                    style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:20px;">
+                    The ESOP Lifecycle</h4>
+                <div class="esop-lifecycle">
+                    <div class="esop-lifecycle-row">
+                        <div class="esop-lifecycle-row__stage">Grant</div>
+                        <div class="esop-lifecycle-row__body">
+                            <h5>Option Grant</h5>
+                            <p>Company grants options to eligible employees at an exercise price (grant price). Board
+                                and compensation committee approval required.</p>
+                        </div>
+                    </div>
+                    <div class="esop-lifecycle-row">
+                        <div class="esop-lifecycle-row__stage">Vesting</div>
+                        <div class="esop-lifecycle-row__body">
+                            <h5>Vesting Period</h5>
+                            <p>Options vest over a schedule — typically 1–4 years with a cliff. Unvested options lapse
+                                on resignation.</p>
+                        </div>
+                    </div>
+                    <div class="esop-lifecycle-row">
+                        <div class="esop-lifecycle-row__stage">Exercise</div>
+                        <div class="esop-lifecycle-row__body">
+                            <h5>Option Exercise</h5>
+                            <p>Vested employee pays the exercise price and receives shares. Exercise window is typically
+                                1–3 years post-vesting.</p>
+                        </div>
+                    </div>
+                    <div class="esop-lifecycle-row">
+                        <div class="esop-lifecycle-row__stage">Taxation</div>
+                        <div class="esop-lifecycle-row__body">
+                            <h5>Tax at Exercise</h5>
+                            <p>Perquisite tax arises at exercise on the spread (FMV minus exercise price). Employer
+                                deducts TDS at applicable slab rates.</p>
+                        </div>
+                    </div>
+                    <div class="esop-lifecycle-row">
+                        <div class="esop-lifecycle-row__stage">Liquidity</div>
+                        <div class="esop-lifecycle-row__body">
+                            <h5>Share Sale or Buyback</h5>
+                            <p>Employee sells shares on market (listed cos) or via secondary, buyback, or IPO (unlisted
+                                cos) to realise gains. Capital gains tax applies.</p>
+                        </div>
+                    </div>
+                    <div class="esop-lifecycle-row">
+                        <div class="esop-lifecycle-row__stage">Reporting</div>
+                        <div class="esop-lifecycle-row__body">
+                            <h5>Accounting &amp; Disclosure</h5>
+                            <p>Annual ESOP expense recognised under Ind AS 102. Disclosures in annual report, directors'
+                                report, and financial statements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     WHY ESOPs MATTER
+══════════════════════════════════════ -->
+    <section class="esop-why-esop">
+        <div class="section-tag">Strategic Value</div>
+        <h2 class="section-title">Why Companies <em>Implement</em> ESOPs</h2>
+        <div class="esop-why-esop-grid">
+
+            <div class="esop-benefit-card">
+                <div class="esop-benefit-card__num">01</div>
+                <div class="esop-benefit-card__icon">&#9670;</div>
+                <h3>Talent Retention</h3>
+                <p>Vesting schedules create powerful "golden handcuffs" — employees with unvested options have a strong
+                    financial incentive to stay through their vesting period, reducing costly attrition at the worst
+                    possible times.</p>
+            </div>
+
+            <div class="esop-benefit-card">
+                <div class="esop-benefit-card__num">02</div>
+                <div class="esop-benefit-card__icon">&#9670;</div>
+                <h3>Competitive Talent Attraction</h3>
+                <p>ESOPs allow companies — particularly startups and growth-stage businesses — to attract senior talent
+                    who might otherwise demand higher cash compensation, by offering equity upside in lieu of immediate
+                    salary premium.</p>
+            </div>
+
+            <div class="esop-benefit-card">
+                <div class="esop-benefit-card__num">03</div>
+                <div class="esop-benefit-card__icon">&#9670;</div>
+                <h3>Alignment of Interests</h3>
+                <p>When employees become shareholders, they think and act like owners — making decisions that maximise
+                    long-term company value rather than short-term personal convenience. Culture and performance improve
+                    measurably.</p>
+            </div>
+
+            <div class="esop-benefit-card">
+                <div class="esop-benefit-card__num">04</div>
+                <div class="esop-benefit-card__icon">&#9670;</div>
+                <h3>Cash-Efficient Compensation</h3>
+                <p>ESOPs allow companies to compensate key employees with equity upside rather than cash outflow —
+                    preserving working capital during high-growth phases when cash is the most precious resource.</p>
+            </div>
+
+            <div class="esop-benefit-card">
+                <div class="esop-benefit-card__num">05</div>
+                <div class="esop-benefit-card__icon">&#9670;</div>
+                <h3>Investor &amp; PE Expectation</h3>
+                <p>PE/VC investors and acquirers increasingly expect a well-structured ESOP pool as part of the
+                    management incentivisation framework before they invest or acquire — making ESOPs a prerequisite for
+                    institutional capital.</p>
+            </div>
+
+            <div class="esop-benefit-card">
+                <div class="esop-benefit-card__num">06</div>
+                <div class="esop-benefit-card__icon">&#9670;</div>
+                <h3>Succession &amp; Founder Transition</h3>
+                <p>ESOPs help founders transition management to professional teams by creating long-term ownership
+                    stakes for successor leaders — aligning their financial interests with the continued success of the
+                    business post-transition.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     TYPES OF EQUITY COMPENSATION
+══════════════════════════════════════ -->
+    <section class="esop-types">
+        <div class="section-tag">Plan Structures</div>
+        <h2 class="section-title">Types of Employee<br><em>Equity Compensation</em></h2>
+        <div class="esop-types-grid">
+
+            <div class="esop-type-card">
+                <div class="esop-type-card__tag">Most Common</div>
+                <h3>Employee Stock Options (ESOP)</h3>
+                <p>The right to buy shares at a fixed exercise price after vesting. The employee profits from the
+                    difference between exercise price and market value at exercise — and bears no risk if the price
+                    falls below exercise price (options simply lapse).</p>
+                <ul>
+                    <li>Exercise price typically set at grant-date FMV</li>
+                    <li>Vesting period: 1–4 years, with cliff</li>
+                    <li>Taxed as perquisite at exercise</li>
+                    <li>Suitable for all company stages</li>
+                </ul>
+            </div>
+
+            <div class="esop-type-card">
+                <div class="esop-type-card__tag">For Senior Leaders</div>
+                <h3>Restricted Stock Units (RSUs)</h3>
+                <p>A promise to deliver shares (or cash equivalent) after vesting conditions are met — without requiring
+                    the employee to pay an exercise price. RSUs have guaranteed value above zero, making them more
+                    attractive than options in mature or listed companies.</p>
+                <ul>
+                    <li>No exercise price — fully vested RSUs deliver shares</li>
+                    <li>Taxed as perquisite on vesting (FMV at vest)</li>
+                    <li>Stronger retention tool for CXO-level employees</li>
+                    <li>Common in MNCs, listed companies</li>
+                </ul>
+            </div>
+
+            <div class="esop-type-card">
+                <div class="esop-type-card__tag">Founders / Advisors</div>
+                <h3>Sweat Equity Shares</h3>
+                <p>Shares issued at a discount or for non-cash consideration (intellectual property, know-how, value
+                    additions) to employees or directors as recognition of their contribution to the company — governed
+                    by Companies Act Section 54.</p>
+                <ul>
+                    <li>Issued at a discount to FMV — or for non-cash</li>
+                    <li>Board resolution + special resolution required</li>
+                    <li>15% cap of paid-up capital (unless otherwise approved)</li>
+                    <li>Lock-in of 3 years from allotment</li>
+                </ul>
+            </div>
+
+            <div class="esop-type-card">
+                <div class="esop-type-card__tag">Virtual / Unlisted</div>
+                <h3>Phantom Stock &amp; SARs</h3>
+                <p>Synthetic equity instruments that pay out cash equal to the appreciation in share value — without
+                    issuing actual shares. Ideal for companies that cannot or do not wish to issue real equity, while
+                    still providing meaningful upside participation.</p>
+                <ul>
+                    <li>No dilution to existing shareholders</li>
+                    <li>Payout tied to value appreciation</li>
+                    <li>Taxed as salary income at payout</li>
+                    <li>Suitable for subsidiaries, JVs, pre-corporate entities</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     KEY TERMS GLOSSARY
+══════════════════════════════════════ -->
+    <section class="esop-terms">
+        <div class="section-tag">Terminology</div>
+        <h2 class="section-title">Key ESOP <em>Terms</em> Explained</h2>
+        <div class="esop-terms-grid">
+
+            <div class="esop-term-card">
+                <div class="esop-term-card__abbr">Grant</div>
+                <h4>Grant Date &amp; Grant Price</h4>
+                <p>The date on which options are awarded to an employee, and the price at which they may exercise those
+                    options. The grant price is typically set at Fair Market Value on the grant date — often determined
+                    by an independent valuation.</p>
+            </div>
+
+            <div class="esop-term-card">
+                <div class="esop-term-card__abbr">Vest</div>
+                <h4>Vesting Schedule</h4>
+                <p>The timeline over which options become exercisable. Most Indian ESOPs use a 4-year vesting with a
+                    1-year cliff — meaning 25% vests after Year 1, and the remainder vests monthly or quarterly over
+                    Years 2–4.</p>
+            </div>
+
+            <div class="esop-term-card">
+                <div class="esop-term-card__abbr">Cliff</div>
+                <h4>Cliff Vesting</h4>
+                <p>A minimum service period before any options vest. A 1-year cliff means no options vest in the first
+                    12 months — protecting the company from option grants to employees who leave shortly after joining.
+                </p>
+            </div>
+
+            <div class="esop-term-card">
+                <div class="esop-term-card__abbr">Pool</div>
+                <h4>ESOP Pool Size</h4>
+                <p>The percentage of fully diluted share capital reserved for ESOP grants. Indian companies typically
+                    reserve 5–15% for employees; PE/VC investors often require a pool to be created pre-investment,
+                    diluting founders.</p>
+            </div>
+
+            <div class="esop-term-card">
+                <div class="esop-term-card__abbr">FMV</div>
+                <h4>Fair Market Value</h4>
+                <p>The value of a share as determined by an independent valuation for the purpose of setting exercise
+                    price, computing perquisite tax at exercise, and recognising ESOP expense under Ind AS 102.</p>
+            </div>
+
+            <div class="esop-term-card">
+                <div class="esop-term-card__abbr">Lapse</div>
+                <h4>Option Lapse</h4>
+                <p>Unvested options lapse (are forfeited) on resignation, termination, or death. Vested but unexercised
+                    options typically have a 30–90 day post-separation exercise window before lapsing permanently.</p>
+            </div>
+
+            <div class="esop-term-card">
+                <div class="esop-term-card__abbr">Spread</div>
+                <h4>Spread (Intrinsic Value)</h4>
+                <p>The difference between the FMV of the share at exercise and the exercise price paid by the employee.
+                    This spread is taxed as a perquisite — a benefit in kind — under the Income Tax Act at the
+                    employee's slab rate.</p>
+            </div>
+
+            <div class="esop-term-card">
+                <div class="esop-term-card__abbr">Accel</div>
+                <h4>Acceleration</h4>
+                <p>A provision that allows unvested options to vest early — typically upon a change of control
+                    (acquisition), IPO, or death/disability. Single-trigger acceleration vests on one event;
+                    double-trigger requires two conditions.</p>
+            </div>
+
+            <div class="esop-term-card">
+                <div class="esop-term-card__abbr">Perq</div>
+                <h4>Perquisite Taxation</h4>
+                <p>At exercise, the spread (FMV at exercise minus exercise price) is taxed as a perquisite — treated as
+                    additional salary income — in the hands of the employee. The employer must deduct TDS at the
+                    applicable income tax slab rate.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     REGULATORY FRAMEWORK
+══════════════════════════════════════ -->
+    <section class="esop-regulatory">
+        <div class="section-tag">Legal &amp; Compliance</div>
+        <h2 class="section-title">The Regulatory<br><em>Framework</em> for ESOPs</h2>
+        <div class="esop-regulatory-grid">
+            <div class="esop-regulatory-left">
+                <p>ESOPs in India sit at the intersection of corporate law, securities regulation, tax law, and
+                    accounting standards — each imposing distinct requirements on scheme design, approval, disclosure,
+                    valuation, and accounting treatment.</p>
+                <p>For listed companies, SEBI's Share Based Employee Benefits and Sweat Equity Regulations (SBEB &amp;
+                    SE), 2021 prescribe detailed requirements for scheme structure, disclosure, independent trustee
+                    obligations, and annual reporting. For unlisted private companies, the Companies Act and associated
+                    rules govern the scheme — with somewhat greater flexibility but no less rigour.</p>
+                <p>RKS Investments ensures every ESOP scheme is compliant across all applicable regulatory dimensions
+                    before implementation — and that ongoing obligations (annual valuations, disclosures, tax
+                    deductions) are met throughout the scheme's life.</p>
+            </div>
+            <div class="esop-reg-table">
+                <div class="esop-reg-row">
+                    <div class="esop-reg-row__law">Companies Act</div>
+                    <div class="esop-reg-row__req">
+                        Section 62(1)(b) — employee shares; Section 54 — sweat equity
+                        <span>Board resolution + special resolution of shareholders required. Companies (Share Capital)
+                            Rules apply.</span>
+                    </div>
+                </div>
+                <div class="esop-reg-row">
+                    <div class="esop-reg-row__law">SEBI SBEB &amp; SE</div>
+                    <div class="esop-reg-row__req">
+                        Listed companies — SEBI (SBEB &amp; SE) Regulations, 2021
+                        <span>Requires independent trust, compliance officer, annual report disclosures, and shareholder
+                            approval by special resolution.</span>
+                    </div>
+                </div>
+                <div class="esop-reg-row">
+                    <div class="esop-reg-row__law">Income Tax Act</div>
+                    <div class="esop-reg-row__req">
+                        Section 17(2)(vi) — perquisite tax at exercise; Section 112A — LTCG on sale
+                        <span>Spread taxed as perquisite at exercise; TDS obligation on employer; startup tax deferral
+                            available under Section 80-IAC.</span>
+                    </div>
+                </div>
+                <div class="esop-reg-row">
+                    <div class="esop-reg-row__law">Startup Tax Deferral</div>
+                    <div class="esop-reg-row__req">
+                        DPIIT-recognised startups — deferral of perquisite tax up to 5 years
+                        <span>Tax payable within 14 days of: (a) sale of shares, (b) leaving company, or (c) 48 months
+                            from end of grant year — whichever is earliest.</span>
+                    </div>
+                </div>
+                <div class="esop-reg-row">
+                    <div class="esop-reg-row__law">Ind AS 102</div>
+                    <div class="esop-reg-row__req">
+                        Share-Based Payment — accounting for ESOP expense
+                        <span>Fair value of options at grant date recognised as employee compensation expense over
+                            vesting period. Annual third-party valuation required.</span>
+                    </div>
+                </div>
+                <div class="esop-reg-row">
+                    <div class="esop-reg-row__law">FEMA</div>
+                    <div class="esop-reg-row__req">
+                        Cross-border ESOPs — RBI &amp; FEMA compliance for foreign parent grants
+                        <span>Indian employees receiving options in foreign parent companies require RBI permission and
+                            annual reporting under FEMA 19.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     PROCESS
+══════════════════════════════════════ -->
+    <section class="esop-process" id="esop-process">
+        <div class="esop-process-intro">
+            <div class="section-tag">Implementation Framework</div>
+            <h2 class="section-title">ESOP Design &amp; Implementation <em>Process</em></h2>
+            <p>From scheme design to first grant to annual administration — here is how RKS Investments structures every
+                ESOP engagement.</p>
+        </div>
+
+        <div class="esop-phases">
+
+            <div class="esop-phase">
+                <div class="esop-phase__dot">01</div>
+                <div class="esop-phase__title">Scheme Design &amp; Strategy</div>
+                <div class="esop-phase__steps">
+                    <div class="esop-phase__step">Define objectives — retention, incentive, or capital conservation
+                    </div>
+                    <div class="esop-phase__step">Determine pool size (% of fully diluted capital)</div>
+                    <div class="esop-phase__step">Select plan type — ESOP, RSU, phantom, SAR</div>
+                    <div class="esop-phase__step">Design eligibility criteria and grant tiers</div>
+                    <div class="esop-phase__step">Model dilution impact and cap table effect</div>
+                </div>
+            </div>
+
+            <div class="esop-phase">
+                <div class="esop-phase__dot">02</div>
+                <div class="esop-phase__title">Valuation &amp; Exercise Price</div>
+                <div class="esop-phase__steps">
+                    <div class="esop-phase__step">Independent FMV determination at grant date</div>
+                    <div class="esop-phase__step">Exercise price recommendation (at par, FMV, or discounted)</div>
+                    <div class="esop-phase__step">Ind AS 102 fair value computation for accounting</div>
+                    <div class="esop-phase__step">Tax computation modelling for employees</div>
+                </div>
+            </div>
+
+            <div class="esop-phase">
+                <div class="esop-phase__dot">03</div>
+                <div class="esop-phase__title">Legal Documentation</div>
+                <div class="esop-phase__steps">
+                    <div class="esop-phase__step">ESOP Scheme document drafting</div>
+                    <div class="esop-phase__step">Grant letter templates for each employee tier</div>
+                    <div class="esop-phase__step">Board resolution and special resolution drafts</div>
+                    <div class="esop-phase__step">ESOP trust deed (if trust route chosen)</div>
+                    <div class="esop-phase__step">Employee agreement and acceptance form</div>
+                </div>
+            </div>
+
+            <div class="esop-phase">
+                <div class="esop-phase__dot">04</div>
+                <div class="esop-phase__title">Approvals &amp; Administration</div>
+                <div class="esop-phase__steps">
+                    <div class="esop-phase__step">Board and shareholder approvals obtained</div>
+                    <div class="esop-phase__step">SEBI compliance (for listed companies)</div>
+                    <div class="esop-phase__step">ROC filings — MGT-14, PAS-3 as applicable</div>
+                    <div class="esop-phase__step">Annual valuation for Ind AS 102 expense</div>
+                    <div class="esop-phase__step">Ongoing exercise, lapse, and reporting administration</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     SCHEME DESIGN PARAMETERS
+══════════════════════════════════════ -->
+    <section class="esop-design">
+        <div class="section-tag">Design Choices</div>
+        <h2 class="section-title">ESOP Scheme <em>Design</em><br>Parameters</h2>
+        <div class="esop-design-grid">
+            <div class="esop-design-left">
+                <p>The structure of an ESOP scheme determines its effectiveness as a retention, incentive, and
+                    culture-building tool. Every parameter — from pool size to vesting schedule to exercise price —
+                    involves trade-offs between employee motivation, dilution management, tax efficiency, and regulatory
+                    compliance.</p>
+                <p>RKS Investments designs ESOP schemes around the specific objectives of each company — taking into
+                    account the founder's dilution tolerance, investor expectations, employee seniority mix, and stage
+                    of business. We model the full cap table impact of each design choice before any decision is
+                    finalised.</p>
+                <p>We also design schemes that can evolve — with provisions for top-up grants, performance vesting,
+                    acceleration on exit, and migration from unlisted to listed company status without requiring a
+                    complete scheme overhaul.</p>
+            </div>
+            <div class="esop-param-table">
+                <div class="esop-param-row">
+                    <div class="esop-param-row__key">Pool Size</div>
+                    <div class="esop-param-row__val">
+                        5% – 15% of fully diluted share capital
+                        <span>PE investors typically require 10% minimum. Too small a pool limits grant flexibility; too
+                            large creates dilution.</span>
+                    </div>
+                </div>
+                <div class="esop-param-row">
+                    <div class="esop-param-row__key">Vesting Period</div>
+                    <div class="esop-param-row__val">
+                        Typically 3–4 years with 1-year cliff
+                        <span>Longer vesting = stronger retention. Shorter vesting = faster employee motivation.
+                            Performance vesting is increasingly common.</span>
+                    </div>
+                </div>
+                <div class="esop-param-row">
+                    <div class="esop-param-row__key">Exercise Price</div>
+                    <div class="esop-param-row__val">
+                        FMV, par value, or discounted FMV
+                        <span>At-FMV grants minimise perquisite tax at exercise. Par value grants create larger spread
+                            and higher tax but greater upside for employees.</span>
+                    </div>
+                </div>
+                <div class="esop-param-row">
+                    <div class="esop-param-row__key">Exercise Window</div>
+                    <div class="esop-param-row__val">
+                        1–3 years post full vesting; 30–90 days post separation
+                        <span>Longer exercise windows are employee-friendly; short windows post-separation protect the
+                            company from lingering outstanding options.</span>
+                    </div>
+                </div>
+                <div class="esop-param-row">
+                    <div class="esop-param-row__key">Eligibility</div>
+                    <div class="esop-param-row__val">
+                        Permanent employees; can exclude part-time, contract, and board-only directors
+                        <span>SEBI SBEB regulations specify eligible categories for listed companies; unlisted companies
+                            have flexibility.</span>
+                    </div>
+                </div>
+                <div class="esop-param-row">
+                    <div class="esop-param-row__key">Acceleration</div>
+                    <div class="esop-param-row__val">
+                        Single-trigger (on change of control) or double-trigger (CoC + termination)
+                        <span>Double-trigger acceleration is standard best practice — protects employees
+                            post-acquisition without incentivising premature exits.</span>
+                    </div>
+                </div>
+                <div class="esop-param-row">
+                    <div class="esop-param-row__key">Liquidity Mechanism</div>
+                    <div class="esop-param-row__val">
+                        IPO, buyback, secondary sale, or drag-along for unlisted cos
+                        <span>Critical for unlisted companies — without a defined liquidity path, ESOPs lose
+                            motivational value for employees.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     VESTING SCHEDULES
+══════════════════════════════════════ -->
+    <section class="esop-vesting">
+        <div class="section-tag">Vesting Structures</div>
+        <h2 class="section-title">Common <em>Vesting</em> Schedule Designs</h2>
+        <div class="esop-vesting-grid">
+
+            <div class="esop-vest-card">
+                <div class="esop-vest-card__label">Standard</div>
+                <h4>4-Year Graded with 1-Year Cliff</h4>
+                <div class="esop-vest-bar">
+                    <div class="esop-vest-bar__segment"></div><!-- cliff: nothing -->
+                    <div class="esop-vest-bar__segment filled"></div>
+                    <div class="esop-vest-bar__segment filled"></div>
+                    <div class="esop-vest-bar__segment filled"></div>
+                    <div class="esop-vest-bar__segment filled"></div>
+                </div>
+                <p>The most widely used structure in India. No vesting for the first year (cliff), then 25% vests at
+                    month 12, followed by equal monthly or quarterly vesting over years 2–4.</p>
+                <div class="esop-vest-card__schedule">
+                    Month 0–12: 0% vests (cliff period)<br>
+                    Month 12: 25% vests<br>
+                    Months 13–48: Remaining 75% vests monthly (2.08% per month)
+                </div>
+            </div>
+
+            <div class="esop-vest-card">
+                <div class="esop-vest-card__label">Back-Weighted</div>
+                <h4>4-Year Back-Loaded Vesting</h4>
+                <div class="esop-vest-bar">
+                    <div class="esop-vest-bar__segment" style="flex:1"></div>
+                    <div class="esop-vest-bar__segment filled" style="flex:1"></div>
+                    <div class="esop-vest-bar__segment filled" style="flex:2"></div>
+                    <div class="esop-vest-bar__segment filled" style="flex:3"></div>
+                </div>
+                <p>A back-loaded schedule (e.g., 10/20/30/40 over four years) creates increasing retention incentives as
+                    the employee approaches the final year — when the largest tranche vests.</p>
+                <div class="esop-vest-card__schedule">
+                    Year 1: 10% vests<br>
+                    Year 2: 20% vests<br>
+                    Year 3: 30% vests<br>
+                    Year 4: 40% vests
+                </div>
+            </div>
+
+            <div class="esop-vest-card">
+                <div class="esop-vest-card__label">Performance</div>
+                <h4>Performance-Based Vesting</h4>
+                <div class="esop-vest-bar">
+                    <div class="esop-vest-bar__segment filled" style="background:rgba(201,168,76,0.3)"></div>
+                    <div class="esop-vest-bar__segment filled" style="background:rgba(201,168,76,0.45)"></div>
+                    <div class="esop-vest-bar__segment filled" style="background:rgba(201,168,76,0.65)"></div>
+                    <div class="esop-vest-bar__segment filled"></div>
+                </div>
+                <p>Options vest based on achievement of specific performance targets — revenue milestones, EBITDA, or
+                    individual KPIs — in addition to or instead of time-based vesting. Aligns rewards with results.</p>
+                <div class="esop-vest-card__schedule">
+                    Target: 100% vesting at 100% goal<br>
+                    Threshold: 50% vesting at 80% of goal<br>
+                    Stretch: 125–150% vesting at 120%+ of goal<br>
+                    Below threshold: 0% vesting for the year
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     ACCOUNTING & TAX
+══════════════════════════════════════ -->
+    <section class="esop-accounting">
+        <div class="section-tag">Financial Impact</div>
+        <h2 class="section-title">ESOP <em>Accounting</em> &amp; Tax Treatment</h2>
+        <div class="esop-accounting-grid">
+
+            <div class="esop-accounting-panel">
+                <div class="esop-accounting-panel__header">
+                    <h4>Accounting under Ind AS 102</h4>
+                    <span class="panel-tag">Company Books</span>
+                </div>
+                <div class="esop-accounting-panel__body">
+                    <div class="esop-acc-row">
+                        <div class="esop-acc-row__key">Fair Value</div>
+                        <div class="esop-acc-row__val">
+                            Options valued at grant date using Black-Scholes or Binomial model
+                            <span>Requires independent valuation — inputs include share price, exercise price,
+                                volatility, risk-free rate, expected life, dividend yield.</span>
+                        </div>
+                    </div>
+                    <div class="esop-acc-row">
+                        <div class="esop-acc-row__key">Expense Recognition</div>
+                        <div class="esop-acc-row__val">
+                            Grant-date fair value amortised as employee cost over vesting period
+                            <span>Debit: Employee compensation expense | Credit: Share option reserve (equity). Non-cash
+                                — no cash outflow.</span>
+                        </div>
+                    </div>
+                    <div class="esop-acc-row">
+                        <div class="esop-acc-row__key">Modification</div>
+                        <div class="esop-acc-row__val">
+                            Repricing or scheme modification requires incremental fair value computation
+                            <span>Any increase in fair value at modification date must be recognised as additional
+                                expense.</span>
+                        </div>
+                    </div>
+                    <div class="esop-acc-row">
+                        <div class="esop-acc-row__key">Forfeiture</div>
+                        <div class="esop-acc-row__val">
+                            Lapsed/forfeited options reverse previously recognised expense
+                            <span>Cumulative expense recognised for unvested options is reversed in the period of
+                                lapse.</span>
+                        </div>
+                    </div>
+                    <div class="esop-acc-row">
+                        <div class="esop-acc-row__key">Exercise</div>
+                        <div class="esop-acc-row__val">
+                            On exercise — share capital and securities premium account credited
+                            <span>Share option reserve transferred to securities premium. No P&amp;L impact at
+                                exercise.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="esop-accounting-panel">
+                <div class="esop-accounting-panel__header">
+                    <h4>Tax Treatment — Employees</h4>
+                    <span class="panel-tag">Employee Hands</span>
+                </div>
+                <div class="esop-accounting-panel__body">
+                    <div class="esop-acc-row">
+                        <div class="esop-acc-row__key">At Grant</div>
+                        <div class="esop-acc-row__val">
+                            No tax — options are not taxable at grant date
+                            <span>Tax event arises only at exercise — not when options are granted or vested.</span>
+                        </div>
+                    </div>
+                    <div class="esop-acc-row">
+                        <div class="esop-acc-row__key">At Vesting</div>
+                        <div class="esop-acc-row__val">
+                            No tax — vesting alone does not trigger a tax event
+                            <span>Tax arises when the employee actually exercises (pays exercise price and receives
+                                shares).</span>
+                        </div>
+                    </div>
+                    <div class="esop-acc-row">
+                        <div class="esop-acc-row__key">At Exercise</div>
+                        <div class="esop-acc-row__val">
+                            Perquisite tax on spread (FMV at exercise minus exercise price)
+                            <span>Taxed as salary income at applicable income tax slab. Employer must deduct TDS. Cost
+                                of acquisition = FMV at exercise.</span>
+                        </div>
+                    </div>
+                    <div class="esop-acc-row">
+                        <div class="esop-acc-row__key">At Sale</div>
+                        <div class="esop-acc-row__val">
+                            Capital gains on appreciation from FMV at exercise to sale price
+                            <span>STCG (held &lt;24 months unlisted; &lt;12 months listed) or LTCG at applicable rates.
+                                Listed LTCG exempt up to &#8377;1.25L.</span>
+                        </div>
+                    </div>
+                    <div class="esop-acc-row">
+                        <div class="esop-acc-row__key">Startup Deferral</div>
+                        <div class="esop-acc-row__val">
+                            DPIIT-recognised startups — perquisite tax deferred up to 5 years from grant
+                            <span>Tax payable on earliest of: 5 years from grant, share sale, or ceasing employment.
+                                Requires employer Form 12BAA filing.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     ESOP TRUST
+══════════════════════════════════════ -->
+    <section class="esop-trust">
+        <div class="section-tag">Structural Mechanism</div>
+        <h2 class="section-title">ESOP Trust — <em>Structure</em><br>&amp; Benefits</h2>
+        <div class="esop-trust-grid">
+            <div class="esop-trust-left">
+                <p>For listed companies and many PE-backed private companies, ESOPs are implemented through an employee
+                    welfare trust — a separate legal entity that holds the company's shares on behalf of employees.
+                    Under SEBI SBEB regulations, listed companies are required to route most equity compensation through
+                    an independent trust.</p>
+                <p>The trust structure provides several important advantages: it separates the ESOP administration from
+                    the company's direct share capital, allows secondary market purchases of shares (in addition to
+                    fresh issue), provides an independent trustee obligation that protects employee interests, and
+                    simplifies the mechanics of exercise and buyback.</p>
+                <p>RKS Investments advises on trust setup, trustee selection, trust deed drafting, SEBI compliance, and
+                    the ongoing obligations of the trust — including annual reporting, secondary market transactions,
+                    and interaction with the company's compensation committee.</p>
+            </div>
+            <div class="esop-trust-right">
+                <div class="esop-trust-item">
+                    <div class="esop-trust-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Trust Formation &amp; Registration</h5>
+                        <p>Setting up the employee welfare trust as an irrevocable trust under the Indian Trusts Act,
+                            registering with the relevant sub-registrar, and obtaining a PAN for the trust entity.</p>
+                    </div>
+                </div>
+                <div class="esop-trust-item">
+                    <div class="esop-trust-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Independent Trustee Appointment</h5>
+                        <p>SEBI SBEB requires an independent trustee (not connected to the company) to administer the
+                            trust and act in employees' interests — particularly in listed company schemes.</p>
+                    </div>
+                </div>
+                <div class="esop-trust-item">
+                    <div class="esop-trust-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Trust Funding &amp; Share Acquisition</h5>
+                        <p>The company provides a loan to the trust (or the trust raises financing) to purchase shares —
+                            either through fresh issue from the company or secondary market purchases of listed shares.
+                        </p>
+                    </div>
+                </div>
+                <div class="esop-trust-item">
+                    <div class="esop-trust-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Exercise &amp; Delivery Mechanics</h5>
+                        <p>Upon exercise, the trust delivers shares to the employee's demat account — receiving the
+                            exercise price and facilitating TDS deduction coordination with payroll.</p>
+                    </div>
+                </div>
+                <div class="esop-trust-item">
+                    <div class="esop-trust-item__icon">&#9670;</div>
+                    <div>
+                        <h5>Annual Trust Compliance</h5>
+                        <p>Annual accounts, audit, trustee meeting minutes, ROC filings, SEBI disclosures (for listed
+                            companies), and income tax filing for the trust entity — all coordinated by our team.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     OUR SERVICES
+══════════════════════════════════════ -->
+    <section class="esop-services">
+        <div class="section-tag">What We Do</div>
+        <h2 class="section-title">Our <em>ESOP Advisory</em> Services</h2>
+        <div class="esop-services-grid">
+
+            <div class="esop-service-card">
+                <div class="esop-service-card__icon">&#9670;</div>
+                <h3>ESOP Scheme Design</h3>
+                <p>We design your ESOP scheme from first principles — pool sizing, plan type selection, vesting
+                    structure, exercise price strategy, eligibility framework, and liquidity provisions — modelling the
+                    full cap table and dilution impact at every step.</p>
+                <ul>
+                    <li>Pool sizing and dilution modelling</li>
+                    <li>ESOP vs RSU vs phantom — plan selection</li>
+                    <li>Tiered grant structure by employee level</li>
+                    <li>Vesting schedule design — time and performance</li>
+                </ul>
+            </div>
+
+            <div class="esop-service-card">
+                <div class="esop-service-card__icon">&#9632;</div>
+                <h3>ESOP Scheme Documentation</h3>
+                <p>We draft all scheme documents — the ESOP Scheme document, grant letter templates, board and
+                    shareholder resolution templates, employee acceptance forms, and trust deed (where applicable).</p>
+                <ul>
+                    <li>ESOP Scheme document</li>
+                    <li>Grant letter and acceptance forms</li>
+                    <li>Board resolution &amp; special resolution drafts</li>
+                    <li>ESOP trust deed (if trust route)</li>
+                </ul>
+            </div>
+
+            <div class="esop-service-card">
+                <div class="esop-service-card__icon">&#9651;</div>
+                <h3>ESOP Valuation (Ind AS 102)</h3>
+                <p>Annual fair value determination of options using Black-Scholes or Binomial models — providing the
+                    per-option fair value required for accounting expense recognition and annual report disclosures.</p>
+                <ul>
+                    <li>Grant-date fair value computation</li>
+                    <li>Volatility and risk-free rate analysis</li>
+                    <li>Annual expense amortisation schedule</li>
+                    <li>Financial statement disclosure note</li>
+                </ul>
+            </div>
+
+            <div class="esop-service-card">
+                <div class="esop-service-card__icon">&#9711;</div>
+                <h3>Regulatory Compliance</h3>
+                <p>End-to-end compliance support — shareholder approvals, ROC filings, SEBI SBEB compliance for listed
+                    companies, startup tax deferral documentation, and annual report disclosures.</p>
+                <ul>
+                    <li>SEBI SBEB filings (listed companies)</li>
+                    <li>ROC filings — MGT-14, PAS-3</li>
+                    <li>DPIIT startup deferral — Form 12BAA</li>
+                    <li>Annual Directors&rsquo; Report ESOP disclosure</li>
+                </ul>
+            </div>
+
+            <div class="esop-service-card">
+                <div class="esop-service-card__icon">&#9702;</div>
+                <h3>ESOP Trust Setup &amp; Administration</h3>
+                <p>For companies choosing the trust route, we manage the full trust formation process — from deed
+                    drafting and registration to trustee selection, SEBI compliance, and ongoing annual obligations.</p>
+                <ul>
+                    <li>Trust deed drafting &amp; registration</li>
+                    <li>Independent trustee identification</li>
+                    <li>Trust PAN and banking setup</li>
+                    <li>Ongoing annual compliance &amp; reporting</li>
+                </ul>
+            </div>
+
+            <div class="esop-service-card">
+                <div class="esop-service-card__icon">&#9679;</div>
+                <h3>ESOP Review &amp; Restructuring</h3>
+                <p>For companies with existing ESOP schemes that are not achieving their intended objectives — whether
+                    due to underwater options, poor liquidity, or compliance gaps — we audit, advise on, and restructure
+                    schemes to maximise their effectiveness.</p>
+                <ul>
+                    <li>Existing scheme audit and gap analysis</li>
+                    <li>Repricing advisory and impact modelling</li>
+                    <li>Liquidity event planning (IPO, buyback, secondary)</li>
+                    <li>Scheme migration — unlisted to listed compliance</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     ESOP vs ALTERNATIVES
+══════════════════════════════════════ -->
+    <section class="esop-compare">
+        <div class="section-tag">Plan Selection Guide</div>
+        <h2 class="section-title">ESOP vs. Other Equity<br><em>Compensation</em> Instruments</h2>
+        <div class="esop-compare-table-wrap">
+            <table class="esop-compare-table">
+                <thead>
+                    <tr>
+                        <th>Instrument</th>
+                        <th>Employee Dilution</th>
+                        <th>Exercise Price</th>
+                        <th>Tax at Exercise / Vest</th>
+                        <th>Risk to Employee</th>
+                        <th>Best Suited For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Stock Options (ESOP)</td>
+                        <td><span class="ec-caution">Dilutive — new shares</span></td>
+                        <td>Fixed at grant date (typically FMV)</td>
+                        <td>Perquisite tax on spread at exercise</td>
+                        <td>Options lapse if price falls below exercise price</td>
+                        <td>All stages; most common across India</td>
+                    </tr>
+                    <tr>
+                        <td>Restricted Stock Units (RSU)</td>
+                        <td><span class="ec-caution">Dilutive — new shares</span></td>
+                        <td>Nil — shares delivered on vesting</td>
+                        <td>Full FMV taxed as perquisite on vest</td>
+                        <td>Lower risk — always has value above zero</td>
+                        <td>Listed cos; senior executives; MNC subsidiary employees</td>
+                    </tr>
+                    <tr>
+                        <td>Sweat Equity Shares</td>
+                        <td><span class="ec-caution">Dilutive — new shares</span></td>
+                        <td>Par value or nil (for IP contribution)</td>
+                        <td>FMV taxed as perquisite at allotment</td>
+                        <td>Low — shares issued directly; no exercise required</td>
+                        <td>Founders, promoters, key technical contributors</td>
+                    </tr>
+                    <tr>
+                        <td>Phantom Stock / SARs</td>
+                        <td><span class="ec-good">Non-dilutive — cash payout</span></td>
+                        <td>N/A — cash equivalent of appreciation</td>
+                        <td>Full payout taxed as salary income</td>
+                        <td>No equity risk — purely appreciation-linked cash</td>
+                        <td>Subsidiaries, JVs, companies avoiding dilution</td>
+                    </tr>
+                    <tr>
+                        <td>Performance Shares</td>
+                        <td><span class="ec-caution">Dilutive — if targets met</span></td>
+                        <td>Nil — shares delivered on performance</td>
+                        <td>FMV taxed as perquisite on delivery</td>
+                        <td>Risk of zero vesting if targets missed</td>
+                        <td>Senior leaders with quantifiable performance metrics</td>
+                    </tr>
+                    <tr>
+                        <td>Co-Investment / Direct Shares</td>
+                        <td><span class="ec-caution">Dilutive — immediate</span></td>
+                        <td>At FMV — employee pays full price</td>
+                        <td>Capital gains only at future sale</td>
+                        <td>Full downside risk — employee paid market price</td>
+                        <td>C-suite, PE-backed companies, founders round</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     WHY RKS
+══════════════════════════════════════ -->
+    <section class="esop-why">
+        <div class="section-tag">Our Differentiators</div>
+        <h2 class="section-title">Why <em>RKS Investments</em><br>for ESOP Advisory</h2>
+        <div class="esop-why-grid">
+            <div class="esop-why-metrics">
+                <div class="esop-why-metric">
+                    <div class="esop-why-metric__num">80+</div>
+                    <div class="esop-why-metric__label">ESOP Schemes<br>Designed</div>
+                </div>
+                <div class="esop-why-metric">
+                    <div class="esop-why-metric__num">Listed<br>&amp; Private</div>
+                    <div class="esop-why-metric__label">Both Categories<br>Covered</div>
+                </div>
+                <div class="esop-why-metric">
+                    <div class="esop-why-metric__num">Ind AS<br>Compliant</div>
+                    <div class="esop-why-metric__label">Audit-Ready<br>Valuations</div>
+                </div>
+                <div class="esop-why-metric">
+                    <div class="esop-why-metric__num">SEBI<br>SBEB</div>
+                    <div class="esop-why-metric__label">Full Regulatory<br>Compliance</div>
+                </div>
+            </div>
+            <div class="esop-why-reasons">
+                <div class="esop-why-reason">
+                    <div class="esop-why-reason__num">01</div>
+                    <div>
+                        <h4>End-to-End — Design to Administration</h4>
+                        <p>Unlike legal or accounting firms that handle only their slice, RKS Investments covers the
+                            full ESOP lifecycle — from scheme strategy and design through documentation, valuation,
+                            compliance, and annual administration.</p>
+                    </div>
+                </div>
+                <div class="esop-why-reason">
+                    <div class="esop-why-reason__num">02</div>
+                    <div>
+                        <h4>Transaction-Informed Design</h4>
+                        <p>Because we work on PE fundraises, IPOs, and M&amp;A transactions daily, we design ESOPs that
+                            will hold up at due diligence — with clean pool sizing, investor-compatible acceleration
+                            provisions, and correct regulatory treatment.</p>
+                    </div>
+                </div>
+                <div class="esop-why-reason">
+                    <div class="esop-why-reason__num">03</div>
+                    <div>
+                        <h4>In-House Valuation Capability</h4>
+                        <p>Our Ind AS 102 valuations are performed in-house by our valuation team — eliminating the
+                            coordination friction of separate valuer appointments and ensuring the valuation is
+                            integrated with the scheme design from day one.</p>
+                    </div>
+                </div>
+                <div class="esop-why-reason">
+                    <div class="esop-why-reason__num">04</div>
+                    <div>
+                        <h4>Employee Communication Support</h4>
+                        <p>A technically perfect ESOP that employees don't understand has zero motivational value. We
+                            provide plain-language employee communication materials — FAQs, calculators, and explainer
+                            decks — that make the scheme real and compelling.</p>
+                    </div>
+                </div>
+                <div class="esop-why-reason">
+                    <div class="esop-why-reason__num">05</div>
+                    <div>
+                        <h4>Ongoing Annual Partnership</h4>
+                        <p>ESOPs require annual attention — new grants, leavers, vesting events, valuations, and
+                            disclosures. We offer ongoing retainer arrangements so that our clients' schemes are always
+                            current, compliant, and optimally structured.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+    <section class="esop-cta">
+        <div class="section-tag section-tag--center">Build Your ESOP</div>
+        <h2>Turn Your Best People<br>into <em>Co-Owners</em></h2>
+        <p>Whether you're designing your first ESOP or restructuring an existing scheme before a fundraise or IPO, RKS
+            Investments delivers a plan that is motivating for employees, clean for investors, and compliant for
+            regulators.</p>
+        <div class="esop-cta__actions">
+            <a class="btn-primary" href="index.html">Design Your ESOP</a>
+            <a class="btn-ghost" href="valuations.html">View Valuations</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo logo--static">
+                    <div class="logo-mark"><img src="logo.png" alt="RKS Investments" style="width: 70px; height: 70px;">
+                    </div>
+                    RKS Investments
+                </div>
+                <p>Independent investment banking and corporate finance advisory, committed to helping businesses grow
+                    through
+                    strategic capital solutions.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="ipo.html">IPO Advisory</a></li>
+                    <li><a href="M&A.html">M&A Advisory</a></li>
+                    <li><a href="PE.html">Private Equity</a></li>
+                    <li><a href="Debt.html">Debt Syndication</a></li>
+                    <li><a href="Valuation.html">Valuations</a></li>
+                    <li><a href="ESOP.html">ESOP Advisory</a></li>
+                    <li><a href="right.html">Rights Issue Advisory</a></li>
+                    <li><a href="buy.html">Buyback & Delisting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <!-- <li><a href="client.html">Our Clients</a></li> -->
+                    <li><a href="compliance.html">Compliance</a></li>
+                    <li><a href="form.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a>info@rksinvestments.in</a></li>
+                    <li><a>+91 98765 43210</a></li>
+                    <li><a>Suite 501, Capital Tower<br>Connaught Place<br>New Delhi – 110001</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RKS Investments. All rights reserved.</p>
+            <p class="disc">RKS Investments is not registered with SEBI. Advisory services are provided in a purely
+                non-regulated capacity. Nothing on this website constitutes investment advice. Past transaction
+                experience does
+                not guarantee future results.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        /* Scroll shrink */
+        window.addEventListener('scroll', () => {
+            document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        /* Hamburger */
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('open');
+        }
+
+        /* Close menu when clicking outside */
+        document.addEventListener('click', e => {
+            if (!e.target.closest('nav')) {
+                document.getElementById('nav-links').classList.remove('open');
+                closeAllDropdowns();
+            }
+        });
+
+        /* Dropdown — click to open/close */
+        document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+            trigger.addEventListener('click', function (e) {
+                e.preventDefault();
+                const li = this.closest('.nav-has-dropdown');
+                const isOpen = li.classList.contains('dropdown-open');
+                closeAllDropdowns();
+                if (!isOpen) {
+                    li.classList.add('dropdown-open');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        function closeAllDropdowns() {
+            document.querySelectorAll('.nav-has-dropdown').forEach(li => {
+                li.classList.remove('dropdown-open');
+                const trigger = li.querySelector('.nav-dropdown-trigger');
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        /* Close dropdown on Escape */
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeAllDropdowns();
+        });
+    </script>
+
+</body>
+
+</html>

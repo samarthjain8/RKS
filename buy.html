@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyback &amp; Delisting Advisory — RKS Investments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ══════════════════════════════════════
+       BUYBACK & DELISTING PAGE — STYLES
+    ══════════════════════════════════════ */
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb-sep {
+            color: rgba(201, 168, 76, 0.25);
+        }
+
+        .breadcrumb-current {
+            color: var(--gold);
+        }
+
+        /* ── HERO ── */
+        .bd-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 140px 60px 72px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bd-hero-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 48% 65% at 90% 28%, rgba(201, 168, 76, 0.06) 0%, transparent 65%),
+                radial-gradient(ellipse 38% 50% at 4% 68%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse 32% 42% at 55% 100%, rgba(201, 168, 76, 0.025) 0%, transparent 55%),
+                linear-gradient(158deg, #0d0d0d 0%, #141414 52%, #0d0d0d 100%);
+        }
+
+        .bd-hero-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.026) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.026) 1px, transparent 1px);
+            background-size: 68px 68px;
+            mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, black, transparent);
+        }
+
+        /* Circular arc accent — "buyback" concept */
+        .bd-hero-arc {
+            position: absolute;
+            bottom: -80px;
+            right: 80px;
+            width: 280px;
+            height: 280px;
+            border: 1px solid rgba(201, 168, 76, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .bd-hero-arc::before {
+            content: '';
+            position: absolute;
+            inset: 28px;
+            border: 1px solid rgba(201, 168, 76, 0.05);
+            border-radius: 50%;
+        }
+
+        .bd-hero-arc::after {
+            content: '';
+            position: absolute;
+            inset: 56px;
+            border: 1px solid rgba(201, 168, 76, 0.04);
+            border-radius: 50%;
+        }
+
+        .bd-hero-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .bd-hero-left h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6.5vw, 5.6rem);
+            font-weight: 300;
+            line-height: 1.03;
+            color: var(--text);
+            margin-bottom: 28px;
+        }
+
+        .bd-hero-left h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .bd-hero-left>p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 530px;
+            margin-bottom: 40px;
+        }
+
+        .bd-hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-self: flex-end;
+        }
+
+        .bd-stat-card {
+            padding: 26px 32px;
+            border: 1px solid var(--border);
+            background: rgba(20, 20, 20, 0.82);
+            backdrop-filter: blur(12px);
+            transition: border-color 0.3s;
+        }
+
+        .bd-stat-card:hover {
+            border-color: rgba(201, 168, 76, 0.45);
+        }
+
+        .bd-stat-card__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .bd-stat-card__label {
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        /* ── SECTION TOGGLE ── */
+        .bd-section-nav {
+            padding: 0 60px;
+            background: var(--dark2);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 0;
+            position: sticky;
+            top: 71px;
+            z-index: 90;
+        }
+
+        .bd-nav-btn {
+            padding: 18px 32px;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .bd-nav-btn.active,
+        .bd-nav-btn:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+            background: rgba(201, 168, 76, 0.04);
+        }
+
+        /* ── PULL QUOTE ── */
+        .bd-pull-quote {
+            margin: 32px 0;
+            padding: 28px 32px;
+            border-left: 2px solid var(--gold);
+            background: var(--dark2);
+        }
+
+        .bd-pull-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem !important;
+            font-style: italic;
+            color: var(--text) !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+        }
+
+        /* ── COMMON CONTENT PATTERNS ── */
+        .bd-section {
+            padding: 100px 60px;
+        }
+
+        .bd-section.bg2 {
+            background: var(--dark2);
+        }
+
+        .bd-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .bd-two-col p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        .bd-two-col p:first-of-type {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        /* Cards in 3 columns */
+        .bd-cards-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        /* Cards in 4 columns */
+        .bd-cards-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        /* Cards in 2 columns */
+        .bd-cards-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .bd-card {
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .bd-card.on-dark {
+            background: var(--dark);
+        }
+
+        .bd-card:hover {
+            background: var(--dark3);
+        }
+
+        .bd-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+
+        .bd-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .bd-card__tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .bd-card__icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            transition: border-color 0.3s;
+        }
+
+        .bd-card:hover .bd-card__icon {
+            border-color: var(--gold);
+        }
+
+        .bd-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .bd-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .bd-card p {
+            font-size: 0.83rem;
+            color: var(--muted);
+            line-height: 1.72;
+            margin-bottom: 14px;
+        }
+
+        .bd-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .bd-card li {
+            font-size: 0.78rem;
+            color: var(--text);
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .bd-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.72rem;
+        }
+
+        /* Numbered steps */
+        .bd-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 56px;
+            position: relative;
+        }
+
+        .bd-steps::before {
+            content: '';
+            position: absolute;
+            left: 26px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .bd-step {
+            display: grid;
+            grid-template-columns: 54px 1fr;
+            gap: 32px;
+            padding: 36px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .bd-step:last-child {
+            border-bottom: none;
+        }
+
+        .bd-step__num {
+            width: 52px;
+            height: 52px;
+            border: 1px solid var(--gold);
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bd-step__body {
+            padding-top: 8px;
+        }
+
+        .bd-step__body h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.28rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .bd-step__body p {
+            font-size: 0.86rem;
+            color: var(--muted);
+            line-height: 1.75;
+            max-width: 680px;
+        }
+
+        .bd-step-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 14px;
+        }
+
+        .bd-step-tag {
+            padding: 3px 10px;
+            border: 1px solid var(--border);
+            font-size: 0.68rem;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+        }
+
+        .bd-step-duration {
+            font-size: 0.65rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.7;
+            margin-top: 8px;
+        }
+
+        /* Data table */
+        .bd-table-wrap {
+            margin-top: 56px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .bd-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 680px;
+        }
+
+        .bd-table thead tr {
+            background: var(--dark3);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bd-table th {
+            padding: 15px 20px;
+            font-size: 0.66rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-align: left;
+            white-space: nowrap;
+            border-right: 1px solid var(--border);
+        }
+
+        .bd-table th:last-child {
+            border-right: none;
+        }
+
+        .bd-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .bd-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .bd-table tbody tr:hover {
+            background: var(--dark3);
+        }
+
+        .bd-table td {
+            padding: 14px 20px;
+            font-size: 0.81rem;
+            color: var(--muted);
+            vertical-align: top;
+            line-height: 1.55;
+            border-right: 1px solid var(--border);
+        }
+
+        .bd-table td:last-child {
+            border-right: none;
+        }
+
+        .bd-table td:first-child {
+            color: var(--text);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* Key-value row table */
+        .bd-kv-table {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+
+        .bd-kv-row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .bd-kv-row:last-child {
+            border-bottom: none;
+        }
+
+        .bd-kv-row:hover {
+            background: var(--dark3);
+        }
+
+        .bd-kv-row__key {
+            padding: 16px 18px;
+            background: var(--dark);
+            border-right: 1px solid var(--border);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+        }
+
+        .bd-kv-row__val {
+            padding: 14px 18px;
+            font-size: 0.82rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .bd-kv-row__val span {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        /* Section divider with label */
+        .bd-divider-label {
+            padding: 24px 60px;
+            background: var(--dark3);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bd-divider-label h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--text);
+        }
+
+        .bd-divider-label h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .bd-divider-label p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.6;
+            max-width: 480px;
+        }
+
+        .bd-divider-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            margin: 0 16px;
+        }
+
+        /* Highlight box */
+        .bd-highlight {
+            padding: 32px 36px;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            background: rgba(201, 168, 76, 0.04);
+            margin-top: 24px;
+        }
+
+        .bd-highlight h5 {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .bd-highlight p {
+            font-size: 0.84rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Why RKS */
+        .bd-why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 56px;
+        }
+
+        .bd-why-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .bd-why-metric {
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            background: var(--dark2);
+        }
+
+        .bd-why-metric__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .bd-why-metric__label {
+            font-size: 0.7rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .bd-why-reasons {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .bd-why-reason {
+            display: flex;
+            gap: 22px;
+            padding: 26px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+
+        .bd-why-reason:last-child {
+            border-bottom: none;
+        }
+
+        .bd-why-reason__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: rgba(201, 168, 76, 0.2);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 32px;
+        }
+
+        .bd-why-reason h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .bd-why-reason p {
+            font-size: 0.83rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* CTA */
+        .bd-cta {
+            padding: 100px 60px;
+            text-align: center;
+            background:
+                radial-gradient(ellipse 55% 75% at 50% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 70%),
+                var(--dark);
+            border-top: 1px solid var(--border);
+        }
+
+        .bd-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .bd-cta h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .bd-cta p {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+        }
+
+        .bd-cta__actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .bd-cards-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bd-cards-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .bd-hero {
+                padding: 100px 24px 56px;
+                min-height: auto;
+            }
+
+            .bd-hero-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .bd-hero-right {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+
+            .bd-stat-card {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .bd-hero-arc {
+                display: none;
+            }
+
+            .bd-section-nav {
+                padding: 0 24px;
+                overflow-x: auto;
+            }
+
+            .bd-section {
+                padding: 60px 24px;
+            }
+
+            .bd-divider-label {
+                padding: 20px 24px;
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .bd-divider-line {
+                display: none;
+            }
+
+            .bd-two-col {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .bd-cards-3,
+            .bd-cards-4,
+            .bd-cards-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .bd-step {
+                grid-template-columns: 44px 1fr;
+                gap: 16px;
+            }
+
+            .bd-steps::before {
+                display: none;
+            }
+
+            .bd-kv-row {
+                grid-template-columns: 1fr;
+            }
+
+            .bd-kv-row__key {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .bd-why-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .bd-why-metrics {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+    <nav id="main-nav">
+        <a class="logo" href="index.html">
+            <div class="logo-mark"><img src="Logo.png" alt="RKS" height="70" width="70"></div>
+            RKS Investments
+        </a>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+
+            <li class="nav-has-dropdown">
+                <a href="#" class="nav-dropdown-trigger">Investment Banking &#8964;</a>
+
+                <div class="nav-dropdown">
+                    <a href="ipo.html">→ IPO Advisory</a><br>
+                    <a href="M&A.html">→ Mergers & Acquisitions</a><br>
+                    <a href="PE.html">→ Private Equity</a><br>
+                    <a href="Debt.html">→ Debt Syndication</a><br>
+                    <a href="Valuation.html">→ Valuations</a><br>
+                    <a href="ESOP.html">→ ESOP Advisory</a><br>
+                    <a href="right.html">→ Rights Issue</a><br>
+                    <a href="buy.html">→ Buyback & Delisting</a><br>
+                </div>
+            </li>
+
+            <li><a href="compliance.html">Compliance</a></li>
+            <li><a href="client.html">Clients</a></li>
+            <li><a href="form.html" class="nav-cta">Contact</a></li>
+        </ul>
+
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="bd-hero">
+        <div class="bd-hero-bg"></div>
+        <div class="bd-hero-grid"></div>
+        <div class="bd-hero-arc"></div>
+        <div class="bd-hero-content">
+            <div class="bd-hero-left">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <a href="index.html">Investment Banking</a>
+                    <span class="breadcrumb-sep">/</span>
+                    <span class="breadcrumb-current">Buyback &amp; Delisting</span>
+                </div>
+                <h1>Buyback &amp;<br><em>Delisting</em><br>Advisory</h1>
+                <p>End-to-end advisory for share buyback programs and voluntary delisting offers — helping listed
+                    companies and promoters navigate two of the most complex, regulatory-intensive transactions in
+                    Indian capital markets.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="index.html">Discuss a Mandate</a>
+                    <a class="btn-ghost" href="#bd-buyback">Explore Services</a>
+                </div>
+            </div>
+            <div class="bd-hero-right">
+                <div class="bd-stat-card">
+                    <div class="bd-stat-card__num">40+</div>
+                    <div class="bd-stat-card__label">Buyback &amp; Delisting Mandates</div>
+                </div>
+                <div class="bd-stat-card">
+                    <div class="bd-stat-card__num">&#8377;800Cr+</div>
+                    <div class="bd-stat-card__label">Aggregate Transaction Value</div>
+                </div>
+                <div class="bd-stat-card">
+                    <div class="bd-stat-card__num">SEBI &amp;<br>SAST</div>
+                    <div class="bd-stat-card__label">Full Regulatory Framework Coverage</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION NAV -->
+    <div class="bd-section-nav">
+        <button class="bd-nav-btn active" onclick="showBDSection('buyback', this)">Share Buyback</button>
+        <button class="bd-nav-btn" onclick="showBDSection('delisting', this)">Voluntary Delisting</button>
+    </div>
+
+    <!-- ══════════════════════════════════════
+     ███ BUYBACK SECTION ███
+══════════════════════════════════════ -->
+    <div id="bd-buyback">
+
+        <!-- What is a Buyback -->
+        <section class="bd-section">
+            <div class="bd-two-col" style="margin-top:0">
+                <div>
+                    <div class="section-tag">Share Buyback</div>
+                    <h2 class="section-title">What Is a <em>Share</em> Buyback?</h2>
+                    <p>A share buyback — also called a share repurchase — is a transaction in which a listed company
+                        purchases its own shares from the open market or from existing shareholders, and subsequently
+                        extinguishes those shares, reducing the total outstanding share count. It is one of the most
+                        powerful capital allocation tools available to a well-capitalised listed company.</p>
+                    <p>By reducing the number of shares in circulation, a buyback increases earnings per share (EPS),
+                        return on equity (ROE), and often the share price — directly benefiting remaining shareholders
+                        who do not tender their shares. It also signals management's conviction that the company's
+                        shares are undervalued, which in itself is a powerful market communication.</p>
+                    <div class="bd-pull-quote">
+                        <p>"A buyback is management's clearest public statement that they believe the stock is worth
+                            more than the market currently offers — and they're willing to bet capital on it."</p>
+                    </div>
+                    <p>In India, buybacks are governed by SEBI (Buy-Back of Securities) Regulations, 2018, and Companies
+                        Act Section 68–70 — with specific rules on buyback limits, pricing, method, timelines, and
+                        post-buyback restrictions on further capital market activities.</p>
+                </div>
+
+                <!-- How a buyback works — ladder -->
+                <div>
+                    <h4
+                        style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:20px;">
+                        Why Companies Do Buybacks</h4>
+                    <div style="display:flex;flex-direction:column;gap:2px;">
+                        <div style="display:flex;gap:0;border:1px solid var(--border);border-bottom:none;">
+                            <div
+                                style="width:44px;flex-shrink:0;background:var(--dark2);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--gold);padding:16px 0;">
+                                01</div>
+                            <div style="padding:16px 20px;">
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:4px;">
+                                    Return Surplus Cash to Shareholders</div>
+                                <div style="font-size:0.77rem;color:var(--muted);line-height:1.55;">More tax-efficient
+                                    than dividends in many structures; shareholders can choose to participate or retain
+                                    shares.</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:0;border:1px solid var(--border);border-bottom:none;">
+                            <div
+                                style="width:44px;flex-shrink:0;background:var(--dark2);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--gold);padding:16px 0;">
+                                02</div>
+                            <div style="padding:16px 20px;">
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:4px;">
+                                    Signal Undervaluation to the Market</div>
+                                <div style="font-size:0.77rem;color:var(--muted);line-height:1.55;">Management publicly
+                                    communicating confidence in intrinsic value above current market price — a powerful
+                                    positive signal.</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:0;border:1px solid var(--border);border-bottom:none;">
+                            <div
+                                style="width:44px;flex-shrink:0;background:var(--dark2);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--gold);padding:16px 0;">
+                                03</div>
+                            <div style="padding:16px 20px;">
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:4px;">
+                                    Improve Key Per-Share Metrics</div>
+                                <div style="font-size:0.77rem;color:var(--muted);line-height:1.55;">EPS, BPS, ROE, and
+                                    ROCE all improve mechanically when the share count falls — making financial results
+                                    look better to analysts.</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:0;border:1px solid var(--border);border-bottom:none;">
+                            <div
+                                style="width:44px;flex-shrink:0;background:var(--dark2);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--gold);padding:16px 0;">
+                                04</div>
+                            <div style="padding:16px 20px;">
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:4px;">
+                                    Increase Promoter Holding %</div>
+                                <div style="font-size:0.77rem;color:var(--muted);line-height:1.55;">If promoters do not
+                                    tender, their percentage holding automatically increases as the total share count
+                                    falls — without additional investment.</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:0;border:1px solid var(--border);">
+                            <div
+                                style="width:44px;flex-shrink:0;background:var(--dark2);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--gold);padding:16px 0;">
+                                05</div>
+                            <div style="padding:16px 20px;">
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:4px;">
+                                    ESOP Share Management</div>
+                                <div style="font-size:0.77rem;color:var(--muted);line-height:1.55;">Buying back shares
+                                    to offset dilution from ESOP exercises — maintaining the share count and preventing
+                                    option-exercise dilution for existing shareholders.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buyback Methods -->
+        <section class="bd-section bg2">
+            <div class="section-tag">Method Selection</div>
+            <h2 class="section-title">Buyback <em>Methods</em> Under SEBI Regulations</h2>
+            <div class="bd-cards-3">
+
+                <div class="bd-card on-dark">
+                    <div class="bd-card__tag">Most Common</div>
+                    <h3>Tender Offer (Fixed Price)</h3>
+                    <p>The company announces a fixed buyback price (at a premium to CMP) and invites shareholders to
+                        tender their shares within a specified window. Oversubscription is managed by proportionate
+                        acceptance. This is the most commonly used method for large buybacks by listed companies.</p>
+                    <ul>
+                        <li>Buyback price fixed upfront — typically 20–30% premium to CMP</li>
+                        <li>15-working-day acceptance window</li>
+                        <li>Proportionate acceptance if oversubscribed</li>
+                        <li>Promoters and PAC can participate</li>
+                        <li>Max buyback size: 25% of paid-up capital + free reserves</li>
+                    </ul>
+                </div>
+
+                <div class="bd-card on-dark">
+                    <div class="bd-card__tag">Flexible</div>
+                    <h3>Open Market (Stock Exchange)</h3>
+                    <p>The company buys its own shares from the open secondary market through the stock exchange order
+                        book — over a period of up to 6 months — at market-prevailing prices within a specified maximum
+                        price limit. No fixed price announced; purchases made daily at management discretion.</p>
+                    <ul>
+                        <li>Purchases over up to 6 months on exchange</li>
+                        <li>Maximum price ceiling pre-disclosed</li>
+                        <li>Promoters and insiders cannot sell during window</li>
+                        <li>10% daily volume cap on exchange purchases</li>
+                        <li>Suitable for smaller, flexible buybacks</li>
+                    </ul>
+                </div>
+
+                <div class="bd-card on-dark">
+                    <div class="bd-card__tag">Specialised</div>
+                    <h3>Odd Lot Buyback</h3>
+                    <p>A targeted buyback exclusively for shareholders holding less than the market lot (typically less
+                        than 100 shares) — giving small shareholders an exit at a fair price and reducing the company's
+                        shareholder count. Often used as a secondary objective alongside a larger tender offer.</p>
+                    <ul>
+                        <li>Only shareholders holding odd lots eligible</li>
+                        <li>Provides liquidity for otherwise illiquid small holdings</li>
+                        <li>Reduces shareholder servicing costs for company</li>
+                        <li>Often combined with a general tender offer</li>
+                        <li>Separate acceptance ratio computed for odd-lot holders</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Buyback Limits & Conditions -->
+        <section class="bd-section">
+            <div class="bd-two-col">
+                <div>
+                    <div class="section-tag">Regulatory Conditions</div>
+                    <h2 class="section-title">Buyback Limits &amp;<br><em>SEBI Conditions</em></h2>
+                    <p>SEBI and the Companies Act impose strict limits and conditions on buybacks — designed to prevent
+                        market manipulation, protect minority shareholders, and ensure that companies do not buy back
+                        shares using borrowed funds or beyond their financial capacity.</p>
+                    <p>A critical condition is the debt-equity ratio limit: post-buyback, the company's total secured
+                        and unsecured debt cannot exceed twice its paid-up capital plus free reserves. This ensures
+                        buybacks are funded only from genuine surplus capital — not by taking on additional leverage.
+                    </p>
+                    <p>RKS Investments conducts a comprehensive pre-buyback eligibility assessment — confirming that the
+                        company satisfies all SEBI and Companies Act conditions before any board or shareholder approval
+                        is sought.</p>
+                    <div class="bd-highlight">
+                        <h5>&#9888; Post-Buyback Restriction</h5>
+                        <p>A company cannot issue new shares or raise fresh capital (QIP, rights issue, preferential
+                            allotment) for a period of one year following the completion of a buyback — other than
+                            through an ESOP. This must be factored into capital planning before the buyback is
+                            announced.</p>
+                    </div>
+                </div>
+                <div class="bd-kv-table">
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Buyback Limit</div>
+                        <div class="bd-kv-row__val">
+                            Max 25% of paid-up equity capital + free reserves in a financial year
+                            <span>Board-approved buybacks are capped at 10% of paid-up capital. Beyond 10% requires
+                                shareholder special resolution.</span>
+                        </div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Debt-Equity Ratio</div>
+                        <div class="bd-kv-row__val">
+                            Post-buyback D/E ratio must not exceed 2:1
+                            <span>Debt = all secured + unsecured borrowings. Equity = paid-up capital + free reserves.
+                                Ensures buyback is from genuine surplus.</span>
+                        </div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Source of Funds</div>
+                        <div class="bd-kv-row__val">
+                            Only from free reserves, securities premium, or proceeds of any earlier issue
+                            <span>Buyback cannot be funded by fresh borrowings — only from accumulated internal
+                                accruals.</span>
+                        </div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Minimum Buyback</div>
+                        <div class="bd-kv-row__val">
+                            At least 50% of the announced buyback amount must be completed
+                            <span>If the company fails to complete 50% of the announced buyback, SEBI imposes
+                                restrictions on future buybacks.</span>
+                        </div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Escrow Requirement</div>
+                        <div class="bd-kv-row__val">
+                            25% of the total buyback amount must be deposited in escrow before announcement
+                            <span>Ensures the company has genuine funds committed before making a public buyback
+                                offer.</span>
+                        </div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Post-Buyback Lock-in</div>
+                        <div class="bd-kv-row__val">
+                            No fresh equity issuance for 1 year post-buyback
+                            <span>Applies to QIP, preferential allotment, rights issue — ESOP grants are exempt from
+                                this restriction.</span>
+                        </div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Share Extinguishment</div>
+                        <div class="bd-kv-row__val">
+                            Bought-back shares must be extinguished within 7 days of closure
+                            <span>Shares cannot be held as treasury stock — they must be permanently cancelled, reducing
+                                the total share count.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buyback Pricing -->
+        <section class="bd-section bg2">
+            <div class="section-tag">Pricing &amp; Taxation</div>
+            <h2 class="section-title">Buyback Pricing &amp; <em>Tax Treatment</em></h2>
+            <div class="bd-two-col">
+                <div>
+                    <p>For tender offer buybacks, the company announces a fixed price — which must be at a premium to
+                        the prevailing CMP and comply with the SEBI floor price formula (higher of 26-week or 2-week
+                        VWAP on the stock exchange). The price is fixed throughout the acceptance window.</p>
+                    <p>For open market buybacks, no single price is announced — the company's broker purchases shares at
+                        market prices over the buyback window, subject to the pre-announced maximum price ceiling. Daily
+                        disclosure of purchases is mandatory.</p>
+                    <p>From a tax perspective, buyback consideration is taxed in the hands of the company — not the
+                        individual shareholder — under Section 115QA of the Income Tax Act. The company pays a flat 20%
+                        buyback tax (plus surcharge and cess) on the distributed income (consideration minus cost of
+                        acquisition), making the exit tax-efficient for shareholders who tender.</p>
+
+                    <div class="bd-highlight">
+                        <h5>Note: Budget 2024 Amendment</h5>
+                        <p>From 1st October 2024, the taxation of buybacks has been restructured: buyback proceeds in
+                            the hands of shareholders are treated as deemed dividends, taxable at applicable slab rates.
+                            The company-level Section 115QA tax has been removed. Advisors and companies must model the
+                            post-Budget tax impact before structuring a buyback.</p>
+                    </div>
+                </div>
+                <div class="bd-kv-table">
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Tender Price</div>
+                        <div class="bd-kv-row__val">
+                            Fixed at announcement — typically 20–35% premium to CMP
+                            <span>Must not be lower than the higher of: (a) highest price paid in last 12 months, (b)
+                                VWAP-based formula per SEBI.</span>
+                        </div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Open Market Price</div>
+                        <div class="bd-kv-row__val">
+                            Market price at time of purchase, subject to max ceiling
+                            <span>Max price ceiling disclosed upfront. No purchases within 10 trading days of quarterly
+                                results or price-sensitive announcements.</span>
+                        </div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Shareholder Tax (Pre-Oct 2024)</div>
+                        <div class="bd-kv-row__val">
+                            Nil — company pays 20%+SC+Cess under Section 115QA
+                            <span>Legacy buybacks: shareholders receive consideration tax-free; company bears the
+                                buyback tax.</span>
+                        </div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Shareholder Tax (Post-Oct 2024)</div>
+                        <div class="bd-kv-row__val">
+                            Proceeds taxable as deemed dividend at applicable slab rates
+                            <span>Significant impact on high-slab shareholders who tender. Full tax modelling required
+                                before any buyback announcement.</span>
+                        </div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Cost Adjustment</div>
+                        <div class="bd-kv-row__val">
+                            Capital loss available on cost of tendered shares post-Oct 2024
+                            <span>Loss from cost of acquisition of tendered shares can be set off against capital gains
+                                in the same or future years.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buyback Process -->
+        <section class="bd-section">
+            <div class="section-tag">Execution Framework</div>
+            <h2 class="section-title">The Buyback <em>Process</em></h2>
+            <p style="color:var(--muted);font-size:1rem;line-height:1.8;max-width:580px;margin-top:12px;">A tender offer
+                buyback typically takes 8–12 weeks from board approval to share extinguishment. RKS Investments manages
+                every regulatory and execution step.</p>
+            <div class="bd-steps">
+
+                <div class="bd-step">
+                    <div class="bd-step__num">01</div>
+                    <div class="bd-step__body">
+                        <h4>Eligibility Assessment &amp; Structuring</h4>
+                        <p>Confirm buyback eligibility — D/E ratio, 25% cap on free reserves, no pending SEBI action.
+                            Determine method (tender/open market), size, and pricing. Model the EPS and shareholding
+                            impact. Calculate escrow requirement.</p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">D/E ratio check</span><span
+                                class="bd-step-tag">Free reserves quantum</span><span class="bd-step-tag">Escrow
+                                sizing</span><span class="bd-step-tag">EPS impact model</span></div>
+                        <div class="bd-step-duration">Duration: 1 – 2 Weeks</div>
+                    </div>
+                </div>
+
+                <div class="bd-step">
+                    <div class="bd-step__num">02</div>
+                    <div class="bd-step__body">
+                        <h4>Board &amp; Shareholder Approval</h4>
+                        <p>Board approval required for all buybacks. Buybacks exceeding 10% of paid-up capital require a
+                            special resolution of shareholders via postal ballot. Resolution must specify method,
+                            maximum price, and quantum. Escrow deposit made with a scheduled bank.</p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">Board resolution</span><span
+                                class="bd-step-tag">Special resolution (if &gt;10%)</span><span
+                                class="bd-step-tag">Postal ballot</span><span class="bd-step-tag">Escrow deposit</span>
+                        </div>
+                        <div class="bd-step-duration">Duration: 3 – 4 Weeks</div>
+                    </div>
+                </div>
+
+                <div class="bd-step">
+                    <div class="bd-step__num">03</div>
+                    <div class="bd-step__body">
+                        <h4>Public Announcement &amp; LOO Filing</h4>
+                        <p>Within 2 working days of board / shareholder approval, the company files a Public
+                            Announcement (PA) with SEBI and exchanges — disclosing all material details. A Letter of
+                            Offer (LOO) is then prepared and filed with SEBI for its comments (SEBI has 7 working days
+                            to issue comments on the LOO).</p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">Public Announcement</span><span
+                                class="bd-step-tag">LOO preparation</span><span class="bd-step-tag">SEBI
+                                filing</span><span class="bd-step-tag">Dispatch to shareholders</span></div>
+                        <div class="bd-step-duration">Duration: 2 – 3 Weeks</div>
+                    </div>
+                </div>
+
+                <div class="bd-step">
+                    <div class="bd-step__num">04</div>
+                    <div class="bd-step__body">
+                        <h4>Tender / Open Market Acceptance Window</h4>
+                        <p>For tender offers: the 15-working-day acceptance window opens. Shareholders tender via their
+                            brokers through the BSE/NSE bidding platform. The company's broker on the other side accepts
+                            tenders in the order book. Daily subscription data is tracked and disclosed. For open
+                            market: daily purchases commence and are disclosed before market open the next day.</p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">15-day window (tender)</span><span
+                                class="bd-step-tag">BSE/NSE tender platform</span><span class="bd-step-tag">Daily
+                                disclosure</span><span class="bd-step-tag">Subscription monitoring</span></div>
+                        <div class="bd-step-duration">Duration: 15 Working Days</div>
+                    </div>
+                </div>
+
+                <div class="bd-step">
+                    <div class="bd-step__num">05</div>
+                    <div class="bd-step__body">
+                        <h4>Settlement, Extinguishment &amp; Compliance</h4>
+                        <p>Post-closure, settlement occurs on T+2. Accepted shares are credited to the company's
+                            account, consideration paid to shareholders, and shares immediately extinguished within 7
+                            days. Post-buyback compliance filings — ROC return, SEBI intimation, exchange disclosure —
+                            are completed. Capital Redemption Reserve is created for the nominal value of extinguished
+                            shares.</p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">T+2 settlement</span><span
+                                class="bd-step-tag">Share extinguishment</span><span class="bd-step-tag">CRR
+                                creation</span><span class="bd-step-tag">ROC &amp; SEBI filings</span></div>
+                        <div class="bd-step-duration">Duration: 2 – 3 Weeks</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Buyback Services -->
+        <section class="bd-section bg2">
+            <div class="section-tag">Our Services — Buyback</div>
+            <h2 class="section-title">How RKS Advises on <em>Buybacks</em></h2>
+            <div class="bd-cards-3">
+
+                <div class="bd-card">
+                    <div class="bd-card__icon">&#9670;</div>
+                    <h3>Buyback Strategy &amp; Structuring</h3>
+                    <p>We advise on the optimal buyback structure — method, size, pricing, and timing — modelling the
+                        financial impact across D/E ratios, EPS accretion, promoter holding impact, and tax efficiency.
+                    </p>
+                    <ul>
+                        <li>Method selection — tender vs. open market</li>
+                        <li>Pricing strategy and premium determination</li>
+                        <li>EPS, ROE, and shareholding impact model</li>
+                        <li>Escrow and funding plan</li>
+                    </ul>
+                </div>
+
+                <div class="bd-card">
+                    <div class="bd-card__icon">&#9632;</div>
+                    <h3>Regulatory Filings &amp; Documentation</h3>
+                    <p>End-to-end management of all SEBI, ROC, and exchange filings — Public Announcement, Letter of
+                        Offer, board and postal ballot documentation, escrow agreement, and all post-buyback compliance
+                        returns.</p>
+                    <ul>
+                        <li>Public Announcement drafting</li>
+                        <li>Letter of Offer preparation</li>
+                        <li>Board &amp; shareholder resolution drafts</li>
+                        <li>Post-buyback ROC and SEBI filings</li>
+                    </ul>
+                </div>
+
+                <div class="bd-card">
+                    <div class="bd-card__icon">&#9651;</div>
+                    <h3>Manager to the Buyback</h3>
+                    <p>Acting as or coordinating with the SEBI-registered Merchant Banker serving as Manager to the
+                        buyback offer — managing the LOO process, SEBI correspondence, exchange platform coordination,
+                        and settlement mechanics.</p>
+                    <ul>
+                        <li>SEBI-registered MB coordination</li>
+                        <li>Exchange tender platform management</li>
+                        <li>Daily subscription tracking</li>
+                        <li>Settlement and extinguishment oversight</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+    </div><!-- end buyback section -->
+
+    <!-- ══════════════════════════════════════
+     DIVIDER
+══════════════════════════════════════ -->
+    <div class="bd-divider-label" id="bd-delisting">
+        <div>
+            <h2>Voluntary <em>Delisting</em></h2>
+            <p>Advisory for promoters seeking to take their listed company private through a voluntary delisting offer —
+                one of the most complex and high-stakes transactions in Indian capital markets.</p>
+        </div>
+        <div class="bd-divider-line"></div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+     ███ DELISTING SECTION ███
+══════════════════════════════════════ -->
+    <div id="bd-delisting-content">
+
+        <!-- What is Delisting -->
+        <section class="bd-section">
+            <div class="bd-two-col">
+                <div>
+                    <div class="section-tag">Voluntary Delisting</div>
+                    <h2 class="section-title">What Is Voluntary <em>Delisting</em>?</h2>
+                    <p>Voluntary delisting is the process by which a company's promoters seek to buy out the remaining
+                        public shareholders and have the company's shares removed from the stock exchange — effectively
+                        taking the company private. It is initiated by the promoter or major shareholder group who wish
+                        to own 100% of the company without the obligations of being publicly listed.</p>
+                    <p>Unlike compulsory delisting (which is imposed by regulators as a penalty), voluntary delisting is
+                        a commercially driven decision — motivated by the desire to operate without the disclosure
+                        obligations, compliance costs, and short-term market pressures of a listed company, or as a
+                        precursor to a major restructuring or foreign acquisition.</p>
+                    <div class="bd-pull-quote">
+                        <p>"Delisting is not a retreat — it is a strategic choice to reclaim the freedom to operate
+                            without the constraints of public markets, when being private serves the business better
+                            than being listed."</p>
+                    </div>
+                    <p>The delisting process is governed by SEBI (Delisting of Equity Shares) Regulations, 2021 — which
+                        prescribe a detailed, shareholder-protective process including a reverse book building
+                        mechanism, minimum acceptance threshold, and independent director oversight.</p>
+                </div>
+
+                <div>
+                    <h4
+                        style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:20px;">
+                        Why Promoters Choose to Delist</h4>
+                    <div style="display:flex;flex-direction:column;gap:14px;">
+
+                        <div style="display:flex;gap:18px;padding:20px 24px;border:1px solid var(--border);background:var(--dark2);transition:border-color 0.3s;"
+                            onmouseover="this.style.borderColor='var(--gold)'"
+                            onmouseout="this.style.borderColor='rgba(201,168,76,0.2)'">
+                            <div style="font-size:1.1rem;color:var(--gold);flex-shrink:0;margin-top:2px;">&#9670;</div>
+                            <div>
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:4px;">
+                                    Eliminate Listing Compliance Costs</div>
+                                <div style="font-size:0.78rem;color:var(--muted);line-height:1.58;">Annual audit, LODR
+                                    filings, investor relations, board meetings, and governance compliance are expensive
+                                    and time-consuming for companies with limited public float benefit.</div>
+                            </div>
+                        </div>
+
+                        <div style="display:flex;gap:18px;padding:20px 24px;border:1px solid var(--border);background:var(--dark2);transition:border-color 0.3s;"
+                            onmouseover="this.style.borderColor='var(--gold)'"
+                            onmouseout="this.style.borderColor='rgba(201,168,76,0.2)'">
+                            <div style="font-size:1.1rem;color:var(--gold);flex-shrink:0;margin-top:2px;">&#9670;</div>
+                            <div>
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:4px;">
+                                    Remove Minority Shareholder Constraints</div>
+                                <div style="font-size:0.78rem;color:var(--muted);line-height:1.58;">Strategic decisions
+                                    — restructuring, asset sales, related-party transactions — require minority approval
+                                    in listed entities. Going private removes these constraints.</div>
+                            </div>
+                        </div>
+
+                        <div style="display:flex;gap:18px;padding:20px 24px;border:1px solid var(--border);background:var(--dark2);transition:border-color 0.3s;"
+                            onmouseover="this.style.borderColor='var(--gold)'"
+                            onmouseout="this.style.borderColor='rgba(201,168,76,0.2)'">
+                            <div style="font-size:1.1rem;color:var(--gold);flex-shrink:0;margin-top:2px;">&#9670;</div>
+                            <div>
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:4px;">
+                                    Strategic Restructuring or M&amp;A</div>
+                                <div style="font-size:0.78rem;color:var(--muted);line-height:1.58;">Foreign parent
+                                    acquiring an Indian listed subsidiary often requires delisting as part of the
+                                    acquisition structure — to gain full control and simplify group governance.</div>
+                            </div>
+                        </div>
+
+                        <div style="display:flex;gap:18px;padding:20px 24px;border:1px solid var(--border);background:var(--dark2);transition:border-color 0.3s;"
+                            onmouseover="this.style.borderColor='var(--gold)'"
+                            onmouseout="this.style.borderColor='rgba(201,168,76,0.2)'">
+                            <div style="font-size:1.1rem;color:var(--gold);flex-shrink:0;margin-top:2px;">&#9670;</div>
+                            <div>
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:4px;">
+                                    Low Public Float — Illiquid Listing</div>
+                                <div style="font-size:0.78rem;color:var(--muted);line-height:1.58;">Companies with less
+                                    than 25% public float or thin trading volumes derive little benefit from being
+                                    listed — high compliance cost with no meaningful capital market access.</div>
+                            </div>
+                        </div>
+
+                        <div style="display:flex;gap:18px;padding:20px 24px;border:1px solid var(--border);background:var(--dark2);transition:border-color 0.3s;"
+                            onmouseover="this.style.borderColor='var(--gold)'"
+                            onmouseout="this.style.borderColor='rgba(201,168,76,0.2)'">
+                            <div style="font-size:1.1rem;color:var(--gold);flex-shrink:0;margin-top:2px;">&#9670;</div>
+                            <div>
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:4px;">
+                                    Undervalued by Public Markets</div>
+                                <div style="font-size:0.78rem;color:var(--muted);line-height:1.58;">If a company's
+                                    intrinsic value is significantly higher than its traded price, delisting allows the
+                                    promoter to acquire the public float at a discount to true value — a value-accretive
+                                    transaction.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delisting Process — Reverse Book Building -->
+        <section class="bd-section bg2">
+            <div class="section-tag">RBB Mechanism</div>
+            <h2 class="section-title">Reverse Book Building —<br>The <em>Delisting Price Discovery</em> Mechanism</h2>
+            <div class="bd-two-col" style="margin-top:56px;">
+                <div>
+                    <p>The Reverse Book Building (RBB) mechanism is the heart of the Indian voluntary delisting process.
+                        Unlike a conventional IPO (where the company discovers a price at which to sell shares), in RBB
+                        the public shareholders collectively discover the minimum price at which they are willing to
+                        sell their shares to the promoter.</p>
+                    <p>Each shareholder submits a bid — specifying how many shares they are tendering and the minimum
+                        price per share they are willing to accept. The system aggregates all bids and determines the
+                        "discovered price" — the price at which the maximum number of shares are tendered such that the
+                        promoter can cross the 90% threshold required to delist.</p>
+                    <p>The promoter is not bound to accept the discovered price — they can accept it (and proceed to
+                        delist) or reject it (if the price is too high) and the delisting fails. This creates a
+                        negotiation dynamic between the promoter and public shareholders that requires careful strategy
+                        and pricing advisory.</p>
+                    <div class="bd-highlight">
+                        <h5>&#9888; The 90% Threshold Rule</h5>
+                        <p>For a delisting to succeed, the promoter must hold or acquire at least 90% of the total
+                            issued and paid-up equity capital of the company through the RBB process. If the total
+                            post-RBB promoter holding falls below 90%, the delisting fails — regardless of the price
+                            bid. Achieving 90% is both the pricing challenge and the execution challenge in every
+                            delisting.</p>
+                    </div>
+                </div>
+
+                <!-- RBB steps visual -->
+                <div>
+                    <h5
+                        style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:20px;">
+                        How Reverse Book Building Works</h5>
+                    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);">
+                        <div style="display:grid;grid-template-columns:44px 1fr;border-bottom:1px solid var(--border);">
+                            <div
+                                style="background:var(--dark);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);">
+                                1</div>
+                            <div style="padding:14px 18px;">
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:3px;">
+                                    Floor Price Set</div>
+                                <div style="font-size:0.76rem;color:var(--muted);">SEBI formula determines the minimum
+                                    price — higher of: 26W VWAP, 2W VWAP, highest price paid in last 26W, and book
+                                    value. Promoter cannot accept below this floor.</div>
+                            </div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:44px 1fr;border-bottom:1px solid var(--border);">
+                            <div
+                                style="background:var(--dark);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);">
+                                2</div>
+                            <div style="padding:14px 18px;">
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:3px;">
+                                    Shareholders Bid</div>
+                                <div style="font-size:0.76rem;color:var(--muted);">Each public shareholder bids at or
+                                    above the floor price — specifying the number of shares and minimum acceptable
+                                    price. Bidding window is open for 5 working days.</div>
+                            </div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:44px 1fr;border-bottom:1px solid var(--border);">
+                            <div
+                                style="background:var(--dark);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);">
+                                3</div>
+                            <div style="padding:14px 18px;">
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:3px;">
+                                    Discovered Price Determined</div>
+                                <div style="font-size:0.76rem;color:var(--muted);">System aggregates bids by price.
+                                    Discovered price = the price at which cumulative shares tendered first crosses the
+                                    90% threshold target.</div>
+                            </div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:44px 1fr;border-bottom:1px solid var(--border);">
+                            <div
+                                style="background:var(--dark);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);">
+                                4</div>
+                            <div style="padding:14px 18px;">
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:3px;">
+                                    Promoter Accepts or Rejects</div>
+                                <div style="font-size:0.76rem;color:var(--muted);">Promoter has 2 working days to accept
+                                    or reject the discovered price. If accepted at or above floor price and 90%
+                                    threshold is met — delisting proceeds.</div>
+                            </div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:44px 1fr;">
+                            <div
+                                style="background:var(--dark);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);">
+                                5</div>
+                            <div style="padding:14px 18px;">
+                                <div
+                                    style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:3px;">
+                                    Exit Offer for Remaining Holders</div>
+                                <div style="font-size:0.76rem;color:var(--muted);">Post-delisting, shares are traded for
+                                    6 months on the exchange under "Exit Offer" provisions — giving remaining public
+                                    shareholders an exit at the delisting price.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delisting Process Timeline -->
+        <section class="bd-section">
+            <div class="section-tag">Step-by-Step Execution</div>
+            <h2 class="section-title">The Voluntary Delisting <em>Process</em></h2>
+            <p style="color:var(--muted);font-size:1rem;line-height:1.8;max-width:580px;margin-top:12px;">A voluntary
+                delisting takes 5–8 months from initiation to exchange removal. Here is how RKS Investments guides
+                promoters through every stage.</p>
+            <div class="bd-steps">
+
+                <div class="bd-step">
+                    <div class="bd-step__num">01</div>
+                    <div class="bd-step__body">
+                        <h4>Promoter Strategy &amp; Feasibility Assessment</h4>
+                        <p>We assess whether delisting is achievable — mapping the public shareholding structure,
+                            identifying institutional and large retail holders who may resist at floor price, modelling
+                            the likely discovered price range, and advising on the strategic merits and timing of the
+                            delisting. Achieving 90% is the central feasibility question.</p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">Shareholding analysis</span><span
+                                class="bd-step-tag">Price modelling</span><span class="bd-step-tag">Institutional holder
+                                mapping</span><span class="bd-step-tag">Feasibility opinion</span></div>
+                        <div class="bd-step-duration">Duration: 2 – 3 Weeks</div>
+                    </div>
+                </div>
+
+                <div class="bd-step">
+                    <div class="bd-step__num">02</div>
+                    <div class="bd-step__body">
+                        <h4>Board &amp; Shareholder Approval</h4>
+                        <p>The promoter/company board must approve the delisting proposal. A special resolution of
+                            public shareholders (excluding promoters) is required — voting via postal ballot. A majority
+                            of public shareholders must support the delisting for the process to proceed to SEBI filing.
+                            Independent director oversight mandatory.</p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">Board resolution</span><span
+                                class="bd-step-tag">Special resolution by public shareholders</span><span
+                                class="bd-step-tag">Independent director role</span><span class="bd-step-tag">Postal
+                                ballot management</span></div>
+                        <div class="bd-step-duration">Duration: 4 – 6 Weeks</div>
+                    </div>
+                </div>
+
+                <div class="bd-step">
+                    <div class="bd-step__num">03</div>
+                    <div class="bd-step__body">
+                        <h4>SEBI &amp; Exchange Filing</h4>
+                        <p>Application for in-principle approval filed with the stock exchanges. SEBI and exchanges
+                            review and provide in-principle approval — a precondition for commencing the RBB process.
+                            Floor price computation is submitted at this stage, along with the preliminary letter of
+                            offer.</p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">Exchange application</span><span
+                                class="bd-step-tag">In-principle approval</span><span class="bd-step-tag">Floor price
+                                filing</span><span class="bd-step-tag">Preliminary LOO</span></div>
+                        <div class="bd-step-duration">Duration: 4 – 8 Weeks</div>
+                    </div>
+                </div>
+
+                <div class="bd-step">
+                    <div class="bd-step__num">04</div>
+                    <div class="bd-step__body">
+                        <h4>Escrow &amp; Public Announcement</h4>
+                        <p>The promoter deposits 100% of the maximum consideration payable (discovered price × total
+                            public shares) in an escrow account with a scheduled bank — demonstrating full financial
+                            commitment to the delisting. The Public Announcement is then made to exchanges and
+                            shareholders, fixing the RBB window dates.</p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">100% escrow deposit</span><span
+                                class="bd-step-tag">Public announcement</span><span class="bd-step-tag">Dispatch of LOO
+                                to shareholders</span><span class="bd-step-tag">Exchange notification</span></div>
+                        <div class="bd-step-duration">Duration: 1 – 2 Weeks</div>
+                    </div>
+                </div>
+
+                <div class="bd-step">
+                    <div class="bd-step__num">05</div>
+                    <div class="bd-step__body">
+                        <h4>Reverse Book Building Window</h4>
+                        <p>The RBB window opens for 5 working days. Shareholders bid at their desired minimum exit price
+                            via their brokers through the exchange bidding platform. The discovered price is computed at
+                            close of bidding based on cumulative bids. This is the most critical and strategically
+                            complex stage — requiring active monitoring and, in some cases, pre-offer holder engagement.
+                        </p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">5-day bidding window</span><span
+                                class="bd-step-tag">Real-time bid monitoring</span><span class="bd-step-tag">Exchange
+                                platform</span><span class="bd-step-tag">Discovered price computation</span></div>
+                        <div class="bd-step-duration">Duration: 5 Working Days</div>
+                    </div>
+                </div>
+
+                <div class="bd-step">
+                    <div class="bd-step__num">06</div>
+                    <div class="bd-step__body">
+                        <h4>Promoter Acceptance &amp; Settlement</h4>
+                        <p>The promoter accepts or rejects the discovered price within 2 working days. If accepted and
+                            90% threshold is met: settlement proceeds, consideration paid to tendering shareholders,
+                            shares transferred to promoter, and exchange proceeds to delist within 15 working days. If
+                            rejected: escrow released, RBB process fails, and shares continue to trade.</p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">Accept / reject decision</span><span
+                                class="bd-step-tag">Settlement to shareholders</span><span class="bd-step-tag">Exchange
+                                delisting notification</span><span class="bd-step-tag">Delisting date</span></div>
+                        <div class="bd-step-duration">Duration: 2 – 4 Weeks</div>
+                    </div>
+                </div>
+
+                <div class="bd-step">
+                    <div class="bd-step__num">07</div>
+                    <div class="bd-step__body">
+                        <h4>Exit Offer for Remaining Shareholders</h4>
+                        <p>Post-delisting, the promoter must provide an exit opportunity to remaining public
+                            shareholders (those who did not participate in the RBB) — at the delisting price — for a
+                            period of 1 year after the delisting date. This ensures no shareholder is involuntarily
+                            trapped without an exit mechanism.</p>
+                        <div class="bd-step-tags"><span class="bd-step-tag">1-year exit window</span><span
+                                class="bd-step-tag">Same price as delisting</span><span class="bd-step-tag">Window
+                                period compliance</span><span class="bd-step-tag">ROC filings</span></div>
+                        <div class="bd-step-duration">Duration: Up to 1 Year (ongoing)</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Delisting Regulations -->
+        <section class="bd-section bg2">
+            <div class="section-tag">Regulatory Framework</div>
+            <h2 class="section-title">Delisting Regulatory<br><em>Requirements</em></h2>
+            <div class="bd-two-col">
+                <div>
+                    <p>The voluntary delisting framework in India was significantly overhauled by SEBI's 2021 Delisting
+                        Regulations — which introduced the Fixed Price route as an alternative to the pure RBB
+                        mechanism, enhanced escrow requirements, and tightened the timeline and disclosure standards.
+                    </p>
+                    <p>The 2021 regulations also introduced the concept of "delisting through scheme of arrangement" —
+                        allowing companies to bypass the full RBB process in certain merger and demerger contexts where
+                        a NCLT-approved scheme effectively results in the buyout of public shareholders.</p>
+                    <p>RKS Investments monitors SEBI's evolving delisting framework in real time and advises promoters
+                        on the most compliant and cost-effective route available given their specific shareholding
+                        structure and strategic objectives.</p>
+                </div>
+                <div class="bd-kv-table">
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Governing Regulation</div>
+                        <div class="bd-kv-row__val">SEBI (Delisting of Equity Shares) Regulations, 2021<span>Replaced
+                                the 2009 Regulations. Introduced Fixed Price route and tighter escrow norms.</span>
+                        </div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">90% Threshold</div>
+                        <div class="bd-kv-row__val">Promoter must hold or acquire 90%+ of total paid-up equity
+                            capital<span>If 90% not reached via RBB, delisting fails — regardless of price
+                                accepted.</span></div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Public Shareholder Vote</div>
+                        <div class="bd-kv-row__val">Special resolution — majority of public shareholders (not promoters)
+                            must approve<span>If majority of public shareholders vote against, process cannot proceed to
+                                SEBI filing.</span></div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Floor Price</div>
+                        <div class="bd-kv-row__val">Higher of: 26W VWAP, 2W VWAP, highest acquisition price in last 26W,
+                            book value<span>SEBI-prescribed formula — promoter cannot accept a discovered price below
+                                the floor.</span></div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Fixed Price Route</div>
+                        <div class="bd-kv-row__val">Promoter can offer a fixed price (no RBB) — still subject to 90%
+                            threshold<span>Available under 2021 Regulations for companies meeting specific conditions.
+                                Faster than RBB route.</span></div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Escrow</div>
+                        <div class="bd-kv-row__val">100% of maximum consideration (floor price × total public shares)
+                            deposited pre-RBB<span>Full escrow ensures promoter can fund the delisting even if all
+                                public shareholders tender at the floor price.</span></div>
+                    </div>
+                    <div class="bd-kv-row">
+                        <div class="bd-kv-row__key">Exit Window</div>
+                        <div class="bd-kv-row__val">1 year exit window post-delisting at the delisting
+                            price<span>Remaining shareholders who did not participate in RBB must be given exit
+                                opportunity.</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delisting Services -->
+        <section class="bd-section">
+            <div class="section-tag">Our Services — Delisting</div>
+            <h2 class="section-title">How RKS Advises on <em>Delisting</em></h2>
+            <div class="bd-cards-3">
+
+                <div class="bd-card">
+                    <div class="bd-card__icon">&#9670;</div>
+                    <h3>Feasibility &amp; Pricing Strategy</h3>
+                    <p>We map the public shareholding register, model the likely discovered price distribution, and
+                        advise on whether the 90% threshold is achievable at an acceptable price — before any board or
+                        public announcement commitment is made.</p>
+                    <ul>
+                        <li>Shareholding analysis by holder category</li>
+                        <li>Price sensitivity and 90% modelling</li>
+                        <li>Institutional holder engagement strategy</li>
+                        <li>Fixed price vs. RBB route assessment</li>
+                    </ul>
+                </div>
+
+                <div class="bd-card">
+                    <div class="bd-card__icon">&#9632;</div>
+                    <h3>Regulatory Filing &amp; Documentation</h3>
+                    <p>End-to-end management of the delisting regulatory process — board and postal ballot resolutions,
+                        exchange applications, preliminary and final letter of offer, SEBI correspondence, and all
+                        post-delisting compliance filings.</p>
+                    <ul>
+                        <li>Public announcement and LOO preparation</li>
+                        <li>Exchange in-principle application</li>
+                        <li>SEBI correspondence management</li>
+                        <li>Post-delisting ROC &amp; compliance filings</li>
+                    </ul>
+                </div>
+
+                <div class="bd-card">
+                    <div class="bd-card__icon">&#9651;</div>
+                    <h3>RBB Management &amp; Monitoring</h3>
+                    <p>Active management of the reverse book building window — monitoring real-time bid aggregation,
+                        advising the promoter on accept/reject decision, and managing shareholder communications
+                        throughout the critical 5-day bidding period.</p>
+                    <ul>
+                        <li>Real-time bid monitoring during RBB</li>
+                        <li>Discovered price analysis</li>
+                        <li>Accept / reject decision advisory</li>
+                        <li>Shareholder communication support</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Buyback vs Delisting comparison -->
+        <section class="bd-section bg2">
+            <div class="section-tag">Decision Framework</div>
+            <h2 class="section-title">Buyback vs. Delisting —<br><em>Choosing the Right Route</em></h2>
+            <div class="bd-table-wrap">
+                <table class="bd-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Share Buyback</th>
+                            <th>Voluntary Delisting</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Objective</td>
+                            <td>Return surplus capital; improve per-share metrics; signal undervaluation</td>
+                            <td>Take company fully private; eliminate listing obligations</td>
+                        </tr>
+                        <tr>
+                            <td>Post-Transaction Status</td>
+                            <td>Company remains listed; public shareholders remain</td>
+                            <td>Company delisted; promoter holds 90%+ or 100%</td>
+                        </tr>
+                        <tr>
+                            <td>Price Mechanism</td>
+                            <td>Fixed price (tender) or market price (open market) — announced by company</td>
+                            <td>Reverse book building — price discovered by public shareholders</td>
+                        </tr>
+                        <tr>
+                            <td>Shareholder Choice</td>
+                            <td>Optional — shareholders choose whether to tender</td>
+                            <td>Optional in RBB — but company departs the exchange regardless</td>
+                        </tr>
+                        <tr>
+                            <td>Scale of Transaction</td>
+                            <td>Max 25% of paid-up capital + free reserves per year</td>
+                            <td>Must acquire enough public shares to cross 90% threshold</td>
+                        </tr>
+                        <tr>
+                            <td>Shareholder Approval</td>
+                            <td>Board approval (up to 10%); special resolution (above 10%)</td>
+                            <td>Special resolution — majority of public shareholders must approve</td>
+                        </tr>
+                        <tr>
+                            <td>Timeline</td>
+                            <td>8–12 weeks (tender offer)</td>
+                            <td>5–8 months (full delisting process)</td>
+                        </tr>
+                        <tr>
+                            <td>Failure Risk</td>
+                            <td>Low — minimum 50% of announced buyback must complete</td>
+                            <td>High — 90% threshold not met = delisting fails entirely</td>
+                        </tr>
+                        <tr>
+                            <td>Tax Implications</td>
+                            <td>Post Oct 2024: proceeds taxed as deemed dividend at slab rates</td>
+                            <td>Long-term capital gain (LTCG) / STCG depending on holding period</td>
+                        </tr>
+                        <tr>
+                            <td>Best Suited For</td>
+                            <td>Cash-rich listed companies; undervalued stocks; periodic capital return</td>
+                            <td>Promoters seeking full control; foreign parent acquisitions; low-float companies</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div><!-- end delisting section -->
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo logo--static">
+                    <div class="logo-mark"><img src="logo.png" alt="RKS Investments" style="width: 70px; height: 70px;">
+                    </div>
+                    RKS Investments
+                </div>
+                <p>Independent investment banking and corporate finance advisory, committed to helping businesses grow
+                    through
+                    strategic capital solutions.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="ipo.html">IPO Advisory</a></li>
+                    <li><a href="M&A.html">M&A Advisory</a></li>
+                    <li><a href="PE.html">Private Equity</a></li>
+                    <li><a href="Debt.html">Debt Syndication</a></li>
+                    <li><a href="Valuation.html">Valuations</a></li>
+                    <li><a href="ESOP.html">ESOP Advisory</a></li>
+                    <li><a href="right.html">Rights Issue Advisory</a></li>
+                    <li><a href="buy.html">Buyback & Delisting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <!-- <li><a href="client.html">Our Clients</a></li> -->
+                    <li><a href="compliance.html">Compliance</a></li>
+                    <li><a href="form.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a>info@rksinvestments.in</a></li>
+                    <li><a>+91 98765 43210</a></li>
+                    <li><a>Suite 501, Capital Tower<br>Connaught Place<br>New Delhi – 110001</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RKS Investments. All rights reserved.</p>
+            <p class="disc">RKS Investments is not registered with SEBI. Advisory services are provided in a purely
+                non-regulated capacity. Nothing on this website constitutes investment advice. Past transaction
+                experience does
+                not guarantee future results.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        /* Scroll shrink */
+        window.addEventListener('scroll', () => {
+            document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        /* Hamburger */
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('open');
+        }
+
+        /* Close menu when clicking outside */
+        document.addEventListener('click', e => {
+            if (!e.target.closest('nav')) {
+                document.getElementById('nav-links').classList.remove('open');
+                closeAllDropdowns();
+            }
+        });
+
+        /* Dropdown — click to open/close */
+        document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+            trigger.addEventListener('click', function (e) {
+                e.preventDefault();
+                const li = this.closest('.nav-has-dropdown');
+                const isOpen = li.classList.contains('dropdown-open');
+                closeAllDropdowns();
+                if (!isOpen) {
+                    li.classList.add('dropdown-open');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        function closeAllDropdowns() {
+            document.querySelectorAll('.nav-has-dropdown').forEach(li => {
+                li.classList.remove('dropdown-open');
+                const trigger = li.querySelector('.nav-dropdown-trigger');
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        /* Close dropdown on Escape */
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeAllDropdowns();
+        });
+    </script>
+
+</body>
+
+</html>

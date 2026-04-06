@@ -1095,20 +1095,35 @@
 ══════════════════════════════════════ -->
     <nav id="main-nav">
         <a class="logo" href="index.html">
-            <div class="logo-mark"><img src="Logo.png" alt="RKS Investments" width="70" height="70"></div>
+            <div class="logo-mark"><img src="Logo.png" alt="RKS" height="70" width="70"></div>
             RKS Investments
         </a>
+
         <ul class="nav-links" id="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html">About</a></li>
-            <li><a href="index.html" class="nav-active">Investment Banking</a></li>
-            <li><a href="index.html">Compliance</a></li>
-            <li><a href="index.html">Clients</a></li>
-            <li><a href="index.html" class="nav-cta">Contact Us</a></li>
+            <li><a href="about.html">About</a></li>
+
+            <li class="nav-has-dropdown">
+                <a href="#" class="nav-dropdown-trigger">Investment Banking &#8964;</a>
+
+                <div class="nav-dropdown">
+                    <a href="ipo.html">→ IPO Advisory</a><br>
+                    <a href="M&A.html">→ Mergers & Acquisitions</a><br>
+                    <a href="PE.html">→ Private Equity</a><br>
+                    <a href="Debt.html">→ Debt Syndication</a><br>
+                    <a href="Valuation.html">→ Valuations</a><br>
+                    <a href="ESOP.html">→ ESOP Advisory</a><br>
+                    <a href="right.html">→ Rights Issue</a><br>
+                    <a href="buy.html">→ Buyback & Delisting</a><br>
+                </div>
+            </li>
+
+            <li><a href="compliance.html">Compliance</a></li>
+            <li><a href="client.html">Clients</a></li>
+            <li><a href="form.html" class="nav-cta">Contact</a></li>
         </ul>
-        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-        </div>
+
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
 
     <!-- ══════════════════════════════════════
@@ -1679,7 +1694,7 @@
             </div>
 
             <div class="ma-service-card">
-                <div class="ma-service-card__icon">&#9702;</div>
+                <div class="ma-service-card__icon">&#9672;</div>
                 <h3>Negotiation &amp; Documentation</h3>
                 <p>Leading or supporting price and term negotiations, and coordinating with legal counsel on transaction
                     documents to protect client interests at every stage.</p>
@@ -1897,14 +1912,7 @@
         <h2 class="section-title">Why <em>RKS Investments</em><br>for M&amp;A</h2>
         <div class="ma-why-grid">
             <div class="ma-why-metrics">
-                <div class="ma-why-metric">
-                    <div class="ma-why-metric__num">35+</div>
-                    <div class="ma-why-metric__label">M&amp;A Transactions<br>Completed</div>
-                </div>
-                <div class="ma-why-metric">
-                    <div class="ma-why-metric__num">&#8377;1,200Cr+</div>
-                    <div class="ma-why-metric__label">Aggregate Deal<br>Value Advised</div>
-                </div>
+
                 <div class="ma-why-metric">
                     <div class="ma-why-metric__num">12+</div>
                     <div class="ma-why-metric__label">Sectors with<br>M&amp;A Transactions</div>
@@ -1976,9 +1984,7 @@
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════
-     FOOTER
-══════════════════════════════════════ -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-grid">
             <div class="footer-brand">
@@ -2000,15 +2006,17 @@
                     <li><a href="Debt.html">Debt Syndication</a></li>
                     <li><a href="Valuation.html">Valuations</a></li>
                     <li><a href="ESOP.html">ESOP Advisory</a></li>
+                    <li><a href="right.html">Rights Issue Advisory</a></li>
+                    <li><a href="buy.html">Buyback & Delisting</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h5>Company</h5>
                 <ul>
-                    <li><a onclick="showPage('about')">About Us</a></li>
-                    <li><a onclick="showPage('clients')">Our Clients</a></li>
-                    <li><a onclick="showPage('compliance')">Compliance</a></li>
-                    <li><a onclick="showPage('contact')">Contact</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <!-- <li><a href="client.html">Our Clients</a></li> -->
+                    <li><a href="compliance.html">Compliance</a></li>
+                    <li><a href="form.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -2029,7 +2037,54 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+
+    <script>
+        /* Scroll shrink */
+        window.addEventListener('scroll', () => {
+            document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        /* Hamburger */
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('open');
+        }
+
+        /* Close menu when clicking outside */
+        document.addEventListener('click', e => {
+            if (!e.target.closest('nav')) {
+                document.getElementById('nav-links').classList.remove('open');
+                closeAllDropdowns();
+            }
+        });
+
+        /* Dropdown — click to open/close */
+        document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+            trigger.addEventListener('click', function (e) {
+                e.preventDefault();
+                const li = this.closest('.nav-has-dropdown');
+                const isOpen = li.classList.contains('dropdown-open');
+                closeAllDropdowns();
+                if (!isOpen) {
+                    li.classList.add('dropdown-open');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        function closeAllDropdowns() {
+            document.querySelectorAll('.nav-has-dropdown').forEach(li => {
+                li.classList.remove('dropdown-open');
+                const trigger = li.querySelector('.nav-dropdown-trigger');
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        /* Close dropdown on Escape */
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeAllDropdowns();
+        });
+    </script>
+
 </body>
 
 </html>

@@ -5,38 +5,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RKS Investments — Investment Banking & Advisory</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+  <!-- <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
-    rel="stylesheet">
+    rel="stylesheet"> -->
   <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
-
-
-
   <!-- ══════════════════════════════════════
      NAV
 ══════════════════════════════════════ -->
   <nav id="main-nav">
-    <a class="logo" href="#" onclick="showPage('home')">
-      <div class="logo-mark">
-        <img src="Logo.png" alt="RKS Investments" width="70" height="70">
-      </div>
+    <a class="logo" href="index.html">
+      <div class="logo-mark"><img src="Logo.png" alt="RKS" height="70" width="70"></div>
       RKS Investments
     </a>
+
     <ul class="nav-links" id="nav-links">
-      <li><a href="#" onclick="showPage('home')">Home</a></li>
-      <li><a href="#" onclick="showPage('about')">About</a></li>
-      <li><a href="#" onclick="showPage('ib')">Investment Banking</a></li>
-      <li><a href="#" onclick="showPage('compliance')">Compliance</a></li>
-      <li><a href="#" onclick="showPage('clients')">Clients</a></li>
-      <li><a href="#" class="nav-cta" onclick="showPage('contact')">Contact Us</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+
+      <li class="nav-has-dropdown">
+        <a href="#" class="nav-dropdown-trigger">Investment Banking &#8964;</a>
+
+        <div class="nav-dropdown">
+          <a href="ipo.html">→ IPO Advisory</a><br>
+          <a href="M&A.html">→ Mergers & Acquisitions</a><br>
+          <a href="PE.html">→ Private Equity</a><br>
+          <a href="Debt.html">→ Debt Syndication</a><br>
+          <a href="Valuation.html">→ Valuations</a><br>
+          <a href="ESOP.html">→ ESOP Advisory</a><br>
+          <a href="right.html">→ Rights Issue</a><br>
+          <a href="buy.html">→ Buyback & Delisting</a><br>
+        </div>
+      </li>
+
+      <li><a href="compliance.html">Compliance</a></li>
+      <li><a href="client.html">Clients</a></li>
+      <li><a href="form.html" class="nav-cta">Contact</a></li>
     </ul>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
   </nav>
 
   <!-- ══════════════════════════════════════
@@ -53,8 +64,8 @@
         <p class="hero-sub">RKS Investments partners with growth-stage companies and established enterprises to unlock
           capital, execute transactions, and build lasting value.</p>
         <div class="hero-actions">
-          <a class="btn-primary" href="#" onclick="showPage('ib')">Our Services</a>
-          <a class="btn-ghost" href="#" onclick="showPage('contact')">Get in Touch</a>
+          <a class="btn-primary" href="#services">Our Services</a>
+          <a class="btn-ghost" href="form.html">Get in Touch</a>
         </div>
       </div>
       <div class="hero-stats">
@@ -74,7 +85,7 @@
     </div>
 
     <section>
-      <div class="services-intro">
+      <div class="services-intro" id="services">
         <div class="section-tag">What We Do</div>
         <h2 class="section-title">Full-spectrum <em>Financial</em> Solutions</h2>
         <p>From capital market transactions to strategic M&amp;A advisory, we deliver end-to-end solutions tailored to
@@ -97,42 +108,42 @@
           <p>Strategic transaction advisory covering buy-side, sell-side, and merger mandates with deep due diligence
             capabilities.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card" onclick="location.href='PE.html'">
           <div class="service-num">03</div>
           <div class="service-icon">&#9673;</div>
           <h3>Private Equity</h3>
           <p>Connecting growth companies with the right institutional and family-office capital through structured PE/VC
             fundraising mandates.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card" onclick="location.href='Debt.html'">
           <div class="service-num">04</div>
           <div class="service-icon">&#8863;</div>
           <h3>Debt Syndication</h3>
           <p>Structuring and syndicating debt instruments including NCDs, term loans, and structured finance solutions
             across lenders.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card" onclick="location.href='Valuation.html'">
           <div class="service-num">05</div>
           <div class="service-icon">&#9671;</div>
           <h3>Valuations</h3>
           <p>Independent business valuations for regulatory, transactional, and financial reporting purposes by
             experienced professionals.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card" onclick="location.href='ESOP.html'">
           <div class="service-num">06</div>
           <div class="service-icon">&#8853;</div>
           <h3>ESOP Advisory</h3>
           <p>Design, structuring, and implementation of Employee Stock Option Plans aligned with business goals and
             regulatory frameworks.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card" onclick="location.href='right.html'">
           <div class="service-num">07</div>
           <div class="service-icon">&#9635;</div>
           <h3>Rights Issue</h3>
           <p>Managing rights issue transactions for listed companies seeking to raise capital from existing shareholders
             efficiently.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card" onclick="location.href='buy.html'">
           <div class="service-num">08</div>
           <div class="service-icon">&#9681;</div>
           <h3>Buyback &amp; Delisting</h3>
@@ -176,7 +187,7 @@
             </div>
           </div>
           <br>
-          <a class="btn-ghost" href="#" onclick="showPage('about')">Read Our Story</a>
+          <a class="btn-ghost" href="about.html">Read Our Story</a>
         </div>
       </div>
     </section>
@@ -192,21 +203,21 @@
           <p>RKS guided us through our SME IPO with exceptional professionalism. Their regulatory knowledge and investor
             network made all the difference in achieving a successful listing.</p>
           <div class="tcard-author">Rajesh Mehta</div>
-          <div class="tcard-role">CMD, Precision Components Ltd.</div>
+          <div class="tcard-role">CMD</div>
         </div>
         <div class="tcard">
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p>The M&amp;A advisory team at RKS helped us identify the right acquisition target and navigate negotiations
             seamlessly. A genuinely strategic partner, not just a transactional advisor.</p>
           <div class="tcard-author">Sunita Agarwal</div>
-          <div class="tcard-role">Director, NovaTech Industries</div>
+          <div class="tcard-role">Director</div>
         </div>
         <div class="tcard">
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p>RKS structured our private equity raise in a way that preserved founder control while bringing in the right
             growth-oriented investors. Highly recommended for PE mandates.</p>
           <div class="tcard-author">Vikram Nair</div>
-          <div class="tcard-role">Founder, GreenPath Logistics</div>
+          <div class="tcard-role">Founder</div>
         </div>
       </div>
     </section>
@@ -216,402 +227,12 @@
       <h2 class="section-title section-title--center">Ready to Grow Your <em>Business</em>?</h2>
       <p class="cta-strip__sub">Let us understand your goals and explore how RKS Investments can help you achieve them.
       </p>
-      <a class="btn-primary" href="#" onclick="showPage('contact')">Schedule a Consultation</a>
+      <a class="btn-primary" href="form.html">Schedule a Consultation</a>
     </section>
 
     <div class="divider"></div>
   </div>
 
-  <!-- ══════════════════════════════════════
-     ABOUT PAGE
-══════════════════════════════════════ -->
-  <div class="page" id="page-about">
-
-    <div class="ib-hero">
-      <div class="section-tag">Our Story</div>
-      <h1>Committed to <em>Excellence</em><br>in Financial Advisory</h1>
-      <p>RKS Investments was founded with a singular purpose: to be the most trusted financial advisory partner for
-        businesses across India.</p>
-    </div>
-
-    <section>
-      <div class="about-grid">
-        <div class="about-content">
-          <div class="section-tag">Our Philosophy</div>
-          <h2 class="section-title">Beyond Transactions —<br><em>Partnerships</em></h2>
-          <p>We believe that genuine advisory is about more than executing deals. It's about understanding the vision
-            behind a business, the aspirations of its founders, and crafting capital strategies that align with
-            long-term goals.</p>
-          <p>RKS Investments was established to fill a critical gap: experienced, relationship-driven investment banking
-            for mid-market and emerging companies that deserve the same quality of advice as larger corporates.</p>
-          <p>Over the years, we have completed transactions across IPOs, M&amp;A, private equity, debt syndication, and
-            valuations — earning the trust of clients through consistent results and transparent engagement.</p>
-        </div>
-        <div class="stat-column">
-          <div class="stat-block">
-            <div class="stat-block__num">&#8377;2,000Cr+</div>
-            <div class="stat-block__label">Capital Raised Across Mandates</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-block__num">120+</div>
-            <div class="stat-block__label">Transactions Completed</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-block__num">15+</div>
-            <div class="stat-block__label">Years of Advisory Experience</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="mission-band">
-      <h2>Our Mission</h2>
-      <p>Our mission is to provide clients with long-term strategic advice that helps them achieve their business goals.
-        We look beyond profit metrics to understand the true potential of a business — partnering with young companies
-        finding their stride and established ones seeking quantum growth. Our clients benefit from our deep industry
-        expertise, extensive transaction experience, and an investor network built over many years.</p>
-    </div>
-
-    <section>
-      <div class="section-tag">Leadership</div>
-      <h2 class="section-title">The <em>Team</em> Behind RKS</h2>
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="team-avatar">RS</div>
-          <div class="team-info">
-            <h3>Rajan Kumar Sharma</h3>
-            <div class="role">Founder &amp; Managing Director</div>
-            <p>Over 20 years of investment banking experience with a focus on capital markets, M&amp;A advisory, and
-              private equity fundraising across diverse sectors.</p>
-          </div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar">PP</div>
-          <div class="team-info">
-            <h3>Priya Pillai</h3>
-            <div class="role">Director – Capital Markets</div>
-            <p>Specialist in IPO management, rights issues, and regulatory compliance with deep relationships across
-              merchant banking and broking ecosystems.</p>
-          </div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar">AJ</div>
-          <div class="team-info">
-            <h3>Anand Joshi</h3>
-            <div class="role">Head – Corporate Finance</div>
-            <p>Former senior banker with expertise in debt syndication, structured finance, and corporate restructuring
-              across manufacturing and services sectors.</p>
-          </div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar">NK</div>
-          <div class="team-info">
-            <h3>Neha Kapoor</h3>
-            <div class="role">Vice President – M&amp;A &amp; PE</div>
-            <p>Brings cross-border M&amp;A and private equity deal structuring experience, with a strong track record in
-              technology and consumer sectors.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </div>
-
-  <!-- ══════════════════════════════════════
-     INVESTMENT BANKING PAGE
-══════════════════════════════════════ -->
-  <div class="page" id="page-ib">
-
-    <div class="ib-hero">
-      <div class="section-tag">Investment Banking</div>
-      <h1>Capital Markets &amp;<br><em>Corporate Finance</em><br>Advisory</h1>
-      <p>We offer a comprehensive suite of investment banking services designed to help businesses raise capital,
-        execute transactions, and create sustainable value.</p>
-    </div>
-
-    <div class="services-detail">
-      <div class="service-detail-grid">
-        <div class="svc-item">
-          <h3>Capital Markets</h3>
-          <p>We manage the entire lifecycle of public market transactions — from regulatory filings to successful
-            listings on BSE and NSE platforms.</p>
-          <ul class="svc-list">
-            <li>Initial Public Offerings (IPO)</li>
-            <li>SME IPO on BSE SME &amp; NSE Emerge</li>
-            <li>Rights Issues</li>
-            <li>Public Offers</li>
-            <li>Buyback &amp; Delisting</li>
-            <li>Preferential Allotments</li>
-          </ul>
-        </div>
-        <div class="svc-item">
-          <h3>Mergers &amp; Acquisitions</h3>
-          <p>Strategic advisory for buy-side and sell-side M&amp;A transactions, including business valuation, deal
-            structuring, and negotiation support.</p>
-          <ul class="svc-list">
-            <li>Buy-side advisory &amp; target identification</li>
-            <li>Sell-side mandate management</li>
-            <li>Business valuations for M&amp;A</li>
-            <li>Open offer management</li>
-            <li>NCLT scheme advisory</li>
-          </ul>
-        </div>
-        <div class="svc-item">
-          <h3>Private Equity &amp; Venture Capital</h3>
-          <p>We connect growth-stage and mature businesses with institutional investors, family offices, and strategic
-            investors through structured PE/VC mandates.</p>
-          <ul class="svc-list">
-            <li>Growth equity fundraising</li>
-            <li>Structured investment teaser &amp; CIM preparation</li>
-            <li>Investor roadshow management</li>
-            <li>Term sheet negotiation</li>
-            <li>AIF fund advisory</li>
-          </ul>
-        </div>
-        <div class="svc-item">
-          <h3>Debt Advisory &amp; Syndication</h3>
-          <p>Structuring and sourcing optimal debt solutions from banks, NBFCs, and capital market participants to fund
-            business growth.</p>
-          <ul class="svc-list">
-            <li>Term loan syndication</li>
-            <li>NCD/bond issuance advisory</li>
-            <li>Working capital solutions</li>
-            <li>External Commercial Borrowings (ECB)</li>
-            <li>FCCB advisory</li>
-          </ul>
-        </div>
-        <div class="svc-item">
-          <h3>Valuations</h3>
-          <p>Independent, defensible valuations prepared for transactional, regulatory, and financial reporting
-            purposes.</p>
-          <ul class="svc-list">
-            <li>Business enterprise valuation</li>
-            <li>ESOP &amp; sweat equity valuation</li>
-            <li>Fair value for M&amp;A transactions</li>
-            <li>Valuation for FEMA/NCLT purposes</li>
-            <li>Intangible asset valuation</li>
-          </ul>
-        </div>
-        <div class="svc-item">
-          <h3>ESOP Advisory</h3>
-          <p>Comprehensive ESOP design and implementation services to help companies attract, retain, and reward key
-            talent through equity participation.</p>
-          <ul class="svc-list">
-            <li>ESOP scheme design &amp; drafting</li>
-            <li>Regulatory compliance (Companies Act)</li>
-            <li>ESOP trust setup</li>
-            <li>Exercise price determination</li>
-            <li>Annual ESOP valuation reports</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ══════════════════════════════════════
-     COMPLIANCE PAGE
-══════════════════════════════════════ -->
-  <div class="page" id="page-compliance">
-
-    <div class="ib-hero">
-      <div class="section-tag">Compliance</div>
-      <h1>Regulatory <em>Transparency</em><br>&amp; Governance</h1>
-      <p>RKS Investments maintains the highest standards of regulatory compliance and governance across all our advisory
-        activities.</p>
-    </div>
-
-    <section>
-      <div class="section-tag">Documents &amp; Disclosures</div>
-      <h2 class="section-title">Compliance <em>Resources</em></h2>
-
-      <div class="disclaimer-box">
-        <h4>&#9888; Important Disclosure</h4>
-        <p>RKS Investments is <strong>not registered with SEBI</strong> as a Merchant Banker, Investment Adviser, or any
-          other regulated category under the Securities and Exchange Board of India Act, 1992 or any rules/regulations
-          thereunder. Our services are purely advisory in nature and do not constitute regulated investment banking or
-          broking activities requiring SEBI registration. Clients are advised to exercise their own due diligence.</p>
-      </div>
-
-      <div class="compliance-grid">
-        <div class="compliance-card">
-          <div class="badge">Document</div>
-          <h3>Investor Complaints Policy</h3>
-          <p>Our grievance redressal policy outlines the mechanism for raising, tracking, and resolving investor
-            complaints in a time-bound manner.</p>
-        </div>
-        <div class="compliance-card">
-          <div class="badge">Policy</div>
-          <h3>Cyber Security Policy</h3>
-          <p>Our cyber security framework governs data protection, access controls, and incident response procedures for
-            client data confidentiality.</p>
-        </div>
-        <div class="compliance-card">
-          <div class="badge">Document</div>
-          <h3>Conflict of Interest Policy</h3>
-          <p>We maintain a written policy to identify, disclose, and manage any conflicts of interest that may arise in
-            our advisory engagements.</p>
-        </div>
-        <div class="compliance-card">
-          <div class="badge">Document</div>
-          <h3>KYC &amp; AML Policy</h3>
-          <p>Our Know Your Customer and Anti-Money Laundering policy ensures robust client onboarding and ongoing
-            monitoring standards.</p>
-        </div>
-        <div class="compliance-card">
-          <div class="badge">Document</div>
-          <h3>Client Agreement Terms</h3>
-          <p>Standard engagement letter and advisory service agreement templates governing the scope, fees, and
-            obligations of our engagements.</p>
-        </div>
-        <div class="compliance-card">
-          <div class="badge">Policy</div>
-          <h3>Data Privacy Policy</h3>
-          <p>Our data privacy policy governs collection, processing, storage, and sharing of personal and sensitive
-            financial data of clients.</p>
-        </div>
-      </div>
-
-      <div class="charter-box">
-        <h3 class="charter-box__title">Investor Charter</h3>
-        <p class="charter-box__intro">The following investor charter documents provide details on rights, obligations,
-          and processes related to specific transaction types in which RKS Investments provides advisory services:</p>
-        <div class="charter-tags">
-          <span class="charter-tag">Initial Public Offer</span>
-          <span class="charter-tag">Preferential Issue</span>
-          <span class="charter-tag">Rights Issue</span>
-          <span class="charter-tag">Buy Back</span>
-          <span class="charter-tag">Delisting of Equity Shares</span>
-          <span class="charter-tag">Qualified Institutional Placement</span>
-          <span class="charter-tag">Alternative Investment Fund</span>
-          <span class="charter-tag">Debt Market</span>
-        </div>
-      </div>
-    </section>
-
-  </div>
-
-  <!-- ══════════════════════════════════════
-     CLIENTS PAGE
-══════════════════════════════════════ -->
-  <div class="page" id="page-clients">
-
-    <div class="ib-hero">
-      <div class="section-tag">Our Clients</div>
-      <h1>Trusted by <em>Businesses</em><br>Across India</h1>
-      <p>A diverse portfolio of transactions across industries — from manufacturing to technology, healthcare to
-        consumer goods.</p>
-    </div>
-
-    <section>
-      <div class="clients-intro">
-        <div class="section-tag">Transaction Portfolio</div>
-        <h2 class="section-title">Select <em>Transactions</em></h2>
-        <p>We have partnered with companies across sectors in delivering successful capital market, M&amp;A, and
-          fundraising transactions.</p>
-      </div>
-      <div class="sector-tabs">
-        <button class="tab-btn active" onclick="filterClients('all', this)">All Sectors</button>
-        <button class="tab-btn" onclick="filterClients('ipo', this)">IPO</button>
-        <button class="tab-btn" onclick="filterClients('ma', this)">M&amp;A</button>
-        <button class="tab-btn" onclick="filterClients('pe', this)">Private Equity</button>
-        <button class="tab-btn" onclick="filterClients('valuation', this)">Valuation</button>
-      </div>
-      <div class="clients-mosaic" id="clients-mosaic"></div>
-    </section>
-
-  </div>
-
-  <!-- ══════════════════════════════════════
-     CONTACT PAGE
-══════════════════════════════════════ -->
-  <div class="page" id="page-contact">
-
-    <div class="ib-hero">
-      <div class="section-tag">Contact Us</div>
-      <h1>Let's Start a <em>Conversation</em></h1>
-      <p>Whether you have a specific mandate in mind or simply want to explore options, our team is ready to engage.</p>
-    </div>
-
-    <section>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="section-tag">Get in Touch</div>
-          <h2 class="section-title">We'd Love to <em>Hear</em> From You</h2>
-          <p>Reach us through any of the channels below, or fill out the form and a member of our team will respond
-            within one business day.</p>
-          <div class="contact-details">
-            <div class="contact-item">
-              <div class="contact-icon">&#9993;</div>
-              <div>
-                <div class="contact-item-label">Email</div>
-                <div class="contact-item-text">info@rksinvestments.in<br>advisory@rksinvestments.in</div>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">&#9742;</div>
-              <div>
-                <div class="contact-item-label">Phone</div>
-                <div class="contact-item-text">+91 98765 43210<br>+91 11 4567 8900</div>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">&#9678;</div>
-              <div>
-                <div class="contact-item-label">Office</div>
-                <div class="contact-item-text">Suite 501, Capital Tower,<br>Connaught Place, New Delhi – 110001</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="contact-form" id="contact-form">
-            <div class="form-row">
-              <div class="form-field">
-                <label>First Name</label>
-                <input type="text" placeholder="Rajesh">
-              </div>
-              <div class="form-field">
-                <label>Last Name</label>
-                <input type="text" placeholder="Mehta">
-              </div>
-            </div>
-            <div class="form-field">
-              <label>Company / Organisation</label>
-              <input type="text" placeholder="Acme Industries Pvt. Ltd.">
-            </div>
-            <div class="form-field">
-              <label>Email Address</label>
-              <input type="email" placeholder="rajesh@acme.in">
-            </div>
-            <div class="form-field">
-              <label>Service of Interest</label>
-              <select>
-                <option value="">Select a service...</option>
-                <option>IPO Advisory</option>
-                <option>Mergers &amp; Acquisitions</option>
-                <option>Private Equity Fundraising</option>
-                <option>Debt Syndication</option>
-                <option>Valuations</option>
-                <option>ESOP Advisory</option>
-                <option>Buyback / Delisting</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label>Message</label>
-              <textarea placeholder="Tell us briefly about your requirements..."></textarea>
-            </div>
-            <button class="btn-primary" onclick="submitForm()">Send Enquiry</button>
-            <div class="form-success" id="form-success">
-              &#10003; &nbsp; Thank you! We'll be in touch within one business day.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -633,15 +254,17 @@
           <li><a href="Debt.html">Debt Syndication</a></li>
           <li><a href="Valuation.html">Valuations</a></li>
           <li><a href="ESOP.html">ESOP Advisory</a></li>
+          <li><a href="right.html">Rights Issue Advisory</a></li>
+          <li><a href="buy.html">Buyback & Delisting</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5>Company</h5>
         <ul>
-          <li><a onclick="showPage('about')">About Us</a></li>
-          <li><a onclick="showPage('clients')">Our Clients</a></li>
-          <li><a onclick="showPage('compliance')">Compliance</a></li>
-          <li><a onclick="showPage('contact')">Contact</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <!-- <li><a href="client.html">Our Clients</a></li> -->
+          <li><a href="compliance.html">Compliance</a></li>
+          <li><a href="form.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -661,7 +284,54 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+
+  <script>
+    /* Scroll shrink */
+    window.addEventListener('scroll', () => {
+      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* Hamburger */
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('open');
+    }
+
+    /* Close menu when clicking outside */
+    document.addEventListener('click', e => {
+      if (!e.target.closest('nav')) {
+        document.getElementById('nav-links').classList.remove('open');
+        closeAllDropdowns();
+      }
+    });
+
+    /* Dropdown — click to open/close */
+    document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        const li = this.closest('.nav-has-dropdown');
+        const isOpen = li.classList.contains('dropdown-open');
+        closeAllDropdowns();
+        if (!isOpen) {
+          li.classList.add('dropdown-open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    function closeAllDropdowns() {
+      document.querySelectorAll('.nav-has-dropdown').forEach(li => {
+        li.classList.remove('dropdown-open');
+        const trigger = li.querySelector('.nav-dropdown-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    /* Close dropdown on Escape */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeAllDropdowns();
+    });
+  </script>
+
 </body>
 
 </html>
