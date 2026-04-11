@@ -11,9 +11,9 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /*  
+        /* ══════════════════════════════════════
        BUYBACK & DELISTING PAGE — STYLES
-      */
+    ══════════════════════════════════════ */
 
         .breadcrumb {
             display: flex;
@@ -864,40 +864,23 @@
 
 <body>
 
-    <!--  
-     NAV
-  -->
+    <!-- NAV -->
     <nav id="main-nav">
         <a class="logo" href="index.html">
-            <div class="logo-mark"><img src="Logo.png" alt="RKS" height="70" width="70"></div>
+            <div class="logo-mark">RKS</div>
             RKS Investments
         </a>
-
         <ul class="nav-links" id="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-
-            <li class="nav-has-dropdown">
-                <a href="#" class="nav-dropdown-trigger">Investment Banking &#8964;</a>
-
-                <div class="nav-dropdown">
-                    <a href="ipo.html">→ IPO Advisory</a><br>
-                    <a href="M&A.html">→ Mergers & Acquisitions</a><br>
-                    <a href="PE.html">→ Private Equity</a><br>
-                    <a href="Debt.html">→ Debt Syndication</a><br>
-                    <a href="Valuation.html">→ Valuations</a><br>
-                    <a href="ESOP.html">→ ESOP Advisory</a><br>
-                    <a href="right.html">→ Rights Issue</a><br>
-                    <a href="buy.html">→ Buyback & Delisting</a><br>
-                </div>
-            </li>
-
-            <li><a href="compliance.html">Compliance</a></li>
-            <!-- <li><a href="client.html">Clients</a></li> -->
-            <li><a href="form.html" class="nav-cta">Contact</a></li>
+            <li><a href="index.html">About</a></li>
+            <li><a href="index.html">Investment Banking</a></li>
+            <li><a href="index.html">Compliance</a></li>
+            <li><a href="index.html">Clients</a></li>
+            <li><a href="index.html" class="nav-cta">Contact Us</a></li>
         </ul>
-
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
     </nav>
 
     <!-- HERO -->
@@ -919,16 +902,19 @@
                     companies and promoters navigate two of the most complex, regulatory-intensive transactions in
                     Indian capital markets.</p>
                 <div class="hero-actions">
-                    <a class="btn-primary" href="form.html">Discuss a Mandate</a>
+                    <a class="btn-primary" href="index.html">Discuss a Mandate</a>
                     <a class="btn-ghost" href="#bd-buyback">Explore Services</a>
                 </div>
             </div>
             <div class="bd-hero-right">
                 <div class="bd-stat-card">
-                    <div class="bd-stat-card__num" style="font-size: 50px;">Buyback &amp; Delisting Mandates</div>
-
+                    <div class="bd-stat-card__num">40+</div>
+                    <div class="bd-stat-card__label">Buyback &amp; Delisting Mandates</div>
                 </div>
-
+                <div class="bd-stat-card">
+                    <div class="bd-stat-card__num">&#8377;800Cr+</div>
+                    <div class="bd-stat-card__label">Aggregate Transaction Value</div>
+                </div>
                 <div class="bd-stat-card">
                     <div class="bd-stat-card__num">SEBI &amp;<br>SAST</div>
                     <div class="bd-stat-card__label">Full Regulatory Framework Coverage</div>
@@ -943,9 +929,9 @@
         <button class="bd-nav-btn" onclick="showBDSection('delisting', this)">Voluntary Delisting</button>
     </div>
 
-    <!--  
-       BUYBACK SECTION  
-  -->
+    <!-- ══════════════════════════════════════
+     ███ BUYBACK SECTION ███
+══════════════════════════════════════ -->
     <div id="bd-buyback">
 
         <!-- What is a Buyback -->
@@ -1396,10 +1382,10 @@
 
     </div><!-- end buyback section -->
 
-    <!--  
+    <!-- ══════════════════════════════════════
      DIVIDER
-  -->
-    <div class="bd-divider-label" id="bd-delisting">
+══════════════════════════════════════ -->
+    <div class="bd-divider-label" id="bd-divider-delisting">
         <div>
             <h2>Voluntary <em>Delisting</em></h2>
             <p>Advisory for promoters seeking to take their listed company private through a voluntary delisting offer —
@@ -1408,9 +1394,9 @@
         <div class="bd-divider-line"></div>
     </div>
 
-    <!--  
-       DELISTING SECTION  
-  -->
+    <!-- ══════════════════════════════════════
+     ███ DELISTING SECTION ███
+══════════════════════════════════════ -->
     <div id="bd-delisting-content">
 
         <!-- What is Delisting -->
@@ -1928,6 +1914,94 @@
 
     </div><!-- end delisting section -->
 
+    <!-- ══════════════════════════════════════
+     WHY RKS
+══════════════════════════════════════ -->
+    <section class="bd-section">
+        <div class="section-tag">Our Differentiators</div>
+        <h2 class="section-title">Why <em>RKS Investments</em> for<br>Buyback &amp; Delisting</h2>
+        <div class="bd-why-grid">
+            <div class="bd-why-metrics">
+                <div class="bd-why-metric">
+                    <div class="bd-why-metric__num">40+</div>
+                    <div class="bd-why-metric__label">Buyback &amp; Delisting<br>Mandates Completed</div>
+                </div>
+                <div class="bd-why-metric">
+                    <div class="bd-why-metric__num">&#8377;800Cr+</div>
+                    <div class="bd-why-metric__label">Aggregate Transaction<br>Value Advised</div>
+                </div>
+                <div class="bd-why-metric">
+                    <div class="bd-why-metric__num">BSE &amp;<br>NSE</div>
+                    <div class="bd-why-metric__label">Both Exchange<br>Platforms</div>
+                </div>
+                <div class="bd-why-metric">
+                    <div class="bd-why-metric__num">SEBI 2021<br>Compliant</div>
+                    <div class="bd-why-metric__label">Current Regulatory<br>Framework</div>
+                </div>
+            </div>
+            <div class="bd-why-reasons">
+                <div class="bd-why-reason">
+                    <div class="bd-why-reason__num">01</div>
+                    <div>
+                        <h4>Buyback Pricing Precision</h4>
+                        <p>Setting the buyback price too low leads to under-subscription; too high wastes shareholder
+                            capital. We model the optimal price point that maximises acceptance while preserving value
+                            for non-tendering shareholders.</p>
+                    </div>
+                </div>
+                <div class="bd-why-reason">
+                    <div class="bd-why-reason__num">02</div>
+                    <div>
+                        <h4>Delisting Price Intelligence</h4>
+                        <p>The discovered price in an RBB is never a surprise for promoters we advise — we model the
+                            shareholding register and bidding behaviour to provide a realistic price range estimate
+                            before any announcement commitment.</p>
+                    </div>
+                </div>
+                <div class="bd-why-reason">
+                    <div class="bd-why-reason__num">03</div>
+                    <div>
+                        <h4>Regulatory Speed &amp; Precision</h4>
+                        <p>Buybacks and delistings are heavily regulated with tight, non-negotiable timelines — a missed
+                            filing or incorrect disclosure can derail an entire transaction. Our team has executed
+                            enough of these to navigate every procedural step without error.</p>
+                    </div>
+                </div>
+                <div class="bd-why-reason">
+                    <div class="bd-why-reason__num">04</div>
+                    <div>
+                        <h4>Tax Structure Advisory</h4>
+                        <p>Post-Budget 2024 buyback tax changes have materially altered the calculus between buyback and
+                            dividend. We provide up-to-date tax modelling for every engagement — ensuring the chosen
+                            structure is optimal given current law.</p>
+                    </div>
+                </div>
+                <div class="bd-why-reason">
+                    <div class="bd-why-reason__num">05</div>
+                    <div>
+                        <h4>Single Team — Both Workstreams</h4>
+                        <p>Buybacks and delistings often run in sequence or in combination. Our single advisory team has
+                            expertise across both — providing seamless strategic continuity rather than appointing
+                            separate advisors for each transaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bd-cta">
+        <div class="section-tag section-tag--center">Start a Conversation</div>
+        <h2>Plan Your <em>Buyback</em> or<br><em>Delisting</em> with Confidence</h2>
+        <p>Whether you're returning capital through a buyback or taking your company private through a delisting, RKS
+            Investments brings the regulatory precision, pricing intelligence, and transaction experience to execute
+            with confidence.</p>
+        <div class="bd-cta__actions">
+            <a class="btn-primary" href="index.html">Discuss a Mandate</a>
+            <a class="btn-ghost" href="rights-issue.html">View Rights Issue Advisory</a>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="footer-grid">
@@ -1981,51 +2055,45 @@
         </div>
     </footer>
 
-
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
-        /* Scroll shrink */
         window.addEventListener('scroll', () => {
             document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
         });
-
-        /* Hamburger */
         function toggleMenu() {
             document.getElementById('nav-links').classList.toggle('open');
         }
-
-        /* Close menu when clicking outside */
         document.addEventListener('click', e => {
-            if (!e.target.closest('nav')) {
-                document.getElementById('nav-links').classList.remove('open');
-                closeAllDropdowns();
+            if (!e.target.closest('nav')) document.getElementById('nav-links').classList.remove('open');
+        });
+
+        function showBDSection(section, btn) {
+            // Hide both sections
+            document.getElementById('bd-buyback').style.display = 'none';
+            document.getElementById('bd-divider-delisting').style.display = 'none';
+            document.getElementById('bd-delisting-content').style.display = 'none';
+
+            if (section === 'buyback') {
+                document.getElementById('bd-buyback').style.display = 'block';
+            } else {
+                document.getElementById('bd-divider-delisting').style.display = 'block';
+                document.getElementById('bd-delisting-content').style.display = 'block';
             }
-        });
 
-        /* Dropdown — click to open/close */
-        document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
-            trigger.addEventListener('click', function (e) {
-                e.preventDefault();
-                const li = this.closest('.nav-has-dropdown');
-                const isOpen = li.classList.contains('dropdown-open');
-                closeAllDropdowns();
-                if (!isOpen) {
-                    li.classList.add('dropdown-open');
-                    this.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
+            // Update active button
+            document.querySelectorAll('.bd-nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-        function closeAllDropdowns() {
-            document.querySelectorAll('.nav-has-dropdown').forEach(li => {
-                li.classList.remove('dropdown-open');
-                const trigger = li.querySelector('.nav-dropdown-trigger');
-                if (trigger) trigger.setAttribute('aria-expanded', 'false');
-            });
+            // Scroll to just below the sticky nav
+            const nav = document.querySelector('.bd-section-nav');
+            const top = nav ? nav.getBoundingClientRect().bottom + window.scrollY + 8 : 0;
+            window.scrollTo({ top, behavior: 'smooth' });
         }
 
-        /* Close dropdown on Escape */
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeAllDropdowns();
+        // On page load — show Buyback, hide Delisting
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('bd-divider-delisting').style.display = 'none';
+            document.getElementById('bd-delisting-content').style.display = 'none';
         });
     </script>
 

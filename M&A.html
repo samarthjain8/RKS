@@ -2039,52 +2039,41 @@
 
 
     <script>
-        /* Scroll shrink */
-        window.addEventListener('scroll', () => {
+        /* ── Nav scroll shrink ── */
+        window.addEventListener('scroll', function () {
             document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
         });
 
-        /* Hamburger */
+        /* ── Hamburger ── */
         function toggleMenu() {
             document.getElementById('nav-links').classList.toggle('open');
         }
-
-        /* Close menu when clicking outside */
-        document.addEventListener('click', e => {
+        document.addEventListener('click', function (e) {
             if (!e.target.closest('nav')) {
                 document.getElementById('nav-links').classList.remove('open');
-                closeAllDropdowns();
             }
         });
 
-        /* Dropdown — click to open/close */
-        document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
-            trigger.addEventListener('click', function (e) {
-                e.preventDefault();
-                const li = this.closest('.nav-has-dropdown');
-                const isOpen = li.classList.contains('dropdown-open');
-                closeAllDropdowns();
-                if (!isOpen) {
-                    li.classList.add('dropdown-open');
-                    this.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
+        /* ── Mandate tabs ── */
+        function showTab(id, btn) {
+            /* Hide all panels */
+            var panels = document.querySelectorAll('.ma-tab-panel');
+            for (var i = 0; i < panels.length; i++) {
+                panels[i].classList.remove('active');
+            }
+            /* Show selected panel */
+            var target = document.getElementById('tab-' + id);
+            if (target) target.classList.add('active');
 
-        function closeAllDropdowns() {
-            document.querySelectorAll('.nav-has-dropdown').forEach(li => {
-                li.classList.remove('dropdown-open');
-                const trigger = li.querySelector('.nav-dropdown-trigger');
-                if (trigger) trigger.setAttribute('aria-expanded', 'false');
-            });
+            /* Update button states */
+            var btns = document.querySelectorAll('.ma-tab-btn');
+            for (var j = 0; j < btns.length; j++) {
+                btns[j].classList.remove('active');
+            }
+            btn.classList.add('active');
         }
 
-        /* Close dropdown on Escape */
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeAllDropdowns();
-        });
     </script>
-
 </body>
 
 </html>
